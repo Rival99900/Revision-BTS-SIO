@@ -48,7 +48,7 @@ const SYNTAX_CONFIG = {
 };
 
 const PROJECT_STORAGE_KEY = 'bts-code-lab-v6-project';
-const PROJECT_VERSION = 6;
+const PROJECT_VERSION = 7;
 const MAX_HISTORY = 120;
 const INDENT_UNIT = '    ';
 
@@ -67,6 +67,8 @@ const state = {
   running: false,
   history: new Map(),
   fileModalMode: 'create',
+  fileModalContext: null,
+  initialSandboxPromptScheduled: false,
   stdinRequirement: null,
   stdinReturnScrollY: 0,
   stdinReturnSelection: null,
@@ -343,8 +345,14 @@ function loadProject() {
 
   if (!parsed || !Array.isArray(parsed.files) || !parsed.files.length) {
     const first = createFileObject('main.py', '# Sandbox Python\nprint("Bonjour BTS SIO")\n');
-    state.project = { version: PROJECT_VERSION, files: [first], activeFileId: first.id };
+    state.project = {
+      version: PROJECT_VERSION,
+      files: [first],
+      activeFileId: first.id,
+      sandboxNamingDone: false,
+    };
     state.activeFileId = first.id;
+    state.initialSandboxPromptScheduled = true;
     persistProject();
     return;
   }
@@ -361,12 +369,21 @@ function loadProject() {
       updatedAt: file.updatedAt || Date.now(),
     })),
     activeFileId: parsed.activeFileId,
+    sandboxNamingDone: Boolean(parsed.sandboxNamingDone),
   };
 
   state.activeFileId = state.project.files.some((file) => file.id === parsed.activeFileId)
     ? parsed.activeFileId
     : state.project.files[0].id;
   state.project.activeFileId = state.activeFileId;
+
+  if (!state.project.sandboxNamingDone) {
+    const sandboxFile = state.project.files.find((file) => !file.exerciseId) || state.project.files[0];
+    state.activeFileId = sandboxFile.id;
+    state.project.activeFileId = sandboxFile.id;
+    state.initialSandboxPromptScheduled = true;
+  }
+
   persistProject();
 }
 
@@ -485,27 +502,25 @@ function adaptJavaStarterForFilename(starter, filename) {
 function openExerciseInFile(exercise, exerciseIndex) {
   const language = activeLanguage();
   const existing = state.project.files.find((file) => file.exerciseId === exercise.id && languageFromFilename(file.name) === language);
-  if (existing) {
-    activateFile(existing.id);
-    return;
+
+  let suggestedName = existing?.name || exerciseFilename(language, exerciseIndex, exercise.title);
+  if (!existing) {
+    let suffix = 2;
+    while (state.project.files.some((file) => file.name.toLowerCase() === suggestedName.toLowerCase())) {
+      const ext = `.${extensionOf(suggestedName)}`;
+      suggestedName = `${suggestedName.slice(0, -ext.length)}-${suffix}${ext}`;
+      suffix += 1;
+    }
   }
 
-  let name = exerciseFilename(language, exerciseIndex, exercise.title);
-  let suffix = 2;
-  while (state.project.files.some((file) => file.name.toLowerCase() === name.toLowerCase())) {
-    const ext = `.${extensionOf(name)}`;
-    name = `${name.slice(0, -ext.length)}-${suffix}${ext}`;
-    suffix += 1;
-  }
-
-  let starter = exercise.starter || '';
-  if (language === 'java') starter = adaptJavaStarterForFilename(starter, name);
-  const file = createFileObject(name, starter, exercise.id);
-  state.project.files.push(file);
-  state.activeFileId = file.id;
-  state.project.activeFileId = file.id;
-  persistProject();
-  renderActiveFile();
+  syncEditorToActiveFile();
+  openFileModal('exercise', {
+    exercise,
+    exerciseIndex,
+    language,
+    existingFileId: existing?.id || null,
+    suggestedName,
+  });
 }
 
 function renderExerciseBrief() {
@@ -568,6 +583,16 @@ function renderActiveFile() {
   if (exercise) appendTerminal(`${languageLabel(language)} // ${exercise.title}`);
   else if (language === 'text') appendTerminal('Fichier ouvert en mode édition. Exécution non disponible pour cette extension.');
   else appendTerminal(`${languageLabel(language)} // fichier libre`);
+
+  if (state.initialSandboxPromptScheduled) {
+    state.initialSandboxPromptScheduled = false;
+    window.setTimeout(() => {
+      const sandbox = activeFile();
+      if (sandbox && !sandbox.exerciseId && !state.project.sandboxNamingDone && dom.fileModal.hidden) {
+        openFileModal('sandbox-init', { fileId: sandbox.id });
+      }
+    }, 60);
+  }
 }
 
 function activateFile(fileId) {
@@ -588,15 +613,33 @@ function syncEditorToActiveFile() {
   persistProject();
 }
 
-function openFileModal(mode) {
+function openFileModal(mode, context = null) {
   state.fileModalMode = mode;
+  state.fileModalContext = context;
   const file = activeFile();
-  dom.fileModalTitle.textContent = mode === 'rename' ? 'Renommer le fichier' : 'Nouveau fichier';
-  dom.fileModalDescription.innerHTML = mode === 'rename'
-    ? 'Modifiez le nom ou l’extension. Le langage actif sera recalculé automatiquement.'
-    : 'Entrez un nom avec son extension, par exemple <code>calcul.py</code>, <code>index.php</code> ou <code>Main.java</code>.';
-  dom.fileModalConfirm.textContent = mode === 'rename' ? 'Renommer' : 'Créer';
-  dom.fileNameInput.value = mode === 'rename' && file ? file.name : '';
+
+  if (mode === 'exercise') {
+    const language = context?.language || activeLanguage();
+    const extension = language === 'python' ? '.py' : language === 'php' ? '.php' : '.java';
+    dom.fileModalTitle.textContent = context?.existingFileId ? 'Renommer le fichier de l’exercice' : 'Nommer le fichier de l’exercice';
+    dom.fileModalDescription.innerHTML = `Choisissez le nom du fichier avant d’ouvrir l’exercice. Vous pouvez modifier le nom et l’extension, mais cet exercice <strong>${escapeHtml(languageLabel(language))}</strong> doit conserver l’extension <code>${extension}</code>.`;
+    dom.fileModalConfirm.textContent = context?.existingFileId ? 'Renommer et ouvrir' : 'Créer et ouvrir';
+    dom.fileNameInput.value = context?.suggestedName || '';
+  } else if (mode === 'sandbox-init') {
+    const sandbox = state.project.files.find((item) => item.id === context?.fileId) || file;
+    dom.fileModalTitle.textContent = 'Nommer votre fichier Sandbox';
+    dom.fileModalDescription.innerHTML = 'Choisissez le nom et l’extension du premier fichier Sandbox. Par exemple <code>main.py</code>, <code>index.php</code> ou <code>Main.java</code>. Le langage sera détecté automatiquement à partir de l’extension.';
+    dom.fileModalConfirm.textContent = 'Continuer';
+    dom.fileNameInput.value = sandbox?.name || 'main.py';
+  } else {
+    dom.fileModalTitle.textContent = mode === 'rename' ? 'Renommer le fichier' : 'Nouveau fichier';
+    dom.fileModalDescription.innerHTML = mode === 'rename'
+      ? 'Modifiez le nom ou l’extension. Le langage actif sera recalculé automatiquement.'
+      : 'Entrez un nom avec son extension, par exemple <code>calcul.py</code>, <code>index.php</code> ou <code>Main.java</code>.';
+    dom.fileModalConfirm.textContent = mode === 'rename' ? 'Renommer' : 'Créer';
+    dom.fileNameInput.value = mode === 'rename' && file ? file.name : '';
+  }
+
   dom.fileModalError.hidden = true;
   dom.fileModal.hidden = false;
   document.body.classList.add('modal-open');
@@ -608,33 +651,107 @@ function openFileModal(mode) {
 
 function closeFileModal() {
   dom.fileModal.hidden = true;
+  state.fileModalContext = null;
   if (dom.stdinModal.hidden) document.body.classList.remove('modal-open');
 }
 
+function renameJavaClassInFile(file, oldName, newName) {
+  const oldLanguage = languageFromFilename(oldName);
+  const newLanguage = languageFromFilename(newName);
+  if (oldLanguage !== 'java' || newLanguage !== 'java') return;
+  const oldClass = javaClassNameFromFilename(oldName);
+  const newClass = javaClassNameFromFilename(newName);
+  if (oldClass === newClass) return;
+  file.content = file.content.replace(new RegExp(`\\b${escapeRegExp(oldClass)}\\b`, 'g'), newClass);
+  file.savedContent = file.savedContent.replace(new RegExp(`\\b${escapeRegExp(oldClass)}\\b`, 'g'), newClass);
+}
+
 function confirmFileModal() {
-  const file = activeFile();
-  const validation = validateFilename(dom.fileNameInput.value, state.fileModalMode === 'rename' ? file?.id : null);
+  const mode = state.fileModalMode;
+  const context = state.fileModalContext;
+  const active = activeFile();
+  const targetId = mode === 'exercise' ? context?.existingFileId : mode === 'sandbox-init' ? context?.fileId : mode === 'rename' ? active?.id : null;
+  const targetFile = targetId ? state.project.files.find((item) => item.id === targetId) : active;
+  const validation = validateFilename(dom.fileNameInput.value, targetId || null);
+
   if (!validation.ok) {
     dom.fileModalError.textContent = validation.message;
     dom.fileModalError.hidden = false;
     return;
   }
 
-  if (state.fileModalMode === 'rename') {
-    if (!file) return;
-    const oldLanguage = languageFromFilename(file.name);
-    const newLanguage = languageFromFilename(validation.name);
-    const oldName = file.name;
-    file.name = validation.name;
-    if (oldLanguage === 'java' && newLanguage === 'java') {
-      const oldClass = javaClassNameFromFilename(oldName);
-      const newClass = javaClassNameFromFilename(validation.name);
-      if (oldClass !== newClass) {
-        file.content = file.content.replace(new RegExp(`\\b${escapeRegExp(oldClass)}\\b`, 'g'), newClass);
-        file.savedContent = file.savedContent.replace(new RegExp(`\\b${escapeRegExp(oldClass)}\\b`, 'g'), newClass);
-      }
+  if (mode === 'exercise') {
+    const language = context?.language || activeLanguage();
+    const requestedLanguage = languageFromFilename(validation.name);
+    if (requestedLanguage !== language) {
+      const extension = language === 'python' ? '.py' : language === 'php' ? '.php' : '.java';
+      dom.fileModalError.textContent = `Cet exercice ${languageLabel(language)} doit utiliser l’extension ${extension}. Vous pouvez modifier librement le nom du fichier.`;
+      dom.fileModalError.hidden = false;
+      return;
     }
-    if (oldLanguage !== newLanguage) file.exerciseId = null;
+
+    syncEditorToActiveFile();
+
+    if (context?.existingFileId) {
+      const file = state.project.files.find((item) => item.id === context.existingFileId);
+      if (!file) return;
+      const oldName = file.name;
+      file.name = validation.name;
+      renameJavaClassInFile(file, oldName, validation.name);
+      file.exerciseId = context.exercise.id;
+      file.updatedAt = Date.now();
+      state.activeFileId = file.id;
+      state.project.activeFileId = file.id;
+    } else {
+      let starter = context?.exercise?.starter || '';
+      if (language === 'java') starter = adaptJavaStarterForFilename(starter, validation.name);
+      const file = createFileObject(validation.name, starter, context.exercise.id);
+      state.project.files.push(file);
+      state.activeFileId = file.id;
+      state.project.activeFileId = file.id;
+    }
+
+    persistProject();
+    closeFileModal();
+    renderActiveFile();
+    return;
+  }
+
+  if (mode === 'sandbox-init') {
+    const file = state.project.files.find((item) => item.id === context?.fileId);
+    if (!file) return;
+    const oldName = file.name;
+    const oldContent = file.content;
+    const defaultPythonSandbox = '# Sandbox Python\nprint("Bonjour BTS SIO")\n';
+    const wasDefaultSandbox = oldName.toLowerCase() === 'main.py' && oldContent === defaultPythonSandbox;
+
+    file.name = validation.name;
+    file.exerciseId = null;
+    if (wasDefaultSandbox) {
+      const starter = createStarterForFilename(validation.name);
+      file.content = starter;
+      file.savedContent = starter;
+    } else {
+      renameJavaClassInFile(file, oldName, validation.name);
+    }
+    file.updatedAt = Date.now();
+    state.project.sandboxNamingDone = true;
+    state.activeFileId = file.id;
+    state.project.activeFileId = file.id;
+    persistProject();
+    closeFileModal();
+    renderActiveFile();
+    return;
+  }
+
+  if (mode === 'rename') {
+    if (!active) return;
+    const oldLanguage = languageFromFilename(active.name);
+    const newLanguage = languageFromFilename(validation.name);
+    const oldName = active.name;
+    active.name = validation.name;
+    renameJavaClassInFile(active, oldName, validation.name);
+    if (oldLanguage !== newLanguage) active.exerciseId = null;
     persistProject();
     closeFileModal();
     renderActiveFile();
