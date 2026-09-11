@@ -1,25 +1,69 @@
-function goChapter(sel){if(sel&&sel.value)location.href=sel.value}
+function goChapter(sel) {
+  if (sel && sel.value) {
+    location.href = sel.value;
+  }
+}
 
-function showSub(mod,id,btn){
-  const pref=mod+'-';
-  document.querySelectorAll('[id^="'+pref+'"]').forEach(e=>e.classList.remove('a'));
-  document.querySelectorAll('.sb').forEach(b=>b.classList.remove('a'));
-  const target=document.getElementById(pref+id); if(target) target.classList.add('a');
-  if(btn) btn.classList.add('a');
+function showSub(mod, id, btn) {
+  const prefix = `${mod}-`;
+
+  document.querySelectorAll(`[id^="${prefix}"]`).forEach((element) => {
+    element.classList.remove('a');
+  });
+
+  document.querySelectorAll('.sb').forEach((button) => {
+    button.classList.remove('a');
+  });
+
+  const target = document.getElementById(prefix + id);
+  if (target) {
+    target.classList.add('a');
+  }
+
+  if (btn) {
+    btn.classList.add('a');
+  }
 }
-function printPage(){window.print()}
-function setReviewed(id){
-  const k='bts-review-'+id, done=localStorage.getItem(k)==='1';
-  localStorage.setItem(k,done?'0':'1'); refreshReview(id);
+
+function printPage() {
+  window.print();
 }
-function refreshReview(id){
-  const b=document.getElementById('reviewBtn'); if(!b)return;
-  const done=localStorage.getItem('bts-review-'+id)==='1';
-  b.textContent=done?'✓ Révisé':'○ Marquer révisé';
-  b.classList.toggle('done',done);
+
+function setReviewed(id) {
+  const key = `bts-review-${id}`;
+  const done = localStorage.getItem(key) === '1';
+  localStorage.setItem(key, done ? '0' : '1');
+  refreshReview(id);
 }
-function filterYear(year,btn){
-  document.querySelectorAll('.yearbtn').forEach(b=>b.classList.remove('active')); btn.classList.add('active');
-  document.querySelectorAll('[data-year-section]').forEach(s=>{s.style.display=(year==='all'||s.dataset.yearSection===year)?'block':'none'});
+
+function refreshReview(id) {
+  const button = document.getElementById('reviewBtn');
+  if (!button) return;
+
+  const done = localStorage.getItem(`bts-review-${id}`) === '1';
+  button.textContent = done ? '✓ Révisé' : '○ Marquer révisé';
+  button.classList.toggle('done', done);
 }
-document.addEventListener('DOMContentLoaded',()=>{const bodyId=document.body.dataset.reviewId||document.body.dataset.chapter;if(bodyId)refreshReview(bodyId)});
+
+function filterYear(year, btn) {
+  document.querySelectorAll('.yearbtn').forEach((button) => {
+    button.classList.remove('active');
+  });
+
+  if (btn) {
+    btn.classList.add('active');
+  }
+
+  document.querySelectorAll('[data-year-section]').forEach((section) => {
+    section.style.display = year === 'all' || section.dataset.yearSection === year
+      ? 'block'
+      : 'none';
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const bodyId = document.body.dataset.reviewId || document.body.dataset.chapter;
+  if (bodyId) {
+    refreshReview(bodyId);
+  }
+});

@@ -1,15 +1,124 @@
-FIRST_YEAR_ORIGINAL.push(...[
+window.FIRST_YEAR_ORIGINAL = window.FIRST_YEAR_ORIGINAL || [];
 
-  /* ========== Anglais (10) ========== */
-  {cat:'🇬🇧 Anglais',q:"Comment dit-on <span class='hlco'>chiffrement</span> en anglais ?",opts:["Ciphering","Coding","Encryption","Scrambling"],a:2,exp:"<strong>Encryption</strong> est le terme exact pour chiffrement en informatique. Le verbe est 'to encrypt' et l'adjectif 'encrypted'."},
-  {cat:'🇬🇧 Anglais',q:"Quelle phrase exprime correctement que <span class='hlco'>le serveur est en panne</span> ?",opts:["The server is broken down","The server is down","The server has fallen","The server doesn't work anymore"],a:1,exp:"<strong>The server is down</strong> est l'expression standard en IT pour dire qu'un serveur est indisponible. 'Down' signifie hors service."},
-  {cat:'🇬🇧 Anglais',q:"Le <span class='hlco'>Present Perfect</span> se forme avec :",opts:["Sujet + was/were + verbe-ing","Sujet + have/has + participe passé","Sujet + will + infinitif","Sujet + did + infinitif"],a:1,exp:"Le <strong>Present Perfect</strong> = sujet + <strong>have/has + participe passé</strong>. Ex : 'The developer has fixed the bug.' (action passée avec résultat présent)."},
-  {cat:'🇬🇧 Anglais',q:"Comment dit-on <span class='hlco'>sauvegarde</span> (nom) en anglais ?",opts:["Saveguard","Save","Backup","Securecopy"],a:2,exp:"<strong>Backup</strong> est le nom. Le verbe est <strong>to back up</strong> (deux mots). Ex : 'Create a backup' / 'Back up your data'."},
-  {cat:'🇬🇧 Anglais',q:"Dans un email professionnel, <span class='hlco'>comment terminer</span> si on a commencé par 'Dear Mr Smith' ?",opts:["Yours faithfully","Best wishes","Yours sincerely","Cheers"],a:2,exp:"Si on connaît le nom du destinataire (Dear Mr Smith), on termine par <strong>Yours sincerely</strong>. 'Yours faithfully' est pour 'Dear Sir/Madam' (nom inconnu)."},
-  {cat:'🇬🇧 Anglais',q:"CPU signifie :",opts:["Computer Power Unit","Central Processing Unit","Core Programming Utility","Computer Program Unit"],a:1,exp:"<strong>CPU = Central Processing Unit</strong> = processeur en français. Il est le cerveau de l'ordinateur."},
-  {cat:'🇬🇧 Anglais',q:"Quelle phrase décrit une action <span class='hlco'>en cours maintenant</span> ?",opts:["The system runs a scan.","The system is running a scan.","The system ran a scan.","The system will run a scan."],a:1,exp:"Le <strong>Present Continuous</strong> (is/are + verbe-ING) décrit une action en cours maintenant. 'The system <strong>is running</strong> a scan' = le système est en train d'effectuer un scan."},
-  {cat:'🇬🇧 Anglais',q:"Comment dit-on <span class='hlco'>télécharger (recevoir)</span> en anglais ?",opts:["Upload","Load","Download","Transfer"],a:2,exp:"<strong>Download</strong> = télécharger (recevoir des données depuis un serveur). <strong>Upload</strong> = envoyer (téléverser) des données vers un serveur. Sens opposés !"},
-  {cat:'🇬🇧 Anglais',q:"La phrase <span class='hlco'>'Please find attached the report'</span> signifie :",opts:["Trouvez le rapport, s'il vous plaît","Veuillez trouver le rapport ci-joint","Merci d'avoir trouvé le rapport","Le rapport est perdu"],a:1,exp:"<strong>'Please find attached'</strong> est une formule standard pour dire <strong>'veuillez trouver ci-joint'</strong>. Très utilisé dans les emails professionnels."},
-  {cat:'🇬🇧 Anglais',q:"RAM signifie :",opts:["Read And Memorize","Random Access Memory","Rapid Application Module","Remote Access Management"],a:1,exp:"<strong>RAM = Random Access Memory</strong> = mémoire vive en français. Elle est volatile (données perdues à l'extinction) et rapide."},
-
+window.FIRST_YEAR_ORIGINAL.push(...[
+  {
+    "cat": "🇬🇧 Anglais",
+    "q": "Comment dit-on <span class='hlco'>chiffrement</span> en anglais ?",
+    "opts": [
+      "Ciphering",
+      "Coding",
+      "Encryption",
+      "Scrambling"
+    ],
+    "a": 2,
+    "exp": "<strong>Encryption</strong> est le terme exact pour chiffrement en informatique. Le verbe est 'to encrypt' et l'adjectif 'encrypted'."
+  },
+  {
+    "cat": "🇬🇧 Anglais",
+    "q": "Quelle phrase exprime correctement que <span class='hlco'>le serveur est en panne</span> ?",
+    "opts": [
+      "The server is broken down",
+      "The server is down",
+      "The server has fallen",
+      "The server doesn't work anymore"
+    ],
+    "a": 1,
+    "exp": "<strong>The server is down</strong> est l'expression standard en IT pour dire qu'un serveur est indisponible. 'Down' signifie hors service."
+  },
+  {
+    "cat": "🇬🇧 Anglais",
+    "q": "Le <span class='hlco'>Present Perfect</span> se forme avec :",
+    "opts": [
+      "Sujet + was/were + verbe-ing",
+      "Sujet + have/has + participe passé",
+      "Sujet + will + infinitif",
+      "Sujet + did + infinitif"
+    ],
+    "a": 1,
+    "exp": "Le <strong>Present Perfect</strong> = sujet + <strong>have/has + participe passé</strong>. Ex : 'The developer has fixed the bug.' (action passée avec résultat présent)."
+  },
+  {
+    "cat": "🇬🇧 Anglais",
+    "q": "Comment dit-on <span class='hlco'>sauvegarde</span> (nom) en anglais ?",
+    "opts": [
+      "Saveguard",
+      "Save",
+      "Backup",
+      "Securecopy"
+    ],
+    "a": 2,
+    "exp": "<strong>Backup</strong> est le nom. Le verbe est <strong>to back up</strong> (deux mots). Ex : 'Create a backup' / 'Back up your data'."
+  },
+  {
+    "cat": "🇬🇧 Anglais",
+    "q": "Dans un email professionnel, <span class='hlco'>comment terminer</span> si on a commencé par 'Dear Mr Smith' ?",
+    "opts": [
+      "Yours faithfully",
+      "Best wishes",
+      "Yours sincerely",
+      "Cheers"
+    ],
+    "a": 2,
+    "exp": "Si on connaît le nom du destinataire (Dear Mr Smith), on termine par <strong>Yours sincerely</strong>. 'Yours faithfully' est pour 'Dear Sir/Madam' (nom inconnu)."
+  },
+  {
+    "cat": "🇬🇧 Anglais",
+    "q": "CPU signifie :",
+    "opts": [
+      "Computer Power Unit",
+      "Central Processing Unit",
+      "Core Programming Utility",
+      "Computer Program Unit"
+    ],
+    "a": 1,
+    "exp": "<strong>CPU = Central Processing Unit</strong> = processeur en français. Il est le cerveau de l'ordinateur."
+  },
+  {
+    "cat": "🇬🇧 Anglais",
+    "q": "Quelle phrase décrit une action <span class='hlco'>en cours maintenant</span> ?",
+    "opts": [
+      "The system runs a scan.",
+      "The system is running a scan.",
+      "The system ran a scan.",
+      "The system will run a scan."
+    ],
+    "a": 1,
+    "exp": "Le <strong>Present Continuous</strong> (is/are + verbe-ING) décrit une action en cours maintenant. 'The system <strong>is running</strong> a scan' = le système est en train d'effectuer un scan."
+  },
+  {
+    "cat": "🇬🇧 Anglais",
+    "q": "Comment dit-on <span class='hlco'>télécharger (recevoir)</span> en anglais ?",
+    "opts": [
+      "Upload",
+      "Load",
+      "Download",
+      "Transfer"
+    ],
+    "a": 2,
+    "exp": "<strong>Download</strong> = télécharger (recevoir des données depuis un serveur). <strong>Upload</strong> = envoyer (téléverser) des données vers un serveur. Sens opposés !"
+  },
+  {
+    "cat": "🇬🇧 Anglais",
+    "q": "La phrase <span class='hlco'>'Please find attached the report'</span> signifie :",
+    "opts": [
+      "Trouvez le rapport, s'il vous plaît",
+      "Veuillez trouver le rapport ci-joint",
+      "Merci d'avoir trouvé le rapport",
+      "Le rapport est perdu"
+    ],
+    "a": 1,
+    "exp": "<strong>'Please find attached'</strong> est une formule standard pour dire <strong>'veuillez trouver ci-joint'</strong>. Très utilisé dans les emails professionnels."
+  },
+  {
+    "cat": "🇬🇧 Anglais",
+    "q": "RAM signifie :",
+    "opts": [
+      "Read And Memorize",
+      "Random Access Memory",
+      "Rapid Application Module",
+      "Remote Access Management"
+    ],
+    "a": 1,
+    "exp": "<strong>RAM = Random Access Memory</strong> = mémoire vive en français. Elle est volatile (données perdues à l'extinction) et rapide."
+  }
 ]);

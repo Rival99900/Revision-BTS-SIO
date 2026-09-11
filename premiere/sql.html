@@ -1,45 +1,1193 @@
-<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><meta name="description" content="Fiche de révision SQL et bases de données — BTS SIO 1re année"><title>🗃️ SQL & bases de données — 1re année</title><link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=VT323&family=Orbitron:wght@700;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="../assets/css/style.css"></head><body data-review-id="1-sql"><div class="container"><div class="site-header"><div class="bbar"><span></span><span></span><span></span><span></span><span></span></div><h1>BTS SIO — RÉVISIONS</h1><div class="sub">1RE ANNÉE — BASES DE DONNÉES / SQL</div><div class="tags"><span class="tag tg">BTS SIO</span><span class="tag tte">SQL</span><span class="tag tb">SLAM</span><span class="tag tcy">SISR</span></div><div class="prompt">C:\\BTS-SIO\REVISION&gt; <span>█</span></div></div><div class="topnav"><a class="navbtn" href="../index.html">⌂ Accueil</a><a class="navbtn" href="mcd.html">🗄️ MCD</a><a class="navbtn quiz" href="../quiz.html?year=1&module=sql">🎯 Quiz SQL</a></div><main class="page-panel"><div class="hero"><div><div class="hero-kicker">1RE ANNÉE // SQL // SLAM + SISR</div><h2>🗃️ SQL & bases de données</h2><p>Interroger, filtrer, joindre, agréger, manipuler et définir les données.</p></div><div class="hero-actions"><button class="smallbtn" id="reviewBtn" onclick="setReviewed('1-sql')">○ Marquer révisé</button><button class="smallbtn" onclick="printPage()">🖨 Imprimer</button><a class="smallbtn alt" href="../quiz.html?year=1&module=sql">🎯 Quiz ciblé</a></div></div><div class="alert ate"><strong>Périmètre :</strong> cette fiche reprend uniquement les notions SQL identifiées dans les dossiers de cours SLAM et SISR : interrogation, filtres, jointures, fonctions de groupe, LMD, LDD et commandes MySQL.</div><div class="cmp"><div class="cmpc"><h4 class="bl">SLAM — supports exploités</h4><p>Séances <strong>SELECT</strong>, filtres, jointures, fonctions SQL, requêtes et corrections LOCaFLOT.</p></div><div class="cmpc"><h4 class="cy">SISR — supports exploités</h4><p><strong>COURS SQLLMD</strong>, <strong>Requêtes SQL</strong>, cours/TP <strong>LDD</strong> et exercices MySQL disponibles dans le dossier BD.</p></div></div><div class="stabs"><button class="sb te a" onclick="showSub('sql','select',this,'te')">SELECT & filtres</button><button class="sb te" onclick="showSub('sql','jointures',this,'te')">Jointures</button><button class="sb te" onclick="showSub('sql','agregats',this,'te')">Agrégats</button><button class="sb te" onclick="showSub('sql','lmd',this,'te')">LMD</button><button class="sb te" onclick="showSub('sql','ldd',this,'te')">LDD & MySQL</button><button class="sb te" onclick="showSub('sql','exercices',this,'te')">Exercices du Drive</button><button class="sb te" onclick="showSub('sql','memo',this,'te')">Récapitulatif</button></div><section id="sql-select" class="sc a"><div class="st te">Interrogation d'une base : SELECT</div><div class="bq te"><span class="qt">"</span><p>Le cours présente une requête d'interrogation avec <strong>SELECT</strong>, <strong>FROM</strong> et, si nécessaire, <strong>WHERE</strong>.</p></div><div class="cg"><div class="card te"><h3>SELECT</h3><p>Indique les colonnes à afficher. <code>*</code> permet de sélectionner toutes les colonnes.</p></div><div class="card bl"><h3>FROM</h3><p>Indique la ou les tables sur lesquelles la requête doit travailler.</p></div><div class="card am"><h3>WHERE</h3><p>Ajoute une condition de sélection afin de ne conserver que les lignes qui respectent le prédicat.</p></div></div><div class="code te">SELECT colonne1, colonne2
+<!DOCTYPE html>
+<html lang="fr">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+  <meta content="Fiche de r&eacute;vision SQL et bases de donn&eacute;es &mdash; BTS SIO 1re ann&eacute;e" name="description"/>
+  <title>
+   🗃️ SQL &amp; bases de donn&eacute;es &mdash; 1re ann&eacute;e
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&amp;family=VT323&amp;family=Orbitron:wght@700;900&amp;display=swap" rel="stylesheet"/>
+  <link href="../assets/css/style.css" rel="stylesheet"/>
+ </head>
+ <body data-review-id="1-sql">
+  <div class="container">
+   <div class="site-header">
+    <div class="bbar"></div>
+    <h1>
+     BTS SIO &mdash; R&Eacute;VISIONS
+    </h1>
+    <div class="sub">
+     1RE ANN&Eacute;E &mdash; BASES DE DONN&Eacute;ES / SQL
+    </div>
+    <div class="tags">
+     <span class="tag tg">
+      BTS SIO
+     </span>
+     <span class="tag tte">
+      SQL
+     </span>
+     <span class="tag tb">
+      SLAM
+     </span>
+     <span class="tag tcy">
+      SISR
+     </span>
+    </div>
+    <div class="prompt">
+     C:\\BTS-SIO\REVISION&gt;
+     <span>
+      &block;
+     </span>
+    </div>
+   </div>
+   <div class="topnav">
+    <a class="navbtn" href="../index.html">
+     ⌂ Accueil
+    </a>
+    <a class="navbtn" href="mcd.html">
+     🗄️ MCD
+    </a>
+    <a class="navbtn quiz" href="../quiz.html?year=1&amp;module=sql">
+     🎯 Quiz SQL
+    </a>
+    <a class="navbtn" href="../code-lab.html">
+     &lt;/&gt; Code Lab
+    </a>
+   </div>
+   <main class="page-panel">
+    <div class="hero">
+     <div>
+      <div class="hero-kicker">
+       1RE ANN&Eacute;E // SQL // SLAM + SISR
+      </div>
+      <h2>
+       🗃️ SQL &amp; bases de donn&eacute;es
+      </h2>
+      <p>
+       Interroger, filtrer, joindre, agr&eacute;ger, manipuler et d&eacute;finir les donn&eacute;es.
+      </p>
+     </div>
+     <div class="hero-actions">
+      <button class="smallbtn" id="reviewBtn" onclick="setReviewed('1-sql')">
+       &cir; Marquer r&eacute;vis&eacute;
+      </button>
+      <button class="smallbtn" onclick="printPage()">
+       🖨 Imprimer
+      </button>
+      <a class="smallbtn alt" href="../quiz.html?year=1&amp;module=sql">
+       🎯 Quiz cibl&eacute;
+      </a>
+     </div>
+    </div>
+    <div class="alert ate">
+     <strong>
+      P&eacute;rim&egrave;tre :
+     </strong>
+     cette fiche reprend uniquement les notions SQL identifi&eacute;es dans les dossiers de cours SLAM et SISR : interrogation, filtres, jointures, fonctions de groupe, LMD, LDD et commandes MySQL.
+    </div>
+    <div class="cmp">
+     <div class="cmpc">
+      <h4 class="bl">
+       SLAM &mdash; supports exploit&eacute;s
+      </h4>
+      <p>
+       S&eacute;ances
+       <strong>
+        SELECT
+       </strong>
+       , filtres, jointures, fonctions SQL, requ&ecirc;tes et corrections LOCaFLOT.
+      </p>
+     </div>
+     <div class="cmpc">
+      <h4 class="cy">
+       SISR &mdash; supports exploit&eacute;s
+      </h4>
+      <p>
+       <strong>
+        COURS SQLLMD
+       </strong>
+       ,
+       <strong>
+        Requ&ecirc;tes SQL
+       </strong>
+       , cours/TP
+       <strong>
+        LDD
+       </strong>
+       et exercices MySQL disponibles dans le dossier BD.
+      </p>
+     </div>
+    </div>
+    <div class="stabs">
+     <button class="sb te a" onclick="showSub('sql','select',this,'te')">
+      SELECT &amp; filtres
+     </button>
+     <button class="sb te" onclick="showSub('sql','jointures',this,'te')">
+      Jointures
+     </button>
+     <button class="sb te" onclick="showSub('sql','agregats',this,'te')">
+      Agr&eacute;gats
+     </button>
+     <button class="sb te" onclick="showSub('sql','lmd',this,'te')">
+      LMD
+     </button>
+     <button class="sb te" onclick="showSub('sql','ldd',this,'te')">
+      LDD &amp; MySQL
+     </button>
+     <button class="sb te" onclick="showSub('sql','exercices',this,'te')">
+      Exercices du Drive
+     </button>
+     <button class="sb te" onclick="showSub('sql','memo',this,'te')">
+      R&eacute;capitulatif
+     </button>
+    </div>
+    <section class="sc a" id="sql-select">
+     <div class="st te">
+      Interrogation d'une base : SELECT
+     </div>
+     <div class="bq te">
+      <span class="qt">
+       "
+      </span>
+      <p>
+       Le cours pr&eacute;sente une requ&ecirc;te d'interrogation avec
+       <strong>
+        SELECT
+       </strong>
+       ,
+       <strong>
+        FROM
+       </strong>
+       et, si n&eacute;cessaire,
+       <strong>
+        WHERE
+       </strong>
+       .
+      </p>
+     </div>
+     <div class="cg">
+      <div class="card te">
+       <h3>
+        SELECT
+       </h3>
+       <p>
+        Indique les colonnes &agrave; afficher.
+        <code>
+         *
+        </code>
+        permet de s&eacute;lectionner toutes les colonnes.
+       </p>
+      </div>
+      <div class="card bl">
+       <h3>
+        FROM
+       </h3>
+       <p>
+        Indique la ou les tables sur lesquelles la requ&ecirc;te doit travailler.
+       </p>
+      </div>
+      <div class="card am">
+       <h3>
+        WHERE
+       </h3>
+       <p>
+        Ajoute une condition de s&eacute;lection afin de ne conserver que les lignes qui respectent le pr&eacute;dicat.
+       </p>
+      </div>
+     </div>
+     <div class="code te">
+      SELECT colonne1, colonne2
 FROM nom_table
-WHERE condition;</div><div class="st te">Projection, doublons et classement</div><div class="cg"><div class="card te"><h3>DISTINCT</h3><p>Supprime les lignes en double dans le résultat d'une projection.</p><div class="code te">SELECT DISTINCT Ville
+WHERE condition;
+     </div>
+     <div class="st te">
+      Projection, doublons et classement
+     </div>
+     <div class="cg">
+      <div class="card te">
+       <h3>
+        DISTINCT
+       </h3>
+       <p>
+        Supprime les lignes en double dans le r&eacute;sultat d'une projection.
+       </p>
+       <div class="code te">
+        SELECT DISTINCT Ville
 FROM CLIENT
-WHERE Cat = 'B2';</div></div><div class="card bl"><h3>ORDER BY</h3><p>Classe le résultat. Le mémento SQL utilise <code>ASC</code> ou <code>DESC</code>.</p><div class="code bl">SELECT Nom, Salaire
+WHERE Cat = 'B2';
+       </div>
+      </div>
+      <div class="card bl">
+       <h3>
+        ORDER BY
+       </h3>
+       <p>
+        Classe le r&eacute;sultat. Le m&eacute;mento SQL utilise
+        <code>
+         ASC
+        </code>
+        ou
+        <code>
+         DESC
+        </code>
+        .
+       </p>
+       <div class="code bl">
+        SELECT Nom, Salaire
 FROM Employes
-ORDER BY Salaire DESC;</div></div></div><div class="st te">Filtres vus dans les exercices</div><table class="tbl te"><tr><th>Opérateur / clause</th><th>Rôle</th><th>Exemple</th></tr><tr><td><span class="cn">=, &lt;&gt;, &lt;, &gt;, &lt;=, &gt;=</span></td><td>Comparer deux expressions.</td><td><code>WHERE PrixH &gt; 100</code></td></tr><tr><td><span class="cn">AND / OR</span></td><td>Combiner plusieurs conditions.</td><td><code>WHERE couleur='blanc' AND disponible=true</code></td></tr><tr><td><span class="cn">IN / NOT IN</span></td><td>Tester l'appartenance ou la non-appartenance à une liste.</td><td><code>WHERE Couleur IN ('bleu','blanc','rouge')</code></td></tr><tr><td><span class="cn">BETWEEN</span></td><td>Tester un intervalle dont les bornes sont comprises.</td><td><code>WHERE PrixH BETWEEN 100 AND 200</code></td></tr><tr><td><span class="cn">IS NULL / IS NOT NULL</span></td><td>Tester l'absence ou la présence d'une valeur.</td><td><code>WHERE PrixH IS NULL</code></td></tr><tr><td><span class="cn">LIKE</span></td><td>Comparer avec une chaîne incomplète.</td><td><code>WHERE Nomtype LIKE 'b%'</code></td></tr></table><div class="alert abl"><strong>Caractères jokers du cours :</strong> <code>%</code> représente une chaîne quelconque et <code>_</code> représente un caractère quelconque.</div></section><section id="sql-jointures" class="sc"><div class="st te">Relier plusieurs tables</div><div class="bq te"><span class="qt">"</span><p>Une <strong>jointure</strong> permet de répondre à des questions portant sur plusieurs tables. Le critère de jointure relie les champs correspondants.</p></div><div class="alert ar"><strong>Produit cartésien :</strong> plusieurs tables dans <code>FROM</code> sans critère de jointure produisent toutes les combinaisons de lignes.</div><div class="code te">SELECT Numembarcation, Couleur, Nomtype
+ORDER BY Salaire DESC;
+       </div>
+      </div>
+     </div>
+     <div class="st te">
+      Filtres vus dans les exercices
+     </div>
+     <table class="tbl te">
+      <tr>
+       <th>
+        Op&eacute;rateur / clause
+       </th>
+       <th>
+        R&ocirc;le dans les supports
+       </th>
+       <th>
+        Exemple issu des notions travaill&eacute;es
+       </th>
+      </tr>
+      <tr>
+       <td>
+        <span class="cn">
+         =, &lt;&gt;, &lt;, &gt;, &lt;=, &gt;=
+        </span>
+       </td>
+       <td>
+        Comparer deux expressions.
+       </td>
+       <td>
+        <code>
+         WHERE PrixH &gt; 100
+        </code>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <span class="cn">
+         AND / OR
+        </span>
+       </td>
+       <td>
+        Combiner plusieurs conditions.
+       </td>
+       <td>
+        <code>
+         WHERE couleur='blanc' AND disponible=true
+        </code>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <span class="cn">
+         IN / NOT IN
+        </span>
+       </td>
+       <td>
+        Tester l'appartenance ou la non-appartenance &agrave; une liste.
+       </td>
+       <td>
+        <code>
+         WHERE Couleur IN ('bleu','blanc','rouge')
+        </code>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <span class="cn">
+         BETWEEN
+        </span>
+       </td>
+       <td>
+        Tester un intervalle dont les bornes sont comprises.
+       </td>
+       <td>
+        <code>
+         WHERE PrixH BETWEEN 100 AND 200
+        </code>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <span class="cn">
+         IS NULL / IS NOT NULL
+        </span>
+       </td>
+       <td>
+        Tester l'absence ou la pr&eacute;sence d'une valeur.
+       </td>
+       <td>
+        <code>
+         WHERE PrixH IS NULL
+        </code>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <span class="cn">
+         LIKE
+        </span>
+       </td>
+       <td>
+        Comparer avec une cha&icirc;ne incompl&egrave;te.
+       </td>
+       <td>
+        <code>
+         WHERE Nomtype LIKE 'b%'
+        </code>
+       </td>
+      </tr>
+     </table>
+     <div class="alert abl">
+      <strong>
+       Caract&egrave;res jokers du cours :
+      </strong>
+      <code>
+       %
+      </code>
+      repr&eacute;sente une cha&icirc;ne quelconque et
+      <code>
+       _
+      </code>
+      repr&eacute;sente un caract&egrave;re quelconque.
+     </div>
+     <div class="cmp">
+      <div class="cmpc">
+       <h4 class="gn">
+        Commence par b
+       </h4>
+       <div class="code">
+        WHERE Nomtype LIKE 'b%';
+       </div>
+      </div>
+      <div class="cmpc">
+       <h4 class="bl">
+        Finit par r
+       </h4>
+       <div class="code bl">
+        WHERE Nomtype LIKE '%r';
+       </div>
+      </div>
+     </div>
+    </section>
+    <section class="sc" id="sql-jointures">
+     <div class="st te">
+      Relier plusieurs tables
+     </div>
+     <div class="bq te">
+      <span class="qt">
+       "
+      </span>
+      <p>
+       Dans le support, une
+       <strong>
+        jointure
+       </strong>
+       permet de r&eacute;pondre &agrave; des questions portant sur plusieurs tables. Le crit&egrave;re de jointure relie les champs correspondants.
+      </p>
+     </div>
+     <div class="alert ar">
+      <strong>
+       Produit cart&eacute;sien :
+      </strong>
+      si plusieurs tables sont plac&eacute;es dans
+      <code>
+       FROM
+      </code>
+      sans crit&egrave;re de jointure, le support montre que toutes les combinaisons de lignes sont produites.
+     </div>
+     <div class="code te">
+      SELECT Numembarcation, Couleur, Nomtype
 FROM EMBARCATION, TYPEMBARCATION
-WHERE EMBARCATION.Codetype = TYPEMBARCATION.Codetype;</div><div class="code te">SELECT lc.Numlocation, Dateloc, emb.Numembarcation, Nomtype
+WHERE EMBARCATION.Codetype = TYPEMBARCATION.Codetype;
+     </div>
+     <div class="st te">
+      Jointure sur plusieurs tables
+     </div>
+     <div class="code te">
+      SELECT lc.Numlocation, Dateloc, emb.Numembarcation, Nomtype
 FROM EMBARCATION emb, TYPEMBARCATION t, LOUER lr, LOCATION lc
 WHERE emb.Codetype = t.Codetype
   AND lr.Numembarcation = emb.Numembarcation
   AND lr.Numlocation = lc.Numlocation
-ORDER BY emb.Numembarcation;</div><div class="cg"><div class="card te"><h3>Clé primaire</h3><p>Identifie de manière unique une ligne de la table.</p></div><div class="card bl"><h3>Clé étrangère</h3><p>Référence la clé d'une autre table et permet d'établir le lien relationnel utilisé par la jointure.</p></div></div></section><section id="sql-agregats" class="sc"><div class="st te">Fonctions de groupe</div><table class="tbl te"><tr><th>Fonction</th><th>Rôle</th><th>Exemple</th></tr><tr><td><span class="cn">COUNT()</span></td><td>Compte des lignes ou des valeurs.</td><td><code>SELECT COUNT(*) FROM embarcation;</code></td></tr><tr><td><span class="cn">SUM()</span></td><td>Calcule une somme.</td><td><code>SELECT SUM(salaire) FROM Employes;</code></td></tr><tr><td><span class="cn">AVG()</span></td><td>Calcule une moyenne.</td><td><code>SELECT AVG(PrixH) FROM TYPEMBARCATION;</code></td></tr><tr><td><span class="cn">MIN()</span></td><td>Renvoie la plus petite valeur.</td><td><code>SELECT MIN(PrixH) FROM TYPEMBARCATION;</code></td></tr><tr><td><span class="cn">MAX()</span></td><td>Renvoie la plus grande valeur.</td><td><code>SELECT MAX(PrixH) FROM TYPEMBARCATION;</code></td></tr></table><div class="cmp"><div class="cmpc"><h4 class="gn">GROUP BY</h4><div class="code">SELECT couleur, COUNT(*)
+ORDER BY emb.Numembarcation;
+     </div>
+     <div class="cg">
+      <div class="card te">
+       <h3>
+        Cl&eacute; primaire
+       </h3>
+       <p>
+        Identifie de mani&egrave;re unique une ligne de la table.
+       </p>
+      </div>
+      <div class="card bl">
+       <h3>
+        Cl&eacute; &eacute;trang&egrave;re
+       </h3>
+       <p>
+        R&eacute;f&eacute;rence la cl&eacute; d'une autre table et permet d'&eacute;tablir le lien relationnel utilis&eacute; par la jointure.
+       </p>
+      </div>
+     </div>
+    </section>
+    <section class="sc" id="sql-agregats">
+     <div class="st te">
+      Fonctions de groupe
+     </div>
+     <p class="lead">
+      Les supports utilisent cinq fonctions standard pour r&eacute;aliser des calculs sur plusieurs lignes.
+     </p>
+     <table class="tbl te">
+      <tr>
+       <th>
+        Fonction
+       </th>
+       <th>
+        R&ocirc;le
+       </th>
+       <th>
+        Exemple
+       </th>
+      </tr>
+      <tr>
+       <td>
+        <span class="cn">
+         COUNT()
+        </span>
+       </td>
+       <td>
+        Compte des lignes ou des valeurs.
+       </td>
+       <td>
+        <code>
+         SELECT COUNT(*) FROM embarcation;
+        </code>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <span class="cn">
+         SUM()
+        </span>
+       </td>
+       <td>
+        Calcule une somme.
+       </td>
+       <td>
+        <code>
+         SELECT SUM(salaire) FROM Employes;
+        </code>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <span class="cn">
+         AVG()
+        </span>
+       </td>
+       <td>
+        Calcule une moyenne.
+       </td>
+       <td>
+        <code>
+         SELECT AVG(PrixH) FROM TYPEMBARCATION;
+        </code>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <span class="cn">
+         MIN()
+        </span>
+       </td>
+       <td>
+        Renvoie la plus petite valeur.
+       </td>
+       <td>
+        <code>
+         SELECT MIN(PrixH) FROM TYPEMBARCATION;
+        </code>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <span class="cn">
+         MAX()
+        </span>
+       </td>
+       <td>
+        Renvoie la plus grande valeur.
+       </td>
+       <td>
+        <code>
+         SELECT MAX(PrixH) FROM TYPEMBARCATION;
+        </code>
+       </td>
+      </tr>
+     </table>
+     <div class="st te">
+      GROUP BY et HAVING
+     </div>
+     <div class="cmp">
+      <div class="cmpc">
+       <h4 class="gn">
+        GROUP BY
+       </h4>
+       <p>
+        Regroupe les lignes selon une ou plusieurs expressions avant le calcul d'un agr&eacute;gat.
+       </p>
+       <div class="code">
+        SELECT couleur, COUNT(*)
 FROM embarcation
-GROUP BY couleur;</div></div><div class="cmpc"><h4 class="bl">HAVING</h4><div class="code bl">SELECT departement, AVG(salaire)
+GROUP BY couleur;
+       </div>
+      </div>
+      <div class="cmpc">
+       <h4 class="bl">
+        HAVING
+       </h4>
+       <p>
+        Le support de synth&egrave;se SQL l'utilise pour filtrer les groupes apr&egrave;s l'agr&eacute;gation.
+       </p>
+       <div class="code bl">
+        SELECT departement, AVG(salaire)
 FROM Employes
 GROUP BY departement
-HAVING AVG(salaire) &gt; 3000;</div></div></div></section><section id="sql-lmd" class="sc"><div class="st te">LMD — Langage de Manipulation de Données</div><div class="cg"><div class="card te"><h3>SELECT</h3><p>Sélectionner des données.</p></div><div class="card bl"><h3>INSERT</h3><p>Ajouter de nouveaux enregistrements.</p></div><div class="card am"><h3>UPDATE</h3><p>Modifier des enregistrements existants.</p></div><div class="card rd"><h3>DELETE</h3><p>Supprimer des enregistrements.</p></div></div><div class="code te">INSERT INTO table (champ1, champ2, ...)
+HAVING AVG(salaire) &gt; 3000;
+       </div>
+      </div>
+     </div>
+    </section>
+    <section class="sc" id="sql-lmd">
+     <div class="st te">
+      LMD &mdash; Langage de Manipulation de Donn&eacute;es
+     </div>
+     <div class="bq te">
+      <span class="qt">
+       "
+      </span>
+      <p>
+       Le cours LMD regroupe les commandes permettant de s&eacute;lectionner, ins&eacute;rer, modifier ou supprimer des donn&eacute;es dans une base relationnelle.
+      </p>
+     </div>
+     <div class="cg">
+      <div class="card te">
+       <h3>
+        SELECT
+       </h3>
+       <p>
+        S&eacute;lectionner des donn&eacute;es.
+       </p>
+      </div>
+      <div class="card bl">
+       <h3>
+        INSERT
+       </h3>
+       <p>
+        Ajouter de nouveaux enregistrements.
+       </p>
+      </div>
+      <div class="card am">
+       <h3>
+        UPDATE
+       </h3>
+       <p>
+        Modifier des enregistrements existants.
+       </p>
+      </div>
+      <div class="card rd">
+       <h3>
+        DELETE
+       </h3>
+       <p>
+        Supprimer des enregistrements.
+       </p>
+      </div>
+     </div>
+     <div class="code te">
+      INSERT INTO table (champ1, champ2, ...)
 VALUES (val1, val2, ...);
 
 UPDATE table
 SET champ1 = expr1, champ2 = expr2
-WHERE prédicat;
+WHERE pr&eacute;dicat;
 
 DELETE FROM table
-WHERE prédicat;</div><div class="alert aa"><strong>Point de vigilance :</strong> la clause <code>WHERE</code> est facultative pour <code>UPDATE</code> et <code>DELETE</code>. Vérifiez le prédicat avant toute exécution.</div></section><section id="sql-ldd" class="sc"><div class="st te">LDD — Langage de Définition de Données</div><p>Le LDD agit sur la <strong>structure</strong> de la base : tables, vues et contraintes. Familles : <strong>CREATE</strong>, <strong>ALTER</strong>, <strong>DROP</strong>.</p><div class="code te">CREATE TABLE NomTable (
+WHERE pr&eacute;dicat;
+     </div>
+     <div class="alert aa">
+      <strong>
+       Point de vigilance :
+      </strong>
+      dans le m&eacute;mento SQL, la clause
+      <code>
+       WHERE
+      </code>
+      est facultative pour
+      <code>
+       UPDATE
+      </code>
+      et
+      <code>
+       DELETE
+      </code>
+      . Il faut donc v&eacute;rifier le pr&eacute;dicat avant d'ex&eacute;cuter une modification ou une suppression.
+     </div>
+     <div class="st te">
+      Insertion &agrave; partir d'une requ&ecirc;te
+     </div>
+     <div class="code te">
+      INSERT INTO table (champ1, champ2, ...)
+SELECT ...
+FROM ...
+WHERE ...;
+     </div>
+    </section>
+    <section class="sc" id="sql-ldd">
+     <div class="st te">
+      LDD &mdash; Langage de D&eacute;finition de Donn&eacute;es
+     </div>
+     <p>
+      Le LDD agit sur la
+      <strong>
+       structure
+      </strong>
+      de la base : tables, vues et contraintes. Les trois familles mises en avant dans le cours sont
+      <strong>
+       CREATE
+      </strong>
+      ,
+      <strong>
+       ALTER
+      </strong>
+      et
+      <strong>
+       DROP
+      </strong>
+      .
+     </p>
+     <div class="code te">
+      CREATE TABLE NomTable (
   Colonne1 Type [Contraintes],
-  Colonne2 Type [Contraintes], ...
-);</div><table class="tbl te"><tr><th>Contrainte</th><th>Rôle</th></tr><tr><td>NOT NULL</td><td>Champ obligatoire.</td></tr><tr><td>UNIQUE</td><td>Valeurs différentes.</td></tr><tr><td>DEFAULT</td><td>Valeur par défaut.</td></tr><tr><td>CHECK</td><td>Condition sur les valeurs.</td></tr><tr><td>AUTO_INCREMENT</td><td>Auto-incrément d'un champ numérique.</td></tr></table><div class="cmp"><div class="cmpc"><h4 class="gn">Clé primaire</h4><div class="code">PRIMARY KEY (NumService)</div></div><div class="cmpc"><h4 class="bl">Clé étrangère</h4><div class="code bl">FOREIGN KEY (NumServiceEmploye)
-REFERENCES service (NumService)</div></div></div><div class="code te">CREATE VIEW nom_vue AS SELECT * FROM EMPLOYE;
+  Colonne2 Type [Contraintes],
+  ...
+);
+     </div>
+     <div class="st te">
+      Contraintes de champs
+     </div>
+     <table class="tbl te">
+      <tr>
+       <th>
+        Contrainte
+       </th>
+       <th>
+        R&ocirc;le indiqu&eacute; dans le cours
+       </th>
+      </tr>
+      <tr>
+       <td>
+        <span class="cn">
+         NOT NULL
+        </span>
+       </td>
+       <td>
+        Le champ doit obligatoirement &ecirc;tre renseign&eacute;.
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <span class="cn">
+         UNIQUE
+        </span>
+       </td>
+       <td>
+        Les valeurs doivent &ecirc;tre diff&eacute;rentes.
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <span class="cn">
+         DEFAULT
+        </span>
+       </td>
+       <td>
+        D&eacute;finit une valeur par d&eacute;faut.
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <span class="cn">
+         CHECK
+        </span>
+       </td>
+       <td>
+        Impose une condition sur les valeurs.
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <span class="cn">
+         AUTO_INCREMENT
+        </span>
+       </td>
+       <td>
+        Auto-incr&eacute;mente un champ num&eacute;rique.
+       </td>
+      </tr>
+     </table>
+     <div class="cmp">
+      <div class="cmpc">
+       <h4 class="gn">
+        Cl&eacute; primaire
+       </h4>
+       <div class="code">
+        PRIMARY KEY (NumService)
+       </div>
+       <p>
+        Identifie chaque enregistrement.
+       </p>
+      </div>
+      <div class="cmpc">
+       <h4 class="bl">
+        Cl&eacute; &eacute;trang&egrave;re
+       </h4>
+       <div class="code bl">
+        FOREIGN KEY (NumServiceEmploye)
+REFERENCES service (NumService)
+       </div>
+       <p>
+        Assure la r&eacute;f&eacute;rence vers une autre table.
+       </p>
+      </div>
+     </div>
+     <div class="alert ate">
+      <strong>
+       Int&eacute;grit&eacute; r&eacute;f&eacute;rentielle :
+      </strong>
+      le cours la pr&eacute;sente comme le m&eacute;canisme qui maintient la coh&eacute;rence des relations entre cl&eacute;s &eacute;trang&egrave;res et cl&eacute;s primaires.
+     </div>
+     <div class="st te">
+      Vues et suppression
+     </div>
+     <div class="code te">
+      CREATE VIEW nom_vue
+AS SELECT *
+FROM EMPLOYE
+WHERE nom_service = 'laboratoire';
+
 DROP TABLE nom_table;
 DROP VIEW nom_vue;
-TRUNCATE TABLE nom_table;</div><div class="code te">ALTER TABLE nom_table ADD COLUMN nom_champ Type_donnee;
-ALTER TABLE nom_table DROP COLUMN nom_champ;
-ALTER TABLE nom_table DROP CONSTRAINT nom_contrainte;
-ALTER TABLE nom_table MODIFY nomChamp type_champ;</div><div class="st te">Commandes MySQL vues dans le TP</div><table class="tbl te"><tr><th>Commande</th><th>Usage</th></tr><tr><td><code>SHOW DATABASES;</code></td><td>Afficher les bases.</td></tr><tr><td><code>CREATE DATABASE NomBase;</code></td><td>Créer une base.</td></tr><tr><td><code>USE NomBase;</code></td><td>Choisir une base.</td></tr><tr><td><code>SHOW TABLES;</code></td><td>Afficher les tables.</td></tr><tr><td><code>DESC nomtable;</code></td><td>Afficher la structure d'une table.</td></tr><tr><td><code>SOURCE nomscript.sql;</code></td><td>Exécuter un script SQL.</td></tr></table></section><section id="sql-exercices" class="sc"><div class="st te">Exercices du Drive</div><div class="cg"><div class="card te"><h3>Filtres</h3><ul><li>Couleurs d'embarcations.</li><li>Numéros entre J101 et P110.</li><li>Prix horaire inconnu.</li><li>Nom commençant par b.</li></ul></div><div class="card bl"><h3>Jointures</h3><ul><li>Numéro, couleur et type.</li><li>Location n° 7.</li><li>Locations avec date et type.</li></ul></div><div class="card am"><h3>Agrégats</h3><ul><li>Compter les jaunes.</li><li>Prix moyen.</li><li>Minimum / maximum.</li><li>Nombre par couleur ou type.</li></ul></div></div><div class="code te">SELECT * FROM EMBARCATION WHERE Couleur IN ('bleu','blanc','rouge');
-SELECT * FROM EMBARCATION WHERE Numembarcation BETWEEN 'J101' AND 'P110';
-SELECT * FROM TYPEMBARCATION WHERE PrixH IS NULL;
-SELECT * FROM TYPEMBARCATION WHERE Nomtype LIKE 'b%';</div><div class="alert aa"><strong>Important :</strong> lorsqu'un support fournit seulement un énoncé et pas sa correction complète, la fiche conserve l'exercice sans inventer une solution extérieure au Drive.</div></section><section id="sql-memo" class="sc"><div class="st te">Récapitulatif</div><div class="code te">SELECT [DISTINCT] colonnes
+TRUNCATE TABLE nom_table;
+     </div>
+     <div class="alert abl">
+      <strong>
+       TRUNCATE TABLE :
+      </strong>
+      le support pr&eacute;cise que les donn&eacute;es sont supprim&eacute;es mais que la structure de la table est conserv&eacute;e.
+     </div>
+     <div class="st te">
+      Modification de structure
+     </div>
+     <div class="code te">
+      ALTER TABLE nom_table
+ADD COLUMN nom_champ Type_donnee;
+
+ALTER TABLE nom_table
+DROP COLUMN nom_champ;
+
+ALTER TABLE nom_table
+DROP CONSTRAINT nom_contrainte;
+
+ALTER TABLE nom_table
+MODIFY nomChamp type_champ;
+     </div>
+     <div class="st te">
+      Commandes MySQL vues dans le TP
+     </div>
+     <table class="tbl te">
+      <tr>
+       <th>
+        Commande
+       </th>
+       <th>
+        Usage dans le TP
+       </th>
+      </tr>
+      <tr>
+       <td>
+        <code>
+         SHOW DATABASES;
+        </code>
+       </td>
+       <td>
+        Afficher les bases disponibles.
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <code>
+         CREATE DATABASE NomBase;
+        </code>
+       </td>
+       <td>
+        Cr&eacute;er une base de donn&eacute;es.
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <code>
+         USE NomBase;
+        </code>
+       </td>
+       <td>
+        Se connecter &agrave; la base choisie.
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <code>
+         SHOW TABLES;
+        </code>
+       </td>
+       <td>
+        Afficher la liste des tables.
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <code>
+         DESC nomtable;
+        </code>
+       </td>
+       <td>
+        Afficher la structure d'une table.
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <code>
+         SOURCE nomscript.sql;
+        </code>
+       </td>
+       <td>
+        Ex&eacute;cuter un script SQL.
+       </td>
+      </tr>
+     </table>
+     <div class="alert aa">
+      <strong>
+       Moteur utilis&eacute; dans le TP :
+      </strong>
+      le support demande de cr&eacute;er les tables avec
+      <code>
+       ENGINE = InnoDB
+      </code>
+      afin de g&eacute;rer les contraintes travaill&eacute;es en cours.
+     </div>
+    </section>
+    <section class="sc" id="sql-exercices">
+     <div class="st te">
+      Exercices d&rsquo;interrogation &mdash; base LOCaFLOT
+     </div>
+     <p class="lead">
+      Les exercices suivants proviennent des s&eacute;ries SQL et de leurs corrections dans le Drive.
+     </p>
+     <div class="cg">
+      <div class="card te">
+       <h3>
+        Filtres
+       </h3>
+       <ul>
+        <li>
+         Afficher les embarcations bleues, blanches et rouges.
+        </li>
+        <li>
+         Afficher les embarcations dont le num&eacute;ro est compris entre J101 et P110.
+        </li>
+        <li>
+         Afficher les types d&rsquo;embarcation dont le prix horaire est inconnu.
+        </li>
+        <li>
+         Afficher les types dont le nom commence par &laquo; b &raquo;.
+        </li>
+       </ul>
+      </div>
+      <div class="card bl">
+       <h3>
+        Jointures
+       </h3>
+       <ul>
+        <li>
+         Afficher, pour chaque embarcation, son num&eacute;ro, sa couleur et le nom de son type.
+        </li>
+        <li>
+         Afficher les embarcations de la location n&deg; 7 avec leur couleur et leur type.
+        </li>
+        <li>
+         Afficher chaque location avec sa date, son embarcation et le nom du type, puis trier sur le num&eacute;ro d&rsquo;embarcation.
+        </li>
+       </ul>
+      </div>
+      <div class="card am">
+       <h3>
+        Fonctions de groupe
+       </h3>
+       <ul>
+        <li>
+         Compter les embarcations jaunes.
+        </li>
+        <li>
+         Calculer le prix horaire moyen.
+        </li>
+        <li>
+         Afficher le prix horaire minimal et maximal.
+        </li>
+        <li>
+         Compter les embarcations par couleur ou par type.
+        </li>
+       </ul>
+      </div>
+     </div>
+     <details class="card te">
+      <summary>
+       <strong>
+        Corrections pr&eacute;sentes dans les supports &mdash; exemples
+       </strong>
+      </summary>
+      <div class="code te">
+       -- Couleurs : appartenance &agrave; une liste
+SELECT *
+FROM EMBARCATION
+WHERE Couleur IN ('bleu','blanc','rouge');
+
+-- Intervalle
+SELECT *
+FROM EMBARCATION
+WHERE Numembarcation BETWEEN 'J101' AND 'P110';
+
+-- Valeur inconnue
+SELECT *
+FROM TYPEMBARCATION
+WHERE PrixH IS NULL;
+
+-- Nom commen&ccedil;ant par b
+SELECT *
+FROM TYPEMBARCATION
+WHERE Nomtype LIKE 'b%';
+      </div>
+      <div class="code bl">
+       -- Jointure embarcation / type
+SELECT Numembarcation, Couleur, Nomtype
+FROM EMBARCATION, TYPEMBARCATION
+WHERE EMBARCATION.Codetype = TYPEMBARCATION.Codetype;
+      </div>
+      <div class="code am">
+       -- Compter les embarcations jaunes
+SELECT COUNT(*) AS nb_emb_jaunes
+FROM EMBARCATION
+WHERE Couleur = 'jaune';
+
+-- Prix horaire moyen
+SELECT AVG(PrixH) AS prixHoraireMoyen
+FROM TYPEMBARCATION;
+
+-- Minimum et maximum
+SELECT MIN(PrixH) AS prixMin, MAX(PrixH) AS prixMax
+FROM TYPEMBARCATION;
+
+-- Nombre par couleur
+SELECT Couleur, COUNT(*)
+FROM EMBARCATION
+GROUP BY Couleur;
+      </div>
+     </details>
+     <div class="st te">
+      Exercices LMD du support
+     </div>
+     <div class="alert abl">
+      <strong>
+       &Agrave; traduire en SQL :
+      </strong>
+      rendre B202 indisponible, rendre J201 disponible, fixer le nombre de places des jet-skis &agrave; 6, appliquer les augmentations de prix demand&eacute;es, supprimer l&rsquo;embarcation multicolore et supprimer les embarcations jaunes non disponibles.
+     </div>
+     <div class="st te">
+      TP LDD &mdash; base &Eacute;COLE
+     </div>
+     <div class="cg">
+      <div class="card te">
+       <h3>
+        Cr&eacute;er la base
+       </h3>
+       <p>
+        Cr&eacute;er la base
+        <code>
+         ECOLE
+        </code>
+        , s&rsquo;y connecter puis cr&eacute;er un script SQL contenant les commandes
+        <code>
+         CREATE TABLE
+        </code>
+        .
+       </p>
+      </div>
+      <div class="card bl">
+       <h3>
+        Cr&eacute;er trois tables
+       </h3>
+       <p>
+        Le TP demande les tables
+        <strong>
+         COMMUNE
+        </strong>
+        ,
+        <strong>
+         ECOLE
+        </strong>
+        et
+        <strong>
+         ENFANT
+        </strong>
+        , avec leurs cl&eacute;s primaires et les cl&eacute;s &eacute;trang&egrave;res indiqu&eacute;es dans l&rsquo;&eacute;nonc&eacute;.
+       </p>
+      </div>
+      <div class="card am">
+       <h3>
+        Modifier la structure
+       </h3>
+       <p>
+        Ajouter notamment une colonne de capacit&eacute; &agrave; la table ECOLE, puis travailler sur l&rsquo;ajout/suppression de colonnes et de contraintes avec
+        <code>
+         ALTER TABLE
+        </code>
+        .
+       </p>
+      </div>
+     </div>
+     <div class="alert aa">
+      <strong>
+       Important :
+      </strong>
+      lorsque le support fournit uniquement un &eacute;nonc&eacute; et pas sa correction compl&egrave;te, cette fiche conserve l&rsquo;exercice sans ajouter une solution ext&eacute;rieure au Drive.
+     </div>
+    </section>
+    <section class="sc" id="sql-memo">
+     <div class="st te">
+      R&eacute;capitulatif &mdash; requ&ecirc;te SELECT
+     </div>
+     <div class="code te">
+      SELECT [DISTINCT] colonnes
 FROM tables
 WHERE condition
 GROUP BY colonnes
 HAVING condition
-ORDER BY colonnes [ASC | DESC];</div><div class="cg"><div class="card te"><h3>LIMIT</h3><div class="code">SELECT * FROM Employes LIMIT 5;</div></div><div class="card bl"><h3>Alias</h3><div class="code bl">SELECT COUNT(*) AS NbEmbarcations FROM EMBARCATION;</div></div></div><div class="alert ag"><strong>À maîtriser :</strong> reconnaître la famille de commande demandée, construire le prédicat, relier correctement les tables et vérifier l'effet d'une modification avant son exécution.</div></section><div class="source-note"><strong>Sources Drive :</strong> dossiers SLAM et SISR — <b>1-SQL_Séance.pdf</b>, <b>2-SQL_Séance_correction.pdf</b>, <b>3-SQL-jointure.correction.pdf</b>, <b>4-TP_FonctionsSQL.pdf</b>, <b>COURS SQLLMD.pdf</b>, <b>Requettes SQL.docx</b>, <b>cours LDD.pdf</b>, <b>TP LDD.pdf</b>.</div></main><div class="footer"><a href="../index.html">← Retour au tableau de bord</a></div></div><script src="../assets/js/common.js"></script></body></html>
+ORDER BY colonnes [ASC | DESC];
+     </div>
+     <div class="st te">
+      Autres &eacute;l&eacute;ments pr&eacute;sents dans les supports de 1re ann&eacute;e
+     </div>
+     <div class="cg">
+      <div class="card te">
+       <h3>
+        LIMIT
+       </h3>
+       <p>
+        Le document de synth&egrave;se SQL pr&eacute;sente
+        <code>
+         LIMIT
+        </code>
+        pour limiter le nombre de lignes retourn&eacute;es.
+       </p>
+       <div class="code">
+        SELECT * FROM Employes LIMIT 5;
+       </div>
+      </div>
+      <div class="card bl">
+       <h3>
+        Alias
+       </h3>
+       <p>
+        <code>
+         AS
+        </code>
+        permet de donner un nom lisible &agrave; un r&eacute;sultat calcul&eacute;, notamment avec les fonctions de groupe.
+       </p>
+       <div class="code bl">
+        SELECT COUNT(*) AS NbEmbarcations
+FROM EMBARCATION;
+       </div>
+      </div>
+      <div class="card am">
+       <h3>
+        Ordre de construction
+       </h3>
+       <p>
+        Commencez par identifier les tables, choisissez les colonnes &agrave; afficher, ajoutez les crit&egrave;res, puis le regroupement ou le tri si n&eacute;cessaire.
+       </p>
+      </div>
+     </div>
+     <div class="alert ag">
+      <strong>
+       &Agrave; ma&icirc;triser :
+      </strong>
+      reconna&icirc;tre la famille de commande demand&eacute;e, construire le pr&eacute;dicat, relier correctement les tables et v&eacute;rifier l'effet d'une commande de modification avant son ex&eacute;cution.
+     </div>
+    </section>
+    <div class="source-note">
+     <strong>
+      Sources Drive utilis&eacute;es :
+     </strong>
+     dossiers SLAM et SISR &mdash;
+     <b>
+      1-SQL_S&eacute;ance.pdf
+     </b>
+     ,
+     <b>
+      2-SQL_S&eacute;ance_correction.pdf
+     </b>
+     ,
+     <b>
+      3-SQL-jointure.correction.pdf
+     </b>
+     ,
+     <b>
+      4-TP_FonctionsSQL.pdf
+     </b>
+     ,
+     <b>
+      COURS SQLLMD.pdf
+     </b>
+     ,
+     <b>
+      Requettes SQL.docx
+     </b>
+     ,
+     <b>
+      cours LDD.pdf
+     </b>
+     ,
+     <b>
+      TP LDD.pdf
+     </b>
+     . La fiche n'ajoute pas de syntaxe SQL absente de ces supports.
+    </div>
+   </main>
+   <div class="footer">
+    <a href="../index.html">
+     &larr; Retour au tableau de bord
+    </a>
+   </div>
+  </div>
+  <script src="../assets/js/common.js">
+  </script>
+ </body>
+</html>

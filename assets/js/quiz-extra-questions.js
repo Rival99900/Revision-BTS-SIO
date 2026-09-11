@@ -1,25 +1,300 @@
-const EXTRA_QUESTIONS = [
-  {year:1,module:'algo',cat:'🧠 Algorithmique',type:'mcq',q:'Quel dossier regroupe les exercices Majorité, Admissions et Assurance ?',opts:['Boucles','Traitements conditionnels','Listes','Chaînes'],answer:1,exp:'Ces exercices sont classés dans le dossier Traitements Conditionnels.'},
-  {year:1,module:'algo',cat:'🧠 Algorithmique',type:'text',q:'Quel type de traitement est travaillé avec les exercices Factorielle, Compte à rebours et Tables de multiplication ?',answers:['boucles','boucle'],exp:'Ces exercices sont rangés dans le dossier Boucles.'},
-  {year:1,module:'algo',cat:'🧠 Algorithmique',type:'mcq',q:'Quel exercice de boucle est directement lié aux nombres premiers ?',opts:['Miroir','Nombres premiers','Majuscule','Adresse de diffusion'],answer:1,exp:'Le dossier Boucles contient un exercice « Nombres premiers ».'},
-  {year:1,module:'algo',cat:'🧠 Algorithmique',type:'text',q:'Quel thème travaille Affichage, Caractères, Longueur, Minuscules et Majuscule ?',answers:['chaines','chaînes','chaine','chaîne'],exp:'Ces exercices appartiennent au dossier Chaînes.'},
-  {year:1,module:'algo',cat:'🧠 Algorithmique',type:'mcq',q:'Dans quel dossier trouve-t-on un exercice « Miroir » ?',opts:['Conditions','Chaînes','Listes','Réseau'],answer:2,exp:'« Listes - Miroir » est présent dans le dossier Listes.'},
-
-  {year:1,module:'systemes',cat:'🖥️ Systèmes',type:'mcq',q:'D’après le cours, une information est caractérisée par :',opts:['Son prix, son auteur, sa date','Son contenu, sa forme, son support','Son CPU, sa RAM, son disque','Son protocole, son port, son masque'],answer:1,exp:'Le support « L’INFORMATION » retient contenu, forme et support.'},
-  {year:1,module:'systemes',cat:'🖥️ Systèmes',type:'text',q:'Comment appelle-t-on en anglais l’élément physique / matériel de l’ordinateur ?',answers:['hardware'],exp:'Le cours oppose software (logiciel) et hardware (matériel).'},
-  {year:1,module:'systemes',cat:'🖥️ Systèmes',type:'mcq',q:'Quelle unité de l’unité centrale effectue les calculs ?',opts:['DNS','UAL','DHCP','DIT'],answer:1,exp:'UAL signifie Unité Arithmétique Logique.'},
-  {year:1,module:'systemes',cat:'🖥️ Systèmes',type:'text',q:'Combien de bits contient un octet ?',answers:['8','8 bits'],exp:'Le cours rappelle : 1 octet = 8 bits.'},
-  {year:1,module:'systemes',cat:'🖥️ Systèmes',type:'mcq',q:'Quel est un rôle majeur du système d’exploitation ?',opts:['Uniquement afficher des pages web','Gérer les ressources de la machine','Remplacer le processeur','Créer automatiquement les logiciels'],answer:1,exp:'L’OS est notamment présenté comme gestionnaire de ressources.'},
-  {year:1,module:'systemes',cat:'🖥️ Systèmes',type:'text',q:'Dans quel mode le système d’exploitation s’exécute-t-il pour disposer de tous les privilèges ?',answers:['mode noyau','noyau','kernel','kernel mode'],exp:'Le cours oppose mode noyau et mode utilisateur.'},
-  {year:1,module:'systemes',cat:'🖥️ Systèmes',type:'mcq',q:'Que fournit automatiquement un serveur DHCP ?',opts:['Uniquement un mot de passe','Adresse IP, masque, passerelle et DNS','Un nom de domaine public','Un certificat TLS'],answer:1,exp:'Le cours DHCP cite adresse IP, masque, passerelle et DNS.'},
-  {year:1,module:'systemes',cat:'🖥️ Systèmes',type:'text',q:'Donnez les quatre étapes DHCP dans l’ordre (acronyme accepté).',answers:['dora','discover offer request acknowledge'],keywords:['discover','offer','request','acknowledge'],exp:'DORA = Discover, Offer, Request, Acknowledge.'},
-  {year:1,module:'systemes',cat:'🖥️ Systèmes',type:'mcq',q:'Quel protocole est utilisé pour l’accès aux annuaires Active Directory dans le support ?',opts:['HTTP','SMTP','LDAP','FTP'],answer:2,exp:'Le support Active Directory cite LDAP : Lightweight Directory Access Protocol.'},
-  {year:1,module:'systemes',cat:'🖥️ Systèmes',type:'text',q:'Que signifie DN dans un annuaire LDAP ?',answers:['distinguished name'],exp:'DN signifie Distinguished Name.'},
-
-  {year:1,module:'culture',cat:'✍️ Culture générale',type:'mcq',q:'Quel neurotransmetteur est cité pour expliquer le plaisir associé à l’usage du téléphone ?',opts:['Adrénaline','Dopamine','Mélatonine','Insuline'],answer:1,exp:'Le texte sur l’hyperconnexion associe la sensation de plaisir à la dopamine.'},
-  {year:1,module:'culture',cat:'✍️ Culture générale',type:'text',q:'Quelle capacité est présentée comme plus importante que la simple quantité de savoir pour manifester son intelligence ?',answers:['esprit critique','l esprit critique'],exp:'Le cours insiste sur le développement de l’esprit critique.'},
-  {year:1,module:'culture',cat:'✍️ Culture générale',type:'mcq',q:'Quelle tranche d’âge est étudiée dans le texte sur la dégradation de la santé mentale ?',opts:['0–10 ans','15–24 ans','30–40 ans','Plus de 65 ans'],answer:1,exp:'Le document étudie la tranche des 15–24 ans.'},
-  {year:1,module:'culture',cat:'✍️ Culture générale',type:'mcq',q:'Quel auteur critique la routine bourgeoise et fait l’éloge du voyage ?',opts:['Maupassant','Molière','Voltaire','Zola'],answer:0,exp:'Le cours analyse un texte de Guy de Maupassant sur les motifs du voyage.'},
-  {year:1,module:'culture',cat:'✍️ Culture générale',type:'text',q:'Quel prix Nobel de littérature est cité dans le texte sur le voyage contraint et les migrations ?',answers:['le clezio','le clézio','jean marie le clezio','jean-marie le clézio'],exp:'Le document cite Jean-Marie Le Clézio.'},
-  {year:1,module:'culture',cat:'✍️ Culture générale',type:'mcq',q:'Les EMI sont étudiées dans le cours principalement par quels spécialistes ?',opts:['Économistes','Neurologues','Juristes','Architectes'],answer:1,exp:'Le support indique que les expériences de mort imminente ont notamment été étudiées par des neurologues.'},
+window.EXTRA_QUESTIONS = [
+  {
+    "year": 1,
+    "module": "algo",
+    "cat": "🧠 Algorithmique",
+    "type": "mcq",
+    "q": "Quel dossier regroupe les exercices Majorité, Admissions et Assurance ?",
+    "opts": [
+      "Boucles",
+      "Traitements conditionnels",
+      "Listes",
+      "Chaînes"
+    ],
+    "answer": 1,
+    "exp": "Ces exercices sont classés dans le dossier Traitements Conditionnels."
+  },
+  {
+    "year": 1,
+    "module": "algo",
+    "cat": "🧠 Algorithmique",
+    "type": "text",
+    "q": "Quel type de traitement est travaillé avec les exercices Factorielle, Compte à rebours et Tables de multiplication ?",
+    "answers": [
+      "boucles",
+      "boucle"
+    ],
+    "exp": "Ces exercices sont rangés dans le dossier Boucles."
+  },
+  {
+    "year": 1,
+    "module": "algo",
+    "cat": "🧠 Algorithmique",
+    "type": "mcq",
+    "q": "Quel exercice de boucle est directement lié aux nombres premiers ?",
+    "opts": [
+      "Miroir",
+      "Nombres premiers",
+      "Majuscule",
+      "Adresse de diffusion"
+    ],
+    "answer": 1,
+    "exp": "Le dossier Boucles contient un exercice « Nombres premiers »."
+  },
+  {
+    "year": 1,
+    "module": "algo",
+    "cat": "🧠 Algorithmique",
+    "type": "text",
+    "q": "Quel thème travaille Affichage, Caractères, Longueur, Minuscules et Majuscule ?",
+    "answers": [
+      "chaines",
+      "chaînes",
+      "chaine",
+      "chaîne"
+    ],
+    "exp": "Ces exercices appartiennent au dossier Chaînes."
+  },
+  {
+    "year": 1,
+    "module": "algo",
+    "cat": "🧠 Algorithmique",
+    "type": "mcq",
+    "q": "Dans quel dossier trouve-t-on un exercice « Miroir » ?",
+    "opts": [
+      "Conditions",
+      "Chaînes",
+      "Listes",
+      "Réseau"
+    ],
+    "answer": 2,
+    "exp": "« Listes - Miroir » est présent dans le dossier Listes."
+  },
+  {
+    "year": 1,
+    "module": "systemes",
+    "cat": "🖥️ Systèmes",
+    "type": "mcq",
+    "q": "D’après le cours, une information est caractérisée par :",
+    "opts": [
+      "Son prix, son auteur, sa date",
+      "Son contenu, sa forme, son support",
+      "Son CPU, sa RAM, son disque",
+      "Son protocole, son port, son masque"
+    ],
+    "answer": 1,
+    "exp": "Le support « L’INFORMATION » retient contenu, forme et support."
+  },
+  {
+    "year": 1,
+    "module": "systemes",
+    "cat": "🖥️ Systèmes",
+    "type": "text",
+    "q": "Comment appelle-t-on en anglais l’élément physique / matériel de l’ordinateur ?",
+    "answers": [
+      "hardware"
+    ],
+    "exp": "Le cours oppose software (logiciel) et hardware (matériel)."
+  },
+  {
+    "year": 1,
+    "module": "systemes",
+    "cat": "🖥️ Systèmes",
+    "type": "mcq",
+    "q": "Quelle unité de l’unité centrale effectue les calculs ?",
+    "opts": [
+      "DNS",
+      "UAL",
+      "DHCP",
+      "DIT"
+    ],
+    "answer": 1,
+    "exp": "UAL signifie Unité Arithmétique Logique."
+  },
+  {
+    "year": 1,
+    "module": "systemes",
+    "cat": "🖥️ Systèmes",
+    "type": "text",
+    "q": "Combien de bits contient un octet ?",
+    "answers": [
+      "8",
+      "8 bits"
+    ],
+    "exp": "Le cours rappelle : 1 octet = 8 bits."
+  },
+  {
+    "year": 1,
+    "module": "systemes",
+    "cat": "🖥️ Systèmes",
+    "type": "mcq",
+    "q": "Quel est un rôle majeur du système d’exploitation ?",
+    "opts": [
+      "Uniquement afficher des pages web",
+      "Gérer les ressources de la machine",
+      "Remplacer le processeur",
+      "Créer automatiquement les logiciels"
+    ],
+    "answer": 1,
+    "exp": "L’OS est notamment présenté comme gestionnaire de ressources."
+  },
+  {
+    "year": 1,
+    "module": "systemes",
+    "cat": "🖥️ Systèmes",
+    "type": "text",
+    "q": "Dans quel mode le système d’exploitation s’exécute-t-il pour disposer de tous les privilèges ?",
+    "answers": [
+      "mode noyau",
+      "noyau",
+      "kernel",
+      "kernel mode"
+    ],
+    "exp": "Le cours oppose mode noyau et mode utilisateur."
+  },
+  {
+    "year": 1,
+    "module": "systemes",
+    "cat": "🖥️ Systèmes",
+    "type": "mcq",
+    "q": "Que fournit automatiquement un serveur DHCP ?",
+    "opts": [
+      "Uniquement un mot de passe",
+      "Adresse IP, masque, passerelle et DNS",
+      "Un nom de domaine public",
+      "Un certificat TLS"
+    ],
+    "answer": 1,
+    "exp": "Le cours DHCP cite adresse IP, masque, passerelle et DNS."
+  },
+  {
+    "year": 1,
+    "module": "systemes",
+    "cat": "🖥️ Systèmes",
+    "type": "text",
+    "q": "Donnez les quatre étapes DHCP dans l’ordre (acronyme accepté).",
+    "answers": [
+      "dora",
+      "discover offer request acknowledge"
+    ],
+    "keywords": [
+      "discover",
+      "offer",
+      "request",
+      "acknowledge"
+    ],
+    "exp": "DORA = Discover, Offer, Request, Acknowledge."
+  },
+  {
+    "year": 1,
+    "module": "systemes",
+    "cat": "🖥️ Systèmes",
+    "type": "mcq",
+    "q": "Quel protocole est utilisé pour l’accès aux annuaires Active Directory dans le support ?",
+    "opts": [
+      "HTTP",
+      "SMTP",
+      "LDAP",
+      "FTP"
+    ],
+    "answer": 2,
+    "exp": "Le support Active Directory cite LDAP : Lightweight Directory Access Protocol."
+  },
+  {
+    "year": 1,
+    "module": "systemes",
+    "cat": "🖥️ Systèmes",
+    "type": "text",
+    "q": "Que signifie DN dans un annuaire LDAP ?",
+    "answers": [
+      "distinguished name"
+    ],
+    "exp": "DN signifie Distinguished Name."
+  },
+  {
+    "year": 1,
+    "module": "culture",
+    "cat": "✍️ Culture générale",
+    "type": "mcq",
+    "q": "Quel neurotransmetteur est cité pour expliquer le plaisir associé à l’usage du téléphone ?",
+    "opts": [
+      "Adrénaline",
+      "Dopamine",
+      "Mélatonine",
+      "Insuline"
+    ],
+    "answer": 1,
+    "exp": "Le texte sur l’hyperconnexion associe la sensation de plaisir à la dopamine."
+  },
+  {
+    "year": 1,
+    "module": "culture",
+    "cat": "✍️ Culture générale",
+    "type": "text",
+    "q": "Quelle capacité est présentée comme plus importante que la simple quantité de savoir pour manifester son intelligence ?",
+    "answers": [
+      "esprit critique",
+      "l esprit critique"
+    ],
+    "exp": "Le cours insiste sur le développement de l’esprit critique."
+  },
+  {
+    "year": 1,
+    "module": "culture",
+    "cat": "✍️ Culture générale",
+    "type": "mcq",
+    "q": "Quelle tranche d’âge est étudiée dans le texte sur la dégradation de la santé mentale ?",
+    "opts": [
+      "0–10 ans",
+      "15–24 ans",
+      "30–40 ans",
+      "Plus de 65 ans"
+    ],
+    "answer": 1,
+    "exp": "Le document étudie la tranche des 15–24 ans."
+  },
+  {
+    "year": 1,
+    "module": "culture",
+    "cat": "✍️ Culture générale",
+    "type": "mcq",
+    "q": "Quel auteur critique la routine bourgeoise et fait l’éloge du voyage ?",
+    "opts": [
+      "Maupassant",
+      "Molière",
+      "Voltaire",
+      "Zola"
+    ],
+    "answer": 0,
+    "exp": "Le cours analyse un texte de Guy de Maupassant sur les motifs du voyage."
+  },
+  {
+    "year": 1,
+    "module": "culture",
+    "cat": "✍️ Culture générale",
+    "type": "text",
+    "q": "Quel prix Nobel de littérature est cité dans le texte sur le voyage contraint et les migrations ?",
+    "answers": [
+      "le clezio",
+      "le clézio",
+      "jean marie le clezio",
+      "jean-marie le clézio"
+    ],
+    "exp": "Le document cite Jean-Marie Le Clézio."
+  },
+  {
+    "year": 1,
+    "module": "culture",
+    "cat": "✍️ Culture générale",
+    "type": "mcq",
+    "q": "Les EMI sont étudiées dans le cours principalement par quels spécialistes ?",
+    "opts": [
+      "Économistes",
+      "Neurologues",
+      "Juristes",
+      "Architectes"
+    ],
+    "answer": 1,
+    "exp": "Le support indique que les expériences de mort imminente ont notamment été étudiées par des neurologues."
+  }
 ];

@@ -78,8 +78,6 @@ Le tableau de bord contient actuellement **14 modules de révision** pour la 1re
 
 ## 📊 CEJM — 11 chapitres détaillés
 
-La partie CEJM dispose d'un sommaire dédié ainsi que d'une fiche complète pour chaque chapitre.
-
 | # | Chapitre | Principales notions |
 |---:|---|---|
 | **01** | Performance et finalités de l'entreprise | Logique entrepreneuriale, management, parties prenantes et performance |
@@ -94,23 +92,6 @@ La partie CEJM dispose d'un sommaire dédié ainsi que d'une fiche complète pou
 | **10** | Risques et responsabilités | Responsabilité civile, responsabilité pénale et force majeure |
 | **11** | Quel financement pour l'entreprise ? | FRNG, BFR, trésorerie et solutions de financement |
 
-Les fichiers correspondants se trouvent dans :
-
-```text
-premiere/cejm/
-├── chapitre-01.html
-├── chapitre-02.html
-├── chapitre-03.html
-├── chapitre-04.html
-├── chapitre-05.html
-├── chapitre-06.html
-├── chapitre-07.html
-├── chapitre-08.html
-├── chapitre-09.html
-├── chapitre-10.html
-└── chapitre-11.html
-```
-
 ---
 
 # 📕 Contenu — 2e année
@@ -121,118 +102,69 @@ La 2e année est ajoutée progressivement selon les cours déjà étudiés.
 
 Fichier : `deuxieme/cejm-droit-numerique.html`
 
-La fiche traite notamment :
-
-- des données à caractère personnel ;
-- des données sensibles ;
-- de la CNIL et du RGPD ;
-- des droits des personnes ;
-- des obligations des organisations ;
-- de l'**accountability** ;
-- du **Privacy by Design** et du **Privacy by Default** ;
-- de l'identité numérique ;
-- du phishing et du doxing ;
-- de l'étude de cas de la montre connectée.
+Notions : données à caractère personnel, données sensibles, CNIL, RGPD, droits des personnes, obligations des organisations, accountability, Privacy by Design/Default, identité numérique, phishing, doxing et étude de cas de la montre connectée.
 
 ### 🗃️ Révision SQL SIO2
 
 Fichier : `deuxieme/sql-revision.html`
 
-Cette partie contient :
-
-- le mémento SQL ;
-- les projections et restrictions ;
-- les jointures ;
-- les fonctions de date ;
-- `COUNT`, `SUM`, `AVG`, `MIN` et `MAX` ;
-- `GROUP BY` et `HAVING` ;
-- `ORDER BY` ;
-- les sous-requêtes avec `IN` / `NOT IN` ;
-- `UNION` ;
-- `INSERT`, `UPDATE` et `DELETE` ;
-- des exercices basés sur la base de données **EQUUS**.
-
-> La 2e année continuera d'être complétée au fur et à mesure de l'ajout de nouveaux supports de cours.
+Notions : mémento SQL, projections, restrictions, jointures, fonctions de date, agrégats, `GROUP BY`, `HAVING`, `ORDER BY`, sous-requêtes, `UNION`, LMD et exercices EQUUS.
 
 ---
 
 # 🗃️ Focus — SQL & bases de données
 
-La partie SQL regroupe les notions vues dans les supports **SLAM et SISR** disponibles dans les cours de 1re année, puis une fiche de révision SIO2 séparée.
+La partie SQL regroupe les notions issues des supports **SLAM et SISR** disponibles dans les cours.
 
-### Interrogation
+- Interrogation : `SELECT`, `FROM`, `WHERE`, `DISTINCT`, `ORDER BY`, `IN`, `NOT IN`, `BETWEEN`, `LIKE`, `NULL` ;
+- Jointures et regroupements : jointures, `COUNT`, `SUM`, `AVG`, `MIN`, `MAX`, `GROUP BY`, `HAVING` ;
+- LMD : `INSERT`, `UPDATE`, `DELETE` ;
+- LDD : `CREATE`, `ALTER`, `DROP`, contraintes, vues et intégrité référentielle ;
+- commandes MySQL utilisées dans les TP.
 
-```sql
-SELECT colonne
-FROM table
-WHERE condition;
-```
+---
 
-Notions couvertes :
+# 💻 Code Lab
 
-`SELECT` · `FROM` · `WHERE` · `DISTINCT` · `ORDER BY` · `IN` · `NOT IN` · `BETWEEN` · `LIKE` · `IS NULL` · `IS NOT NULL`
+Le site intègre un **Code Lab multi-fichiers** accessible depuis `code-lab.html` et depuis la navigation principale.
 
-### Jointures et regroupements
+Il propose :
 
-`JOIN / critères de jointure` · `COUNT()` · `SUM()` · `AVG()` · `MIN()` · `MAX()` · `GROUP BY` · `HAVING`
+- création libre de plusieurs fichiers avec leur nom et leur extension (`.py`, `.php`, `.java`, etc.) ;
+- détection automatique du langage à partir de l’extension du fichier actif ;
+- liste de fichiers locale, renommage, suppression et **téléchargement direct** du fichier actif ;
+- **Ctrl + S** pour sauvegarder, **Ctrl + Z** pour annuler et **Ctrl + Y** pour rétablir ;
+- conservation des brouillons dans `localStorage` et avertissement du navigateur avant fermeture lorsqu’un fichier contient des modifications non enregistrées ;
+- éditeur avec numéros de ligne, coloration syntaxique, auto-fermeture des paires et indentation intelligente ;
+- fermeture automatique de `<?php` avec `?>` ;
+- **10 exercices guidés par langage** en Python, PHP et Java, chargés dans de vrais fichiers de travail ;
+- terminal intégré et rapports de tests structurés avec Input / Output / Expected output ;
+- détection intelligente des entrées utilisateur : la fenêtre de saisie apparaît uniquement si le code utilise `input()`, `sys.stdin`, `Scanner`, `BufferedReader`, `fgets(STDIN)`, `readline()`, `$_POST`, etc. ;
+- simulation simple de `$_POST` avec des lignes `clé=valeur` lorsque ce mécanisme est détecté ;
+- interface responsive renforcée pour ordinateur, tablette et mobile.
 
-### Manipulation des données — LMD
+### Moteurs d’exécution
 
-```sql
-INSERT INTO ...
-UPDATE ... SET ...
-DELETE FROM ...
-```
+- **Python** : exécution dans le navigateur avec Pyodide ;
+- **PHP** : exécution sandboxée avec Judge0 CE ;
+- **Java** : compilation et exécution sandboxées avec Judge0 CE.
 
-### Définition des données — LDD
-
-```sql
-CREATE TABLE ...
-ALTER TABLE ...
-DROP TABLE ...
-```
-
-Sont également abordés : clés primaires, clés étrangères, `NOT NULL`, `UNIQUE`, `DEFAULT`, `CHECK`, `AUTO_INCREMENT`, vues, intégrité référentielle et commandes MySQL utilisées dans les TP.
+> Une connexion Internet est nécessaire au chargement du moteur Python et à l’exécution PHP/Java. L’éditeur, les fichiers locaux, les exercices et les fonctions de sauvegarde restent disponibles côté navigateur.
 
 ---
 
 # 🎯 Quiz interactif
 
-Le site possède actuellement **253 questions**.
+Le site possède actuellement **253 questions** :
 
-Le quiz peut être filtré selon :
+- **213** questions de 1re année ;
+- **40** questions de 2e année ;
+- **187** QCM ;
+- **66** réponses à saisir.
 
-- l'année ;
-- la matière ;
-- le type de question.
+Le quiz peut être filtré par année, matière et type de question.
 
-Deux formats sont utilisés :
-
-### QCM
-
-Les réponses sont sélectionnées directement à l'écran avec correction immédiate.
-
-### Réponse à saisir
-
-Certaines questions demandent d'écrire directement la réponse, notamment pour travailler les définitions, commandes et notions techniques.
-
-Les questions sont réparties dans plusieurs fichiers JavaScript pour faciliter leur maintenance :
-
-```text
-assets/js/
-├── quiz-data.js
-├── quiz-first-1.js
-├── quiz-first-2.js
-├── quiz-first-3.js
-├── quiz-first-4.js
-├── quiz-cejm-1.js
-├── quiz-cejm-2.js
-├── quiz-extra-questions.js
-├── quiz-second-year-questions.js
-├── quiz-sql-first-year-questions.js
-├── quiz-sql-second-year-questions.js
-└── quiz.js
-```
+Les banques de questions sont réparties dans plusieurs fichiers JavaScript afin de faciliter leur maintenance.
 
 ---
 
@@ -241,13 +173,14 @@ assets/js/
 ```text
 Revision-BTS-SIO/
 │
-├── index.html                 # Tableau de bord
-├── quiz.html                  # Quiz général
+├── index.html
+├── quiz.html
+├── code-lab.html
 ├── README.md
 │
 ├── assets/
-│   ├── css/                   # Thème CRT et composants visuels
-│   └── js/                    # Navigation, quiz et données
+│   ├── css/
+│   └── js/
 │
 ├── premiere/
 │   ├── algorithmique.html
@@ -264,7 +197,6 @@ Revision-BTS-SIO/
 │   ├── rgpd.html
 │   ├── sql.html
 │   ├── systemes.html
-│   │
 │   └── cejm/
 │       ├── chapitre-01.html
 │       ├── ...
@@ -283,35 +215,22 @@ Le projet ne nécessite **aucune installation particulière**.
 
 ### 🌐 Accès direct — GitHub Pages
 
-Le moyen le plus simple pour utiliser le site est d'ouvrir directement la version en ligne publiée avec **GitHub Pages** :
-
 ➡️ **[Ouvrir le site de révision BTS SIO](https://rival99900.github.io/Revision-BTS-SIO/)**
-
-Vous pouvez également accéder directement au quiz général :
 
 ➡️ **[Ouvrir le quiz interactif](https://rival99900.github.io/Revision-BTS-SIO/quiz.html)**
 
-Aucun téléchargement n'est nécessaire : le site fonctionne directement dans le navigateur sur ordinateur, tablette ou téléphone.
+➡️ **[Ouvrir le Code Lab](https://rival99900.github.io/Revision-BTS-SIO/code-lab.html)**
 
 ### 📦 Utilisation en local
 
-Si vous souhaitez conserver une copie hors ligne :
-
-1. Téléchargez le dépôt.
-2. Décompressez-le si nécessaire.
-3. Ouvrez `index.html` dans votre navigateur.
+1. Téléchargez et décompressez le projet.
+2. Ouvrez `index.html` dans votre navigateur.
 
 ### 💻 Avec Git
 
 ```bash
 git clone https://github.com/Rival99900/Revision-BTS-SIO.git
 cd Revision-BTS-SIO
-```
-
-Puis ouvrez :
-
-```text
-index.html
 ```
 
 Le site fonctionne en HTML/CSS/JavaScript et ne nécessite ni serveur web, ni base de données, ni dépendance Node.js pour consulter les fiches et utiliser les quiz actuels.
@@ -326,47 +245,26 @@ Le site fonctionne en HTML/CSS/JavaScript et ne nécessite ni serveur web, ni ba
 - **LocalStorage** — mémorisation locale de certaines informations de révision ;
 - **Google Fonts** — Share Tech Mono, VT323 et Orbitron.
 
-Aucun framework lourd n'est nécessaire.
-
 ---
 
 # 🎨 Interface
 
-Le design reprend une ambiance **terminal informatique / écran CRT** :
-
-- fond sombre ;
-- couleurs néon ;
-- cartes par matière ;
-- effets de scanlines ;
-- typographies monospace ;
-- navigation par année ;
-- fiches séparées afin d'éviter un unique fichier HTML trop volumineux.
-
-L'objectif reste cependant la lisibilité : le style visuel ne doit pas gêner la révision.
+Le design reprend une ambiance **terminal informatique / écran CRT** : fond sombre, couleurs néon, cartes par matière, scanlines, typographies monospace et navigation par année.
 
 ---
 
 # 🔄 Évolution du projet
 
-Le dépôt sert de base permanente au site de révision.
-
-Lorsqu'un nouveau cours est ajouté, le projet peut être mis à jour en ajoutant :
-
-1. une nouvelle fiche ou une nouvelle section ;
-2. les notions importantes du support ;
-3. de nouvelles questions dans le quiz ;
-4. les liens correspondants dans le tableau de bord.
-
-Les contenus existants peuvent également être corrigés ou enrichis sans reconstruire entièrement le site.
+Le dépôt sert de base permanente au site de révision. Les nouveaux cours peuvent être ajoutés progressivement avec leurs fiches et leurs questions associées.
 
 ### Idées d'évolution
 
-- 📚 ajouter progressivement les nouveaux cours de 2e année ;
+- 📚 compléter progressivement les nouveaux cours de 2e année ;
 - 🎯 enrichir les banques de questions ;
 - 📊 ajouter davantage de statistiques de progression ;
 - 🔀 proposer un mode examen aléatoire ;
 - ❌ mémoriser les erreurs fréquentes ;
-- 🌐 continuer à déployer automatiquement les nouvelles versions avec GitHub Pages.
+- 🌐 continuer les déploiements avec GitHub Pages.
 
 ---
 
@@ -374,14 +272,9 @@ Les contenus existants peuvent également être corrigés ou enrichis sans recon
 
 Le projet est conçu à partir des supports de cours utilisés en BTS SIO et centralisés pour les révisions.
 
-Les fiches cherchent à :
+Les fiches cherchent à conserver le vocabulaire du cours, synthétiser les notions importantes et éviter d'ajouter artificiellement des chapitres non encore étudiés.
 
-- conserver le vocabulaire du cours ;
-- synthétiser les notions importantes ;
-- éviter d'ajouter artificiellement des chapitres non encore étudiés ;
-- proposer des exercices et quiz cohérents avec les supports disponibles.
-
-La rédaction est volontairement faite au **vouvoiement** afin que le site puisse être partagé avec l'ensemble de la classe.
+La rédaction utilise le **vouvoiement** afin que le site puisse être partagé avec l'ensemble de la classe.
 
 ---
 

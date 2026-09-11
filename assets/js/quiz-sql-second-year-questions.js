@@ -1,22 +1,274 @@
-const SQL_SECOND_YEAR_QUESTIONS = [
-  {year:2,module:'sql2',cat:'🗃️ SQL — 2e année',type:'text',q:'Dans le mémento SIO2, quelle clause vient après WHERE pour regrouper les résultats ?',answers:['group by'],exp:'La syntaxe générale est SELECT … FROM … WHERE … <strong>GROUP BY</strong> … HAVING … ORDER BY …'},
-  {year:2,module:'sql2',cat:'🗃️ SQL — 2e année',type:'mcq',q:'Dans l’ordre du mémento, quelle clause vient après GROUP BY ?',opts:['HAVING','FROM','CREATE','DISTINCT'],answer:0,exp:'Le mémento place <strong>HAVING</strong> après GROUP BY.'},
-  {year:2,module:'sql2',cat:'🗃️ SQL — 2e année',type:'mcq',q:'Quelle fonction de date renvoie le numéro du mois ?',opts:['MONTH()','YEAR()','NOW()','COUNT()'],answer:0,exp:'Le mémento indique que <strong>MONTH(date)</strong> renvoie le mois sous forme d’un entier.'},
-  {year:2,module:'sql2',cat:'🗃️ SQL — 2e année',type:'text',q:'Quelle fonction du mémento renvoie l’année d’une date ?',answers:['year','year()'],exp:'Le mémento utilise <strong>YEAR(date)</strong>.'},
-  {year:2,module:'sql2',cat:'🗃️ SQL — 2e année',type:'mcq',q:'Quelle fonction de date est associée à la date du jour dans le mémento ?',opts:['NOW()','TODAY()','DATE() uniquement','CURRENT_YEAR()'],answer:0,exp:'Le mémento cite <strong>NOW()</strong>.'},
-  {year:2,module:'sql2',cat:'🗃️ SQL — 2e année',type:'mcq',q:'Pour exprimer une intersection avec une sous-requête, le mémento utilise :',opts:['IN (SELECT …)','UNION uniquement','DROP','ALTER'],answer:0,exp:'La ligne « Intersection » du mémento utilise <strong>IN (SELECT …)</strong>.'},
-  {year:2,module:'sql2',cat:'🗃️ SQL — 2e année',type:'text',q:'Quel opérateur est utilisé dans le mémento pour une différence avec une sous-requête ?',answers:['not in'],exp:'La différence est écrite avec <strong>NOT IN (SELECT …)</strong>.'},
-  {year:2,module:'sql2',cat:'🗃️ SQL — 2e année',type:'mcq',q:'Quel mot-clé combine les résultats de deux requêtes dans le mémento ?',opts:['UNION','MERGE TABLE','CONNECT','GROUP'],answer:0,exp:'Le mémento présente <strong>Requête 1 UNION Requête 2</strong>.'},
-  {year:2,module:'sql2',cat:'🗃️ SQL — 2e année',type:'text',q:'Quelle instruction met à jour des tuples existants ?',answers:['update'],exp:'Le mémento donne <strong>UPDATE table SET ... [WHERE prédicat]</strong>.'},
-  {year:2,module:'sql2',cat:'🗃️ SQL — 2e année',type:'mcq',q:'Quelle instruction ajoute une ligne avec une liste de valeurs ?',opts:['INSERT INTO ... VALUES ...','DELETE FROM','DROP TABLE','ORDER BY'],answer:0,exp:'Le mémento utilise <strong>INSERT INTO table (...) VALUES (...)</strong>.'},
-  {year:2,module:'sql2',cat:'🗃️ SQL — 2e année',type:'mcq',q:'Quelle instruction supprime des tuples ?',opts:['DELETE FROM','DROP VIEW','CREATE TABLE','SELECT DISTINCT'],answer:0,exp:'Le mémento place la suppression des enregistrements sous <strong>DELETE FROM</strong>.'},
-  {year:2,module:'sql2',cat:'🗃️ SQL — 2e année',type:'mcq',q:'Dans l’exercice EQUUS, quel type de commande faut-il utiliser pour créer la table CHEVAL ?',opts:['CREATE TABLE','SELECT','UPDATE','DELETE'],answer:0,exp:'Le bloc 1 demande de créer la table CHEVAL avec sa contrainte de clé primaire.'},
-  {year:2,module:'sql2',cat:'🗃️ SQL — 2e année',type:'mcq',q:'Pour compter les chevaux mâles de race « pur sang », quelle fonction du mémento est nécessaire ?',opts:['COUNT(*)','AVG()','YEAR()','MIN()'],answer:0,exp:'L’exercice demande un nombre de chevaux : le mémento fournit <strong>COUNT(*)</strong>.'},
-  {year:2,module:'sql2',cat:'🗃️ SQL — 2e année',type:'text',q:'Quelle fonction d’agrégation permet de calculer la durée totale des reprises ?',answers:['sum','sum()'],exp:'Le mémento fournit <strong>SUM()</strong> pour calculer un total.'},
-  {year:2,module:'sql2',cat:'🗃️ SQL — 2e année',type:'mcq',q:'Pour afficher les noms des différents moniteurs, quel mot-clé du mémento évite les doublons ?',opts:['DISTINCT','DEFAULT','CHECK','ALTER'],answer:0,exp:'Le mémento prévoit <strong>SELECT DISTINCT</strong> pour une projection sans doublons.'},
-  {year:2,module:'sql2',cat:'🗃️ SQL — 2e année',type:'text',q:'Quelle commande MySQL permet de créer la base EQUUS ?',answers:['create database equus','create database equus;'],exp:'Le TP LDD donne la forme <strong>CREATE DATABASE NomBase;</strong>.'},
-  {year:2,module:'sql2',cat:'🗃️ SQL — 2e année',type:'mcq',q:'Quelle commande affiche les bases créées sur le serveur dans les supports ?',opts:['SHOW DATABASES;','SHOW TABLES;','DESC EQUUS;','SOURCE EQUUS;'],answer:0,exp:'Le TP LDD utilise <strong>SHOW DATABASES;</strong>.'},
-  {year:2,module:'sql2',cat:'🗃️ SQL — 2e année',type:'text',q:'Quelle commande MySQL permet de se connecter à la base EQUUS ?',answers:['use equus','use equus;'],exp:'La commande du TP est <strong>USE NomBase;</strong>.'},
-  {year:2,module:'sql2',cat:'🗃️ SQL — 2e année',type:'mcq',q:'Quelle commande permet d’afficher la structure de la table CHEVAL ?',opts:['DESC CHEVAL;','SHOW DATABASES;','USE CHEVAL;','SOURCE CHEVAL;'],answer:0,exp:'Le TP LDD utilise <strong>DESC nomtable;</strong> pour la structure.'},
-  {year:2,module:'sql2',cat:'🗃️ SQL — 2e année',type:'text',q:'Quel mot-clé MySQL permet d’exécuter un script SQL comme scriptInsert ?',answers:['source'],exp:'Le TP LDD utilise <strong>SOURCE nomscript.sql;</strong>.'},
+window.SQL_SECOND_YEAR_QUESTIONS = [
+  {
+    "year": 2,
+    "module": "sql2",
+    "cat": "🗃️ SQL — 2e année",
+    "type": "text",
+    "q": "Dans le mémento SIO2, quelle clause vient après WHERE pour regrouper les résultats ?",
+    "answers": [
+      "group by"
+    ],
+    "exp": "La syntaxe générale est SELECT … FROM … WHERE … <strong>GROUP BY</strong> … HAVING … ORDER BY …"
+  },
+  {
+    "year": 2,
+    "module": "sql2",
+    "cat": "🗃️ SQL — 2e année",
+    "type": "mcq",
+    "q": "Dans l’ordre du mémento, quelle clause vient après GROUP BY ?",
+    "opts": [
+      "HAVING",
+      "FROM",
+      "CREATE",
+      "DISTINCT"
+    ],
+    "answer": 0,
+    "exp": "Le mémento place <strong>HAVING</strong> après GROUP BY."
+  },
+  {
+    "year": 2,
+    "module": "sql2",
+    "cat": "🗃️ SQL — 2e année",
+    "type": "mcq",
+    "q": "Quelle fonction de date renvoie le numéro du mois ?",
+    "opts": [
+      "MONTH()",
+      "YEAR()",
+      "NOW()",
+      "COUNT()"
+    ],
+    "answer": 0,
+    "exp": "Le mémento indique que <strong>MONTH(date)</strong> renvoie le mois sous forme d’un entier."
+  },
+  {
+    "year": 2,
+    "module": "sql2",
+    "cat": "🗃️ SQL — 2e année",
+    "type": "text",
+    "q": "Quelle fonction du mémento renvoie l’année d’une date ?",
+    "answers": [
+      "year",
+      "year()"
+    ],
+    "exp": "Le mémento utilise <strong>YEAR(date)</strong>."
+  },
+  {
+    "year": 2,
+    "module": "sql2",
+    "cat": "🗃️ SQL — 2e année",
+    "type": "mcq",
+    "q": "Quelle fonction de date est associée à la date du jour dans le mémento ?",
+    "opts": [
+      "NOW()",
+      "TODAY()",
+      "DATE() uniquement",
+      "CURRENT_YEAR()"
+    ],
+    "answer": 0,
+    "exp": "Le mémento cite <strong>NOW()</strong>."
+  },
+  {
+    "year": 2,
+    "module": "sql2",
+    "cat": "🗃️ SQL — 2e année",
+    "type": "mcq",
+    "q": "Pour exprimer une intersection avec une sous-requête, le mémento utilise :",
+    "opts": [
+      "IN (SELECT …)",
+      "UNION uniquement",
+      "DROP",
+      "ALTER"
+    ],
+    "answer": 0,
+    "exp": "La ligne « Intersection » du mémento utilise <strong>IN (SELECT …)</strong>."
+  },
+  {
+    "year": 2,
+    "module": "sql2",
+    "cat": "🗃️ SQL — 2e année",
+    "type": "text",
+    "q": "Quel opérateur est utilisé dans le mémento pour une différence avec une sous-requête ?",
+    "answers": [
+      "not in"
+    ],
+    "exp": "La différence est écrite avec <strong>NOT IN (SELECT …)</strong>."
+  },
+  {
+    "year": 2,
+    "module": "sql2",
+    "cat": "🗃️ SQL — 2e année",
+    "type": "mcq",
+    "q": "Quel mot-clé combine les résultats de deux requêtes dans le mémento ?",
+    "opts": [
+      "UNION",
+      "MERGE TABLE",
+      "CONNECT",
+      "GROUP"
+    ],
+    "answer": 0,
+    "exp": "Le mémento présente <strong>Requête 1 UNION Requête 2</strong>."
+  },
+  {
+    "year": 2,
+    "module": "sql2",
+    "cat": "🗃️ SQL — 2e année",
+    "type": "text",
+    "q": "Quelle instruction met à jour des tuples existants ?",
+    "answers": [
+      "update"
+    ],
+    "exp": "Le mémento donne <strong>UPDATE table SET ... [WHERE prédicat]</strong>."
+  },
+  {
+    "year": 2,
+    "module": "sql2",
+    "cat": "🗃️ SQL — 2e année",
+    "type": "mcq",
+    "q": "Quelle instruction ajoute une ligne avec une liste de valeurs ?",
+    "opts": [
+      "INSERT INTO ... VALUES ...",
+      "DELETE FROM",
+      "DROP TABLE",
+      "ORDER BY"
+    ],
+    "answer": 0,
+    "exp": "Le mémento utilise <strong>INSERT INTO table (...) VALUES (...)</strong>."
+  },
+  {
+    "year": 2,
+    "module": "sql2",
+    "cat": "🗃️ SQL — 2e année",
+    "type": "mcq",
+    "q": "Quelle instruction supprime des tuples ?",
+    "opts": [
+      "DELETE FROM",
+      "DROP VIEW",
+      "CREATE TABLE",
+      "SELECT DISTINCT"
+    ],
+    "answer": 0,
+    "exp": "Le mémento place la suppression des enregistrements sous <strong>DELETE FROM</strong>."
+  },
+  {
+    "year": 2,
+    "module": "sql2",
+    "cat": "🗃️ SQL — 2e année",
+    "type": "mcq",
+    "q": "Dans l’exercice EQUUS, quel type de commande faut-il utiliser pour créer la table CHEVAL ?",
+    "opts": [
+      "CREATE TABLE",
+      "SELECT",
+      "UPDATE",
+      "DELETE"
+    ],
+    "answer": 0,
+    "exp": "Le bloc 1 demande de créer la table CHEVAL avec sa contrainte de clé primaire."
+  },
+  {
+    "year": 2,
+    "module": "sql2",
+    "cat": "🗃️ SQL — 2e année",
+    "type": "mcq",
+    "q": "Pour compter les chevaux mâles de race « pur sang », quelle fonction du mémento est nécessaire ?",
+    "opts": [
+      "COUNT(*)",
+      "AVG()",
+      "YEAR()",
+      "MIN()"
+    ],
+    "answer": 0,
+    "exp": "L’exercice demande un nombre de chevaux : le mémento fournit <strong>COUNT(*)</strong>."
+  },
+  {
+    "year": 2,
+    "module": "sql2",
+    "cat": "🗃️ SQL — 2e année",
+    "type": "text",
+    "q": "Quelle fonction d’agrégation permet de calculer la durée totale des reprises ?",
+    "answers": [
+      "sum",
+      "sum()"
+    ],
+    "exp": "Le mémento fournit <strong>SUM()</strong> pour calculer un total."
+  },
+  {
+    "year": 2,
+    "module": "sql2",
+    "cat": "🗃️ SQL — 2e année",
+    "type": "mcq",
+    "q": "Pour afficher les noms des différents moniteurs, quel mot-clé du mémento évite les doublons ?",
+    "opts": [
+      "DISTINCT",
+      "DEFAULT",
+      "CHECK",
+      "ALTER"
+    ],
+    "answer": 0,
+    "exp": "Le mémento prévoit <strong>SELECT DISTINCT</strong> pour une projection sans doublons."
+  },
+  {
+    "year": 2,
+    "module": "sql2",
+    "cat": "🗃️ SQL — 2e année",
+    "type": "text",
+    "q": "Quelle commande MySQL permet de créer la base EQUUS ?",
+    "answers": [
+      "create database equus",
+      "create database equus;"
+    ],
+    "exp": "Le TP LDD donne la forme <strong>CREATE DATABASE NomBase;</strong>."
+  },
+  {
+    "year": 2,
+    "module": "sql2",
+    "cat": "🗃️ SQL — 2e année",
+    "type": "mcq",
+    "q": "Quelle commande affiche les bases créées sur le serveur dans les supports ?",
+    "opts": [
+      "SHOW DATABASES;",
+      "SHOW TABLES;",
+      "DESC EQUUS;",
+      "SOURCE EQUUS;"
+    ],
+    "answer": 0,
+    "exp": "Le TP LDD utilise <strong>SHOW DATABASES;</strong>."
+  },
+  {
+    "year": 2,
+    "module": "sql2",
+    "cat": "🗃️ SQL — 2e année",
+    "type": "text",
+    "q": "Quelle commande MySQL permet de se connecter à la base EQUUS ?",
+    "answers": [
+      "use equus",
+      "use equus;"
+    ],
+    "exp": "La commande du TP est <strong>USE NomBase;</strong>."
+  },
+  {
+    "year": 2,
+    "module": "sql2",
+    "cat": "🗃️ SQL — 2e année",
+    "type": "mcq",
+    "q": "Quelle commande permet d’afficher la structure de la table CHEVAL ?",
+    "opts": [
+      "DESC CHEVAL;",
+      "SHOW DATABASES;",
+      "USE CHEVAL;",
+      "SOURCE CHEVAL;"
+    ],
+    "answer": 0,
+    "exp": "Le TP LDD utilise <strong>DESC nomtable;</strong> pour la structure."
+  },
+  {
+    "year": 2,
+    "module": "sql2",
+    "cat": "🗃️ SQL — 2e année",
+    "type": "text",
+    "q": "Quel mot-clé MySQL permet d’exécuter un script SQL comme scriptInsert ?",
+    "answers": [
+      "source"
+    ],
+    "exp": "Le TP LDD utilise <strong>SOURCE nomscript.sql;</strong>."
+  }
 ];

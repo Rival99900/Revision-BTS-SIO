@@ -1,38 +1,364 @@
-FIRST_YEAR_ORIGINAL.push(...[
+window.FIRST_YEAR_ORIGINAL = window.FIRST_YEAR_ORIGINAL || [];
 
-  /* ========== PHP (10) ========== */
-  {cat:'🐘 PHP',q:"En PHP, qu'affiche <span class='hlpu'>print(\"$toto\")</span> si $toto vaut \"bonjour\" ?",opts:["$toto","bonjour","\"bonjour\"","Erreur de syntaxe"],a:1,exp:"Les <strong>guillemets doubles</strong> en PHP interpolent les variables : $toto est remplacé par sa valeur. Les guillemets simples afficheraient littéralement '$toto'."},
-  {cat:'🐘 PHP',q:"Quelle instruction permet de <span class='hlpu'>saisir une valeur au clavier</span> en PHP ?",opts:["scanf()","fgets(STDIN)","input()","read()"],a:1,exp:"<strong>fgets(STDIN)</strong> lit une chaîne depuis l'entrée standard. Utiliser <code>trim()</code> pour enlever le caractère de retour à la ligne."},
-  {cat:'🐘 PHP',q:"Comment <span class='hlpu'>concaténer</span> deux chaînes en PHP ?",opts:["Avec + (addition)","Avec . (point)","Avec & (esperluette)","Avec , (virgule)"],a:1,exp:"En PHP, la concaténation utilise l'opérateur <strong>.</strong> (point) : <code>$a = \"Bon\" . \"jour\";</code> (contrairement à Java/Python qui utilisent +)."},
-  {cat:'🐘 PHP',q:"Quelle est la différence entre <span class='hlpu'>==</span> et <span class='hlpu'>===</span> en PHP ?",opts:["Aucune différence","=== compare aussi le type en plus de la valeur","== compare aussi le type","=== est plus lent"],a:1,exp:"<strong>==</strong> compare uniquement les valeurs. <strong>===</strong> compare aussi les <strong>types</strong> : <code>0 == false</code> → true, mais <code>0 === false</code> → false."},
-  {cat:'🐘 PHP',q:"Une boucle <span class='hlpu'>do-while</span> s'exécute au minimum :",opts:["0 fois","1 fois","2 fois","N fois selon la condition"],a:1,exp:"La boucle <strong>do-while</strong> exécute le bloc <strong>au minimum une fois</strong>, puis vérifie la condition. Contrairement à while qui peut ne jamais s'exécuter."},
-  {cat:'🐘 PHP',q:"Comment ajouter un élément à la <span class='hlpu'>fin d'un tableau</span> $t en PHP ?",opts:["$t[last] = $v","$t[] = $v","array_add($t, $v)","$t.push($v)"],a:1,exp:"<strong>$t[] = $valeur</strong> est la syntaxe PHP pour ajouter un élément à la fin d'un tableau. count($t) donne ensuite le nombre d'éléments."},
-  {cat:'🐘 PHP',q:"Que fait <span class='hlpu'>foreach($tab as $cle => $val)</span> ?",opts:["Parcourt seulement les clés","Parcourt seulement les valeurs","Parcourt les clés ET les valeurs simultanément","Compte les éléments"],a:2,exp:"La syntaxe <strong>foreach($tab as $cle => $val)</strong> donne accès à la clé/indice ($cle) ET à la valeur ($val) à chaque itération."},
-  {cat:'🐘 PHP',q:"En PHP, qu'est-ce qu'une valeur <span class='hlpu'>Falsy</span> ?",opts:["Une valeur toujours vraie","Une valeur considérée comme false (0, \"\", null, \"0\"…)","Une erreur de type","Une valeur négative uniquement"],a:1,exp:"PHP considère comme <strong>false</strong> : 0, 0.0, \"\", \"0\", null, et toute variable non définie. Tout le reste est true."},
-  {cat:'🐘 PHP',q:"Que retourne <span class='hlpu'>strlen(\"Bonjour\")</span> ?",opts:["6","7","8","\"Bonjour\""],a:1,exp:"<strong>strlen()</strong> retourne le nombre de caractères. \"Bonjour\" contient <strong>7 caractères</strong> (B-o-n-j-o-u-r)."},
-  {cat:'🐘 PHP',q:"Les <span class='hlpu'>tableaux associatifs</span> en PHP utilisent comme clés :",opts:["Uniquement des entiers","Uniquement des chaînes de caractères","Des entiers OU des chaînes","Uniquement des booléens"],a:2,exp:"En PHP, un tableau peut utiliser des <strong>entiers OU des chaînes</strong> comme clés. Ce sont des structures très flexibles."},
-
-  /* ========== Java POO (10) ========== */
-  {cat:'☕ Java POO',q:"La <span class='hlor'>POO</span> (Programmation Orientée Objet) repose sur quels 4 piliers ?",opts:["Héritage, Polymorphisme, Abstraction, Récursion","Encapsulation, Héritage, Polymorphisme, Abstraction","Classes, Méthodes, Attributs, Variables","Compilation, Exécution, Debug, Test"],a:1,exp:"Les <strong>4 piliers de la POO</strong> : Encapsulation (cacher les détails), Héritage (réutiliser), Polymorphisme (adapter), Abstraction (modéliser)."},
-  {cat:'☕ Java POO',q:"Un <span class='hlor'>constructeur</span> en Java : quelle est sa particularité ?",opts:["Il retourne toujours void","Il a le même nom que la classe et pas de type de retour","Il peut s'appeler n'importe comment","Il est optionnel dans toute classe"],a:1,exp:"Un <strong>constructeur</strong> porte le <strong>même nom que la classe</strong> et n'a <strong>pas de type de retour</strong> (ni void). Il est appelé avec <code>new</code>."},
-  {cat:'☕ Java POO',q:"Le mot-clé <span class='hlor'>this</span> en Java représente :",opts:["La classe parente","L'objet courant (l'instance en cours)","Une méthode statique","Le constructeur par défaut"],a:1,exp:"<strong>this</strong> est une référence à <strong>l'objet courant</strong>. Utilisé pour distinguer les attributs des paramètres du même nom."},
-  {cat:'☕ Java POO',q:"Dans <span class='hlor'>for(int i=1; i&lt;=5; i++)</span>, combien d'itérations ?",opts:["4","5","6","Impossible à savoir"],a:1,exp:"La boucle s'exécute pour i=1, 2, 3, 4, 5 → <strong>5 itérations</strong>. La condition i≤5 inclut bien la valeur 5."},
-  {cat:'☕ Java POO',q:"Le mot-clé <span class='hlor'>extends</span> en Java sert à :",opts:["Étendre la mémoire disponible","Déclarer qu'une classe hérite d'une autre classe","Créer une interface","Définir une méthode abstraite"],a:1,exp:"<strong>extends</strong> déclare la relation d'héritage : <code>class Employe extends Personne</code> → Employe hérite des attributs et méthodes de Personne."},
-  {cat:'☕ Java POO',q:"Qu'est-ce qu'une <span class='hlor'>classe abstraite</span> en Java ?",opts:["Une classe sans attributs","Une classe qui ne peut pas être instanciée directement","Une classe sans méthodes","Une classe héritée d'Object"],a:1,exp:"Une <strong>classe abstraite</strong> ne peut <strong>pas être instanciée</strong> (new est interdit). Elle sert de modèle pour les sous-classes qui l'étendent."},
-  {cat:'☕ Java POO',q:"Le mot-clé <span class='hlor'>super()</span> dans un constructeur Java :",opts:["Crée un nouvel objet de la classe mère","Appelle le constructeur de la classe mère","Supprime l'objet courant","Bloque l'héritage"],a:1,exp:"<strong>super()</strong> appelle le constructeur de la <strong>classe mère</strong>. Il doit être la <strong>première instruction</strong> du constructeur de la classe fille."},
-  {cat:'☕ Java POO',q:"Un attribut <span class='hlor'>private</span> dans une classe mère est-il accessible dans la classe fille ?",opts:["Oui directement","Non — utiliser des getters ou déclarer protected","Oui via super.attribut","Oui uniquement dans le même package"],a:1,exp:"L'héritage <strong>ne rompt pas l'encapsulation</strong>. Un attribut <strong>private</strong> reste inaccessible dans la classe fille. Utiliser <strong>protected</strong> pour le rendre accessible."},
-  {cat:'☕ Java POO',q:"Le <span class='hlor'>polymorphisme</span> en Java signifie que :",opts:["Plusieurs classes portent le même nom","La méthode exécutée dépend du type RÉEL de l'objet","Un objet peut changer de type en cours d'exécution","Plusieurs méthodes ont le même nom dans une classe"],a:1,exp:"Le <strong>polymorphisme</strong> (dispatch dynamique) : même si une variable est déclarée de type Personne, si l'objet est un Employe, c'est la méthode de <strong>Employe</strong> qui s'exécute."},
-  {cat:'☕ Java POO',q:"Une classe fille doit-elle implémenter les <span class='hlor'>méthodes abstraites</span> de la mère ?",opts:["Non, c'est optionnel","Oui, sauf si elle est elle-même abstraite","Non, uniquement si elle le souhaite","Oui, mais seulement en Java 8+"],a:1,exp:"<strong>Oui</strong>, une classe concrète doit implémenter <strong>toutes</strong> les méthodes abstraites. Sinon, elle doit elle-même être déclarée <strong>abstract</strong>."},
-
-  /* ========== MCD (10) ========== */
-  {cat:'🗄️ MCD',q:"Dans un MCD, une <span class='hlte'>entité</span> représente :",opts:["Un lien entre deux tables","Un objet, une personne ou un concept du monde réel","Une règle de gestion","Un champ calculé"],a:1,exp:"Une <strong>entité</strong> représente tout objet, personne, lieu ou concept du monde réel <strong>pertinent</strong> pour le système d'information."},
-  {cat:'🗄️ MCD',q:"Dans le MCD, les <span class='hlte'>identifiants</span> sont représentés :",opts:["En italique","En gras","Soulignés","Entre crochets []"],a:2,exp:"Dans le MCD, les identifiants sont représentés <strong>soulignés</strong>. Toute entité doit en posséder un."},
-  {cat:'🗄️ MCD',q:"Une cardinalité <span class='hlte'>1,n</span> signifie :",opts:["Au minimum 0, au maximum 1","Au minimum 1, au maximum plusieurs","Exactement 1 participation","Au minimum 0, au maximum plusieurs"],a:1,exp:"La cardinalité <strong>1,n</strong> = participation <strong>obligatoire</strong> (min 1) et <strong>multiple</strong> (max n). Exemple : un client loue au moins 1 cassette."},
-  {cat:'🗄️ MCD',q:"Une cardinalité <span class='hlte'>0,n</span> signifie :",opts:["Obligatoirement plusieurs","Exactement 0 ou 1","Participation facultative (0 ou plusieurs)","Toujours exactement n"],a:2,exp:"La cardinalité <strong>0,n</strong> = participation <strong>facultative</strong> (peut être 0) et <strong>multiple</strong>. Exemple : un acteur peut ne jouer dans aucun film."},
-  {cat:'🗄️ MCD',q:"Une association dans un MCD est représentée par :",opts:["Un rectangle","Un verbe dans un ovale","Un losange vide","Une flèche simple"],a:1,exp:"Une <strong>association</strong> est représentée par un <strong>verbe dans un ovale</strong>. Ex : Loue, Joue, Enseigne, Commercialise."},
-  {cat:'🗄️ MCD',q:"Une propriété <span class='hlte'>calculée</span> comme MontantHT (= QTES × PRIX_UNIT) :",opts:["Doit figurer dans le MCD comme les autres","Est éliminée du MCD (dictionnaire réduit)","Devient l'identifiant de l'entité","Est stockée dans une association"],a:1,exp:"Les propriétés <strong>calculées</strong> sont <strong>éliminées du MCD</strong>. Exception : données de situation (stock, solde) conservées même si calculables."},
-  {cat:'🗄️ MCD',q:"Le <span class='hlte'>dictionnaire des données</span> répertorie :",opts:["Uniquement les identifiants","Toutes les propriétés du système d'information","Seulement les associations","Les cardinalités uniquement"],a:1,exp:"Le dictionnaire des données catalogue <strong>TOUTES les propriétés</strong> du système. On en tire le dictionnaire réduit en supprimant calculés et paramètres."},
-  {cat:'🗄️ MCD',q:"Le principe <span class='hlte'>\"pas de polysèmes\"</span> signifie :",opts:["Pas de données calculées","Deux propriétés différentes ne doivent pas avoir le même nom","Les propriétés doivent être simples","Pas de clés concaténées"],a:1,exp:"<strong>Pas de polysèmes</strong> = pas deux propriétés avec le même nom. Utiliser NomCli et NomFour plutôt que Nom pour les deux."},
-  {cat:'🗄️ MCD',q:"MCD signifie :",opts:["Modèle Conceptuel de Définitions","Modèle Conceptuel de Données","Modèle Créatif de Données","Méthode Conceptuelle de Design"],a:1,exp:"<strong>MCD = Modèle Conceptuel de Données</strong>. Dans MERISE, aussi appelé Modèle Entité-Association."},
-  {cat:'🗄️ MCD',q:"Une <span class='hlte'>propriété d'association</span> est utilisée quand :",opts:["L'association a plus de deux entités","Une propriété ne peut pas être rattachée à une seule entité","On veut copier une propriété d'entité","L'identifiant est trop long"],a:1,exp:"Une propriété appartient à une association quand elle <strong>dépend de PLUSIEURS entités</strong> simultanément. Ex : l'horaire dépend de la Classe ET de la Matière."},
+window.FIRST_YEAR_ORIGINAL.push(...[
+  {
+    "cat": "🐘 PHP",
+    "q": "En PHP, qu'affiche <span class='hlpu'>print(\"$toto\")</span> si $toto vaut \"bonjour\" ?",
+    "opts": [
+      "$toto",
+      "bonjour",
+      "\"bonjour\"",
+      "Erreur de syntaxe"
+    ],
+    "a": 1,
+    "exp": "Les <strong>guillemets doubles</strong> en PHP interpolent les variables : $toto est remplacé par sa valeur. Les guillemets simples afficheraient littéralement '$toto'."
+  },
+  {
+    "cat": "🐘 PHP",
+    "q": "Quelle instruction permet de <span class='hlpu'>saisir une valeur au clavier</span> en PHP ?",
+    "opts": [
+      "scanf()",
+      "fgets(STDIN)",
+      "input()",
+      "read()"
+    ],
+    "a": 1,
+    "exp": "<strong>fgets(STDIN)</strong> lit une chaîne depuis l'entrée standard. Utiliser <code>trim()</code> pour enlever le caractère de retour à la ligne."
+  },
+  {
+    "cat": "🐘 PHP",
+    "q": "Comment <span class='hlpu'>concaténer</span> deux chaînes en PHP ?",
+    "opts": [
+      "Avec + (addition)",
+      "Avec . (point)",
+      "Avec & (esperluette)",
+      "Avec , (virgule)"
+    ],
+    "a": 1,
+    "exp": "En PHP, la concaténation utilise l'opérateur <strong>.</strong> (point) : <code>$a = \"Bon\" . \"jour\";</code> (contrairement à Java/Python qui utilisent +)."
+  },
+  {
+    "cat": "🐘 PHP",
+    "q": "Quelle est la différence entre <span class='hlpu'>==</span> et <span class='hlpu'>===</span> en PHP ?",
+    "opts": [
+      "Aucune différence",
+      "=== compare aussi le type en plus de la valeur",
+      "== compare aussi le type",
+      "=== est plus lent"
+    ],
+    "a": 1,
+    "exp": "<strong>==</strong> compare uniquement les valeurs. <strong>===</strong> compare aussi les <strong>types</strong> : <code>0 == false</code> → true, mais <code>0 === false</code> → false."
+  },
+  {
+    "cat": "🐘 PHP",
+    "q": "Une boucle <span class='hlpu'>do-while</span> s'exécute au minimum :",
+    "opts": [
+      "0 fois",
+      "1 fois",
+      "2 fois",
+      "N fois selon la condition"
+    ],
+    "a": 1,
+    "exp": "La boucle <strong>do-while</strong> exécute le bloc <strong>au minimum une fois</strong>, puis vérifie la condition. Contrairement à while qui peut ne jamais s'exécuter."
+  },
+  {
+    "cat": "🐘 PHP",
+    "q": "Comment ajouter un élément à la <span class='hlpu'>fin d'un tableau</span> $t en PHP ?",
+    "opts": [
+      "$t[last] = $v",
+      "$t[] = $v",
+      "array_add($t, $v)",
+      "$t.push($v)"
+    ],
+    "a": 1,
+    "exp": "<strong>$t[] = $valeur</strong> est la syntaxe PHP pour ajouter un élément à la fin d'un tableau. count($t) donne ensuite le nombre d'éléments."
+  },
+  {
+    "cat": "🐘 PHP",
+    "q": "Que fait <span class='hlpu'>foreach($tab as $cle => $val)</span> ?",
+    "opts": [
+      "Parcourt seulement les clés",
+      "Parcourt seulement les valeurs",
+      "Parcourt les clés ET les valeurs simultanément",
+      "Compte les éléments"
+    ],
+    "a": 2,
+    "exp": "La syntaxe <strong>foreach($tab as $cle => $val)</strong> donne accès à la clé/indice ($cle) ET à la valeur ($val) à chaque itération."
+  },
+  {
+    "cat": "🐘 PHP",
+    "q": "En PHP, qu'est-ce qu'une valeur <span class='hlpu'>Falsy</span> ?",
+    "opts": [
+      "Une valeur toujours vraie",
+      "Une valeur considérée comme false (0, \"\", null, \"0\"…)",
+      "Une erreur de type",
+      "Une valeur négative uniquement"
+    ],
+    "a": 1,
+    "exp": "PHP considère comme <strong>false</strong> : 0, 0.0, \"\", \"0\", null, et toute variable non définie. Tout le reste est true."
+  },
+  {
+    "cat": "🐘 PHP",
+    "q": "Que retourne <span class='hlpu'>strlen(\"Bonjour\")</span> ?",
+    "opts": [
+      "6",
+      "7",
+      "8",
+      "\"Bonjour\""
+    ],
+    "a": 1,
+    "exp": "<strong>strlen()</strong> retourne le nombre de caractères. \"Bonjour\" contient <strong>7 caractères</strong> (B-o-n-j-o-u-r)."
+  },
+  {
+    "cat": "🐘 PHP",
+    "q": "Les <span class='hlpu'>tableaux associatifs</span> en PHP utilisent comme clés :",
+    "opts": [
+      "Uniquement des entiers",
+      "Uniquement des chaînes de caractères",
+      "Des entiers OU des chaînes",
+      "Uniquement des booléens"
+    ],
+    "a": 2,
+    "exp": "En PHP, un tableau peut utiliser des <strong>entiers OU des chaînes</strong> comme clés. Ce sont des structures très flexibles."
+  },
+  {
+    "cat": "☕ Java POO",
+    "q": "La <span class='hlor'>POO</span> (Programmation Orientée Objet) repose sur quels 4 piliers ?",
+    "opts": [
+      "Héritage, Polymorphisme, Abstraction, Récursion",
+      "Encapsulation, Héritage, Polymorphisme, Abstraction",
+      "Classes, Méthodes, Attributs, Variables",
+      "Compilation, Exécution, Debug, Test"
+    ],
+    "a": 1,
+    "exp": "Les <strong>4 piliers de la POO</strong> : Encapsulation (cacher les détails), Héritage (réutiliser), Polymorphisme (adapter), Abstraction (modéliser)."
+  },
+  {
+    "cat": "☕ Java POO",
+    "q": "Un <span class='hlor'>constructeur</span> en Java : quelle est sa particularité ?",
+    "opts": [
+      "Il retourne toujours void",
+      "Il a le même nom que la classe et pas de type de retour",
+      "Il peut s'appeler n'importe comment",
+      "Il est optionnel dans toute classe"
+    ],
+    "a": 1,
+    "exp": "Un <strong>constructeur</strong> porte le <strong>même nom que la classe</strong> et n'a <strong>pas de type de retour</strong> (ni void). Il est appelé avec <code>new</code>."
+  },
+  {
+    "cat": "☕ Java POO",
+    "q": "Le mot-clé <span class='hlor'>this</span> en Java représente :",
+    "opts": [
+      "La classe parente",
+      "L'objet courant (l'instance en cours)",
+      "Une méthode statique",
+      "Le constructeur par défaut"
+    ],
+    "a": 1,
+    "exp": "<strong>this</strong> est une référence à <strong>l'objet courant</strong>. Utilisé pour distinguer les attributs des paramètres du même nom."
+  },
+  {
+    "cat": "☕ Java POO",
+    "q": "Dans <span class='hlor'>for(int i=1; i&lt;=5; i++)</span>, combien d'itérations ?",
+    "opts": [
+      "4",
+      "5",
+      "6",
+      "Impossible à savoir"
+    ],
+    "a": 1,
+    "exp": "La boucle s'exécute pour i=1, 2, 3, 4, 5 → <strong>5 itérations</strong>. La condition i≤5 inclut bien la valeur 5."
+  },
+  {
+    "cat": "☕ Java POO",
+    "q": "Le mot-clé <span class='hlor'>extends</span> en Java sert à :",
+    "opts": [
+      "Étendre la mémoire disponible",
+      "Déclarer qu'une classe hérite d'une autre classe",
+      "Créer une interface",
+      "Définir une méthode abstraite"
+    ],
+    "a": 1,
+    "exp": "<strong>extends</strong> déclare la relation d'héritage : <code>class Employe extends Personne</code> → Employe hérite des attributs et méthodes de Personne."
+  },
+  {
+    "cat": "☕ Java POO",
+    "q": "Qu'est-ce qu'une <span class='hlor'>classe abstraite</span> en Java ?",
+    "opts": [
+      "Une classe sans attributs",
+      "Une classe qui ne peut pas être instanciée directement",
+      "Une classe sans méthodes",
+      "Une classe héritée d'Object"
+    ],
+    "a": 1,
+    "exp": "Une <strong>classe abstraite</strong> ne peut <strong>pas être instanciée</strong> (new est interdit). Elle sert de modèle pour les sous-classes qui l'étendent."
+  },
+  {
+    "cat": "☕ Java POO",
+    "q": "Le mot-clé <span class='hlor'>super()</span> dans un constructeur Java :",
+    "opts": [
+      "Crée un nouvel objet de la classe mère",
+      "Appelle le constructeur de la classe mère",
+      "Supprime l'objet courant",
+      "Bloque l'héritage"
+    ],
+    "a": 1,
+    "exp": "<strong>super()</strong> appelle le constructeur de la <strong>classe mère</strong>. Il doit être la <strong>première instruction</strong> du constructeur de la classe fille."
+  },
+  {
+    "cat": "☕ Java POO",
+    "q": "Un attribut <span class='hlor'>private</span> dans une classe mère est-il accessible dans la classe fille ?",
+    "opts": [
+      "Oui directement",
+      "Non — utiliser des getters ou déclarer protected",
+      "Oui via super.attribut",
+      "Oui uniquement dans le même package"
+    ],
+    "a": 1,
+    "exp": "L'héritage <strong>ne rompt pas l'encapsulation</strong>. Un attribut <strong>private</strong> reste inaccessible dans la classe fille. Utiliser <strong>protected</strong> pour le rendre accessible."
+  },
+  {
+    "cat": "☕ Java POO",
+    "q": "Le <span class='hlor'>polymorphisme</span> en Java signifie que :",
+    "opts": [
+      "Plusieurs classes portent le même nom",
+      "La méthode exécutée dépend du type RÉEL de l'objet",
+      "Un objet peut changer de type en cours d'exécution",
+      "Plusieurs méthodes ont le même nom dans une classe"
+    ],
+    "a": 1,
+    "exp": "Le <strong>polymorphisme</strong> (dispatch dynamique) : même si une variable est déclarée de type Personne, si l'objet est un Employe, c'est la méthode de <strong>Employe</strong> qui s'exécute."
+  },
+  {
+    "cat": "☕ Java POO",
+    "q": "Une classe fille doit-elle implémenter les <span class='hlor'>méthodes abstraites</span> de la mère ?",
+    "opts": [
+      "Non, c'est optionnel",
+      "Oui, sauf si elle est elle-même abstraite",
+      "Non, uniquement si elle le souhaite",
+      "Oui, mais seulement en Java 8+"
+    ],
+    "a": 1,
+    "exp": "<strong>Oui</strong>, une classe concrète doit implémenter <strong>toutes</strong> les méthodes abstraites. Sinon, elle doit elle-même être déclarée <strong>abstract</strong>."
+  },
+  {
+    "cat": "🗄️ MCD",
+    "q": "Dans un MCD, une <span class='hlte'>entité</span> représente :",
+    "opts": [
+      "Un lien entre deux tables",
+      "Un objet, une personne ou un concept du monde réel",
+      "Une règle de gestion",
+      "Un champ calculé"
+    ],
+    "a": 1,
+    "exp": "Une <strong>entité</strong> représente tout objet, personne, lieu ou concept du monde réel <strong>pertinent</strong> pour le système d'information."
+  },
+  {
+    "cat": "🗄️ MCD",
+    "q": "Dans le MCD, les <span class='hlte'>identifiants</span> sont représentés :",
+    "opts": [
+      "En italique",
+      "En gras",
+      "Soulignés",
+      "Entre crochets []"
+    ],
+    "a": 2,
+    "exp": "Dans le MCD, les identifiants sont représentés <strong>soulignés</strong>. Toute entité doit en posséder un."
+  },
+  {
+    "cat": "🗄️ MCD",
+    "q": "Une cardinalité <span class='hlte'>1,n</span> signifie :",
+    "opts": [
+      "Au minimum 0, au maximum 1",
+      "Au minimum 1, au maximum plusieurs",
+      "Exactement 1 participation",
+      "Au minimum 0, au maximum plusieurs"
+    ],
+    "a": 1,
+    "exp": "La cardinalité <strong>1,n</strong> = participation <strong>obligatoire</strong> (min 1) et <strong>multiple</strong> (max n). Exemple : un client loue au moins 1 cassette."
+  },
+  {
+    "cat": "🗄️ MCD",
+    "q": "Une cardinalité <span class='hlte'>0,n</span> signifie :",
+    "opts": [
+      "Obligatoirement plusieurs",
+      "Exactement 0 ou 1",
+      "Participation facultative (0 ou plusieurs)",
+      "Toujours exactement n"
+    ],
+    "a": 2,
+    "exp": "La cardinalité <strong>0,n</strong> = participation <strong>facultative</strong> (peut être 0) et <strong>multiple</strong>. Exemple : un acteur peut ne jouer dans aucun film."
+  },
+  {
+    "cat": "🗄️ MCD",
+    "q": "Une association dans un MCD est représentée par :",
+    "opts": [
+      "Un rectangle",
+      "Un verbe dans un ovale",
+      "Un losange vide",
+      "Une flèche simple"
+    ],
+    "a": 1,
+    "exp": "Une <strong>association</strong> est représentée par un <strong>verbe dans un ovale</strong>. Ex : Loue, Joue, Enseigne, Commercialise."
+  },
+  {
+    "cat": "🗄️ MCD",
+    "q": "Une propriété <span class='hlte'>calculée</span> comme MontantHT (= QTES × PRIX_UNIT) :",
+    "opts": [
+      "Doit figurer dans le MCD comme les autres",
+      "Est éliminée du MCD (dictionnaire réduit)",
+      "Devient l'identifiant de l'entité",
+      "Est stockée dans une association"
+    ],
+    "a": 1,
+    "exp": "Les propriétés <strong>calculées</strong> sont <strong>éliminées du MCD</strong>. Exception : données de situation (stock, solde) conservées même si calculables."
+  },
+  {
+    "cat": "🗄️ MCD",
+    "q": "Le <span class='hlte'>dictionnaire des données</span> répertorie :",
+    "opts": [
+      "Uniquement les identifiants",
+      "Toutes les propriétés du système d'information",
+      "Seulement les associations",
+      "Les cardinalités uniquement"
+    ],
+    "a": 1,
+    "exp": "Le dictionnaire des données catalogue <strong>TOUTES les propriétés</strong> du système. On en tire le dictionnaire réduit en supprimant calculés et paramètres."
+  },
+  {
+    "cat": "🗄️ MCD",
+    "q": "Le principe <span class='hlte'>\"pas de polysèmes\"</span> signifie :",
+    "opts": [
+      "Pas de données calculées",
+      "Deux propriétés différentes ne doivent pas avoir le même nom",
+      "Les propriétés doivent être simples",
+      "Pas de clés concaténées"
+    ],
+    "a": 1,
+    "exp": "<strong>Pas de polysèmes</strong> = pas deux propriétés avec le même nom. Utiliser NomCli et NomFour plutôt que Nom pour les deux."
+  },
+  {
+    "cat": "🗄️ MCD",
+    "q": "MCD signifie :",
+    "opts": [
+      "Modèle Conceptuel de Définitions",
+      "Modèle Conceptuel de Données",
+      "Modèle Créatif de Données",
+      "Méthode Conceptuelle de Design"
+    ],
+    "a": 1,
+    "exp": "<strong>MCD = Modèle Conceptuel de Données</strong>. Dans MERISE, aussi appelé Modèle Entité-Association."
+  },
+  {
+    "cat": "🗄️ MCD",
+    "q": "Une <span class='hlte'>propriété d'association</span> est utilisée quand :",
+    "opts": [
+      "L'association a plus de deux entités",
+      "Une propriété ne peut pas être rattachée à une seule entité",
+      "On veut copier une propriété d'entité",
+      "L'identifiant est trop long"
+    ],
+    "a": 1,
+    "exp": "Une propriété appartient à une association quand elle <strong>dépend de PLUSIEURS entités</strong> simultanément. Ex : l'horaire dépend de la Classe ET de la Matière."
+  }
 ]);
