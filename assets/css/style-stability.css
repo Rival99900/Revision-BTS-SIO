@@ -161,3 +161,198 @@
     min-width: 0;
   }
 }
+
+/* =====================================================
+   Responsive hardening — fiches, tableaux et boutons
+   ===================================================== */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.page-panel,
+.panel,
+.card,
+.module-card,
+.chapter-card,
+.cmpc,
+.qcard,
+.alert,
+.bq,
+.code,
+.source-note,
+.hero > *,
+.cg > *,
+.cmp > * {
+  min-width: 0;
+  max-width: 100%;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+p,
+li,
+td,
+th,
+.source-note,
+.module-card h3,
+.chapter-card h3,
+.hero h2,
+.st,
+.card h3 {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+.code,
+pre {
+  max-width: 100%;
+  overflow-x: auto;
+  tab-size: 4;
+}
+
+.table-scroll {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--green-dim) rgba(0,0,0,.28);
+  margin: 13px 0 20px;
+  border-radius: 4px;
+}
+
+.table-scroll .tbl {
+  margin: 0;
+  min-width: 760px;
+}
+
+.table-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+
+.table-scroll::-webkit-scrollbar-track {
+  background: rgba(0,0,0,.28);
+}
+
+.table-scroll::-webkit-scrollbar-thumb {
+  background: var(--green-dim);
+  border-radius: 999px;
+}
+
+.vocab-example {
+  min-width: 280px;
+  line-height: 1.55;
+}
+
+.smallbtn,
+.navbtn,
+.yearbtn,
+.sb,
+.filterbtn,
+.validate,
+.nextbtn,
+.bn,
+.bres,
+.cb {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 700px) {
+  .site-header h1,
+  .site-header .sub,
+  .prompt {
+    overflow-wrap: anywhere;
+  }
+
+  .page-panel,
+  .panel {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .hero-actions {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 7px;
+  }
+
+  .hero-actions .smallbtn {
+    width: 100%;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .stabs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 6px;
+  }
+
+  .sb {
+    width: 100%;
+    min-height: 40px;
+    padding: 7px 8px;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .tbl {
+    font-size: .78rem;
+  }
+
+  .tbl th,
+  .tbl td {
+    padding: 7px 9px;
+  }
+
+  .cn {
+    white-space: normal;
+  }
+
+  .table-scroll .tbl {
+    min-width: 680px;
+  }
+}
+
+@media (max-width: 420px) {
+  .container {
+    padding-left: 9px;
+    padding-right: 9px;
+  }
+
+  .page-panel,
+  .panel {
+    padding-left: 11px;
+    padding-right: 11px;
+  }
+
+  .topnav,
+  .hero-actions,
+  .stabs,
+  .qstats {
+    grid-template-columns: 1fr;
+  }
+
+  .navbtn,
+  .yearbtn,
+  .smallbtn,
+  .sb {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .table-scroll .tbl {
+    min-width: 620px;
+  }
+}

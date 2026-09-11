@@ -325,8 +325,7 @@
      <div class="st cy">
       Commandes Windows &amp; Agent relais
      </div>
-     <div class="code cy">
-      # Commandes Windows (ipconfig) :
+     <div class="code cy"># Commandes Windows (ipconfig) :
 ipconfig /all       # affiche toute la configuration IP
 ipconfig /renew     # envoie DHCPREQUEST (renouvellement du bail)
 ipconfig /release   # envoie DHCPRELEASE (lib&egrave;re l'adresse)
@@ -334,8 +333,7 @@ ipconfig /release   # envoie DHCPRELEASE (lib&egrave;re l'adresse)
 # &Eacute;quivalent Linux :
 ifconfig
 dhclient -r         # release
-dhclient            # renew
-     </div>
+dhclient            # renew</div>
      <div class="alert acy">
       💡
       <strong>
@@ -823,8 +821,7 @@ dhclient            # renew
      <div class="st cy">
       Fichiers de configuration DNS
      </div>
-     <div class="code cy">
-      # === Fichier named.hosts (zone btsig.lmd.fr) ===
+     <div class="code cy"># === Fichier named.hosts (zone btsig.lmd.fr) ===
 @ IN SOA bach.btsig.lmd.fr Daniel.Dennet.bach.btsig.lmd.fr (
     32        ; num&eacute;ro de s&eacute;rie (incr&eacute;ment&eacute; &agrave; chaque modification)
     86400     ; rafra&icirc;chissement : 1 fois par jour
@@ -838,18 +835,15 @@ Bach   IN A   200.100.40.11      ; IP de la machine Bach
 Escher IN A   200.100.40.12      ; IP de la machine Escher
 Godel  IN A   200.100.40.10      ; IP de la machine Godel
 www    IN CNAME escher           ; alias www &rarr; escher
-ftp    IN CNAME Godel            ; alias ftp &rarr; Godel
-     </div>
-     <div class="code cy">
-      # === Fichier d'amor&ccedil;age named.boot (BIND) ===
+ftp    IN CNAME Godel            ; alias ftp &rarr; Godel</div>
+     <div class="code cy"># === Fichier d'amor&ccedil;age named.boot (BIND) ===
 Directory  c:\winnts\system32\dns
 Cache      .              named.ca    ; serveurs racine Internet
 Primary    btsig.lmd.fr   named.hosts ; zone primaire de ce serveur
 
 # === Commandes de v&eacute;rification ===
 nslookup montblanc.btsig.lmd.fr   # r&eacute;solution directe (nom &rarr; IP)
-nslookup 200.100.40.11             # r&eacute;solution inverse (IP &rarr; nom)
-     </div>
+nslookup 200.100.40.11             # r&eacute;solution inverse (IP &rarr; nom)</div>
      <div class="st cy">
       Int&eacute;gration DNS-WINS (environnement Windows)
      </div>

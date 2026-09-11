@@ -263,8 +263,7 @@
        </p>
       </div>
      </div>
-     <div class="code or">
-      public class Voiture {
+     <div class="code or">public class Voiture {
     // Attributs priv&eacute;s (encapsulation)
     private String marque;
     private int    annee;
@@ -295,8 +294,7 @@
 Voiture v1 = new Voiture("Toyota", 2020);
 Voiture v2 = new Voiture("Renault", 2019);
 v1.afficher(); // Toyota - 2020
-v2.afficher(); // Renault - 2019
-     </div>
+v2.afficher(); // Renault - 2019</div>
      <div class="st or">
       Les 4 Piliers de la POO
      </div>
@@ -425,37 +423,31 @@ v2.afficher(); // Renault - 2019
        <h3>
         While
        </h3>
-       <div class="code or" style="margin-top:8px">
-        int i = 1;
+       <div class="code or" style="margin-top:8px">int i = 1;
 while (i &lt;= 3) {
     System.out.println(i);
     i = i + 1;
 }
-// Affiche : 1  2  3
-       </div>
+// Affiche : 1  2  3</div>
       </div>
       <div class="card bl">
        <h3>
         For
        </h3>
-       <div class="code bl" style="margin-top:8px">
-        for (int i = 1; i &lt;= 3; i++) {
+       <div class="code bl" style="margin-top:8px">for (int i = 1; i &lt;= 3; i++) {
     System.out.println(i);
 }
-// Affiche : 1  2  3
-       </div>
+// Affiche : 1  2  3</div>
       </div>
       <div class="card">
        <h3>
         Do-While
        </h3>
-       <div class="code" style="margin-top:8px">
-        do {
+       <div class="code" style="margin-top:8px">do {
     System.out.println(i);
     i++;
 } while (i &lt;= 3);
-// S'ex&eacute;cute AU MOINS UNE FOIS !
-       </div>
+// S'ex&eacute;cute AU MOINS UNE FOIS !</div>
       </div>
      </div>
      <div class="st or">
@@ -473,8 +465,7 @@ while (i &lt;= 3) {
        pour chaque it&eacute;ration de la boucle externe.
       </p>
      </div>
-     <div class="code or">
-      for (int i = 1; i &lt;= 5; i++) {
+     <div class="code or">for (int i = 1; i &lt;= 5; i++) {
     for (int j = 0; j &lt; i; j++) {
         System.out.print("*");
     }
@@ -485,8 +476,7 @@ while (i &lt;= 3) {
 // **
 // ***
 // ****
-// *****
-     </div>
+// *****</div>
      <div class="st or">
       Op&eacute;rateurs de comparaison Java
      </div>
@@ -672,8 +662,7 @@ while (i &lt;= 3) {
        </p>
       </div>
      </div>
-     <div class="code or">
-      // === Classe M&Egrave;RE ===
+     <div class="code or">// === Classe M&Egrave;RE ===
 public class Personne {
     private String nom;   // private = inaccessible dans les filles !
 
@@ -705,8 +694,7 @@ public class Employe extends Personne {
 // === Utilisation ===
 Employe e1 = new Employe("Sarah", 2000);
 System.out.println(e1.toString());
-// &rarr; "je m'appelle Sarah mon salaire est 2000.0"
-     </div>
+// &rarr; "je m'appelle Sarah mon salaire est 2000.0"</div>
      <div class="alert aor">
       ⚠️
       <strong>
@@ -744,8 +732,7 @@ System.out.println(e1.toString());
        de l'objet qui est ex&eacute;cut&eacute;e, m&ecirc;me si la variable est d&eacute;clar&eacute;e avec le type de la classe m&egrave;re.
       </p>
      </div>
-     <div class="code or">
-      Personne p1 = new Personne("Joe");
+     <div class="code or">Personne p1 = new Personne("Joe");
 Employe  e1 = new Employe("Sarah", 2000);
 Employe  e2 = new Employe("Sunny", 1800);
 
@@ -757,8 +744,7 @@ afficherPersonne(e2); // &rarr; "je m'appelle Sunny mon salaire est 1800.0"
 public static void afficherPersonne(Personne unePersonne) {
     // ...mais ex&eacute;cute la m&eacute;thode de la CLASSE R&Eacute;ELLE de l'objet !
     System.out.println(unePersonne.toString());
-}
-     </div>
+}</div>
      <div class="cg">
       <div class="card or">
        <h3>
@@ -828,8 +814,7 @@ public static void afficherPersonne(Personne unePersonne) {
        directement. Elle sert &agrave; factoriser des propri&eacute;t&eacute;s communes et force les sous-classes &agrave; impl&eacute;menter certaines m&eacute;thodes.
       </p>
      </div>
-     <div class="code or">
-      // === Classe ABSTRAITE ===
+     <div class="code or">// === Classe ABSTRAITE ===
 public abstract class Figure {
     // M&eacute;thodes abstraites : PAS de corps, juste la signature
     public abstract double getPerimetre();
@@ -871,8 +856,7 @@ public class Cercle extends Figure {
 Figure f1 = new Rectangle(5, 3);
 Figure f2 = new Cercle(4);
 f1.afficher(); // Aire = 15.0, Perimetre = 16.0
-f2.afficher(); // Aire = 50.26..., Perimetre = 25.13...
-     </div>
+f2.afficher(); // Aire = 50.26..., Perimetre = 25.13...</div>
      <div class="st or">
       R&eacute;cap H&eacute;ritage &amp; Abstraction &mdash; Mots-cl&eacute;s
      </div>

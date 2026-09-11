@@ -246,17 +246,14 @@
         </b>
         de fin !)
        </p>
-       <div class="code pu" style="margin-top:8px">
-        $a = fgets(STDIN);   // avec le \n
-$a = trim(fgets(STDIN)); // sans le \n ✅
-       </div>
+       <div class="code pu" style="margin-top:8px">$a = fgets(STDIN);   // avec le \n
+$a = trim(fgets(STDIN)); // sans le \n ✅</div>
       </div>
      </div>
      <div class="st pu">
       Saisie de plusieurs variables
      </div>
-     <div class="code pu">
-      &lt;?php
+     <div class="code pu">&lt;?php
 // M&eacute;thode 1 : saisies s&eacute;par&eacute;es
 $a = trim(fgets(STDIN));
 $b = trim(fgets(STDIN));
@@ -269,8 +266,7 @@ list($a, $b) = explode(' ', trim($s));
 // Affichage
 print("la valeur $a a &eacute;t&eacute; saisie dans \$a\n");
 print("Premi&egrave;re: $a, Deuxi&egrave;me: $b\n");
-?&gt;
-     </div>
+?&gt;</div>
     </div>
     TYPES &amp; OP&Eacute;RATEURS
     <div class="sc" id="php-types">
@@ -416,15 +412,13 @@ print("Premi&egrave;re: $a, Deuxi&egrave;me: $b\n");
        <h3>
         Exemple
        </h3>
-       <div class="code" style="margin-top:8px">
-        $a = 1;
+       <div class="code" style="margin-top:8px">$a = 1;
 $b = 2;
 $c = $a + $b;    // 3
 print($c);       // affiche 3
 
 print(intdiv(7, 2));  // &rarr; 3
-print(7 % 2);         // &rarr; 1 (reste)
-       </div>
+print(7 % 2);         // &rarr; 1 (reste)</div>
       </div>
      </div>
      <div class="st pu">
@@ -466,16 +460,14 @@ print(7 % 2);         // &rarr; 1 (reste)
        <h3>
         Op&eacute;rations sur caract&egrave;res
        </h3>
-       <div class="code bl" style="margin-top:8px">
-        $t = 'b';   // code ASCII 98
+       <div class="code bl" style="margin-top:8px">$t = 'b';   // code ASCII 98
 $t++;       // code 99 = 'c'
 print("$t\n"); // affiche c
 
 // Boucle sur les lettres :
 for ($c = 'a'; $c &lt;= 'z'; $c++) {
     print($c . " ");  // a b c ... z
-}
-       </div>
+}</div>
       </div>
       <div class="card am">
        <h3>
@@ -524,12 +516,10 @@ for ($c = 'a'; $c &lt;= 'z'; $c++) {
         </b>
         &mdash; lettre &agrave; l'indice $i (commence &agrave; 0)
        </p>
-       <div class="code" style="margin-top:8px">
-        $t = "Bonjour";
+       <div class="code" style="margin-top:8px">$t = "Bonjour";
 print($t[0]);         // B
 print($t[6]);         // r
-print(strlen($t));    // 7
-       </div>
+print(strlen($t));    // 7</div>
       </div>
      </div>
     </div>
@@ -543,23 +533,19 @@ print(strlen($t));    // 7
        <h3>
         Syntaxe if
        </h3>
-       <div class="code pu" style="margin-top:8px">
-        if ($a &gt; 1) {
+       <div class="code pu" style="margin-top:8px">if ($a &gt; 1) {
     print('Sup&eacute;rieur &agrave; 1');
-}
-       </div>
+}</div>
       </div>
       <div class="card bl">
        <h3>
         Syntaxe if / else
        </h3>
-       <div class="code bl" style="margin-top:8px">
-        if ($a &gt; 1) {
+       <div class="code bl" style="margin-top:8px">if ($a &gt; 1) {
     print('Sup&eacute;rieur &agrave; 1');
 } else {
     print('Inf&eacute;rieur ou &eacute;gal &agrave; 1');
-}
-       </div>
+}</div>
       </div>
       <div class="card am">
        <h3>
@@ -568,26 +554,22 @@ print(strlen($t));    // 7
        <p>
         Si une seule instruction, les accolades sont facultatives :
        </p>
-       <div class="code am" style="margin-top:8px">
-        if ($a &gt; 1)
+       <div class="code am" style="margin-top:8px">if ($a &gt; 1)
     print('Sup &agrave; 1');
 else
-    print('Inf ou &eacute;gal');
-       </div>
+    print('Inf ou &eacute;gal');</div>
       </div>
       <div class="card pu">
        <h3>
         Elseif (sinon si)
        </h3>
-       <div class="code pu" style="margin-top:8px">
-        if ($a &gt; 10) {
+       <div class="code pu" style="margin-top:8px">if ($a &gt; 10) {
     print("Grand");
 } elseif ($a &gt; 0) {
     print("Positif");
 } else {
     print("N&eacute;gatif ou z&eacute;ro");
-}
-       </div>
+}</div>
       </div>
      </div>
      <div class="st pu">
@@ -783,8 +765,7 @@ else
        </p>
       </div>
      </div>
-     <div class="code pu">
-      $age    = 20;
+     <div class="code pu">$age    = 20;
 $argent = 50;
 
 $estMajeur    = ($age &gt;= 18);         // true
@@ -800,8 +781,7 @@ if ($peutEntrer) {
 
 // Test valeur falsy :
 $nom = "";
-if (!$nom) print("Erreur : nom vide !");
-     </div>
+if (!$nom) print("Erreur : nom vide !");</div>
     </div>
     BOUCLES
     <div class="sc" id="php-boucles">
@@ -820,14 +800,12 @@ if (!$nom) print("Erreur : nom vide !");
         </b>
         .
        </p>
-       <div class="code pu" style="margin-top:8px">
-        $count = 1;
+       <div class="code pu" style="margin-top:8px">$count = 1;
 while ($count &lt;= 5) {
     print($count . " ");
     $count++;
 }
-// Affiche : 1 2 3 4 5
-       </div>
+// Affiche : 1 2 3 4 5</div>
       </div>
       <div class="card bl">
        <h3>
@@ -840,13 +818,11 @@ while ($count &lt;= 5) {
         </b>
         , puis v&eacute;rifie la condition.
        </p>
-       <div class="code bl" style="margin-top:8px">
-        do {
+       <div class="code bl" style="margin-top:8px">do {
     print($count . " ");
     $count++;
 } while ($count &lt;= 5);
-// Ex&eacute;cut&eacute; au moins 1 fois !
-       </div>
+// Ex&eacute;cut&eacute; au moins 1 fois !</div>
       </div>
       <div class="card am">
        <h3>
@@ -859,12 +835,10 @@ while ($count &lt;= 5) {
         </b>
         it&eacute;rer.
        </p>
-       <div class="code am" style="margin-top:8px">
-        for ($i = 1; $i &lt;= 5; $i++) {
+       <div class="code am" style="margin-top:8px">for ($i = 1; $i &lt;= 5; $i++) {
     print($i . " ");
 }
-// Affiche : 1 2 3 4 5
-       </div>
+// Affiche : 1 2 3 4 5</div>
       </div>
      </div>
      <div class="st pu">
@@ -922,16 +896,14 @@ while ($count &lt;= 5) {
        </td>
       </tr>
      </table>
-     <div class="code pu">
-      // Exemple concret : contr&ocirc;le de saisie avec do-while
+     <div class="code pu">// Exemple concret : contr&ocirc;le de saisie avec do-while
 do {
     $age = intval(trim(fgets(STDIN)));
     if ($age &lt; 0 || $age &gt; 120) {
         print("&Acirc;ge invalide, ressaissez !\n");
     }
 } while ($age &lt; 0 || $age &gt; 120);
-print("&Acirc;ge saisi : $age\n");
-     </div>
+print("&Acirc;ge saisi : $age\n");</div>
     </div>
     TABLEAUX &amp; CHA&Icirc;NES
     <div class="sc" id="php-tab">
@@ -943,11 +915,9 @@ print("&Acirc;ge saisi : $age\n");
        <h3>
         Cr&eacute;er un tableau
        </h3>
-       <div class="code pu" style="margin-top:8px">
-        $a = array();    // vide
+       <div class="code pu" style="margin-top:8px">$a = array();    // vide
 $a = [1, 2, 3]; // initialis&eacute;
-$a[] = $v;      // ajouter &agrave; la fin
-       </div>
+$a[] = $v;      // ajouter &agrave; la fin</div>
       </div>
       <div class="card bl">
        <h3>
@@ -959,22 +929,18 @@ $a[] = $v;      // ajouter &agrave; la fin
          0
         </b>
        </p>
-       <div class="code bl" style="margin-top:8px">
-        $a[0]; $a[1]; $a[2];
+       <div class="code bl" style="margin-top:8px">$a[0]; $a[1]; $a[2];
 // Taille : count($a)
-// Plage valide : 0 &agrave; count($a)-1
-       </div>
+// Plage valide : 0 &agrave; count($a)-1</div>
       </div>
       <div class="card am">
        <h3>
         Taille et boucle for
        </h3>
-       <div class="code am" style="margin-top:8px">
-        $t = [10, 20, 30, 40];
+       <div class="code am" style="margin-top:8px">$t = [10, 20, 30, 40];
 for ($i = 0; $i &lt; count($t); $i++) {
     print($t[$i] . "\n");
-}
-       </div>
+}</div>
       </div>
       <div class="card">
        <h3>
@@ -991,19 +957,16 @@ for ($i = 0; $i &lt; count($t); $i++) {
         </b>
         du tableau.
        </p>
-       <div class="code" style="margin-top:8px">
-        $noms = [];
+       <div class="code" style="margin-top:8px">$noms = [];
 $noms[] = "Alice";  // index 0
 $noms[] = "Bob";    // index 1
-$noms[] = "Carla";  // index 2
-       </div>
+$noms[] = "Carla";  // index 2</div>
       </div>
      </div>
      <div class="st pu">
       Parcours avec foreach
      </div>
-     <div class="code pu">
-      // foreach avec cl&eacute; et valeur :
+     <div class="code pu">// foreach avec cl&eacute; et valeur :
 foreach ($tableau as $index =&gt; $valeur) {
     print("$index : $valeur\n");
 }
@@ -1011,8 +974,7 @@ foreach ($tableau as $index =&gt; $valeur) {
 // foreach valeur seulement :
 foreach ($tableau as $valeur) {
     print($valeur . "\n");
-}
-     </div>
+}</div>
      <div class="st pu">
       Tableaux associatifs
      </div>
@@ -1033,16 +995,14 @@ foreach ($tableau as $valeur) {
        <h3>
         Exemple
        </h3>
-       <div class="code bl" style="margin-top:8px">
-        $etudiant = array();
+       <div class="code bl" style="margin-top:8px">$etudiant = array();
 $etudiant['nom']    = 'Alice';
 $etudiant['prenom'] = 'Dupont';
 $etudiant['note']   = 17.5;
 
 foreach ($etudiant as $cle =&gt; $val) {
     print("$cle =&gt; $val\n");
-}
-       </div>
+}</div>
       </div>
       <div class="card am">
        <h3>
@@ -1059,11 +1019,9 @@ foreach ($etudiant as $cle =&gt; $val) {
         </b>
         &rarr; vrai si la cl&eacute; est d&eacute;finie
        </p>
-       <div class="code am" style="margin-top:8px">
-        if (isset($etudiant['note'])) {
+       <div class="code am" style="margin-top:8px">if (isset($etudiant['note'])) {
     print("Note : " . $etudiant['note']);
-}
-       </div>
+}</div>
       </div>
      </div>
      <div class="st pu">
@@ -1077,14 +1035,12 @@ foreach ($etudiant as $cle =&gt; $val) {
        <p>
         Subdivise une cha&icirc;ne en tableau selon un s&eacute;parateur.
        </p>
-       <div class="code pu" style="margin-top:8px">
-        $t = explode(',', "a,b,c,d");
+       <div class="code pu" style="margin-top:8px">$t = explode(',', "a,b,c,d");
 // $t[0]="a" $t[1]="b" $t[2]="c" $t[3]="d"
 
 // Lire une ligne d'entiers s&eacute;par&eacute;s par espaces :
 $s = trim(fgets(STDIN));
-$nums = explode(' ', $s);
-       </div>
+$nums = explode(' ', $s);</div>
       </div>
       <div class="card bl">
        <h3>
@@ -1097,13 +1053,11 @@ $nums = explode(' ', $s);
         </b>
         d'une variable. Outil de d&eacute;bogage essentiel.
        </p>
-       <div class="code bl" style="margin-top:8px">
-        var_dump($t);
+       <div class="code bl" style="margin-top:8px">var_dump($t);
 // array(4) {
 //   [0]=&gt; string(1) "a"
 //   [1]=&gt; string(1) "b" ...
-// }
-       </div>
+// }</div>
       </div>
       <div class="card am">
        <h3>

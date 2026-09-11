@@ -198,11 +198,9 @@
        </p>
       </div>
      </div>
-     <div class="code te">
-      SELECT colonne1, colonne2
+     <div class="code te">SELECT colonne1, colonne2
 FROM nom_table
-WHERE condition;
-     </div>
+WHERE condition;</div>
      <div class="st te">
       Projection, doublons et classement
      </div>
@@ -214,11 +212,9 @@ WHERE condition;
        <p>
         Supprime les lignes en double dans le r&eacute;sultat d'une projection.
        </p>
-       <div class="code te">
-        SELECT DISTINCT Ville
+       <div class="code te">SELECT DISTINCT Ville
 FROM CLIENT
-WHERE Cat = 'B2';
-       </div>
+WHERE Cat = 'B2';</div>
       </div>
       <div class="card bl">
        <h3>
@@ -235,11 +231,9 @@ WHERE Cat = 'B2';
         </code>
         .
        </p>
-       <div class="code bl">
-        SELECT Nom, Salaire
+       <div class="code bl">SELECT Nom, Salaire
 FROM Employes
-ORDER BY Salaire DESC;
-       </div>
+ORDER BY Salaire DESC;</div>
       </div>
      </div>
      <div class="st te">
@@ -366,17 +360,13 @@ ORDER BY Salaire DESC;
        <h4 class="gn">
         Commence par b
        </h4>
-       <div class="code">
-        WHERE Nomtype LIKE 'b%';
-       </div>
+       <div class="code">WHERE Nomtype LIKE 'b%';</div>
       </div>
       <div class="cmpc">
        <h4 class="bl">
         Finit par r
        </h4>
-       <div class="code bl">
-        WHERE Nomtype LIKE '%r';
-       </div>
+       <div class="code bl">WHERE Nomtype LIKE '%r';</div>
       </div>
      </div>
     </section>
@@ -406,22 +396,18 @@ ORDER BY Salaire DESC;
       </code>
       sans crit&egrave;re de jointure, le support montre que toutes les combinaisons de lignes sont produites.
      </div>
-     <div class="code te">
-      SELECT Numembarcation, Couleur, Nomtype
+     <div class="code te">SELECT Numembarcation, Couleur, Nomtype
 FROM EMBARCATION, TYPEMBARCATION
-WHERE EMBARCATION.Codetype = TYPEMBARCATION.Codetype;
-     </div>
+WHERE EMBARCATION.Codetype = TYPEMBARCATION.Codetype;</div>
      <div class="st te">
       Jointure sur plusieurs tables
      </div>
-     <div class="code te">
-      SELECT lc.Numlocation, Dateloc, emb.Numembarcation, Nomtype
+     <div class="code te">SELECT lc.Numlocation, Dateloc, emb.Numembarcation, Nomtype
 FROM EMBARCATION emb, TYPEMBARCATION t, LOUER lr, LOCATION lc
 WHERE emb.Codetype = t.Codetype
   AND lr.Numembarcation = emb.Numembarcation
   AND lr.Numlocation = lc.Numlocation
-ORDER BY emb.Numembarcation;
-     </div>
+ORDER BY emb.Numembarcation;</div>
      <div class="cg">
       <div class="card te">
        <h3>
@@ -547,11 +533,9 @@ ORDER BY emb.Numembarcation;
        <p>
         Regroupe les lignes selon une ou plusieurs expressions avant le calcul d'un agr&eacute;gat.
        </p>
-       <div class="code">
-        SELECT couleur, COUNT(*)
+       <div class="code">SELECT couleur, COUNT(*)
 FROM embarcation
-GROUP BY couleur;
-       </div>
+GROUP BY couleur;</div>
       </div>
       <div class="cmpc">
        <h4 class="bl">
@@ -560,12 +544,10 @@ GROUP BY couleur;
        <p>
         Le support de synth&egrave;se SQL l'utilise pour filtrer les groupes apr&egrave;s l'agr&eacute;gation.
        </p>
-       <div class="code bl">
-        SELECT departement, AVG(salaire)
+       <div class="code bl">SELECT departement, AVG(salaire)
 FROM Employes
 GROUP BY departement
-HAVING AVG(salaire) &gt; 3000;
-       </div>
+HAVING AVG(salaire) &gt; 3000;</div>
       </div>
      </div>
     </section>
@@ -615,8 +597,7 @@ HAVING AVG(salaire) &gt; 3000;
        </p>
       </div>
      </div>
-     <div class="code te">
-      INSERT INTO table (champ1, champ2, ...)
+     <div class="code te">INSERT INTO table (champ1, champ2, ...)
 VALUES (val1, val2, ...);
 
 UPDATE table
@@ -624,8 +605,7 @@ SET champ1 = expr1, champ2 = expr2
 WHERE pr&eacute;dicat;
 
 DELETE FROM table
-WHERE pr&eacute;dicat;
-     </div>
+WHERE pr&eacute;dicat;</div>
      <div class="alert aa">
       <strong>
        Point de vigilance :
@@ -647,12 +627,10 @@ WHERE pr&eacute;dicat;
      <div class="st te">
       Insertion &agrave; partir d'une requ&ecirc;te
      </div>
-     <div class="code te">
-      INSERT INTO table (champ1, champ2, ...)
+     <div class="code te">INSERT INTO table (champ1, champ2, ...)
 SELECT ...
 FROM ...
-WHERE ...;
-     </div>
+WHERE ...;</div>
     </section>
     <section class="sc" id="sql-ldd">
      <div class="st te">
@@ -677,13 +655,11 @@ WHERE ...;
       </strong>
       .
      </p>
-     <div class="code te">
-      CREATE TABLE NomTable (
+     <div class="code te">CREATE TABLE NomTable (
   Colonne1 Type [Contraintes],
   Colonne2 Type [Contraintes],
   ...
-);
-     </div>
+);</div>
      <div class="st te">
       Contraintes de champs
      </div>
@@ -752,9 +728,7 @@ WHERE ...;
        <h4 class="gn">
         Cl&eacute; primaire
        </h4>
-       <div class="code">
-        PRIMARY KEY (NumService)
-       </div>
+       <div class="code">PRIMARY KEY (NumService)</div>
        <p>
         Identifie chaque enregistrement.
        </p>
@@ -763,10 +737,8 @@ WHERE ...;
        <h4 class="bl">
         Cl&eacute; &eacute;trang&egrave;re
        </h4>
-       <div class="code bl">
-        FOREIGN KEY (NumServiceEmploye)
-REFERENCES service (NumService)
-       </div>
+       <div class="code bl">FOREIGN KEY (NumServiceEmploye)
+REFERENCES service (NumService)</div>
        <p>
         Assure la r&eacute;f&eacute;rence vers une autre table.
        </p>
@@ -781,16 +753,14 @@ REFERENCES service (NumService)
      <div class="st te">
       Vues et suppression
      </div>
-     <div class="code te">
-      CREATE VIEW nom_vue
+     <div class="code te">CREATE VIEW nom_vue
 AS SELECT *
 FROM EMPLOYE
 WHERE nom_service = 'laboratoire';
 
 DROP TABLE nom_table;
 DROP VIEW nom_vue;
-TRUNCATE TABLE nom_table;
-     </div>
+TRUNCATE TABLE nom_table;</div>
      <div class="alert abl">
       <strong>
        TRUNCATE TABLE :
@@ -800,8 +770,7 @@ TRUNCATE TABLE nom_table;
      <div class="st te">
       Modification de structure
      </div>
-     <div class="code te">
-      ALTER TABLE nom_table
+     <div class="code te">ALTER TABLE nom_table
 ADD COLUMN nom_champ Type_donnee;
 
 ALTER TABLE nom_table
@@ -811,8 +780,7 @@ ALTER TABLE nom_table
 DROP CONSTRAINT nom_contrainte;
 
 ALTER TABLE nom_table
-MODIFY nomChamp type_champ;
-     </div>
+MODIFY nomChamp type_champ;</div>
      <div class="st te">
       Commandes MySQL vues dans le TP
      </div>
@@ -966,8 +934,7 @@ MODIFY nomChamp type_champ;
         Corrections pr&eacute;sentes dans les supports &mdash; exemples
        </strong>
       </summary>
-      <div class="code te">
-       -- Couleurs : appartenance &agrave; une liste
+      <div class="code te">-- Couleurs : appartenance &agrave; une liste
 SELECT *
 FROM EMBARCATION
 WHERE Couleur IN ('bleu','blanc','rouge');
@@ -985,16 +952,12 @@ WHERE PrixH IS NULL;
 -- Nom commen&ccedil;ant par b
 SELECT *
 FROM TYPEMBARCATION
-WHERE Nomtype LIKE 'b%';
-      </div>
-      <div class="code bl">
-       -- Jointure embarcation / type
+WHERE Nomtype LIKE 'b%';</div>
+      <div class="code bl">-- Jointure embarcation / type
 SELECT Numembarcation, Couleur, Nomtype
 FROM EMBARCATION, TYPEMBARCATION
-WHERE EMBARCATION.Codetype = TYPEMBARCATION.Codetype;
-      </div>
-      <div class="code am">
-       -- Compter les embarcations jaunes
+WHERE EMBARCATION.Codetype = TYPEMBARCATION.Codetype;</div>
+      <div class="code am">-- Compter les embarcations jaunes
 SELECT COUNT(*) AS nb_emb_jaunes
 FROM EMBARCATION
 WHERE Couleur = 'jaune';
@@ -1010,8 +973,7 @@ FROM TYPEMBARCATION;
 -- Nombre par couleur
 SELECT Couleur, COUNT(*)
 FROM EMBARCATION
-GROUP BY Couleur;
-      </div>
+GROUP BY Couleur;</div>
      </details>
      <div class="st te">
       Exercices LMD du support
@@ -1086,14 +1048,12 @@ GROUP BY Couleur;
      <div class="st te">
       R&eacute;capitulatif &mdash; requ&ecirc;te SELECT
      </div>
-     <div class="code te">
-      SELECT [DISTINCT] colonnes
+     <div class="code te">SELECT [DISTINCT] colonnes
 FROM tables
 WHERE condition
 GROUP BY colonnes
 HAVING condition
-ORDER BY colonnes [ASC | DESC];
-     </div>
+ORDER BY colonnes [ASC | DESC];</div>
      <div class="st te">
       Autres &eacute;l&eacute;ments pr&eacute;sents dans les supports de 1re ann&eacute;e
      </div>
@@ -1109,9 +1069,7 @@ ORDER BY colonnes [ASC | DESC];
         </code>
         pour limiter le nombre de lignes retourn&eacute;es.
        </p>
-       <div class="code">
-        SELECT * FROM Employes LIMIT 5;
-       </div>
+       <div class="code">SELECT * FROM Employes LIMIT 5;</div>
       </div>
       <div class="card bl">
        <h3>
@@ -1123,10 +1081,8 @@ ORDER BY colonnes [ASC | DESC];
         </code>
         permet de donner un nom lisible &agrave; un r&eacute;sultat calcul&eacute;, notamment avec les fonctions de groupe.
        </p>
-       <div class="code bl">
-        SELECT COUNT(*) AS NbEmbarcations
-FROM EMBARCATION;
-       </div>
+       <div class="code bl">SELECT COUNT(*) AS NbEmbarcations
+FROM EMBARCATION;</div>
       </div>
       <div class="card am">
        <h3>

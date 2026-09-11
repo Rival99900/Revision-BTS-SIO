@@ -335,9 +335,7 @@
         </b>
         &mdash; utilisable depuis n'importe quel r&eacute;pertoire
        </p>
-       <div class="code" style="margin-top:8px">
-        C:\SIO1\LOGICIEL\TP-DOS
-       </div>
+       <div class="code" style="margin-top:8px">C:\SIO1\LOGICIEL\TP-DOS</div>
       </div>
       <div class="cmpc">
        <h4 class="bl">
@@ -349,11 +347,9 @@
          r&eacute;pertoire courant
         </b>
        </p>
-       <div class="code bl" style="margin-top:8px">
-        ..        # r&eacute;pertoire p&egrave;re
+       <div class="code bl" style="margin-top:8px">..        # r&eacute;pertoire p&egrave;re
 ..\..     # 2 niveaux au-dessus
-COURS     # sous-r&eacute;pertoire COURS
-       </div>
+COURS     # sous-r&eacute;pertoire COURS</div>
       </div>
      </div>
      <div class="tree">
@@ -682,15 +678,13 @@ COURS     # sous-r&eacute;pertoire COURS
      <div class="st gn">
       Syntaxe &amp; op&eacute;rateurs importants
      </div>
-     <div class="code">
-      # Redirection &gt; &eacute;crit (&eacute;crase), &gt;&gt; ajoute :
+     <div class="code"># Redirection &gt; &eacute;crit (&eacute;crase), &gt;&gt; ajoute :
 echo TEXTE &gt; LesReseaux.txt
 echo SUITE &gt;&gt; LesReseaux.txt
 
 # Pipe | redirige la sortie vers une autre commande :
 type clients.txt | more
-dir | find "SIO"
-     </div>
+dir | find "SIO"</div>
      <div class="alert aa">
       ⚠️
       <strong>
@@ -772,15 +766,13 @@ dir | find "SIO"
        <h3>
         Exemple d'appel
        </h3>
-       <div class="code am" style="margin-top:8px">
-        # affiche.bat contient :
+       <div class="code am" style="margin-top:8px"># affiche.bat contient :
 ECHO %2
 ECHO %1
 
 # Appel : C:\&gt; affiche rouge noir
 # R&eacute;sultat affich&eacute; : noir
-#                    rouge
-       </div>
+#                    rouge</div>
       </div>
      </div>
      <div class="st gn">
@@ -886,8 +878,7 @@ ECHO %1
        </td>
       </tr>
      </table>
-     <div class="code">
-      REM ===== trouve.bat : v&eacute;rifie si un fichier existe =====
+     <div class="code">REM ===== trouve.bat : v&eacute;rifie si un fichier existe =====
 IF NOT EXIST %1 GOTO :erreur
 ECHO Ce fichier est pr&eacute;sent !
 GOTO :fin
@@ -901,8 +892,7 @@ FOR %1 IN (*.pdf *.txt) DO type %1
 REM Op&eacute;rateurs de comparaison utilisables dans IF :
 REM EQU (&eacute;gal)   NEQ (diff&eacute;rent)   LSS (strictement inf&eacute;rieur)
 REM GTR (strictement sup&eacute;rieur)   GEQ (sup&eacute;rieur ou &eacute;gal)   LEQ (inf&eacute;rieur ou &eacute;gal)
-REM == (&eacute;galit&eacute; cha&icirc;nes)   EXIST (fichier existe)
-     </div>
+REM == (&eacute;galit&eacute; cha&icirc;nes)   EXIST (fichier existe)</div>
      <div class="alert aa">
       💡
       <strong>

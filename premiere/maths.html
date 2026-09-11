@@ -376,13 +376,11 @@
         <br/>
         Lire les restes de bas en haut.
        </p>
-       <div class="code li" style="margin-top:8px">
-        13 &divide; 2 = 6  reste 1
+       <div class="code li" style="margin-top:8px">13 &divide; 2 = 6  reste 1
  6 &divide; 2 = 3  reste 0
  3 &divide; 2 = 1  reste 1
  1 &divide; 2 = 0  reste 1
-&rarr; 13₁₀ = 1101₂
-       </div>
+&rarr; 13₁₀ = 1101₂</div>
       </div>
       <div class="card bl">
        <h3>
@@ -396,12 +394,10 @@
         <br/>
         Multiplier chaque bit par sa puissance de 2.
        </p>
-       <div class="code bl" style="margin-top:8px">
-        1101₂ =
+       <div class="code bl" style="margin-top:8px">1101₂ =
   1&times;2&sup3; + 1&times;2&sup2; + 0&times;2&sup1; + 1&times;2⁰
 = 8    + 4    + 0    + 1
-= 13₁₀
-       </div>
+= 13₁₀</div>
       </div>
       <div class="card am">
        <h3>
@@ -414,12 +410,10 @@
         <br/>
         Conversion directe et rapide.
        </p>
-       <div class="code am" style="margin-top:8px">
-        0xAF =
+       <div class="code am" style="margin-top:8px">0xAF =
   A    = 1010
   F    = 1111
-&rarr; 0xAF = 10101111₂ = 175₁₀
-       </div>
+&rarr; 0xAF = 10101111₂ = 175₁₀</div>
       </div>
       <div class="card">
        <h3>
@@ -432,12 +426,10 @@
         </b>
         en partant de la droite.
        </p>
-       <div class="code" style="margin-top:8px">
-        11010011₂
+       <div class="code" style="margin-top:8px">11010011₂
 &rarr; 1101 | 0011
 &rarr;   D  |  3
-= 0xD3 = 211₁₀
-       </div>
+= 0xD3 = 211₁₀</div>
       </div>
      </div>
      <div class="st li">
@@ -448,8 +440,7 @@
        <h3>
         Addition binaire
        </h3>
-       <div class="code li" style="margin-top:8px">
-        R&egrave;gles : 0+0=0  0+1=1  1+0=1
+       <div class="code li" style="margin-top:8px">R&egrave;gles : 0+0=0  0+1=1  1+0=1
          1+1=10 (retenue !)
          1+1+1=11
 
@@ -457,8 +448,7 @@ Exemple : 0110 + 0101
   0110
 + 0101
 ------
-  1011  = 11₁₀ ✅
-       </div>
+  1011  = 11₁₀ ✅</div>
       </div>
       <div class="card bl">
        <h3>
@@ -475,13 +465,11 @@ Exemple : 0110 + 0101
         </b>
         .
        </p>
-       <div class="code bl" style="margin-top:8px">
-        Pour -13 sur 8 bits :
+       <div class="code bl" style="margin-top:8px">Pour -13 sur 8 bits :
 1. 13 = 0000 1101
 2. Inverser les bits : 1111 0010
 3. Ajouter 1         : 1111 0011
-&rarr; -13 = 1111 0011₂
-       </div>
+&rarr; -13 = 1111 0011₂</div>
       </div>
       <div class="card am">
        <h3>
@@ -841,47 +829,39 @@ Exemple : 0110 + 0101
        <h3>
         Identit&eacute;
        </h3>
-       <div class="code li" style="margin-top:8px">
-        A AND 1 = A
+       <div class="code li" style="margin-top:8px">A AND 1 = A
 A AND 0 = 0
 A OR  0 = A
-A OR  1 = 1
-       </div>
+A OR  1 = 1</div>
       </div>
       <div class="card bl">
        <h3>
         Idempotence &amp; Compl&eacute;mentation
        </h3>
-       <div class="code bl" style="margin-top:8px">
-        A AND A = A
+       <div class="code bl" style="margin-top:8px">A AND A = A
 A OR  A = A
 A AND (NOT A) = 0
 A OR  (NOT A) = 1
-NOT(NOT A)    = A
-       </div>
+NOT(NOT A)    = A</div>
       </div>
       <div class="card am">
        <h3>
         Lois de De Morgan ⭐
        </h3>
-       <div class="code am" style="margin-top:8px">
-        NOT(A AND B) = NOT(A) OR  NOT(B)
+       <div class="code am" style="margin-top:8px">NOT(A AND B) = NOT(A) OR  NOT(B)
 NOT(A OR  B) = NOT(A) AND NOT(B)
 
-# Tr&egrave;s utilis&eacute; pour simplifier !
-       </div>
+# Tr&egrave;s utilis&eacute; pour simplifier !</div>
       </div>
       <div class="card">
        <h3>
         Commutativit&eacute; &amp; Distributivit&eacute;
        </h3>
-       <div class="code" style="margin-top:8px">
-        A AND B = B AND A
+       <div class="code" style="margin-top:8px">A AND B = B AND A
 A OR  B = B OR  A
 
 A AND (B OR C) = (A AND B) OR (A AND C)
-A OR (B AND C) = (A OR B) AND (A OR C)
-       </div>
+A OR (B AND C) = (A OR B) AND (A OR C)</div>
       </div>
      </div>
      <div class="st li">
@@ -924,8 +904,7 @@ A OR (B AND C) = (A OR B) AND (A OR C)
      <div class="st li">
       Expressions bool&eacute;ennes en code
      </div>
-     <div class="code li">
-      # Python :
+     <div class="code li"># Python :
 a = True; b = False
 print(a and b)   # False
 print(a or b)    # True
@@ -943,8 +922,7 @@ boolean a = true, b = false;
 boolean r1 = a &amp;&amp; b;  // false
 boolean r2 = a || b;  // true
 boolean r3 = !a;      // false
-boolean r4 = a ^ b;   // true (XOR)
-     </div>
+boolean r4 = a ^ b;   // true (XOR)</div>
     </div>
     ALGORITHMIQUE
     <div class="sc" id="maths-algo">
@@ -1033,55 +1011,46 @@ boolean r4 = a ^ b;   // true (XOR)
        <h3>
         S&eacute;quence
        </h3>
-       <div class="code li" style="margin-top:8px">
-        DEBUT
+       <div class="code li" style="margin-top:8px">DEBUT
   Lire A
   Lire B
   C &larr; A + B
   &Eacute;crire C
-FIN
-       </div>
+FIN</div>
       </div>
       <div class="card bl">
        <h3>
         Condition (SI)
        </h3>
-       <div class="code bl" style="margin-top:8px">
-        SI A &gt; 0 ALORS
+       <div class="code bl" style="margin-top:8px">SI A &gt; 0 ALORS
   &Eacute;crire "positif"
 SINON
   &Eacute;crire "n&eacute;gatif ou nul"
-FIN SI
-       </div>
+FIN SI</div>
       </div>
       <div class="card am">
        <h3>
         Boucle TANT QUE
        </h3>
-       <div class="code am" style="margin-top:8px">
-        i &larr; 1
+       <div class="code am" style="margin-top:8px">i &larr; 1
 TANT QUE i &lt;= 5 FAIRE
   &Eacute;crire i
   i &larr; i + 1
-FIN TANT QUE
-       </div>
+FIN TANT QUE</div>
       </div>
       <div class="card">
        <h3>
         Boucle POUR
        </h3>
-       <div class="code" style="margin-top:8px">
-        POUR i &larr; 1 JUSQU'&Agrave; 5 FAIRE
+       <div class="code" style="margin-top:8px">POUR i &larr; 1 JUSQU'&Agrave; 5 FAIRE
   &Eacute;crire i
-FIN POUR
-       </div>
+FIN POUR</div>
       </div>
      </div>
      <div class="st li">
       Algorithmes classiques en pseudo-code
      </div>
-     <div class="code li">
-      // ===== Maximum d'un tableau =====
+     <div class="code li">// ===== Maximum d'un tableau =====
 ALGORITHME Maximum(T, n)
   max &larr; T[0]
   POUR i &larr; 1 JUSQU'&Agrave; n-1 FAIRE
@@ -1116,8 +1085,7 @@ ALGORITHME DecToBin(n)
     resultat &larr; CONCAT(reste, resultat)
     n &larr; n DIV 2
   FIN TANT QUE
-  RETOURNER resultat
-     </div>
+  RETOURNER resultat</div>
      <div class="st li">
       Fonctions vs Proc&eacute;dures &amp; R&eacute;cursivit&eacute;
      </div>
@@ -1168,16 +1136,14 @@ ALGORITHME DecToBin(n)
        <h3>
         R&eacute;cursivit&eacute; &mdash; Factorielle
        </h3>
-       <div class="code am" style="margin-top:8px">
-        FONCTION factorielle(n)
+       <div class="code am" style="margin-top:8px">FONCTION factorielle(n)
   SI n &lt;= 1 ALORS
     RETOURNER 1    // CAS DE BASE
   SINON
     RETOURNER n * factorielle(n-1)
   FIN SI
 
-// factorielle(5) = 5 &times; 4 &times; 3 &times; 2 &times; 1 = 120
-       </div>
+// factorielle(5) = 5 &times; 4 &times; 3 &times; 2 &times; 1 = 120</div>
       </div>
       <div class="card">
        <h3>
@@ -1360,16 +1326,14 @@ ALGORITHME DecToBin(n)
        <p>
         Compare chaque paire d'&eacute;l&eacute;ments adjacents et les &eacute;change si n&eacute;cessaire. Les grandes valeurs "remontent" comme des bulles.
        </p>
-       <div class="code li" style="margin-top:8px">
-        POUR i &larr; 0 JUSQU'&Agrave; n-2 FAIRE
+       <div class="code li" style="margin-top:8px">POUR i &larr; 0 JUSQU'&Agrave; n-2 FAIRE
   POUR j &larr; 0 JUSQU'&Agrave; n-2-i FAIRE
     SI T[j] &gt; T[j+1] ALORS
       Echanger T[j] et T[j+1]
     FIN SI
   FIN POUR
 FIN POUR
-// Complexit&eacute; : O(n&sup2;) &mdash; stable
-       </div>
+// Complexit&eacute; : O(n&sup2;) &mdash; stable</div>
       </div>
       <div class="card bl">
        <h3>
@@ -1378,8 +1342,7 @@ FIN POUR
        <p>
         Cherche le minimum dans la partie non tri&eacute;e et le place en premi&egrave;re position non tri&eacute;e.
        </p>
-       <div class="code bl" style="margin-top:8px">
-        POUR i &larr; 0 JUSQU'&Agrave; n-2 FAIRE
+       <div class="code bl" style="margin-top:8px">POUR i &larr; 0 JUSQU'&Agrave; n-2 FAIRE
   indMin &larr; i
   POUR j &larr; i+1 JUSQU'&Agrave; n-1 FAIRE
     SI T[j] &lt; T[indMin] ALORS
@@ -1388,8 +1351,7 @@ FIN POUR
   FIN POUR
   Echanger T[i] et T[indMin]
 FIN POUR
-// Complexit&eacute; : O(n&sup2;) &mdash; non stable
-       </div>
+// Complexit&eacute; : O(n&sup2;) &mdash; non stable</div>
       </div>
       <div class="card am">
        <h3>
@@ -1398,8 +1360,7 @@ FIN POUR
        <p>
         Ins&egrave;re chaque &eacute;l&eacute;ment &agrave; sa place dans la partie d&eacute;j&agrave; tri&eacute;e (comme trier des cartes &agrave; jouer).
        </p>
-       <div class="code am" style="margin-top:8px">
-        POUR i &larr; 1 JUSQU'&Agrave; n-1 FAIRE
+       <div class="code am" style="margin-top:8px">POUR i &larr; 1 JUSQU'&Agrave; n-1 FAIRE
   cle &larr; T[i]
   j   &larr; i - 1
   TANT QUE j &gt;= 0 ET T[j] &gt; cle FAIRE
@@ -1409,8 +1370,7 @@ FIN POUR
   T[j+1] &larr; cle
 FIN POUR
 // Complexit&eacute; : O(n&sup2;) &mdash; stable
-// Efficace si donn&eacute;es presque tri&eacute;es
-       </div>
+// Efficace si donn&eacute;es presque tri&eacute;es</div>
       </div>
      </div>
      <div class="st li">
@@ -1427,8 +1387,7 @@ FIN POUR
       </strong>
       pour utiliser la recherche dichotomique !
      </div>
-     <div class="code li">
-      ALGORITHME RechercheDicho(T, n, val)
+     <div class="code li">ALGORITHME RechercheDicho(T, n, val)
   gauche &larr; 0
   droite &larr; n - 1
   TANT QUE gauche &lt;= droite FAIRE
@@ -1444,8 +1403,7 @@ FIN POUR
   RETOURNER -1                  // non trouv&eacute;
 
 // Pour n=1000 : max log₂(1000) &asymp; 10 comparaisons !
-// Contre 1000 en recherche s&eacute;quentielle.
-     </div>
+// Contre 1000 en recherche s&eacute;quentielle.</div>
      <div class="st li">
       Structures de donn&eacute;es fondamentales
      </div>
@@ -1552,27 +1510,23 @@ FIN POUR
        <h4 class="li">
         Pile (LIFO) &mdash; Stack
        </h4>
-       <div class="code li" style="margin-top:8px">
-        PUSH(5)  &rarr; [5]
+       <div class="code li" style="margin-top:8px">PUSH(5)  &rarr; [5]
 PUSH(3)  &rarr; [5, 3]
 PUSH(8)  &rarr; [5, 3, 8]
 POP()    &rarr; 8  (le dernier pouss&eacute;)
 POP()    &rarr; 3
-# Haut de pile &rarr; 5
-       </div>
+# Haut de pile &rarr; 5</div>
       </div>
       <div class="cmpc">
        <h4 class="bl">
         File (FIFO) &mdash; Queue
        </h4>
-       <div class="code bl" style="margin-top:8px">
-        ENQUEUE(5) &rarr; [5]
+       <div class="code bl" style="margin-top:8px">ENQUEUE(5) &rarr; [5]
 ENQUEUE(3) &rarr; [5, 3]
 ENQUEUE(8) &rarr; [5, 3, 8]
 DEQUEUE()  &rarr; 5  (le premier entr&eacute;)
 DEQUEUE()  &rarr; 3
-# Entr&eacute;e &rarr; 8 encore dans la file
-       </div>
+# Entr&eacute;e &rarr; 8 encore dans la file</div>
       </div>
      </div>
     </div>

@@ -95,14 +95,12 @@
     <div class="st gold">
      Syntaxe g&eacute;n&eacute;rale du m&eacute;mento
     </div>
-    <div class="code gold">
-     SELECT [DISTINCT] expressions
+    <div class="code gold">SELECT [DISTINCT] expressions
 FROM tables
 WHERE pr&eacute;dicat
 GROUP BY expressions
 HAVING pr&eacute;dicat
-ORDER BY expressions [ASC | DESC];
-    </div>
+ORDER BY expressions [ASC | DESC];</div>
     <div class="st gold">
      Restrictions
     </div>
@@ -179,11 +177,9 @@ ORDER BY expressions [ASC | DESC];
     <div class="st gold">
      Jointure
     </div>
-    <div class="code gold">
-     SELECT expr1, expr2, ...
+    <div class="code gold">SELECT expr1, expr2, ...
 FROM table1, table2
-WHERE table1.champ1 = table2.champ2;
-    </div>
+WHERE table1.champ1 = table2.champ2;</div>
     <div class="st gold">
      Agr&eacute;gats et regroupements
     </div>
@@ -229,10 +225,8 @@ WHERE table1.champ1 = table2.champ2;
       </p>
      </div>
     </div>
-    <div class="code gold">
-     GROUP BY expr1 [, expr2, ...]
-HAVING pr&eacute;dicat;
-    </div>
+    <div class="code gold">GROUP BY expr1 [, expr2, ...]
+HAVING pr&eacute;dicat;</div>
     <div class="st gold">
      Fonctions de date
     </div>
@@ -270,29 +264,22 @@ HAVING pr&eacute;dicat;
       <h4 class="gn">
        Intersection
       </h4>
-      <div class="code">
-       WHERE table1.champ1 IN (SELECT ...);
-      </div>
+      <div class="code">WHERE table1.champ1 IN (SELECT ...);</div>
      </div>
      <div class="cmpc">
       <h4 class="bl">
        Diff&eacute;rence
       </h4>
-      <div class="code bl">
-       WHERE table1.champ1 NOT IN (SELECT ...);
-      </div>
+      <div class="code bl">WHERE table1.champ1 NOT IN (SELECT ...);</div>
      </div>
     </div>
-    <div class="code gold">
-     Requ&ecirc;te 1
+    <div class="code gold">Requ&ecirc;te 1
 UNION
-Requ&ecirc;te 2
-    </div>
+Requ&ecirc;te 2</div>
     <div class="st gold">
      Actions sur les enregistrements
     </div>
-    <div class="code gold">
-     DELETE FROM table
+    <div class="code gold">DELETE FROM table
 [WHERE pr&eacute;dicat];
 
 INSERT INTO table (champ1, champ2, ...)
@@ -303,8 +290,7 @@ SELECT ...;
 
 UPDATE table
 SET champ1 = expr1, champ2 = expr2
-[WHERE pr&eacute;dicat];
-    </div>
+[WHERE pr&eacute;dicat];</div>
     <div class="st gold">
      Exercices EQUUS &agrave; savoir traduire en SQL
     </div>

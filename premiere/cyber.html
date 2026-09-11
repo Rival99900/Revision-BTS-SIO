@@ -388,8 +388,7 @@
       </strong>
       stock&eacute; !
      </div>
-     <div class="code am">
-      # PHP &mdash; v&eacute;rification mot de passe avec SHA-256 :
+     <div class="code am"># PHP &mdash; v&eacute;rification mot de passe avec SHA-256 :
 $hash_saisi = hash("sha256", $_POST['password']);
 if ($hash_saisi === $hash_bdd) {
     echo "✅ Acc&egrave;s autoris&eacute;";
@@ -397,8 +396,7 @@ if ($hash_saisi === $hash_bdd) {
     echo "❌ Refus&eacute;";
 }
 
-# MIEUX : utiliser password_hash/verify (voir onglet Sel)
-     </div>
+# MIEUX : utiliser password_hash/verify (voir onglet Sel)</div>
      <div class="st">
       Limites du hash seul &mdash; Attaques
      </div>
@@ -456,29 +454,25 @@ if ($hash_saisi === $hash_bdd) {
        <h4 class="rd">
         Sans sel ❌
        </h4>
-       <div class="code" style="margin-top:8px">
-        Michel : MDP = "AZERTY1234"
+       <div class="code" style="margin-top:8px">Michel : MDP = "AZERTY1234"
 HASH = 9B74C9897BAC770FFC029102
 
 Bill : MDP = "AZERTY1234"
 HASH = 9B74C9897BAC770FFC029102
 # IDENTIQUES ! DANGER !
-# &rarr; Rainbow tables utilisables
-       </div>
+# &rarr; Rainbow tables utilisables</div>
       </div>
       <div class="cmpc">
        <h4 class="gn">
         Avec sel ✅
        </h4>
-       <div class="code am" style="margin-top:8px">
-        Michel : MDP + SEL unique "X8F!k"
+       <div class="code am" style="margin-top:8px">Michel : MDP + SEL unique "X8F!k"
 HASH = 9B74C9897BAC770&hellip;
 
 Bill : MDP + SEL unique "P9K@2"
 HASH = 700F74C989F74C&hellip;
 # DIFF&Eacute;RENTS ! ✅
-# &rarr; Rainbow tables inutilisables
-       </div>
+# &rarr; Rainbow tables inutilisables</div>
       </div>
      </div>
      <div class="cg">
@@ -524,8 +518,7 @@ HASH = 700F74C989F74C&hellip;
        <h3>
         bcrypt PHP (m&eacute;thode recommand&eacute;e)
        </h3>
-       <div class="code am" style="margin-top:8px">
-        // Hachage s&eacute;curis&eacute; (sel int&eacute;gr&eacute; automatiquement) :
+       <div class="code am" style="margin-top:8px">// Hachage s&eacute;curis&eacute; (sel int&eacute;gr&eacute; automatiquement) :
 $hash = password_hash($mdp, PASSWORD_BCRYPT);
 // Stocke : $2y$10$SEL_ALEATOIRE...HASH...
 
@@ -534,8 +527,7 @@ if (password_verify($mdp_saisi, $hash_bdd)) {
     echo "✅ MDP correct &mdash; connexion autoris&eacute;e";
 } else {
     echo "❌ MDP incorrect";
-}
-       </div>
+}</div>
       </div>
      </div>
      <div class="alert ag">
