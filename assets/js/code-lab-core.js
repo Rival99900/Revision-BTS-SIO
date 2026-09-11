@@ -109,14 +109,41 @@ function exercisesForLanguage(language = activeLanguage()) {
   return (CODE_LAB_EXERCISES[language] || []).filter((item) => !item.sandbox);
 }
 
+function exerciseCatalog() {
+  return exercisesForLanguage('python');
+}
+
+function exerciseConcept(exercise) {
+  return exercise?.concept || String(exercise?.id || '').replace(/^(py|php|java)-/, '');
+}
+
+function exerciseVariant(concept, language) {
+  return exercisesForLanguage(language).find((exercise) => exerciseConcept(exercise) === concept) || null;
+}
+
+function exerciseById(exerciseId) {
+  for (const language of ['python', 'php', 'java']) {
+    const found = exercisesForLanguage(language).find((exercise) => exercise.id === exerciseId);
+    if (found) return found;
+  }
+  return null;
+}
+
 function currentExercise() {
   const file = activeFile();
   if (!file?.exerciseId) return null;
-  return exercisesForLanguage().find((exercise) => exercise.id === file.exerciseId) || null;
+  return exerciseById(file.exerciseId);
 }
 
 function solvedKey(language, exercise) {
   return `bts-code-lab-v2-solved:${language}:${exercise.id}`;
+}
+
+function conceptSolved(concept) {
+  return ['python', 'php', 'java'].some((language) => {
+    const variant = exerciseVariant(concept, language);
+    return variant && localStorage.getItem(solvedKey(language, variant)) === '1';
+  });
 }
 
 function normalizeOutput(value) {
@@ -462,19 +489,20 @@ function renderFileList() {
 }
 
 function renderExerciseList() {
-  const language = activeLanguage();
-  const exercises = exercisesForLanguage(language);
+  const exercises = exerciseCatalog();
+  const currentConcept = exerciseConcept(currentExercise());
   dom.exerciseCount.textContent = exercises.length;
   dom.exerciseList.innerHTML = '';
   dom.exerciseEmpty.hidden = exercises.length > 0;
 
   exercises.forEach((exercise, index) => {
+    const concept = exerciseConcept(exercise);
     const button = document.createElement('button');
     button.type = 'button';
     button.className = 'exercise-button';
-    if (activeFile()?.exerciseId === exercise.id) button.classList.add('active');
-    if (localStorage.getItem(solvedKey(language, exercise)) === '1') button.classList.add('solved');
-    const status = localStorage.getItem(solvedKey(language, exercise)) === '1' ? '✓ réussi' : exercise.difficulty;
+    if (currentConcept === concept) button.classList.add('active');
+    if (conceptSolved(concept)) button.classList.add('solved');
+    const status = conceptSolved(concept) ? '✓ réussi' : exercise.difficulty;
     button.innerHTML = `
       <span class="exercise-index">${String(index + 1).padStart(2, '0')}</span>
       <span class="exercise-name">${escapeHtml(exercise.title)}<span class="exercise-status">${escapeHtml(status)}</span></span>
@@ -486,11 +514,8 @@ function renderExerciseList() {
 
 function exerciseFilename(language, exerciseIndex, title) {
   const number = String(exerciseIndex + 1).padStart(2, '0');
-  if (language === 'java') return `Exercice${number}.java`;
-  const slug = title
-    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-    .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 34);
-  return `${number}-${slug || 'exercice'}.${language === 'python' ? 'py' : 'php'}`;
+  const extension = language === 'java' ? 'java' : language === 'php' ? 'php' : 'py';
+  return `Exercice${number}.${extension}`;
 }
 
 function adaptJavaStarterForFilename(starter, filename) {
@@ -500,10 +525,17 @@ function adaptJavaStarterForFilename(starter, filename) {
 }
 
 function openExerciseInFile(exercise, exerciseIndex) {
-  const language = activeLanguage();
-  const existing = state.project.files.find((file) => file.exerciseId === exercise.id && languageFromFilename(file.name) === language);
+  const concept = exerciseConcept(exercise);
+  const preferredLanguage = ['python', 'php', 'java'].includes(activeLanguage()) ? activeLanguage() : 'python';
+  const preferredVariant = exerciseVariant(concept, preferredLanguage) || exercise;
+  const existing = state.project.files.find((file) => {
+    const fileExercise = exerciseById(file.exerciseId);
+    return fileExercise
+      && exerciseConcept(fileExercise) === concept
+      && languageFromFilename(file.name) === preferredLanguage;
+  });
 
-  let suggestedName = existing?.name || exerciseFilename(language, exerciseIndex, exercise.title);
+  let suggestedName = existing?.name || exerciseFilename(preferredLanguage, exerciseIndex, preferredVariant.title);
   if (!existing) {
     let suffix = 2;
     while (state.project.files.some((file) => file.name.toLowerCase() === suggestedName.toLowerCase())) {
@@ -515,9 +547,10 @@ function openExerciseInFile(exercise, exerciseIndex) {
 
   syncEditorToActiveFile();
   openFileModal('exercise', {
-    exercise,
+    exercise: preferredVariant,
+    concept,
     exerciseIndex,
-    language,
+    language: preferredLanguage,
     existingFileId: existing?.id || null,
     suggestedName,
   });
@@ -545,8 +578,8 @@ function renderExerciseBrief() {
   }
 
   dom.exerciseBrief.classList.remove('sandbox-brief');
-  const exercises = exercisesForLanguage(language);
-  const index = exercises.findIndex((item) => item.id === exercise.id);
+  const exercises = exerciseCatalog();
+  const index = exercises.findIndex((item) => exerciseConcept(item) === exerciseConcept(exercise));
   dom.exerciseDifficulty.textContent = exercise.difficulty;
   dom.exercisePosition.textContent = `Exercice ${index + 1} / ${exercises.length}`;
   dom.exerciseTitle.textContent = exercise.title;
@@ -619,11 +652,9 @@ function openFileModal(mode, context = null) {
   const file = activeFile();
 
   if (mode === 'exercise') {
-    const language = context?.language || activeLanguage();
-    const extension = language === 'python' ? '.py' : language === 'php' ? '.php' : '.java';
-    dom.fileModalTitle.textContent = context?.existingFileId ? 'Renommer le fichier de l’exercice' : 'Nommer le fichier de l’exercice';
-    dom.fileModalDescription.innerHTML = `Choisissez le nom du fichier avant d’ouvrir l’exercice. Vous pouvez modifier le nom et l’extension, mais cet exercice <strong>${escapeHtml(languageLabel(language))}</strong> doit conserver l’extension <code>${extension}</code>.`;
-    dom.fileModalConfirm.textContent = context?.existingFileId ? 'Renommer et ouvrir' : 'Créer et ouvrir';
+    dom.fileModalTitle.textContent = 'Choisir le fichier de l’exercice';
+    dom.fileModalDescription.innerHTML = 'Choisissez librement le nom et le langage avec l’extension : <code>.py</code>, <code>.php</code> ou <code>.java</code>. Le même exercice sera automatiquement adapté au langage choisi.';
+    dom.fileModalConfirm.textContent = 'Créer / ouvrir';
     dom.fileNameInput.value = context?.suggestedName || '';
   } else if (mode === 'sandbox-init') {
     const sandbox = state.project.files.find((item) => item.id === context?.fileId) || file;
@@ -670,50 +701,74 @@ function confirmFileModal() {
   const mode = state.fileModalMode;
   const context = state.fileModalContext;
   const active = activeFile();
-  const targetId = mode === 'exercise' ? context?.existingFileId : mode === 'sandbox-init' ? context?.fileId : mode === 'rename' ? active?.id : null;
-  const targetFile = targetId ? state.project.files.find((item) => item.id === targetId) : active;
-  const validation = validateFilename(dom.fileNameInput.value, targetId || null);
-
-  if (!validation.ok) {
-    dom.fileModalError.textContent = validation.message;
-    dom.fileModalError.hidden = false;
-    return;
-  }
 
   if (mode === 'exercise') {
-    const language = context?.language || activeLanguage();
-    const requestedLanguage = languageFromFilename(validation.name);
-    if (requestedLanguage !== language) {
-      const extension = language === 'python' ? '.py' : language === 'php' ? '.php' : '.java';
-      dom.fileModalError.textContent = `Cet exercice ${languageLabel(language)} doit utiliser l’extension ${extension}. Vous pouvez modifier librement le nom du fichier.`;
+    const rawName = String(dom.fileNameInput.value || '').trim();
+    const requestedLanguage = languageFromFilename(rawName);
+    if (!['python', 'php', 'java'].includes(requestedLanguage)) {
+      dom.fileModalError.textContent = 'Utilisez une extension exécutable : .py, .php ou .java.';
+      dom.fileModalError.hidden = false;
+      return;
+    }
+
+    const concept = context?.concept || exerciseConcept(context?.exercise);
+    const targetExercise = exerciseVariant(concept, requestedLanguage);
+    if (!targetExercise) {
+      dom.fileModalError.textContent = `Cet exercice n’est pas disponible en ${languageLabel(requestedLanguage)}.`;
+      dom.fileModalError.hidden = false;
+      return;
+    }
+
+    const existingTarget = state.project.files.find((file) => {
+      const fileExercise = exerciseById(file.exerciseId);
+      return fileExercise
+        && exerciseConcept(fileExercise) === concept
+        && languageFromFilename(file.name) === requestedLanguage;
+    });
+    const contextFile = context?.existingFileId
+      ? state.project.files.find((file) => file.id === context.existingFileId)
+      : null;
+    const canReuseContext = contextFile && languageFromFilename(contextFile.name) === requestedLanguage;
+    const fileToReuse = canReuseContext ? contextFile : existingTarget;
+
+    const validation = validateFilename(rawName, fileToReuse?.id || null);
+    if (!validation.ok) {
+      dom.fileModalError.textContent = validation.message;
       dom.fileModalError.hidden = false;
       return;
     }
 
     syncEditorToActiveFile();
 
-    if (context?.existingFileId) {
-      const file = state.project.files.find((item) => item.id === context.existingFileId);
-      if (!file) return;
-      const oldName = file.name;
-      file.name = validation.name;
-      renameJavaClassInFile(file, oldName, validation.name);
-      file.exerciseId = context.exercise.id;
-      file.updatedAt = Date.now();
-      state.activeFileId = file.id;
-      state.project.activeFileId = file.id;
+    if (fileToReuse) {
+      const oldName = fileToReuse.name;
+      fileToReuse.name = validation.name;
+      renameJavaClassInFile(fileToReuse, oldName, validation.name);
+      fileToReuse.exerciseId = targetExercise.id;
+      fileToReuse.updatedAt = Date.now();
+      state.activeFileId = fileToReuse.id;
+      state.project.activeFileId = fileToReuse.id;
     } else {
-      let starter = context?.exercise?.starter || '';
-      if (language === 'java') starter = adaptJavaStarterForFilename(starter, validation.name);
-      const file = createFileObject(validation.name, starter, context.exercise.id);
-      state.project.files.push(file);
-      state.activeFileId = file.id;
-      state.project.activeFileId = file.id;
+      let starter = targetExercise.starter || '';
+      if (requestedLanguage === 'java') starter = adaptJavaStarterForFilename(starter, validation.name);
+      const created = createFileObject(validation.name, starter, targetExercise.id);
+      state.project.files.push(created);
+      state.activeFileId = created.id;
+      state.project.activeFileId = created.id;
     }
 
     persistProject();
     closeFileModal();
     renderActiveFile();
+    return;
+  }
+
+  const targetId = mode === 'sandbox-init' ? context?.fileId : mode === 'rename' ? active?.id : null;
+  const validation = validateFilename(dom.fileNameInput.value, targetId || null);
+
+  if (!validation.ok) {
+    dom.fileModalError.textContent = validation.message;
+    dom.fileModalError.hidden = false;
     return;
   }
 

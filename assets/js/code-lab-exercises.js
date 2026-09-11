@@ -1,10 +1,9 @@
 /* Code Lab — banque d’exercices Python / PHP / Java */
 
 /* =====================================================
-   BTS SIO — Code Lab v5
-   Python : Pyodide (navigateur)
-   PHP / Java : Judge0 CE (sandbox distant)
-   Éditeur : coloration syntaxique locale sans dépendance
+   BTS SIO — Code Lab
+   Exercices communs aux 3 langages : choisissez .py, .php ou .java
+   au moment de créer le fichier de l’exercice.
    ===================================================== */
 
 const CODE_LAB_EXERCISES = {
@@ -18,7 +17,8 @@ const CODE_LAB_EXERCISES = {
       "stdin": "",
       "expected": "",
       "hint": "",
-      "starter": ""
+      "starter": "",
+      "concept": "sandbox"
     },
     {
       "id": "py-message",
@@ -36,7 +36,8 @@ const CODE_LAB_EXERCISES = {
           "stdin": "",
           "expected": "Bonjour BTS SIO"
         }
-      ]
+      ],
+      "concept": "message"
     },
     {
       "id": "py-profile",
@@ -56,7 +57,8 @@ const CODE_LAB_EXERCISES = {
           "stdin": "Lina\n20",
           "expected": "Lina a 20 ans."
         }
-      ]
+      ],
+      "concept": "profile"
     },
     {
       "id": "py-pair",
@@ -78,7 +80,8 @@ const CODE_LAB_EXERCISES = {
           "stdin": "7",
           "expected": "7 est impair"
         }
-      ]
+      ],
+      "concept": "pair"
     },
     {
       "id": "py-table",
@@ -100,7 +103,8 @@ const CODE_LAB_EXERCISES = {
           "stdin": "2",
           "expected": "2 x 1 = 2\n2 x 2 = 4\n2 x 3 = 6\n2 x 4 = 8\n2 x 5 = 10"
         }
-      ]
+      ],
+      "concept": "table"
     },
     {
       "id": "py-stats",
@@ -122,7 +126,8 @@ const CODE_LAB_EXERCISES = {
           "stdin": "-2 5 3",
           "expected": "Somme: 6\nMaximum: 5"
         }
-      ]
+      ],
+      "concept": "stats"
     },
     {
       "id": "py-occurrences",
@@ -144,7 +149,8 @@ const CODE_LAB_EXERCISES = {
           "stdin": "java\njava php java python",
           "expected": "java: 2"
         }
-      ]
+      ],
+      "concept": "occurrences"
     },
     {
       "id": "py-average",
@@ -166,7 +172,8 @@ const CODE_LAB_EXERCISES = {
           "stdin": "10 20 30",
           "expected": "Moyenne: 20.00"
         }
-      ]
+      ],
+      "concept": "average"
     },
     {
       "id": "py-palindrome",
@@ -188,7 +195,8 @@ const CODE_LAB_EXERCISES = {
           "stdin": "python",
           "expected": "python: non palindrome"
         }
-      ]
+      ],
+      "concept": "palindrome"
     },
     {
       "id": "py-object",
@@ -210,7 +218,8 @@ const CODE_LAB_EXERCISES = {
           "stdin": "Lina\nSISR\n14",
           "expected": "Lina - SISR - 14"
         }
-      ]
+      ],
+      "concept": "object"
     },
     {
       "id": "py-frequency",
@@ -232,7 +241,8 @@ const CODE_LAB_EXERCISES = {
           "stdin": "sql php sql java",
           "expected": "java: 1\nphp: 1\nsql: 2"
         }
-      ]
+      ],
+      "concept": "frequency"
     }
   ],
   "php": [
@@ -245,11 +255,12 @@ const CODE_LAB_EXERCISES = {
       "stdin": "",
       "expected": "",
       "hint": "",
-      "starter": ""
+      "starter": "",
+      "concept": "sandbox"
     },
     {
       "id": "php-vars",
-      "title": "Variables et echo",
+      "title": "Afficher une variable",
       "difficulty": "Très facile",
       "description": "Deux variables sont fournies. Affichez exactement « Alex - BTS SIO ».",
       "stdin": "",
@@ -263,7 +274,8 @@ const CODE_LAB_EXERCISES = {
           "stdin": "",
           "expected": "Alex - BTS SIO"
         }
-      ]
+      ],
+      "concept": "message"
     },
     {
       "id": "php-profile",
@@ -285,29 +297,8 @@ const CODE_LAB_EXERCISES = {
           "stdin": "Lina\n20",
           "expected": "Lina a 20 ans."
         }
-      ]
-    },
-    {
-      "id": "php-admission",
-      "title": "Condition d’admission",
-      "difficulty": "Facile",
-      "description": "Lisez une note. Affichez « Admis » si elle est ≥ 10, sinon « Ajourné ».",
-      "stdin": "14",
-      "expected": "Admis",
-      "hint": "Convertissez la saisie en float puis utilisez if/else.",
-      "hintMarker": "// À compléter",
-      "hintCode": "$note = (float) trim(fgets(STDIN));\nif ($note >= 10) {\n    echo \"Admis\";\n} else {\n    echo \"Ajourné\";\n}",
-      "starter": "<?php\n// À compléter\n?>\n",
-      "tests": [
-        {
-          "stdin": "14",
-          "expected": "Admis"
-        },
-        {
-          "stdin": "8.5",
-          "expected": "Ajourné"
-        }
-      ]
+      ],
+      "concept": "profile"
     },
     {
       "id": "php-pair",
@@ -329,12 +320,13 @@ const CODE_LAB_EXERCISES = {
           "stdin": "7",
           "expected": "7 est impair"
         }
-      ]
+      ],
+      "concept": "pair"
     },
     {
       "id": "php-table",
       "title": "Table de multiplication",
-      "difficulty": "Débutant",
+      "difficulty": "Facile",
       "description": "Lisez un entier et affichez ses 5 premières multiplications, une par ligne.",
       "stdin": "4",
       "expected": "4 x 1 = 4\n4 x 2 = 8\n4 x 3 = 12\n4 x 4 = 16\n4 x 5 = 20",
@@ -351,11 +343,12 @@ const CODE_LAB_EXERCISES = {
           "stdin": "2",
           "expected": "2 x 1 = 2\n2 x 2 = 4\n2 x 3 = 6\n2 x 4 = 8\n2 x 5 = 10"
         }
-      ]
+      ],
+      "concept": "table"
     },
     {
       "id": "php-stats",
-      "title": "Statistiques d’un tableau",
+      "title": "Statistiques d’une liste",
       "difficulty": "Débutant",
       "description": "Lisez des entiers séparés par des espaces, puis affichez la somme et le maximum.",
       "stdin": "4 7 2 7 9",
@@ -373,12 +366,13 @@ const CODE_LAB_EXERCISES = {
           "stdin": "-2 5 3",
           "expected": "Somme: 6\nMaximum: 5"
         }
-      ]
+      ],
+      "concept": "stats"
     },
     {
       "id": "php-occurrences",
       "title": "Compter un mot",
-      "difficulty": "Intermédiaire",
+      "difficulty": "Débutant",
       "description": "La première ligne contient le mot recherché et la seconde une phrase. Affichez son nombre d’occurrences.",
       "stdin": "php\nphp java php python php",
       "expected": "php: 3",
@@ -395,7 +389,8 @@ const CODE_LAB_EXERCISES = {
           "stdin": "java\njava php java python",
           "expected": "java: 2"
         }
-      ]
+      ],
+      "concept": "occurrences"
     },
     {
       "id": "php-average",
@@ -417,43 +412,77 @@ const CODE_LAB_EXERCISES = {
           "stdin": "10 20 30",
           "expected": "Moyenne: 20.00"
         }
-      ]
+      ],
+      "concept": "average"
     },
     {
-      "id": "php-assoc",
-      "title": "Meilleure note associative",
-      "difficulty": "Avancé",
-      "description": "Parcourez le tableau associatif et affichez l’étudiant ayant la meilleure note.",
-      "stdin": "",
-      "expected": "Bob: 17",
-      "hint": "Gardez deux variables : meilleurNom et meilleureNote, puis comparez dans foreach.",
+      "id": "php-palindrome",
+      "title": "Détecter un palindrome",
+      "difficulty": "Intermédiaire",
+      "description": "Lisez un mot et indiquez s’il est identique lorsqu’on le lit à l’envers.",
+      "stdin": "radar",
+      "expected": "radar: palindrome",
+      "hint": "Comparez le mot avec strrev($mot).",
       "hintMarker": "// À compléter",
-      "hintCode": "$meilleurNom = \"\";\n$meilleureNote = -1;\nforeach ($notes as $nom => $note) {\n    if ($note > $meilleureNote) {\n        $meilleureNote = $note;\n        $meilleurNom = $nom;\n    }\n}\necho $meilleurNom . \": \" . $meilleureNote;",
-      "starter": "<?php\n$notes = [\"Alice\" => 15, \"Bob\" => 17, \"Chloe\" => 14];\n\n// À compléter\n?>\n",
+      "hintCode": "if ($mot === strrev($mot)) {\n    echo $mot . \": palindrome\";\n} else {\n    // affichez « non palindrome »\n}",
+      "starter": "<?php\n$mot = strtolower(trim(fgets(STDIN)));\n\n// À compléter\n?>\n",
       "tests": [
         {
-          "stdin": "",
-          "expected": "Bob: 17"
+          "stdin": "radar",
+          "expected": "radar: palindrome"
+        },
+        {
+          "stdin": "python",
+          "expected": "python: non palindrome"
         }
-      ]
+      ],
+      "concept": "palindrome"
     },
     {
-      "id": "php-object",
-      "title": "Classe Produit",
-      "difficulty": "Avancé +",
-      "description": "Complétez la classe Produit et sa méthode prixTTC(). Affichez le nom et le prix TTC à 2 décimales.",
-      "stdin": "",
-      "expected": "Clavier: 59.88 EUR",
-      "hint": "Le constructeur initialise les propriétés avec $this->. Le prix TTC vaut prixHT × (1 + tauxTVA).",
+      "id": "php-object-etudiant",
+      "title": "Classe Etudiant",
+      "difficulty": "Avancé",
+      "description": "Complétez la classe Etudiant. Lisez nom, option et moyenne puis affichez les trois informations.",
+      "stdin": "Alex\nSLAM\n15.5",
+      "expected": "Alex - SLAM - 15.5",
+      "hint": "Le constructeur initialise les propriétés avec $this->.",
       "hintMarker": "// À compléter constructeur",
-      "hintCode": "$this->nom = $nom;\n        $this->prixHT = $prixHT;\n        $this->tauxTVA = $tauxTVA;",
-      "starter": "<?php\nclass Produit {\n    public string $nom;\n    public float $prixHT;\n    public float $tauxTVA;\n\n    public function __construct(string $nom, float $prixHT, float $tauxTVA) {\n        // À compléter constructeur\n    }\n\n    public function prixTTC(): float {\n        // À compléter méthode\n        return 0;\n    }\n}\n\n$produit = new Produit(\"Clavier\", 49.90, 0.20);\necho $produit->nom . \": \" . number_format($produit->prixTTC(), 2, \".\", \"\") . \" EUR\";\n?>\n",
+      "hintCode": "$this->nom = $nom;\n        $this->option = $option;\n        $this->moyenne = $moyenne;",
+      "starter": "<?php\nclass Etudiant {\n    public string $nom;\n    public string $option;\n    public float $moyenne;\n\n    public function __construct(string $nom, string $option, float $moyenne) {\n        // À compléter constructeur\n    }\n}\n\n$nom = trim(fgets(STDIN));\n$option = trim(fgets(STDIN));\n$moyenne = (float) trim(fgets(STDIN));\n$e = new Etudiant($nom, $option, $moyenne);\necho $e->nom . \" - \" . $e->option . \" - \" . rtrim(rtrim(number_format($e->moyenne, 2, \".\", \"\"), \"0\"), \".\");\n?>\n",
       "tests": [
         {
-          "stdin": "",
-          "expected": "Clavier: 59.88 EUR"
+          "stdin": "Alex\nSLAM\n15.5",
+          "expected": "Alex - SLAM - 15.5"
+        },
+        {
+          "stdin": "Lina\nSISR\n14",
+          "expected": "Lina - SISR - 14"
         }
-      ]
+      ],
+      "concept": "object"
+    },
+    {
+      "id": "php-frequency",
+      "title": "Fréquence des mots",
+      "difficulty": "Avancé +",
+      "description": "Lisez une phrase, comptez chaque mot puis affichez « mot: nombre » par ordre alphabétique.",
+      "stdin": "python java python php java python",
+      "expected": "java: 2\nphp: 1\npython: 3",
+      "hint": "Utilisez array_count_values(), ksort() puis foreach.",
+      "hintMarker": "// À compléter",
+      "hintCode": "$mots = preg_split(\"/\\s+/\", trim(fgets(STDIN)));\n$frequences = array_count_values($mots);\nksort($frequences);\nforeach ($frequences as $mot => $nombre) {\n    echo $mot . \": \" . $nombre . PHP_EOL;\n}",
+      "starter": "<?php\n// À compléter\n?>\n",
+      "tests": [
+        {
+          "stdin": "python java python php java python",
+          "expected": "java: 2\nphp: 1\npython: 3"
+        },
+        {
+          "stdin": "sql php sql java",
+          "expected": "java: 1\nphp: 1\nsql: 2"
+        }
+      ],
+      "concept": "frequency"
     }
   ],
   "java": [
@@ -466,7 +495,8 @@ const CODE_LAB_EXERCISES = {
       "stdin": "",
       "expected": "",
       "hint": "",
-      "starter": ""
+      "starter": "",
+      "concept": "sandbox"
     },
     {
       "id": "java-variable",
@@ -484,29 +514,31 @@ const CODE_LAB_EXERCISES = {
           "stdin": "",
           "expected": "Bonjour BTS SIO"
         }
-      ]
+      ],
+      "concept": "message"
     },
     {
-      "id": "java-greeting",
-      "title": "Lecture avec Scanner",
+      "id": "java-profile",
+      "title": "Profil utilisateur",
       "difficulty": "Très facile",
-      "description": "Lisez un prénom depuis STDIN et affichez « Bonjour Prénom ».",
-      "stdin": "Alex",
-      "expected": "Bonjour Alex",
-      "hint": "Créez un Scanner sur System.in et utilisez nextLine().",
+      "description": "Lisez un prénom puis un âge et affichez « Prénom a X ans. ».",
+      "stdin": "Alex\n19",
+      "expected": "Alex a 19 ans.",
+      "hint": "Utilisez Scanner.nextLine() pour le prénom puis parseInt() pour l’âge.",
       "hintMarker": "// À compléter",
-      "hintCode": "Scanner scanner = new Scanner(System.in);\n        String prenom = scanner.nextLine();\n        System.out.println(\"Bonjour \" + prenom);",
-      "starter": "import java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        // À compléter\n    }\n}\n",
+      "hintCode": "String prenom = scanner.nextLine();\n        int age = Integer.parseInt(scanner.nextLine());\n        System.out.println(prenom + \" a \" + age + \" ans.\");",
+      "starter": "import java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        // À compléter\n    }\n}\n",
       "tests": [
         {
-          "stdin": "Alex",
-          "expected": "Bonjour Alex"
+          "stdin": "Alex\n19",
+          "expected": "Alex a 19 ans."
         },
         {
-          "stdin": "Lina",
-          "expected": "Bonjour Lina"
+          "stdin": "Lina\n20",
+          "expected": "Lina a 20 ans."
         }
-      ]
+      ],
+      "concept": "profile"
     },
     {
       "id": "java-pair",
@@ -528,78 +560,59 @@ const CODE_LAB_EXERCISES = {
           "stdin": "7",
           "expected": "7 est impair"
         }
-      ]
+      ],
+      "concept": "pair"
     },
     {
-      "id": "java-loop",
-      "title": "Suite de 1 à N",
+      "id": "java-table",
+      "title": "Table de multiplication",
       "difficulty": "Facile",
-      "description": "Lisez N et affichez les nombres de 1 à N sur une ligne, séparés par un espace sans espace final.",
-      "stdin": "5",
-      "expected": "1 2 3 4 5",
-      "hint": "Dans la boucle, affichez un espace seulement si i < n.",
+      "description": "Lisez un entier et affichez ses 5 premières multiplications, une par ligne.",
+      "stdin": "4",
+      "expected": "4 x 1 = 4\n4 x 2 = 8\n4 x 3 = 12\n4 x 4 = 16\n4 x 5 = 20",
+      "hint": "Utilisez une boucle for de 1 à 5.",
       "hintMarker": "// À compléter",
-      "hintCode": "Scanner scanner = new Scanner(System.in);\n        int n = scanner.nextInt();\n        for (int i = 1; i <= n; i++) {\n            System.out.print(i);\n            if (i < n) System.out.print(\" \");\n        }",
-      "starter": "import java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        // À compléter\n    }\n}\n",
+      "hintCode": "for (int i = 1; i <= 5; i++) {\n            System.out.println(n + \" x \" + i + \" = \" + (n * i));\n        }",
+      "starter": "import java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        int n = scanner.nextInt();\n        // À compléter\n    }\n}\n",
       "tests": [
         {
-          "stdin": "5",
-          "expected": "1 2 3 4 5"
+          "stdin": "4",
+          "expected": "4 x 1 = 4\n4 x 2 = 8\n4 x 3 = 12\n4 x 4 = 16\n4 x 5 = 20"
         },
         {
-          "stdin": "3",
-          "expected": "1 2 3"
+          "stdin": "2",
+          "expected": "2 x 1 = 2\n2 x 2 = 4\n2 x 3 = 6\n2 x 4 = 8\n2 x 5 = 10"
         }
-      ]
-    },
-    {
-      "id": "java-square",
-      "title": "Méthode carre",
-      "difficulty": "Débutant",
-      "description": "Complétez carre(int n), lisez un entier et affichez son carré.",
-      "stdin": "6",
-      "expected": "36",
-      "hint": "Retournez n * n.",
-      "hintMarker": "// À compléter méthode",
-      "hintCode": "return n * n;",
-      "starter": "import java.util.Scanner;\n\npublic class Main {\n    public static int carre(int n) {\n        // À compléter méthode\n        return 0;\n    }\n\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        int n = scanner.nextInt();\n        System.out.println(carre(n));\n    }\n}\n",
-      "tests": [
-        {
-          "stdin": "6",
-          "expected": "36"
-        },
-        {
-          "stdin": "-4",
-          "expected": "16"
-        }
-      ]
+      ],
+      "concept": "table"
     },
     {
       "id": "java-stats",
-      "title": "Statistiques d’un tableau",
+      "title": "Statistiques d’une liste",
       "difficulty": "Débutant",
-      "description": "Lisez N puis N entiers. Affichez leur somme et leur maximum.",
-      "stdin": "5\n4 7 2 7 9",
+      "description": "Lisez des entiers séparés par des espaces, puis affichez la somme et le maximum.",
+      "stdin": "4 7 2 7 9",
       "expected": "Somme: 29\nMaximum: 9",
-      "hint": "Initialisez max avec la première valeur lue, puis mettez à jour somme et max dans la boucle.",
+      "hint": "Lisez la ligne avec nextLine(), découpez-la, puis calculez somme et maximum.",
       "hintMarker": "// À compléter",
-      "hintCode": "int n = scanner.nextInt();\n        int somme = 0;\n        int maximum = Integer.MIN_VALUE;\n        for (int i = 0; i < n; i++) {\n            int valeur = scanner.nextInt();\n            somme += valeur;\n            maximum = Math.max(maximum, valeur);\n        }",
+      "hintCode": "String[] morceaux = scanner.nextLine().trim().split(\"\\\\s+\");\n        int somme = 0;\n        int maximum = Integer.MIN_VALUE;\n        for (String morceau : morceaux) {\n            int valeur = Integer.parseInt(morceau);\n            somme += valeur;\n            maximum = Math.max(maximum, valeur);\n        }",
       "starter": "import java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        // À compléter\n        System.out.println(\"Somme: \" + somme);\n        System.out.println(\"Maximum: \" + maximum);\n    }\n}\n",
       "tests": [
         {
-          "stdin": "5\n4 7 2 7 9",
+          "stdin": "4 7 2 7 9",
           "expected": "Somme: 29\nMaximum: 9"
         },
         {
-          "stdin": "3\n-2 5 3",
+          "stdin": "-2 5 3",
           "expected": "Somme: 6\nMaximum: 5"
         }
-      ]
+      ],
+      "concept": "stats"
     },
     {
       "id": "java-occurrences",
       "title": "Compter un mot",
-      "difficulty": "Intermédiaire",
+      "difficulty": "Débutant",
       "description": "Lisez le mot recherché puis une phrase. Comptez ses occurrences.",
       "stdin": "java\njava php java python",
       "expected": "java: 2",
@@ -616,33 +629,58 @@ const CODE_LAB_EXERCISES = {
           "stdin": "python\npython java python sql python",
           "expected": "python: 3"
         }
-      ]
+      ],
+      "concept": "occurrences"
     },
     {
       "id": "java-average",
-      "title": "Méthode moyenne",
+      "title": "Fonction moyenne",
       "difficulty": "Intermédiaire",
-      "description": "Lisez N puis N nombres décimaux. Utilisez une méthode moyenne(double[]) et affichez 2 décimales.",
-      "stdin": "4\n12 15 9 14",
+      "description": "Lisez des nombres séparés par des espaces. Utilisez une méthode moyenne(double[]) et affichez 2 décimales.",
+      "stdin": "12 15 9 14",
       "expected": "Moyenne: 12.50",
-      "hint": "Additionnez les valeurs dans la méthode puis divisez par tableau.length. Utilisez printf(\"%.2f\").",
+      "hint": "Découpez la ligne en nombres puis calculez la somme dans moyenne().",
       "hintMarker": "// À compléter méthode",
       "hintCode": "double somme = 0;\n        for (double valeur : nombres) somme += valeur;\n        return somme / nombres.length;",
-      "starter": "import java.util.Scanner;\n\npublic class Main {\n    public static double moyenne(double[] nombres) {\n        // À compléter méthode\n        return 0;\n    }\n\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        int n = scanner.nextInt();\n        double[] nombres = new double[n];\n        for (int i = 0; i < n; i++) nombres[i] = scanner.nextDouble();\n        System.out.printf(java.util.Locale.US, \"Moyenne: %.2f%n\", moyenne(nombres));\n    }\n}\n",
+      "starter": "import java.util.Scanner;\n\npublic class Main {\n    public static double moyenne(double[] nombres) {\n        // À compléter méthode\n        return 0;\n    }\n\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        String[] morceaux = scanner.nextLine().trim().split(\"\\\\s+\");\n        double[] nombres = new double[morceaux.length];\n        for (int i = 0; i < morceaux.length; i++) nombres[i] = Double.parseDouble(morceaux[i]);\n        System.out.printf(java.util.Locale.US, \"Moyenne: %.2f%n\", moyenne(nombres));\n    }\n}\n",
       "tests": [
         {
-          "stdin": "4\n12 15 9 14",
+          "stdin": "12 15 9 14",
           "expected": "Moyenne: 12.50"
         },
         {
-          "stdin": "3\n10 20 30",
+          "stdin": "10 20 30",
           "expected": "Moyenne: 20.00"
         }
-      ]
+      ],
+      "concept": "average"
+    },
+    {
+      "id": "java-palindrome",
+      "title": "Détecter un palindrome",
+      "difficulty": "Intermédiaire",
+      "description": "Lisez un mot et indiquez s’il est identique lorsqu’on le lit à l’envers.",
+      "stdin": "radar",
+      "expected": "radar: palindrome",
+      "hint": "StringBuilder permet d’inverser une chaîne avec reverse().",
+      "hintMarker": "// À compléter",
+      "hintCode": "String inverse = new StringBuilder(mot).reverse().toString();\n        if (mot.equals(inverse)) {\n            System.out.println(mot + \": palindrome\");\n        } else {\n            System.out.println(mot + \": non palindrome\");\n        }",
+      "starter": "import java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        String mot = scanner.nextLine().trim().toLowerCase();\n        // À compléter\n    }\n}\n",
+      "tests": [
+        {
+          "stdin": "radar",
+          "expected": "radar: palindrome"
+        },
+        {
+          "stdin": "java",
+          "expected": "java: non palindrome"
+        }
+      ],
+      "concept": "palindrome"
     },
     {
       "id": "java-object",
-      "title": "Objet Etudiant",
+      "title": "Classe Etudiant",
       "difficulty": "Avancé",
       "description": "Complétez le constructeur Etudiant et affichez nom, option et moyenne.",
       "stdin": "Alex\nSLAM\n15.5",
@@ -660,11 +698,12 @@ const CODE_LAB_EXERCISES = {
           "stdin": "Lina\nSISR\n14",
           "expected": "Lina - SISR - 14.0"
         }
-      ]
+      ],
+      "concept": "object"
     },
     {
       "id": "java-frequency",
-      "title": "Fréquence des mots avec Map",
+      "title": "Fréquence des mots",
       "difficulty": "Avancé +",
       "description": "Lisez une phrase, comptez chaque mot et affichez les résultats par ordre alphabétique.",
       "stdin": "python java python php java python",
@@ -682,7 +721,8 @@ const CODE_LAB_EXERCISES = {
           "stdin": "sql php sql java",
           "expected": "java: 1\nphp: 1\nsql: 2"
         }
-      ]
+      ],
+      "concept": "frequency"
     }
   ]
 };
