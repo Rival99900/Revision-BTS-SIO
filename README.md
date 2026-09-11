@@ -281,13 +281,27 @@ Revision-BTS-SIO/
 
 Le projet ne nécessite **aucune installation particulière**.
 
-### Méthode rapide
+### 🌐 Accès direct — GitHub Pages
+
+Le moyen le plus simple pour utiliser le site est d'ouvrir directement la version en ligne publiée avec **GitHub Pages** :
+
+➡️ **[Ouvrir le site de révision BTS SIO](https://rival99900.github.io/Revision-BTS-SIO/)**
+
+Vous pouvez également accéder directement au quiz général :
+
+➡️ **[Ouvrir le quiz interactif](https://rival99900.github.io/Revision-BTS-SIO/quiz.html)**
+
+Aucun téléchargement n'est nécessaire : le site fonctionne directement dans le navigateur sur ordinateur, tablette ou téléphone.
+
+### 📦 Utilisation en local
+
+Si vous souhaitez conserver une copie hors ligne :
 
 1. Téléchargez le dépôt.
 2. Décompressez-le si nécessaire.
 3. Ouvrez `index.html` dans votre navigateur.
 
-### Avec Git
+### 💻 Avec Git
 
 ```bash
 git clone https://github.com/Rival99900/Revision-BTS-SIO.git
@@ -300,7 +314,7 @@ Puis ouvrez :
 index.html
 ```
 
-Le site fonctionne en HTML/CSS/JavaScript et ne nécessite ni serveur web, ni base de données, ni dépendance Node.js.
+Le site fonctionne en HTML/CSS/JavaScript et ne nécessite ni serveur web, ni base de données, ni dépendance Node.js pour consulter les fiches et utiliser les quiz actuels.
 
 ---
 
@@ -352,7 +366,7 @@ Les contenus existants peuvent également être corrigés ou enrichis sans recon
 - 📊 ajouter davantage de statistiques de progression ;
 - 🔀 proposer un mode examen aléatoire ;
 - ❌ mémoriser les erreurs fréquentes ;
-- 🌐 publier le site avec GitHub Pages lorsque le dépôt sera rendu public.
+- 🌐 continuer à déployer automatiquement les nouvelles versions avec GitHub Pages.
 
 ---
 
