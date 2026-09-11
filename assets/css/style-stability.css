@@ -1,0 +1,109 @@
+/* =====================================================
+   Stabilisation de l'interface — boutons et filtres
+   ===================================================== */
+
+/* Les boutons ne se déplacent plus au survol ou au clic. */
+.navbtn,.yearbtn,.smallbtn,.filterbtn,.sb,.ob,.validate,.nextbtn,.bn,.bres,.cb{
+  transform:none !important;
+  box-sizing:border-box;
+}
+
+.navbtn:hover,.yearbtn:hover,.smallbtn:hover,.filterbtn:hover,.sb:hover,
+.ob:hover:not(:disabled),.validate:hover,.nextbtn:hover,.bn:hover,.bres:hover,.cb:hover{
+  transform:none !important;
+}
+
+/* Barre principale : dimensions stables et alignement constant. */
+.topnav{
+  display:flex;
+  align-items:stretch;
+  gap:8px;
+}
+.navbtn,.yearbtn{
+  min-height:36px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  white-space:nowrap;
+}
+
+/* Zone de filtres du quiz : grille régulière, sans décalage. */
+.filters{
+  display:grid;
+  grid-template-columns:repeat(8,minmax(0,1fr));
+  gap:7px;
+  margin:0 0 14px;
+  align-items:stretch;
+}
+.filter-label{
+  grid-column:1 / -1;
+  display:flex;
+  align-items:center;
+  min-height:22px;
+  margin:0 0 1px;
+  font-size:.68rem;
+  color:var(--text-dim);
+  letter-spacing:.11em;
+}
+.filterbtn{
+  width:100%;
+  min-width:0;
+  min-height:38px;
+  padding:7px 6px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  line-height:1.15;
+  white-space:normal;
+  border-width:1px;
+  font-size:.68rem;
+}
+.filterbtn.active{
+  font-weight:700;
+  box-shadow:0 0 14px rgba(255,110,199,.12);
+}
+
+/* Les réponses gardent exactement leur emplacement. */
+.opts{
+  align-items:stretch;
+}
+.ob{
+  width:100%;
+  min-height:48px;
+  margin:0;
+}
+
+/* Boutons de validation / navigation avec hauteur constante. */
+.validate,.nextbtn,.smallbtn{
+  min-height:38px;
+}
+.nextbtn.show{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* Évite les sauts de largeur quand le texte du score change. */
+.qi{
+  min-width:82px;
+}
+.qv{
+  min-height:1.8em;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+@media(max-width:900px){
+  .filters{grid-template-columns:repeat(4,minmax(0,1fr));}
+}
+
+@media(max-width:560px){
+  .filters{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;}
+  .filterbtn{min-height:42px;font-size:.67rem;padding:7px 5px;}
+  .topnav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));}
+  .navbtn,.yearbtn{width:100%;white-space:normal;text-align:center;}
+  .qstats{width:100%;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+  .qi{min-width:0;}
+}
