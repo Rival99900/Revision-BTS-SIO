@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="Révision SQL — BTS SIO 2e année">
+<title>🗃️ Révision SQL — 2e année</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=VT323&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-review-id="2-sql">
+<div class="container">
+  <div class="site-header">
+    <div class="bbar"><span></span><span></span><span></span><span></span><span></span></div>
+    <h1>BTS SIO — RÉVISIONS</h1>
+    <div class="sub">2E ANNÉE — RÉVISION SQL</div>
+    <div class="tags"><span class="tag tg">BTS SIO</span><span class="tag tp">2e année</span><span class="tag tte">SQL</span><span class="tag tb">SLAM</span></div>
+    <div class="prompt">C:\\BTS-SIO\REVISION&gt; <span>█</span></div>
+  </div>
+  <div class="topnav">
+    <a class="navbtn" href="../index.html">⌂ Accueil</a>
+    <a class="navbtn" href="../premiere/sql.html">🗃️ SQL 1re année</a>
+    <a class="navbtn quiz" href="../quiz.html?year=2&module=sql2">🎯 Quiz SQL 2e</a>
+  </div>
+
+  <main class="page-panel gold">
+    <div class="hero">
+      <div>
+        <div class="hero-kicker">2E ANNÉE // SQL // RÉVISION</div>
+        <h2>🗃️ Mémento SQL & exercices EQUUS</h2>
+        <p>Projection, restriction, jointure, agrégats, regroupements, ensembles et actions sur les tuples.</p>
+      </div>
+      <div class="hero-actions">
+        <button class="smallbtn" id="reviewBtn" onclick="setReviewed('2-sql')">○ Marquer révisé</button>
+        <button class="smallbtn" onclick="printPage()">🖨 Imprimer</button>
+        <a class="smallbtn alt" href="../quiz.html?year=2&module=sql2">🎯 Quiz ciblé</a>
+      </div>
+    </div>
+
+    <div class="alert agold"><strong>Source principale :</strong> cette fiche suit le mémento et les exercices du document <b>5-revision_SQL_SIO2_sujet.pdf</b> présent dans le Drive SLAM de 2e année.</div>
+
+    <div class="st gold">Syntaxe générale du mémento</div>
+    <div class="code gold">SELECT [DISTINCT] expressions
+FROM tables
+WHERE prédicat
+GROUP BY expressions
+HAVING prédicat
+ORDER BY expressions [ASC | DESC];</div>
+
+    <div class="st gold">Restrictions</div>
+    <table class="tbl gold"><tr><th>Forme</th><th>Utilisation</th></tr><tr><td><code>=, &lt;&gt;, &lt;, &gt;, &lt;=, &gt;=</code></td><td>Comparaisons.</td></tr><tr><td><code>BETWEEN ... AND ...</code></td><td>Intervalle.</td></tr><tr><td><code>[NOT] LIKE</code></td><td>Recherche sur une chaîne.</td></tr><tr><td><code>[NOT] IN (...)</code></td><td>Appartenance à une liste ou à une sous-requête.</td></tr><tr><td><code>IS [NOT] NULL</code></td><td>Tester une valeur absente ou présente.</td></tr><tr><td><code>AND / OR</code></td><td>Combiner plusieurs prédicats.</td></tr></table>
+
+    <div class="st gold">Jointure</div><div class="code gold">SELECT expr1, expr2, ...
+FROM table1, table2
+WHERE table1.champ1 = table2.champ2;</div>
+
+    <div class="st gold">Agrégats et regroupements</div><div class="cg"><div class="card gold"><h3>SUM()</h3><p>Somme.</p></div><div class="card gold"><h3>MAX()</h3><p>Maximum.</p></div><div class="card gold"><h3>MIN()</h3><p>Minimum.</p></div><div class="card gold"><h3>AVG()</h3><p>Moyenne.</p></div><div class="card gold"><h3>COUNT(*)</h3><p>Nombre de lignes.</p></div></div><div class="code gold">GROUP BY expr1 [, expr2, ...]
+HAVING prédicat;</div>
+
+    <div class="st gold">Fonctions de date</div><div class="cg"><div class="card gold"><h3>NOW()</h3><p>Renvoie la date du jour dans le mémento.</p></div><div class="card bl"><h3>MONTH(date)</h3><p>Renvoie le numéro du mois.</p></div><div class="card am"><h3>YEAR(date)</h3><p>Renvoie l'année.</p></div></div>
+
+    <div class="st gold">Intersection, différence et union</div><div class="cmp"><div class="cmpc"><h4 class="gn">Intersection</h4><div class="code">WHERE table1.champ1 IN (SELECT ...);</div></div><div class="cmpc"><h4 class="bl">Différence</h4><div class="code bl">WHERE table1.champ1 NOT IN (SELECT ...);</div></div></div><div class="code gold">Requête 1
+UNION
+Requête 2</div>
+
+    <div class="st gold">Actions sur les enregistrements</div><div class="code gold">DELETE FROM table
+[WHERE prédicat];
+
+INSERT INTO table (champ1, champ2, ...)
+VALUES (val1, val2, ...);
+
+INSERT INTO table (champ1, champ2, ...)
+SELECT ...;
+
+UPDATE table
+SET champ1 = expr1, champ2 = expr2
+[WHERE prédicat];</div>
+
+    <div class="st gold">Exercices EQUUS à savoir traduire en SQL</div><div class="cg"><div class="card gold"><h3>Bloc 1 — Structure & LMD</h3><ul><li>Créer la table CHEVAL avec une clé primaire.</li><li>Insérer trois cavaliers pour la reprise 253.</li><li>Augmenter de 35 kg le poids de « Belle de jour ».</li></ul></div><div class="card bl"><h3>Bloc 2 — Interrogation</h3><ul><li>Propriétaires de Bordeaux triés par nom et prénom.</li><li>Compter les chevaux mâles « pur sang ».</li><li>Calculer la durée totale des reprises d'octobre 2012.</li><li>Afficher les différents moniteurs des reprises 15, 16 et 17.</li><li>Afficher les chevaux par âge décroissant.</li></ul></div><div class="card am"><h3>Bloc 3 — MySQL</h3><ul><li>Créer la base EQUUS.</li><li>Afficher les bases créées.</li><li>Se connecter à EQUUS.</li><li>Afficher la structure de CHEVAL.</li><li>Exécuter le script d'insertion.</li></ul></div></div>
+
+    <div class="st gold">Commandes MySQL présentes dans le TP LDD</div><table class="tbl gold"><tr><th>Action</th><th>Commande</th></tr><tr><td>Afficher les bases</td><td><code>SHOW DATABASES;</code></td></tr><tr><td>Créer une base</td><td><code>CREATE DATABASE NomBase;</code></td></tr><tr><td>Choisir une base</td><td><code>USE NomBase;</code></td></tr><tr><td>Afficher les tables</td><td><code>SHOW TABLES;</code></td></tr><tr><td>Afficher la structure d'une table</td><td><code>DESC nomtable;</code></td></tr><tr><td>Exécuter un script</td><td><code>SOURCE nomscript.sql;</code></td></tr></table>
+
+    <div class="alert aa"><strong>Méthode de révision :</strong> commencez par identifier le type d'action demandé (interroger, insérer, modifier, supprimer ou définir la structure), puis choisissez les clauses nécessaires dans le mémento.</div>
+    <div class="source-note"><strong>Source Drive :</strong> <b>5-revision_SQL_SIO2_sujet.pdf</b> (dossier SLAM 2e année), complété uniquement par les commandes explicitement présentes dans <b>TP LDD.pdf</b>. Aucun support SQL distinct n'a été identifié dans les dossiers SISR de 2e année consultés lors de cette consolidation.</div>
+  </main>
+  <div class="footer"><a href="../index.html">← Retour au tableau de bord</a></div>
+</div>
+<script src="../assets/js/common.js"></script>
+</body>
+</html>
