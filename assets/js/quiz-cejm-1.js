@@ -2,7 +2,7 @@ window.CEJM_DETAILED = [
   {
     "chapter": 1,
     "type": "mcq",
-    "q": "Selon la synthèse, quelle logique se concentre sur la gestion à court et moyen terme des ressources ?",
+    "q": "Quelle logique se concentre sur la gestion à court et moyen terme des ressources ?",
     "opts": [
       "Entrepreneuriale",
       "Managériale",
@@ -38,7 +38,7 @@ window.CEJM_DETAILED = [
   {
     "chapter": 1,
     "type": "text",
-    "q": "Donnez les trois grandes finalités de l’entreprise présentées dans la synthèse.",
+    "q": "Donnez les trois grandes finalités de l’entreprise.",
     "keywords": [
       "economique",
       "sociale",
@@ -49,7 +49,7 @@ window.CEJM_DETAILED = [
   {
     "chapter": 2,
     "type": "mcq",
-    "q": "Pendant les pourparlers, quel principe n’est PAS cité par l’article 1112 dans la synthèse ?",
+    "q": "Pendant les pourparlers, quel principe ne fait PAS partie des principes à respecter ?",
     "opts": [
       "Liberté",
       "Bonne foi",
@@ -62,7 +62,7 @@ window.CEJM_DETAILED = [
   {
     "chapter": 2,
     "type": "mcq",
-    "q": "Sur quel fondement la synthèse place-t-elle la rupture abusive des pourparlers ?",
+    "q": "Sur quel fondement repose la rupture abusive des pourparlers ?",
     "opts": [
       "Responsabilité pénale",
       "Responsabilité contractuelle",
@@ -81,7 +81,7 @@ window.CEJM_DETAILED = [
       "article 1112-1",
       "1112 1"
     ],
-    "exp": "La synthèse cite l’article 1112-1 du Code civil."
+    "exp": "L’article 1112-1 du Code civil pose l’obligation générale d’information précontractuelle."
   },
   {
     "chapter": 2,
@@ -185,7 +185,7 @@ window.CEJM_DETAILED = [
   {
     "chapter": 4,
     "type": "text",
-    "q": "Quels sont les deux types de compétitivité distingués dans la synthèse ?",
+    "q": "Quels sont les deux types de compétitivité distingués ?",
     "keywords": [
       "prix",
       "hors prix"
@@ -208,7 +208,7 @@ window.CEJM_DETAILED = [
   {
     "chapter": 5,
     "type": "mcq",
-    "q": "Combien de temps un brevet protège-t-il l’invention selon la synthèse ?",
+    "q": "Combien de temps un brevet protège-t-il l’invention ?",
     "opts": [
       "5 ans",
       "10 ans",
@@ -280,13 +280,13 @@ window.CEJM_DETAILED = [
   {
     "chapter": 6,
     "type": "text",
-    "q": "Quel est le seuil de déficit public rapporté au PIB rappelé par la synthèse pour Maastricht ?",
+    "q": "Quel est le seuil de déficit public rapporté au PIB pour le critère de Maastricht étudié ?",
     "answers": [
       "3%",
       "3 %",
       "3 pourcent"
     ],
-    "exp": "La synthèse rappelle la limite de 3 % du PIB pour le déficit public."
+    "exp": "La limite retenue est de 3 % du PIB pour le déficit public."
   },
   {
     "chapter": 7,
@@ -324,12 +324,12 @@ window.CEJM_DETAILED = [
       "courbe d'experience",
       "courbe experience"
     ],
-    "exp": "La synthèse parle de l’effet d’expérience ou courbe d’expérience."
+    "exp": "Cette baisse du coût unitaire correspond à l’effet d’expérience, aussi appelé courbe d’expérience."
   },
   {
     "chapter": 7,
     "type": "text",
-    "q": "Donnez les deux grandes catégories de ressources distinguées dans la synthèse.",
+    "q": "Donnez les deux grandes catégories de ressources distinguées.",
     "keywords": [
       "tangibles",
       "intangibles"
@@ -365,7 +365,7 @@ window.CEJM_DETAILED = [
   {
     "chapter": 8,
     "type": "text",
-    "q": "Comment s’appelle le secteur regroupant notamment associations, coopératives et mutuelles selon la synthèse ?",
+    "q": "Comment s’appelle le secteur regroupant notamment associations, coopératives et mutuelles ?",
     "answers": [
       "economie sociale et solidaire",
       "ess",
@@ -394,7 +394,7 @@ window.CEJM_DETAILED = [
       "CT = Produits − Charges"
     ],
     "answer": 0,
-    "exp": "La synthèse décompose le coût total en coûts fixes + coûts variables."
+    "exp": "Le coût total se décompose en coûts fixes et coûts variables."
   },
   {
     "chapter": 9,
@@ -453,7 +453,7 @@ window.CEJM_DETAILED = [
       "Le contrat disparaît automatiquement"
     ],
     "answer": 0,
-    "exp": "La synthèse indique que la faute du débiteur est présumée lorsque le résultat défini n’est pas atteint."
+    "exp": "Dans une obligation de résultat, la faute du débiteur est présumée lorsque le résultat défini n’est pas atteint."
   },
   {
     "chapter": 10,

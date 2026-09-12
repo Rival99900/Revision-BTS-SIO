@@ -105,10 +105,17 @@ function render() {
     const wrap = document.createElement('div');
     wrap.className = 'text-answer';
 
-    const input = document.createElement('input');
+    const isSentenceExample = q.validator?.type === 'exampleSentence';
+    const input = document.createElement(isSentenceExample ? 'textarea' : 'input');
     input.id = 'textInput';
     input.autocomplete = 'off';
-    input.placeholder = 'Tapez votre réponse ici…';
+    if (isSentenceExample) {
+      input.rows = 4;
+      input.placeholder = `Écrivez une phrase d’au moins ${q.validator.minWords || 10} mots avec « ${q.validator.label || 'le mot demandé'} »…`;
+      input.setAttribute('aria-label', 'Phrase d’exemple');
+    } else {
+      input.placeholder = 'Tapez votre réponse ici…';
+    }
 
     const button = document.createElement('button');
     button.className = 'validate';
@@ -121,6 +128,14 @@ function render() {
 
     wrap.append(input, button);
     area.appendChild(wrap);
+
+    if (isSentenceExample) {
+      const helper = document.createElement('div');
+      helper.className = 'text-answer-hint';
+      helper.textContent = `Minimum ${q.validator.minWords || 10} mots • utilisez le mot demandé dans une phrase complète.`;
+      area.appendChild(helper);
+    }
+
     setTimeout(() => input.focus(), 50);
   }
 
@@ -140,7 +155,7 @@ function feedback(ok, exp) {
       <strong>${ok ? 'Bonne réponse' : 'Réponse à revoir'}</strong>
     </div>
     <div class="fb-course">
-      <span class="fb-course-label">EXPLICATION DU COURS</span>
+      <span class="fb-course-label">EXPLICATION</span>
       <div class="fb-course-text">${explanation}</div>
     </div>
   `;
@@ -172,6 +187,14 @@ function answerMCQ(index, button) {
 function textCorrect(q, value) {
   const normalizedValue = norm(value);
   if (!normalizedValue) return false;
+
+  if (q.validator?.type === 'exampleSentence') {
+    const minWords = Number(q.validator.minWords || 10);
+    const wordCount = normalizedValue.split(' ').filter(Boolean).length;
+    const roots = Array.isArray(q.validator.roots) ? q.validator.roots.map(norm).filter(Boolean) : [];
+    const hasRequestedWord = roots.some((root) => normalizedValue.split(' ').some((word) => word.startsWith(root)));
+    return wordCount >= minWords && hasRequestedWord;
+  }
 
   if (q.answers && q.answers.some((answer) => norm(answer) === normalizedValue)) {
     return true;

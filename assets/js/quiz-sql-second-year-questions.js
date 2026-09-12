@@ -4,7 +4,7 @@ window.SQL_SECOND_YEAR_QUESTIONS = [
     "module": "sql2",
     "cat": "🗃️ SQL — 2e année",
     "type": "text",
-    "q": "Dans le mémento SIO2, quelle clause vient après WHERE pour regrouper les résultats ?",
+    "q": "Quelle clause vient après WHERE pour regrouper les résultats ?",
     "answers": [
       "group by"
     ],
@@ -15,7 +15,7 @@ window.SQL_SECOND_YEAR_QUESTIONS = [
     "module": "sql2",
     "cat": "🗃️ SQL — 2e année",
     "type": "mcq",
-    "q": "Dans l’ordre du mémento, quelle clause vient après GROUP BY ?",
+    "q": "Quelle clause permet de filtrer les groupes après GROUP BY ?",
     "opts": [
       "HAVING",
       "FROM",
@@ -23,7 +23,7 @@ window.SQL_SECOND_YEAR_QUESTIONS = [
       "DISTINCT"
     ],
     "answer": 0,
-    "exp": "Le mémento place <strong>HAVING</strong> après GROUP BY."
+    "exp": "<strong>HAVING</strong> filtre les groupes produits par GROUP BY."
   },
   {
     "year": 2,
@@ -38,26 +38,26 @@ window.SQL_SECOND_YEAR_QUESTIONS = [
       "COUNT()"
     ],
     "answer": 0,
-    "exp": "Le mémento indique que <strong>MONTH(date)</strong> renvoie le mois sous forme d’un entier."
+    "exp": "<strong>MONTH(date)</strong> renvoie le mois sous forme d’un entier."
   },
   {
     "year": 2,
     "module": "sql2",
     "cat": "🗃️ SQL — 2e année",
     "type": "text",
-    "q": "Quelle fonction du mémento renvoie l’année d’une date ?",
+    "q": "Quelle fonction renvoie l’année d’une date ?",
     "answers": [
       "year",
       "year()"
     ],
-    "exp": "Le mémento utilise <strong>YEAR(date)</strong>."
+    "exp": "<strong>YEAR(date)</strong> renvoie l’année d’une date."
   },
   {
     "year": 2,
     "module": "sql2",
     "cat": "🗃️ SQL — 2e année",
     "type": "mcq",
-    "q": "Quelle fonction de date est associée à la date du jour dans le mémento ?",
+    "q": "Quelle fonction de date renvoie la date et l’heure courantes dans les notions étudiées ?",
     "opts": [
       "NOW()",
       "TODAY()",
@@ -65,14 +65,14 @@ window.SQL_SECOND_YEAR_QUESTIONS = [
       "CURRENT_YEAR()"
     ],
     "answer": 0,
-    "exp": "Le mémento cite <strong>NOW()</strong>."
+    "exp": "<strong>NOW()</strong> renvoie la date et l’heure courantes."
   },
   {
     "year": 2,
     "module": "sql2",
     "cat": "🗃️ SQL — 2e année",
     "type": "mcq",
-    "q": "Pour exprimer une intersection avec une sous-requête, le mémento utilise :",
+    "q": "Pour exprimer une intersection avec une sous-requête, quel opérateur est utilisé ?",
     "opts": [
       "IN (SELECT …)",
       "UNION uniquement",
@@ -80,14 +80,14 @@ window.SQL_SECOND_YEAR_QUESTIONS = [
       "ALTER"
     ],
     "answer": 0,
-    "exp": "La ligne « Intersection » du mémento utilise <strong>IN (SELECT …)</strong>."
+    "exp": "<strong>IN (SELECT …)</strong> permet de tester l’appartenance au résultat d’une sous-requête."
   },
   {
     "year": 2,
     "module": "sql2",
     "cat": "🗃️ SQL — 2e année",
     "type": "text",
-    "q": "Quel opérateur est utilisé dans le mémento pour une différence avec une sous-requête ?",
+    "q": "Quel opérateur est utilisé pour une différence avec une sous-requête ?",
     "answers": [
       "not in"
     ],
@@ -98,7 +98,7 @@ window.SQL_SECOND_YEAR_QUESTIONS = [
     "module": "sql2",
     "cat": "🗃️ SQL — 2e année",
     "type": "mcq",
-    "q": "Quel mot-clé combine les résultats de deux requêtes dans le mémento ?",
+    "q": "Quel mot-clé combine les résultats de deux requêtes ?",
     "opts": [
       "UNION",
       "MERGE TABLE",
@@ -106,7 +106,7 @@ window.SQL_SECOND_YEAR_QUESTIONS = [
       "GROUP"
     ],
     "answer": 0,
-    "exp": "Le mémento présente <strong>Requête 1 UNION Requête 2</strong>."
+    "exp": "<strong>UNION</strong> combine les résultats de deux requêtes compatibles."
   },
   {
     "year": 2,
@@ -117,7 +117,7 @@ window.SQL_SECOND_YEAR_QUESTIONS = [
     "answers": [
       "update"
     ],
-    "exp": "Le mémento donne <strong>UPDATE table SET ... [WHERE prédicat]</strong>."
+    "exp": "<strong>UPDATE table SET ... [WHERE prédicat]</strong> modifie des enregistrements."
   },
   {
     "year": 2,
@@ -132,7 +132,7 @@ window.SQL_SECOND_YEAR_QUESTIONS = [
       "ORDER BY"
     ],
     "answer": 0,
-    "exp": "Le mémento utilise <strong>INSERT INTO table (...) VALUES (...)</strong>."
+    "exp": "<strong>INSERT INTO table (...) VALUES (...)</strong> ajoute un enregistrement."
   },
   {
     "year": 2,
@@ -147,7 +147,7 @@ window.SQL_SECOND_YEAR_QUESTIONS = [
       "SELECT DISTINCT"
     ],
     "answer": 0,
-    "exp": "Le mémento place la suppression des enregistrements sous <strong>DELETE FROM</strong>."
+    "exp": "<strong>DELETE FROM</strong> supprime des enregistrements."
   },
   {
     "year": 2,
@@ -169,7 +169,7 @@ window.SQL_SECOND_YEAR_QUESTIONS = [
     "module": "sql2",
     "cat": "🗃️ SQL — 2e année",
     "type": "mcq",
-    "q": "Pour compter les chevaux mâles de race « pur sang », quelle fonction du mémento est nécessaire ?",
+    "q": "Pour compter les chevaux mâles de race « pur sang », quelle fonction est nécessaire ?",
     "opts": [
       "COUNT(*)",
       "AVG()",
@@ -177,7 +177,7 @@ window.SQL_SECOND_YEAR_QUESTIONS = [
       "MIN()"
     ],
     "answer": 0,
-    "exp": "L’exercice demande un nombre de chevaux : le mémento fournit <strong>COUNT(*)</strong>."
+    "exp": "Comme le résultat attendu est un nombre de chevaux, <strong>COUNT(*)</strong> est la fonction adaptée."
   },
   {
     "year": 2,
@@ -189,14 +189,14 @@ window.SQL_SECOND_YEAR_QUESTIONS = [
       "sum",
       "sum()"
     ],
-    "exp": "Le mémento fournit <strong>SUM()</strong> pour calculer un total."
+    "exp": "<strong>SUM()</strong> calcule un total sur une colonne numérique."
   },
   {
     "year": 2,
     "module": "sql2",
     "cat": "🗃️ SQL — 2e année",
     "type": "mcq",
-    "q": "Pour afficher les noms des différents moniteurs, quel mot-clé du mémento évite les doublons ?",
+    "q": "Pour afficher les noms des différents moniteurs sans doublons, quel mot-clé faut-il utiliser ?",
     "opts": [
       "DISTINCT",
       "DEFAULT",
@@ -204,7 +204,7 @@ window.SQL_SECOND_YEAR_QUESTIONS = [
       "ALTER"
     ],
     "answer": 0,
-    "exp": "Le mémento prévoit <strong>SELECT DISTINCT</strong> pour une projection sans doublons."
+    "exp": "<strong>SELECT DISTINCT</strong> réalise une projection sans doublons."
   },
   {
     "year": 2,
@@ -216,14 +216,14 @@ window.SQL_SECOND_YEAR_QUESTIONS = [
       "create database equus",
       "create database equus;"
     ],
-    "exp": "Le TP LDD donne la forme <strong>CREATE DATABASE NomBase;</strong>."
+    "exp": "<strong>CREATE DATABASE NomBase;</strong> crée une nouvelle base de données."
   },
   {
     "year": 2,
     "module": "sql2",
     "cat": "🗃️ SQL — 2e année",
     "type": "mcq",
-    "q": "Quelle commande affiche les bases créées sur le serveur dans les supports ?",
+    "q": "Quelle commande affiche les bases créées sur le serveur ?",
     "opts": [
       "SHOW DATABASES;",
       "SHOW TABLES;",
@@ -231,7 +231,7 @@ window.SQL_SECOND_YEAR_QUESTIONS = [
       "SOURCE EQUUS;"
     ],
     "answer": 0,
-    "exp": "Le TP LDD utilise <strong>SHOW DATABASES;</strong>."
+    "exp": "<strong>SHOW DATABASES;</strong> affiche les bases de données disponibles."
   },
   {
     "year": 2,
@@ -243,7 +243,7 @@ window.SQL_SECOND_YEAR_QUESTIONS = [
       "use equus",
       "use equus;"
     ],
-    "exp": "La commande du TP est <strong>USE NomBase;</strong>."
+    "exp": "<strong>USE NomBase;</strong> sélectionne la base de données à utiliser."
   },
   {
     "year": 2,
@@ -258,7 +258,7 @@ window.SQL_SECOND_YEAR_QUESTIONS = [
       "SOURCE CHEVAL;"
     ],
     "answer": 0,
-    "exp": "Le TP LDD utilise <strong>DESC nomtable;</strong> pour la structure."
+    "exp": "<strong>DESC nomtable;</strong> affiche la structure d’une table."
   },
   {
     "year": 2,
@@ -269,6 +269,6 @@ window.SQL_SECOND_YEAR_QUESTIONS = [
     "answers": [
       "source"
     ],
-    "exp": "Le TP LDD utilise <strong>SOURCE nomscript.sql;</strong>."
+    "exp": "<strong>SOURCE nomscript.sql;</strong> exécute un script SQL."
   }
 ];

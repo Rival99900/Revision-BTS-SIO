@@ -75,7 +75,7 @@ window.EXTRA_QUESTIONS = [
     "module": "systemes",
     "cat": "🖥️ Systèmes",
     "type": "mcq",
-    "q": "D’après le cours, une information est caractérisée par :",
+    "q": "Une information est caractérisée par :",
     "opts": [
       "Son prix, son auteur, sa date",
       "Son contenu, sa forme, son support",
@@ -83,7 +83,7 @@ window.EXTRA_QUESTIONS = [
       "Son protocole, son port, son masque"
     ],
     "answer": 1,
-    "exp": "Le support « L’INFORMATION » retient contenu, forme et support."
+    "exp": "Une information se caractérise par son contenu, sa forme et son support."
   },
   {
     "year": 1,
@@ -94,7 +94,7 @@ window.EXTRA_QUESTIONS = [
     "answers": [
       "hardware"
     ],
-    "exp": "Le cours oppose software (logiciel) et hardware (matériel)."
+    "exp": "Software désigne le logiciel, tandis que hardware désigne le matériel."
   },
   {
     "year": 1,
@@ -121,7 +121,7 @@ window.EXTRA_QUESTIONS = [
       "8",
       "8 bits"
     ],
-    "exp": "Le cours rappelle : 1 octet = 8 bits."
+    "exp": "Un octet correspond à 8 bits."
   },
   {
     "year": 1,
@@ -150,7 +150,7 @@ window.EXTRA_QUESTIONS = [
       "kernel",
       "kernel mode"
     ],
-    "exp": "Le cours oppose mode noyau et mode utilisateur."
+    "exp": "Le système distingue le mode noyau et le mode utilisateur."
   },
   {
     "year": 1,
@@ -165,7 +165,7 @@ window.EXTRA_QUESTIONS = [
       "Un certificat TLS"
     ],
     "answer": 1,
-    "exp": "Le cours DHCP cite adresse IP, masque, passerelle et DNS."
+    "exp": "La configuration DHCP peut fournir l’adresse IP, le masque, la passerelle et le DNS."
   },
   {
     "year": 1,
@@ -190,7 +190,7 @@ window.EXTRA_QUESTIONS = [
     "module": "systemes",
     "cat": "🖥️ Systèmes",
     "type": "mcq",
-    "q": "Quel protocole est utilisé pour l’accès aux annuaires Active Directory dans le support ?",
+    "q": "Quel protocole est utilisé pour l’accès aux annuaires Active Directory ?",
     "opts": [
       "HTTP",
       "SMTP",
@@ -198,7 +198,7 @@ window.EXTRA_QUESTIONS = [
       "FTP"
     ],
     "answer": 2,
-    "exp": "Le support Active Directory cite LDAP : Lightweight Directory Access Protocol."
+    "exp": "LDAP signifie Lightweight Directory Access Protocol et permet l’accès aux annuaires."
   },
   {
     "year": 1,
@@ -236,7 +236,7 @@ window.EXTRA_QUESTIONS = [
       "esprit critique",
       "l esprit critique"
     ],
-    "exp": "Le cours insiste sur le développement de l’esprit critique."
+    "exp": "L’analyse de l’information contribue au développement de l’esprit critique."
   },
   {
     "year": 1,
@@ -251,7 +251,7 @@ window.EXTRA_QUESTIONS = [
       "Plus de 65 ans"
     ],
     "answer": 1,
-    "exp": "Le document étudie la tranche des 15–24 ans."
+    "exp": "La tranche d’âge étudiée est celle des 15–24 ans."
   },
   {
     "year": 1,
@@ -266,7 +266,7 @@ window.EXTRA_QUESTIONS = [
       "Zola"
     ],
     "answer": 0,
-    "exp": "Le cours analyse un texte de Guy de Maupassant sur les motifs du voyage."
+    "exp": "Le texte de Guy de Maupassant étudié porte sur les motifs du voyage."
   },
   {
     "year": 1,
@@ -280,14 +280,14 @@ window.EXTRA_QUESTIONS = [
       "jean marie le clezio",
       "jean-marie le clézio"
     ],
-    "exp": "Le document cite Jean-Marie Le Clézio."
+    "exp": "Jean-Marie Le Clézio fait partie des auteurs cités."
   },
   {
     "year": 1,
     "module": "culture",
     "cat": "✍️ Culture générale",
     "type": "mcq",
-    "q": "Les EMI sont étudiées dans le cours principalement par quels spécialistes ?",
+    "q": "Les expériences de mort imminente (EMI) sont notamment étudiées par quels spécialistes ?",
     "opts": [
       "Économistes",
       "Neurologues",
@@ -295,6 +295,6 @@ window.EXTRA_QUESTIONS = [
       "Architectes"
     ],
     "answer": 1,
-    "exp": "Le support indique que les expériences de mort imminente ont notamment été étudiées par des neurologues."
+    "exp": "Les expériences de mort imminente ont notamment été étudiées par des neurologues."
   }
 ];

@@ -22,6 +22,6 @@ window.CEJM_DETAILED.push(...[
       "credit bail mobilier",
       "credit bail immobilier"
     ],
-    "exp": "Le support présente le crédit-bail comme une location avec option d’achat en fin de contrat."
+    "exp": "Le crédit-bail est une location avec option d’achat en fin de contrat."
   }
 ]);

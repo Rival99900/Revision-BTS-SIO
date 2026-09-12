@@ -356,3 +356,105 @@ pre {
     min-width: 620px;
   }
 }
+
+
+/* =====================================================
+   Global layout hardening — desktop & mobile
+   ===================================================== */
+main, section, article, header, footer, nav, .container, .page-panel, .panel {
+  min-width: 0;
+}
+
+.topnav, .hero-actions, .filters, .stabs, .qstats {
+  max-width: 100%;
+}
+
+a, button, input, textarea, select {
+  max-width: 100%;
+}
+
+.tbl {
+  width: 100%;
+}
+
+.table-scroll {
+  position: relative;
+}
+
+@media (max-width: 700px) {
+  .code, pre {
+    font-size: .76rem;
+  }
+
+  .module-card, .chapter-card, .card, .cmpc {
+    min-height: 0;
+  }
+
+  .text-answer {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .text-answer input,
+  .text-answer .validate {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .site-header h1 {
+    font-size: clamp(1.35rem, 8vw, 2rem);
+  }
+
+  .site-header .sub {
+    font-size: 1.05rem;
+    letter-spacing: .12em;
+  }
+
+  .qcard {
+    padding: 16px 12px;
+  }
+}
+
+
+/* =====================================================
+   Quiz CGE — réponses rédigées
+   ===================================================== */
+.text-answer textarea {
+  width: 100%;
+  min-width: 0;
+  min-height: 108px;
+  max-height: 260px;
+  resize: vertical;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: .88rem;
+  line-height: 1.55;
+  padding: 11px 13px;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.text-answer textarea:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 12px rgba(0, 207, 255, .12);
+}
+
+.text-answer-hint {
+  margin-top: 7px;
+  color: var(--text-dim);
+  font-size: .72rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 560px) {
+  .text-answer textarea {
+    min-height: 126px;
+    font-size: .84rem;
+  }
+}

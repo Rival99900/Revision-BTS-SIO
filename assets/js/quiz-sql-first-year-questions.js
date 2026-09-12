@@ -12,7 +12,7 @@ window.SQL_FIRST_YEAR_QUESTIONS = [
       "DROP"
     ],
     "answer": 1,
-    "exp": "Le cours d’interrogation indique que les requêtes de sélection commencent par <strong>SELECT</strong>."
+    "exp": "Une requête de sélection commence par <strong>SELECT</strong>."
   },
   {
     "year": 1,
@@ -49,14 +49,14 @@ window.SQL_FIRST_YEAR_QUESTIONS = [
     "answers": [
       "distinct"
     ],
-    "exp": "Le support utilise <strong>DISTINCT</strong> pour éliminer les lignes en double."
+    "exp": "<strong>DISTINCT</strong> élimine les lignes en double dans le résultat."
   },
   {
     "year": 1,
     "module": "sql",
     "cat": "🗃️ SQL — 1re année",
     "type": "mcq",
-    "q": "Quel opérateur SQL signifie « différent de » dans le support ?",
+    "q": "Quel opérateur SQL signifie « différent de » ?",
     "opts": [
       "!= uniquement",
       "<>",
@@ -64,14 +64,14 @@ window.SQL_FIRST_YEAR_QUESTIONS = [
       "~="
     ],
     "answer": 1,
-    "exp": "Le mémento et le cours listent <strong>&lt;&gt;</strong> parmi les comparateurs."
+    "exp": "<strong>&lt;&gt;</strong> est l’opérateur SQL utilisé ici pour exprimer « différent de »."
   },
   {
     "year": 1,
     "module": "sql",
     "cat": "🗃️ SQL — 1re année",
     "type": "mcq",
-    "q": "Pour classer un résultat du plus grand au plus petit, le mémento utilise :",
+    "q": "Pour classer un résultat du plus grand au plus petit, quelle option faut-il utiliser ?",
     "opts": [
       "ORDER BY ... DESC",
       "GROUP BY ... DESC",
@@ -90,7 +90,7 @@ window.SQL_FIRST_YEAR_QUESTIONS = [
     "answers": [
       "in"
     ],
-    "exp": "Le support présente <strong>IN</strong> comme opérateur d’appartenance à une liste."
+    "exp": "<strong>IN</strong> teste l’appartenance à une liste de valeurs."
   },
   {
     "year": 1,
@@ -112,7 +112,7 @@ window.SQL_FIRST_YEAR_QUESTIONS = [
     "module": "sql",
     "cat": "🗃️ SQL — 1re année",
     "type": "mcq",
-    "q": "Les bornes utilisées avec BETWEEN sont-elles incluses dans l’intervalle dans le support ?",
+    "q": "Les bornes utilisées avec BETWEEN sont-elles incluses dans l’intervalle ?",
     "opts": [
       "Oui",
       "Non",
@@ -120,7 +120,7 @@ window.SQL_FIRST_YEAR_QUESTIONS = [
       "Uniquement la borne haute"
     ],
     "answer": 0,
-    "exp": "Le support précise que les bornes de <strong>BETWEEN</strong> sont comprises."
+    "exp": "Les bornes de <strong>BETWEEN</strong> sont incluses."
   },
   {
     "year": 1,
@@ -131,7 +131,7 @@ window.SQL_FIRST_YEAR_QUESTIONS = [
     "answers": [
       "is null"
     ],
-    "exp": "Le support utilise <strong>IS NULL</strong> pour une valeur inconnue ou absente."
+    "exp": "<strong>IS NULL</strong> teste une valeur inconnue ou absente."
   },
   {
     "year": 1,
@@ -146,7 +146,7 @@ window.SQL_FIRST_YEAR_QUESTIONS = [
       "IN ('b')"
     ],
     "answer": 0,
-    "exp": "Le support utilise <code>LIKE 'b%'</code> : % représente une chaîne quelconque."
+    "exp": "Avec <code>LIKE 'b%'</code>, % représente une chaîne quelconque après la lettre b."
   },
   {
     "year": 1,
@@ -157,14 +157,14 @@ window.SQL_FIRST_YEAR_QUESTIONS = [
     "answers": [
       "_"
     ],
-    "exp": "Le cours distingue <strong>%</strong> pour une chaîne quelconque et <strong>_</strong> pour un caractère."
+    "exp": "<strong>%</strong> représente une chaîne quelconque et <strong>_</strong> un seul caractère."
   },
   {
     "year": 1,
     "module": "sql",
     "cat": "🗃️ SQL — 1re année",
     "type": "mcq",
-    "q": "À quoi sert une jointure dans les supports SQL ?",
+    "q": "À quoi sert une jointure SQL ?",
     "opts": [
       "À chiffrer une table",
       "À répondre à une question portant sur plusieurs tables",
@@ -172,7 +172,7 @@ window.SQL_FIRST_YEAR_QUESTIONS = [
       "À créer un index"
     ],
     "answer": 1,
-    "exp": "Le support définit la jointure comme une opération permettant de répondre à des questions portant sur plusieurs tables."
+    "exp": "Une jointure permet de répondre à des questions portant sur plusieurs tables liées."
   },
   {
     "year": 1,
@@ -187,7 +187,7 @@ window.SQL_FIRST_YEAR_QUESTIONS = [
       "Un GROUP BY automatique"
     ],
     "answer": 1,
-    "exp": "Le cours montre qu’en l’absence de critère de jointure, le SGBD produit toutes les combinaisons de lignes : le produit cartésien."
+    "exp": "Sans critère de jointure, le SGBD produit toutes les combinaisons de lignes : c’est le produit cartésien."
   },
   {
     "year": 1,
@@ -256,7 +256,7 @@ window.SQL_FIRST_YEAR_QUESTIONS = [
       "LOW et HIGH"
     ],
     "answer": 0,
-    "exp": "Les supports utilisent <strong>MIN()</strong> et <strong>MAX()</strong>."
+    "exp": "<strong>MIN()</strong> renvoie le minimum et <strong>MAX()</strong> le maximum."
   },
   {
     "year": 1,
@@ -289,7 +289,7 @@ window.SQL_FIRST_YEAR_QUESTIONS = [
     "module": "sql",
     "cat": "🗃️ SQL — 1re année",
     "type": "mcq",
-    "q": "Dans le cours LMD, quelle instruction ajoute de nouveaux enregistrements ?",
+    "q": "Quelle instruction LMD ajoute de nouveaux enregistrements ?",
     "opts": [
       "INSERT",
       "UPDATE",
@@ -308,7 +308,7 @@ window.SQL_FIRST_YEAR_QUESTIONS = [
     "answers": [
       "update"
     ],
-    "exp": "Le cours LMD associe <strong>UPDATE</strong> à la mise à jour des enregistrements."
+    "exp": "<strong>UPDATE</strong> sert à modifier des enregistrements existants."
   },
   {
     "year": 1,
@@ -330,7 +330,7 @@ window.SQL_FIRST_YEAR_QUESTIONS = [
     "module": "sql",
     "cat": "🗃️ SQL — 1re année",
     "type": "mcq",
-    "q": "Quelles sont les trois grandes familles LDD mises en avant dans le cours ?",
+    "q": "Quelles sont les trois grandes familles de commandes LDD étudiées ?",
     "opts": [
       "SELECT, WHERE, FROM",
       "CREATE, ALTER, DROP",
@@ -338,7 +338,7 @@ window.SQL_FIRST_YEAR_QUESTIONS = [
       "SHOW, USE, DESC"
     ],
     "answer": 1,
-    "exp": "Le cours LDD présente <strong>CREATE</strong>, <strong>ALTER</strong> et <strong>DROP</strong>."
+    "exp": "Les trois grandes commandes LDD sont <strong>CREATE</strong>, <strong>ALTER</strong> et <strong>DROP</strong>."
   },
   {
     "year": 1,
@@ -349,7 +349,7 @@ window.SQL_FIRST_YEAR_QUESTIONS = [
     "answers": [
       "create table"
     ],
-    "exp": "La syntaxe du cours commence par <strong>CREATE TABLE NomTable (...)</strong>."
+    "exp": "La création d’une table commence par <strong>CREATE TABLE NomTable (...)</strong>."
   },
   {
     "year": 1,
@@ -379,7 +379,7 @@ window.SQL_FIRST_YEAR_QUESTIONS = [
       "FOREIGN KEY"
     ],
     "answer": 0,
-    "exp": "Le cours décrit <strong>UNIQUE</strong> comme une contrainte d’unicité."
+    "exp": "<strong>UNIQUE</strong> impose l’unicité des valeurs concernées."
   },
   {
     "year": 1,
@@ -390,7 +390,7 @@ window.SQL_FIRST_YEAR_QUESTIONS = [
     "answers": [
       "default"
     ],
-    "exp": "Le cours utilise <strong>DEFAULT</strong> pour la valeur par défaut."
+    "exp": "<strong>DEFAULT</strong> définit une valeur par défaut."
   },
   {
     "year": 1,
@@ -405,19 +405,19 @@ window.SQL_FIRST_YEAR_QUESTIONS = [
       "ORDER BY"
     ],
     "answer": 0,
-    "exp": "Le cours donne <code>CHECK (Age &gt;= 18)</code> comme exemple."
+    "exp": "<code>CHECK (Age &gt;= 18)</code> est un exemple de contrainte de vérification."
   },
   {
     "year": 1,
     "module": "sql",
     "cat": "🗃️ SQL — 1re année",
     "type": "text",
-    "q": "Quel mot-clé du cours permet l’auto-incrément d’un champ numérique ?",
+    "q": "Quel mot-clé permet l’auto-incrément d’un champ numérique ?",
     "answers": [
       "auto_increment",
       "auto increment"
     ],
-    "exp": "Le support LDD cite <strong>AUTO_INCREMENT</strong>."
+    "exp": "<strong>AUTO_INCREMENT</strong> permet l’auto-incrément d’un champ numérique."
   },
   {
     "year": 1,
@@ -439,7 +439,7 @@ window.SQL_FIRST_YEAR_QUESTIONS = [
     "module": "sql",
     "cat": "🗃️ SQL — 1re année",
     "type": "mcq",
-    "q": "Quelle syntaxe exprime une clé étrangère dans le cours ?",
+    "q": "Quelle syntaxe exprime une clé étrangère ?",
     "opts": [
       "FOREIGN KEY (...) REFERENCES table (...)",
       "LINK KEY (...) TO table",
@@ -447,7 +447,7 @@ window.SQL_FIRST_YEAR_QUESTIONS = [
       "JOIN KEY table"
     ],
     "answer": 0,
-    "exp": "Le cours LDD utilise <strong>FOREIGN KEY (...) REFERENCES ...</strong>."
+    "exp": "<strong>FOREIGN KEY (...) REFERENCES ...</strong> définit une clé étrangère et sa référence."
   },
   {
     "year": 1,
@@ -458,14 +458,14 @@ window.SQL_FIRST_YEAR_QUESTIONS = [
     "answers": [
       "create view"
     ],
-    "exp": "Le support présente <strong>CREATE VIEW nom_vue AS SELECT ...</strong>."
+    "exp": "<strong>CREATE VIEW nom_vue AS SELECT ...</strong> permet de créer une vue."
   },
   {
     "year": 1,
     "module": "sql",
     "cat": "🗃️ SQL — 1re année",
     "type": "mcq",
-    "q": "Quelle commande supprime les données d’une table tout en conservant sa structure selon le support ?",
+    "q": "Quelle commande supprime les données d’une table tout en conservant sa structure ?",
     "opts": [
       "DROP TABLE",
       "TRUNCATE TABLE",
@@ -473,7 +473,7 @@ window.SQL_FIRST_YEAR_QUESTIONS = [
       "ALTER TABLE"
     ],
     "answer": 1,
-    "exp": "Le cours précise que <strong>TRUNCATE TABLE</strong> conserve la structure."
+    "exp": "<strong>TRUNCATE TABLE</strong> supprime les données tout en conservant la structure de la table."
   },
   {
     "year": 1,
@@ -484,7 +484,7 @@ window.SQL_FIRST_YEAR_QUESTIONS = [
     "answers": [
       "alter table"
     ],
-    "exp": "Le cours utilise <strong>ALTER TABLE</strong> pour ajouter, supprimer, renommer ou modifier des éléments de structure."
+    "exp": "<strong>ALTER TABLE</strong> permet d’ajouter, supprimer, renommer ou modifier des éléments de structure."
   },
   {
     "year": 1,
@@ -499,7 +499,7 @@ window.SQL_FIRST_YEAR_QUESTIONS = [
       "LIST DATABASES;"
     ],
     "answer": 0,
-    "exp": "Le TP LDD indique <strong>SHOW DATABASES;</strong>."
+    "exp": "<strong>SHOW DATABASES;</strong> affiche les bases de données disponibles."
   },
   {
     "year": 1,
@@ -511,7 +511,7 @@ window.SQL_FIRST_YEAR_QUESTIONS = [
       "create database ecole",
       "create database ecole;"
     ],
-    "exp": "Le TP donne <strong>CREATE DATABASE Ecole;</strong>."
+    "exp": "<strong>CREATE DATABASE Ecole;</strong> crée la base de données Ecole."
   },
   {
     "year": 1,
@@ -526,7 +526,7 @@ window.SQL_FIRST_YEAR_QUESTIONS = [
       "FROM Ecole;"
     ],
     "answer": 0,
-    "exp": "Le TP utilise <strong>USE Ecole;</strong>."
+    "exp": "<strong>USE Ecole;</strong> sélectionne la base Ecole."
   },
   {
     "year": 1,
@@ -538,14 +538,14 @@ window.SQL_FIRST_YEAR_QUESTIONS = [
       "show tables",
       "show tables;"
     ],
-    "exp": "Le TP LDD indique <strong>SHOW TABLES;</strong>."
+    "exp": "<strong>SHOW TABLES;</strong> affiche les tables de la base sélectionnée."
   },
   {
     "year": 1,
     "module": "sql",
     "cat": "🗃️ SQL — 1re année",
     "type": "mcq",
-    "q": "Quelle commande affiche la structure d’une table dans le TP ?",
+    "q": "Quelle commande affiche la structure d’une table ?",
     "opts": [
       "DESC nomtable;",
       "SHOW DATABASES;",
@@ -553,17 +553,17 @@ window.SQL_FIRST_YEAR_QUESTIONS = [
       "USE nomtable;"
     ],
     "answer": 0,
-    "exp": "Le TP utilise <strong>DESC nomtable;</strong>."
+    "exp": "<strong>DESC nomtable;</strong> affiche la structure d’une table."
   },
   {
     "year": 1,
     "module": "sql",
     "cat": "🗃️ SQL — 1re année",
     "type": "text",
-    "q": "Quel mot-clé MySQL exécute un script .sql dans le TP ?",
+    "q": "Quel mot-clé MySQL exécute un script .sql ?",
     "answers": [
       "source"
     ],
-    "exp": "Le TP utilise <strong>SOURCE nomscript.sql;</strong>."
+    "exp": "<strong>SOURCE nomscript.sql;</strong> exécute un script SQL."
   }
 ];

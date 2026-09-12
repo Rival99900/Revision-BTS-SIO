@@ -86,12 +86,12 @@
      <strong>
       P&eacute;rim&egrave;tre :
      </strong>
-     cette fiche reprend uniquement les notions SQL identifi&eacute;es dans les dossiers de cours SLAM et SISR : interrogation, filtres, jointures, fonctions de groupe, LMD, LDD et commandes MySQL.
+     cette fiche regroupe les notions SQL de SLAM et SISR : interrogation, filtres, jointures, fonctions de groupe, LMD, LDD et commandes MySQL.
     </div>
     <div class="cmp">
      <div class="cmpc">
       <h4 class="bl">
-       SLAM &mdash; supports exploit&eacute;s
+       SLAM &mdash; ressources SQL
       </h4>
       <p>
        S&eacute;ances
@@ -103,7 +103,7 @@
      </div>
      <div class="cmpc">
       <h4 class="cy">
-       SISR &mdash; supports exploit&eacute;s
+       SISR &mdash; ressources SQL
       </h4>
       <p>
        <strong>
@@ -153,7 +153,7 @@
        "
       </span>
       <p>
-       Le cours pr&eacute;sente une requ&ecirc;te d'interrogation avec
+       Une requ&ecirc;te d'interrogation utilise
        <strong>
         SELECT
        </strong>
@@ -221,7 +221,7 @@ WHERE Cat = 'B2';</div>
         ORDER BY
        </h3>
        <p>
-        Classe le r&eacute;sultat. Le m&eacute;mento SQL utilise
+        Classe le r&eacute;sultat avec
         <code>
          ASC
         </code>
@@ -239,13 +239,13 @@ ORDER BY Salaire DESC;</div>
      <div class="st te">
       Filtres vus dans les exercices
      </div>
-     <table class="tbl te">
+     <div class="table-scroll"><table class="tbl te">
       <tr>
        <th>
         Op&eacute;rateur / clause
        </th>
        <th>
-        R&ocirc;le dans les supports
+        R&ocirc;le
        </th>
        <th>
         Exemple issu des notions travaill&eacute;es
@@ -341,10 +341,10 @@ ORDER BY Salaire DESC;</div>
         </code>
        </td>
       </tr>
-     </table>
+     </table></div>
      <div class="alert abl">
       <strong>
-       Caract&egrave;res jokers du cours :
+       Caract&egrave;res jokers :
       </strong>
       <code>
        %
@@ -379,7 +379,7 @@ ORDER BY Salaire DESC;</div>
        "
       </span>
       <p>
-       Dans le support, une
+       Une
        <strong>
         jointure
        </strong>
@@ -394,7 +394,7 @@ ORDER BY Salaire DESC;</div>
       <code>
        FROM
       </code>
-      sans crit&egrave;re de jointure, le support montre que toutes les combinaisons de lignes sont produites.
+      sans crit&egrave;re de jointure, toutes les combinaisons de lignes sont produites.
      </div>
      <div class="code te">SELECT Numembarcation, Couleur, Nomtype
 FROM EMBARCATION, TYPEMBARCATION
@@ -432,9 +432,9 @@ ORDER BY emb.Numembarcation;</div>
       Fonctions de groupe
      </div>
      <p class="lead">
-      Les supports utilisent cinq fonctions standard pour r&eacute;aliser des calculs sur plusieurs lignes.
+      Cinq fonctions standard permettent de r&eacute;aliser des calculs sur plusieurs lignes.
      </p>
-     <table class="tbl te">
+     <div class="table-scroll"><table class="tbl te">
       <tr>
        <th>
         Fonction
@@ -521,7 +521,7 @@ ORDER BY emb.Numembarcation;</div>
         </code>
        </td>
       </tr>
-     </table>
+     </table></div>
      <div class="st te">
       GROUP BY et HAVING
      </div>
@@ -542,7 +542,7 @@ GROUP BY couleur;</div>
         HAVING
        </h4>
        <p>
-        Le support de synth&egrave;se SQL l'utilise pour filtrer les groupes apr&egrave;s l'agr&eacute;gation.
+        Cette clause filtre les groupes apr&egrave;s l'agr&eacute;gation.
        </p>
        <div class="code bl">SELECT departement, AVG(salaire)
 FROM Employes
@@ -560,7 +560,7 @@ HAVING AVG(salaire) &gt; 3000;</div>
        "
       </span>
       <p>
-       Le cours LMD regroupe les commandes permettant de s&eacute;lectionner, ins&eacute;rer, modifier ou supprimer des donn&eacute;es dans une base relationnelle.
+       Le LMD regroupe les commandes permettant de s&eacute;lectionner, ins&eacute;rer, modifier ou supprimer des donn&eacute;es dans une base relationnelle.
       </p>
      </div>
      <div class="cg">
@@ -610,7 +610,7 @@ WHERE pr&eacute;dicat;</div>
       <strong>
        Point de vigilance :
       </strong>
-      dans le m&eacute;mento SQL, la clause
+      la clause
       <code>
        WHERE
       </code>
@@ -641,7 +641,7 @@ WHERE ...;</div>
       <strong>
        structure
       </strong>
-      de la base : tables, vues et contraintes. Les trois familles mises en avant dans le cours sont
+      de la base : tables, vues et contraintes. Les trois grandes familles sont
       <strong>
        CREATE
       </strong>
@@ -663,13 +663,13 @@ WHERE ...;</div>
      <div class="st te">
       Contraintes de champs
      </div>
-     <table class="tbl te">
+     <div class="table-scroll"><table class="tbl te">
       <tr>
        <th>
         Contrainte
        </th>
        <th>
-        R&ocirc;le indiqu&eacute; dans le cours
+        R&ocirc;le
        </th>
       </tr>
       <tr>
@@ -722,7 +722,7 @@ WHERE ...;</div>
         Auto-incr&eacute;mente un champ num&eacute;rique.
        </td>
       </tr>
-     </table>
+     </table></div>
      <div class="cmp">
       <div class="cmpc">
        <h4 class="gn">
@@ -748,7 +748,7 @@ REFERENCES service (NumService)</div>
       <strong>
        Int&eacute;grit&eacute; r&eacute;f&eacute;rentielle :
       </strong>
-      le cours la pr&eacute;sente comme le m&eacute;canisme qui maintient la coh&eacute;rence des relations entre cl&eacute;s &eacute;trang&egrave;res et cl&eacute;s primaires.
+      elle maintient la coh&eacute;rence des relations entre cl&eacute;s &eacute;trang&egrave;res et cl&eacute;s primaires.
      </div>
      <div class="st te">
       Vues et suppression
@@ -765,7 +765,7 @@ TRUNCATE TABLE nom_table;</div>
       <strong>
        TRUNCATE TABLE :
       </strong>
-      le support pr&eacute;cise que les donn&eacute;es sont supprim&eacute;es mais que la structure de la table est conserv&eacute;e.
+      les donn&eacute;es sont supprim&eacute;es mais la structure de la table est conserv&eacute;e.
      </div>
      <div class="st te">
       Modification de structure
@@ -782,15 +782,15 @@ DROP CONSTRAINT nom_contrainte;
 ALTER TABLE nom_table
 MODIFY nomChamp type_champ;</div>
      <div class="st te">
-      Commandes MySQL vues dans le TP
+      Commandes MySQL essentielles
      </div>
-     <table class="tbl te">
+     <div class="table-scroll"><table class="tbl te">
       <tr>
        <th>
         Commande
        </th>
        <th>
-        Usage dans le TP
+        Utilisation
        </th>
       </tr>
       <tr>
@@ -853,16 +853,16 @@ MODIFY nomChamp type_champ;</div>
         Ex&eacute;cuter un script SQL.
        </td>
       </tr>
-     </table>
+     </table></div>
      <div class="alert aa">
       <strong>
-       Moteur utilis&eacute; dans le TP :
+       Moteur utilis&eacute; :
       </strong>
-      le support demande de cr&eacute;er les tables avec
+      les tables sont cr&eacute;&eacute;es avec
       <code>
        ENGINE = InnoDB
       </code>
-      afin de g&eacute;rer les contraintes travaill&eacute;es en cours.
+      afin de g&eacute;rer les contraintes d&rsquo;int&eacute;grit&eacute;.
      </div>
     </section>
     <section class="sc" id="sql-exercices">
@@ -931,7 +931,7 @@ MODIFY nomChamp type_champ;</div>
      <details class="card te">
       <summary>
        <strong>
-        Corrections pr&eacute;sentes dans les supports &mdash; exemples
+        Exemples corrig&eacute;s
        </strong>
       </summary>
       <div class="code te">-- Couleurs : appartenance &agrave; une liste
@@ -976,7 +976,7 @@ FROM EMBARCATION
 GROUP BY Couleur;</div>
      </details>
      <div class="st te">
-      Exercices LMD du support
+      Exercices LMD
      </div>
      <div class="alert abl">
       <strong>
@@ -985,7 +985,7 @@ GROUP BY Couleur;</div>
       rendre B202 indisponible, rendre J201 disponible, fixer le nombre de places des jet-skis &agrave; 6, appliquer les augmentations de prix demand&eacute;es, supprimer l&rsquo;embarcation multicolore et supprimer les embarcations jaunes non disponibles.
      </div>
      <div class="st te">
-      TP LDD &mdash; base &Eacute;COLE
+      Exercice LDD &mdash; base &Eacute;COLE
      </div>
      <div class="cg">
       <div class="card te">
@@ -1009,7 +1009,7 @@ GROUP BY Couleur;</div>
         Cr&eacute;er trois tables
        </h3>
        <p>
-        Le TP demande les tables
+        L&rsquo;exercice utilise les tables
         <strong>
          COMMUNE
         </strong>
@@ -1041,7 +1041,7 @@ GROUP BY Couleur;</div>
       <strong>
        Important :
       </strong>
-      lorsque le support fournit uniquement un &eacute;nonc&eacute; et pas sa correction compl&egrave;te, cette fiche conserve l&rsquo;exercice sans ajouter une solution ext&eacute;rieure au Drive.
+      lorsqu&rsquo;un &eacute;nonc&eacute; ne contient pas de correction compl&egrave;te, l&rsquo;exercice est conserv&eacute; sans ajouter de solution ext&eacute;rieure au Drive.
      </div>
     </section>
     <section class="sc" id="sql-memo">
@@ -1055,7 +1055,7 @@ GROUP BY colonnes
 HAVING condition
 ORDER BY colonnes [ASC | DESC];</div>
      <div class="st te">
-      Autres &eacute;l&eacute;ments pr&eacute;sents dans les supports de 1re ann&eacute;e
+      Autres notions SQL de 1re ann&eacute;e
      </div>
      <div class="cg">
       <div class="card te">
@@ -1063,7 +1063,7 @@ ORDER BY colonnes [ASC | DESC];</div>
         LIMIT
        </h3>
        <p>
-        Le document de synth&egrave;se SQL pr&eacute;sente
+        La syntaxe SQL utilise
         <code>
          LIMIT
         </code>
@@ -1136,7 +1136,7 @@ FROM EMBARCATION;</div>
      <b>
       TP LDD.pdf
      </b>
-     . La fiche n'ajoute pas de syntaxe SQL absente de ces supports.
+     . La fiche reste limit&eacute;e aux syntaxes pr&eacute;sentes dans ces ressources.
     </div>
    </main>
    <div class="footer">
