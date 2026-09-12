@@ -1674,3 +1674,48 @@ body.modal-open {
     border-radius: 4px;
   }
 }
+
+/* ===== COLORATION SYSTÈME / I-O & CHAÎNES PHP ===== */
+.editor-shell {
+  --syn-constant: #ffcf70;
+  --syn-io: #52e6ff;
+  --syn-string-single: var(--syn-string);
+  --syn-string-double: var(--syn-string);
+  --syn-interpolation: var(--syn-variable);
+}
+
+.editor-shell[data-language="php"] {
+  --syn-constant: #ffcb6b;
+  --syn-io: #80cbc4;
+  --syn-string-single: #b7c78b;
+  --syn-string-double: #c3e88d;
+  --syn-interpolation: #ff8f70;
+}
+
+.editor-shell[data-language="java"] {
+  --syn-constant: #ffcb6b;
+  --syn-io: #80cbc4;
+}
+
+.syn-constant {
+  color: var(--syn-constant);
+  font-weight: 700;
+}
+
+.syn-io {
+  color: var(--syn-io);
+  font-weight: 600;
+}
+
+.syn-string-single {
+  color: var(--syn-string-single);
+}
+
+.syn-string-double {
+  color: var(--syn-string-double);
+}
+
+.syn-interpolation {
+  color: var(--syn-interpolation);
+  font-weight: 700;
+}

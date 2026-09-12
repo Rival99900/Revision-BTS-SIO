@@ -37,6 +37,131 @@ function lineTextBefore(position) {
   return before.slice(before.lastIndexOf('\n') + 1);
 }
 
+function singleStatementConditionalHeader(language, trimmedLine) {
+  const line = String(trimmedLine || '').trim();
+  if (!line || line.endsWith(':') || line.endsWith('{')) return false;
+
+  if (language === 'php') {
+    return /^(?:(?:if|elseif|else\s+if|while|for|foreach|switch)\s*\([^\n]*\)|else)\s*$/i.test(line);
+  }
+  if (language === 'java') {
+    return /^(?:(?:if|else\s+if|while|for|switch)\s*\([^\n]*\)|else)\s*$/i.test(line);
+  }
+  return false;
+}
+
+function conditionHeaderWithoutBraces(language, trimmedLine) {
+  const line = String(trimmedLine || '').trim();
+  if (!line) return false;
+
+  if (language === 'php') {
+    if (singleStatementConditionalHeader(language, line)) return true;
+    if (/^(?:if|elseif|else\s+if|else|while|for|foreach|switch)\b[\s\S]*:\s*$/i.test(line)) return true;
+  }
+
+  if (language === 'java') {
+    if (singleStatementConditionalHeader(language, line)) return true;
+  }
+
+  return false;
+}
+
+function shouldIncreaseIndent(language, trimmedLine) {
+  const line = String(trimmedLine || '').trimEnd();
+  if (!line) return false;
+  if (language === 'python') return line.endsWith(':');
+  if ((language === 'java' || language === 'php') && line.endsWith('{')) return true;
+  return conditionHeaderWithoutBraces(language, line);
+}
+
+function findForwardExpressionEnd(value, start) {
+  if (start >= value.length || /\s/.test(value[start])) return -1;
+  let index = start;
+  let parenDepth = 0;
+  let bracketDepth = 0;
+  let braceDepth = 0;
+  let quote = '';
+  let escaped = false;
+
+  while (index < value.length) {
+    const char = value[index];
+
+    if (quote) {
+      if (!escaped && char === quote) quote = '';
+      if (!escaped && char === '\\') escaped = true;
+      else escaped = false;
+      index += 1;
+      continue;
+    }
+
+    if (char === '"' || char === "'") {
+      quote = char;
+      index += 1;
+      continue;
+    }
+
+    if (char === '(') parenDepth += 1;
+    else if (char === ')') {
+      if (parenDepth === 0) break;
+      parenDepth -= 1;
+    } else if (char === '[') bracketDepth += 1;
+    else if (char === ']') {
+      if (bracketDepth === 0) break;
+      bracketDepth -= 1;
+    } else if (char === '{') braceDepth += 1;
+    else if (char === '}') {
+      if (braceDepth === 0) break;
+      braceDepth -= 1;
+    } else if (parenDepth === 0 && bracketDepth === 0 && braceDepth === 0 && /[;,\n]/.test(char)) break;
+    else if (parenDepth === 0 && bracketDepth === 0 && braceDepth === 0 && /\s/.test(char)) break;
+
+    index += 1;
+  }
+
+  return index > start ? index : -1;
+}
+
+function wrapForwardExpressionIfUseful(opening, closing) {
+  if (opening !== '(') return false;
+  const editor = dom.codeEditor;
+  const start = editor.selectionStart;
+  const end = editor.selectionEnd;
+  if (start !== end || start === 0) return false;
+  const value = editor.value;
+  const left = value[start - 1] || '';
+  const right = value[start] || '';
+  if (!/[A-Za-z0-9_$\])]/.test(left) || !/[A-Za-z_$\[("']/.test(right)) return false;
+  const expressionEnd = findForwardExpressionEnd(value, start);
+  if (expressionEnd === -1) return false;
+  applyEditorContent(
+    `${value.slice(0, start)}${opening}${value.slice(start, expressionEnd)}${closing}${value.slice(expressionEnd)}`,
+    start + 1,
+  );
+  return true;
+}
+
+function previousNonEmptyLineBeforeCurrent(position) {
+  const value = dom.codeEditor.value;
+  const currentLineStart = value.lastIndexOf('\n', Math.max(0, position - 1)) + 1;
+  let cursor = currentLineStart - 1;
+  while (cursor >= 0) {
+    const lineEnd = cursor;
+    const lineStart = value.lastIndexOf('\n', Math.max(0, lineEnd - 1)) + 1;
+    const text = value.slice(lineStart, lineEnd + 1).replace(/\n$/, '');
+    if (text.trim()) return { text, indent: (text.match(/^[ \t]*/) || [''])[0] };
+    cursor = lineStart - 2;
+  }
+  return null;
+}
+
+function dedentAfterSingleStatement(language, position, currentIndent, currentLine) {
+  if (!['php', 'java'].includes(language) || !String(currentLine || '').trim()) return null;
+  const previous = previousNonEmptyLineBeforeCurrent(position);
+  if (!previous || !singleStatementConditionalHeader(language, previous.text.trim())) return null;
+  if (currentIndent.length <= previous.indent.length) return null;
+  return previous.indent;
+}
+
 function handleSmartEnter(event) {
   const editor = dom.codeEditor;
   const start = editor.selectionStart;
@@ -58,8 +183,11 @@ function handleSmartEnter(event) {
   }
   let nextIndent = indent;
   const language = activeLanguage();
-  if (language === 'python' && trimmedBefore.endsWith(':')) nextIndent += INDENT_UNIT;
-  else if ((language === 'java' || language === 'php') && trimmedBefore.endsWith('{')) nextIndent += INDENT_UNIT;
+  if (shouldIncreaseIndent(language, trimmedBefore)) nextIndent += INDENT_UNIT;
+  else {
+    const dedented = dedentAfterSingleStatement(language, start, indent, trimmedBefore);
+    if (dedented !== null) nextIndent = dedented;
+  }
   const insertion = `\n${nextIndent}`;
   applyEditorContent(`${before}${insertion}${after}`, start + insertion.length);
 }
@@ -156,7 +284,9 @@ function handleEditorKeydown(event) {
       return;
     }
     event.preventDefault();
-    wrapOrInsertPair(event.key, EDITOR_PAIRS[event.key]);
+    if (!wrapForwardExpressionIfUseful(event.key, EDITOR_PAIRS[event.key])) {
+      wrapOrInsertPair(event.key, EDITOR_PAIRS[event.key]);
+    }
     return;
   }
   if (EDITOR_CLOSERS.has(event.key) && start === end && value[start] === event.key) {

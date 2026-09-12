@@ -14,23 +14,27 @@ const SYNTAX_CONFIG = {
       'nonlocal', 'not', 'or', 'pass', 'raise', 'return', 'True', 'try', 'while', 'with', 'yield', 'match', 'case',
     ]),
     builtins: new Set([
-      'print', 'input', 'int', 'float', 'str', 'bool', 'list', 'dict', 'set', 'tuple', 'range', 'len', 'sum', 'max',
-      'min', 'abs', 'round', 'enumerate', 'zip', 'sorted', 'reversed', 'open', 'type', 'isinstance', 'map', 'filter',
+      'int', 'float', 'str', 'bool', 'list', 'dict', 'set', 'tuple', 'range', 'len', 'sum', 'max', 'min', 'abs',
+      'round', 'enumerate', 'zip', 'sorted', 'reversed', 'open', 'type', 'isinstance', 'map', 'filter',
     ]),
+    constants: new Set(['__name__', '__main__', 'NotImplemented', 'Ellipsis']),
+    io: new Set(['print', 'input', 'sys', 'stdin', 'stdout', 'stderr']),
   },
   php: {
     keywords: new Set([
       'abstract', 'and', 'array', 'as', 'break', 'callable', 'case', 'catch', 'class', 'clone', 'const', 'continue',
-      'declare', 'default', 'do', 'echo', 'else', 'elseif', 'empty', 'endfor', 'endforeach', 'endif', 'endswitch',
-      'endwhile', 'extends', 'final', 'finally', 'fn', 'for', 'foreach', 'function', 'global', 'if', 'implements',
-      'include', 'include_once', 'instanceof', 'interface', 'isset', 'match', 'namespace', 'new', 'null', 'or',
-      'print', 'private', 'protected', 'public', 'readonly', 'require', 'require_once', 'return', 'static', 'switch',
-      'throw', 'trait', 'try', 'unset', 'use', 'while', 'xor', 'yield', 'true', 'false',
+      'declare', 'default', 'do', 'echo', 'else', 'elseif', 'empty', 'enddeclare', 'endfor', 'endforeach', 'endif',
+      'endswitch', 'endwhile', 'extends', 'final', 'finally', 'fn', 'for', 'foreach', 'function', 'global', 'if',
+      'implements', 'include', 'include_once', 'instanceof', 'interface', 'isset', 'match', 'namespace', 'new', 'null',
+      'or', 'print', 'private', 'protected', 'public', 'readonly', 'require', 'require_once', 'return', 'static',
+      'switch', 'throw', 'trait', 'try', 'unset', 'use', 'while', 'xor', 'yield', 'true', 'false',
     ]),
     builtins: new Set([
-      'count', 'strlen', 'trim', 'fgets', 'explode', 'implode', 'array_sum', 'array_map', 'array_filter', 'max', 'min',
-      'sort', 'rsort', 'in_array', 'isset', 'empty', 'intval', 'floatval', 'strtolower', 'strtoupper', 'round', 'sqrt',
+      'count', 'strlen', 'trim', 'explode', 'implode', 'array_sum', 'array_map', 'array_filter', 'max', 'min', 'sort',
+      'rsort', 'in_array', 'isset', 'empty', 'intval', 'floatval', 'strtolower', 'strtoupper', 'round', 'sqrt',
     ]),
+    constants: new Set(['STDIN', 'STDOUT', 'STDERR', 'PHP_EOL', 'PHP_VERSION', 'DIRECTORY_SEPARATOR']),
+    io: new Set(['fgets', 'readline', 'stream_get_contents', 'printf', 'sprintf', 'var_dump', 'print_r']),
   },
   java: {
     keywords: new Set([
@@ -39,10 +43,16 @@ const SYNTAX_CONFIG = {
       'implements', 'import', 'instanceof', 'int', 'interface', 'long', 'native', 'new', 'package', 'private',
       'protected', 'public', 'return', 'short', 'static', 'strictfp', 'super', 'switch', 'synchronized', 'this',
       'throw', 'throws', 'transient', 'try', 'void', 'volatile', 'while', 'true', 'false', 'null', 'record', 'sealed',
+      'permits', 'non-sealed', 'var',
     ]),
     builtins: new Set([
-      'System', 'String', 'Scanner', 'Math', 'Integer', 'Double', 'Float', 'Long', 'Boolean', 'Character', 'Object',
-      'ArrayList', 'List', 'HashMap', 'Map', 'Arrays', 'Collections', 'StringBuilder', 'Exception', 'RuntimeException',
+      'String', 'Math', 'Integer', 'Double', 'Float', 'Long', 'Boolean', 'Character', 'Object', 'ArrayList', 'List',
+      'HashMap', 'Map', 'Arrays', 'Collections', 'StringBuilder', 'Exception', 'RuntimeException',
+    ]),
+    constants: new Set([]),
+    io: new Set([
+      'System', 'Scanner', 'BufferedReader', 'InputStreamReader', 'PrintStream', 'next', 'nextLine', 'nextInt',
+      'nextDouble', 'nextFloat', 'nextLong', 'nextBoolean', 'readLine', 'print', 'println', 'printf',
     ]),
   },
 };
@@ -173,6 +183,48 @@ function isIdentifierPart(char) {
   return /[A-Za-z0-9_À-ÿ]/.test(char || '');
 }
 
+function highlightPhpDoubleQuotedString(value) {
+  let output = '';
+  let index = 0;
+  let chunkStart = 0;
+
+  const flushChunk = (end) => {
+    if (end > chunkStart) output += tokenSpan('string-double', value.slice(chunkStart, end));
+  };
+
+  while (index < value.length) {
+    if (value[index] !== '$' || (index > 0 && value[index - 1] === '\\')) {
+      index += 1;
+      continue;
+    }
+
+    let cursor = index + 1;
+    if (value[cursor] === '{') {
+      cursor += 1;
+      if (!isIdentifierStart(value[cursor])) {
+        index += 1;
+        continue;
+      }
+      while (cursor < value.length && isIdentifierPart(value[cursor])) cursor += 1;
+      if (value[cursor] === '}') cursor += 1;
+    } else {
+      if (!isIdentifierStart(value[cursor])) {
+        index += 1;
+        continue;
+      }
+      while (cursor < value.length && isIdentifierPart(value[cursor])) cursor += 1;
+    }
+
+    flushChunk(index);
+    output += tokenSpan('interpolation', value.slice(index, cursor));
+    index = cursor;
+    chunkStart = cursor;
+  }
+
+  flushChunk(value.length);
+  return output;
+}
+
 function highlightCode(code, language) {
   const config = SYNTAX_CONFIG[language];
   if (!config) return escapeHtml(code);
@@ -246,7 +298,10 @@ function highlightCode(code, language) {
         else escaped = false;
         cursor += 1;
       }
-      output += tokenSpan('string', code.slice(index, cursor));
+      const stringValue = code.slice(index, cursor);
+      if (language === 'php' && quote === "'") output += tokenSpan('string-single', stringValue);
+      else if (language === 'php' && (quote === '"' || quote === '`')) output += highlightPhpDoubleQuotedString(stringValue);
+      else output += tokenSpan('string', stringValue);
       index = cursor;
       continue;
     }
@@ -282,6 +337,10 @@ function highlightCode(code, language) {
         type = 'keyword';
         if (['def', 'function'].includes(word)) expectedDefinition = 'function';
         if (['class', 'interface', 'enum', 'record'].includes(word)) expectedDefinition = 'class';
+      } else if (config.constants?.has(word)) {
+        type = 'constant';
+      } else if (config.io?.has(word)) {
+        type = 'io';
       } else if (config.builtins.has(word)) {
         type = 'builtin';
       } else if (followedByCall) {

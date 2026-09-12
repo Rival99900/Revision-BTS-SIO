@@ -85,46 +85,180 @@ function findJudgeLanguageId(languages, language) {
   return match?.id || fallback;
 }
 
+function encodeBase64Utf8(value) {
+  const bytes = new TextEncoder().encode(String(value ?? ''));
+  let binary = '';
+  const chunkSize = 0x8000;
+  for (let index = 0; index < bytes.length; index += chunkSize) {
+    binary += String.fromCharCode(...bytes.subarray(index, index + chunkSize));
+  }
+  return btoa(binary);
+}
+
+function decodeBase64Utf8(value) {
+  if (!value) return '';
+  try {
+    const binary = atob(String(value));
+    const bytes = Uint8Array.from(binary, (char) => char.charCodeAt(0));
+    return new TextDecoder().decode(bytes);
+  } catch {
+    return String(value);
+  }
+}
+
+function flattenJudgeMessage(payload) {
+  if (!payload) return '';
+  if (typeof payload === 'string') return payload;
+  if (Array.isArray(payload)) return payload.map(flattenJudgeMessage).filter(Boolean).join(' • ');
+  if (typeof payload === 'object') {
+    return Object.entries(payload)
+      .map(([key, value]) => `${key}: ${flattenJudgeMessage(value)}`)
+      .filter((entry) => !entry.endsWith(': '))
+      .join(' • ');
+  }
+  return String(payload);
+}
+
+function markEngineError(error) {
+  error.engineError = true;
+  return error;
+}
+
+async function judgeHttpError(response, context) {
+  let detail = '';
+  try {
+    const payload = await response.clone().json();
+    detail = flattenJudgeMessage(payload);
+  } catch {
+    try { detail = (await response.text()).trim(); } catch { detail = ''; }
+  }
+
+  if (response.status === 400) {
+    return markEngineError(new Error(`Le moteur d’exécution a refusé la requête.${detail ? ` Détail : ${detail}` : ' Vérifiez le code puis réessayez.'}`));
+  }
+  if (response.status === 429) return markEngineError(new Error('Le moteur d’exécution reçoit trop de demandes. Attendez quelques secondes puis réessayez.'));
+  if (response.status >= 500) return markEngineError(new Error('Le moteur d’exécution distant rencontre un problème temporaire. Réessayez dans quelques instants.'));
+  return markEngineError(new Error(`${context} (HTTP ${response.status})${detail ? ` : ${detail}` : '.'}`));
+}
+
 async function runJudge0(language, code, stdin) {
   setRuntimeStatus(language, 'connexion…');
-  const languages = await getJudgeLanguages();
+  let languages;
+  try {
+    languages = await getJudgeLanguages();
+  } catch (error) {
+    setRuntimeStatus(language, 'indisponible', 'error');
+    throw markEngineError(new Error(error?.message || 'Impossible de contacter le moteur d’exécution distant.'));
+  }
+
   const languageId = findJudgeLanguageId(languages, language);
-  const createResponse = await fetch('https://ce.judge0.com/submissions?base64_encoded=false&wait=false', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ language_id: languageId, source_code: code, stdin: stdin || '', cpu_time_limit: 4, wall_time_limit: 8 }),
-  });
-  if (!createResponse.ok) throw new Error(`Impossible d’envoyer le code à Judge0 (HTTP ${createResponse.status}).`);
+  const payload = {
+    language_id: languageId,
+    source_code: encodeBase64Utf8(code),
+    stdin: encodeBase64Utf8(stdin || ''),
+  };
+
+  let createResponse;
+  try {
+    createResponse = await fetch('https://ce.judge0.com/submissions?base64_encoded=true&wait=false', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify(payload),
+    });
+  } catch {
+    setRuntimeStatus(language, 'indisponible', 'error');
+    throw markEngineError(new Error('Impossible de contacter Judge0. Vérifiez votre connexion Internet puis réessayez.'));
+  }
+
+  if (!createResponse.ok) throw await judgeHttpError(createResponse, 'Impossible d’envoyer le code au moteur d’exécution');
   const created = await createResponse.json();
-  if (!created.token) throw new Error('Judge0 n’a pas renvoyé de jeton d’exécution.');
+  if (!created.token) throw new Error('Le moteur d’exécution n’a pas renvoyé de jeton. Réessayez dans quelques instants.');
+
   let result = null;
   for (let attempt = 0; attempt < 24; attempt += 1) {
     await new Promise((resolve) => window.setTimeout(resolve, 350));
-    const resultResponse = await fetch(`https://ce.judge0.com/submissions/${created.token}?base64_encoded=false&fields=stdout,stderr,compile_output,message,status,time,memory`);
-    if (!resultResponse.ok) throw new Error(`Impossible de lire le résultat Judge0 (HTTP ${resultResponse.status}).`);
+    let resultResponse;
+    try {
+      resultResponse = await fetch(`https://ce.judge0.com/submissions/${created.token}?base64_encoded=true&fields=stdout,stderr,compile_output,message,status,time,memory`);
+    } catch {
+      throw markEngineError(new Error('La connexion au moteur d’exécution a été interrompue pendant le traitement.'));
+    }
+    if (!resultResponse.ok) throw await judgeHttpError(resultResponse, 'Impossible de récupérer le résultat');
     result = await resultResponse.json();
     if (result?.status?.id && result.status.id > 2) break;
   }
-  if (!result || !result.status || result.status.id <= 2) throw new Error('Le moteur distant n’a pas terminé dans le délai prévu.');
+
+  if (!result || !result.status || result.status.id <= 2) throw new Error('Le programme n’a pas terminé dans le délai prévu.');
   setRuntimeStatus(language, 'prêt', 'ready');
-  const details = [result.compile_output, result.stderr, result.message].filter(Boolean).join('\n');
-  const stdout = result.stdout || '';
+
+  const stdout = decodeBase64Utf8(result.stdout);
+  const compileOutput = decodeBase64Utf8(result.compile_output);
+  const stderr = decodeBase64Utf8(result.stderr);
+  const message = decodeBase64Utf8(result.message);
+  const details = [compileOutput, stderr, message].filter((value) => String(value || '').trim()).join('\n').trim();
+
   if (result.status.id !== 3) {
-    const error = new Error(details || `Exécution terminée : ${result.status.description}.`);
+    const description = result.status.description || 'Erreur d’exécution';
+    const error = new Error(details || description);
     error.runtimeOutput = stdout;
+    error.runtimeStatus = description;
     throw error;
   }
-  return `${stdout}${details ? `\n${details}` : ''}`;
+  return `${stdout}${details ? `${stdout && !stdout.endsWith('\n') ? '\n' : ''}${details}` : ''}`;
+}
+
+function splitInteractiveInputValues(value) {
+  const source = String(value ?? '');
+  const tokens = [];
+  let token = '';
+  let quote = '';
+  let escaped = false;
+
+  const pushToken = () => {
+    if (token.length) tokens.push(token);
+    token = '';
+  };
+
+  for (let index = 0; index < source.length; index += 1) {
+    const char = source[index];
+    if (quote) {
+      if (escaped) {
+        token += char;
+        escaped = false;
+      } else if (char === '\\') escaped = true;
+      else if (char === quote) quote = '';
+      else token += char;
+      continue;
+    }
+
+    if (char === '"' || char === "'") {
+      quote = char;
+      continue;
+    }
+    if (/\s/.test(char)) {
+      pushToken();
+      continue;
+    }
+    token += char;
+  }
+  pushToken();
+  return tokens;
+}
+
+function normalizeInteractiveStdin(value, requirement) {
+  const raw = String(value ?? '').replace(/\r\n/g, '\n');
+  if (!requirement || requirement.mode !== 'stdin' || Number(requirement.count || 0) <= 1) return raw;
+  const tokens = splitInteractiveInputValues(raw);
+  return tokens.length ? `${tokens.join('\n')}\n` : '';
 }
 
 function parsePhpPostInput(stdin) {
   const result = {};
-  String(stdin || '').split(/\r?\n/).forEach((line) => {
-    if (!line.trim()) return;
-    const separator = line.indexOf('=');
+  splitInteractiveInputValues(stdin).forEach((entry) => {
+    const separator = entry.indexOf('=');
     if (separator === -1) return;
-    const key = line.slice(0, separator).trim();
-    const value = line.slice(separator + 1).trim();
+    const key = entry.slice(0, separator).trim();
+    const value = entry.slice(separator + 1).trim();
     if (key) result[key] = value;
   });
   return result;
@@ -237,7 +371,11 @@ function openStdinModal(requirement) {
   if (requirement.mode === 'php-post' && requirement.keys?.length && !saved) suggested = requirement.keys.map((key) => `${key}=`).join('\n');
   dom.stdinModalInput.value = suggested;
   dom.stdinModalContext.textContent = `${file.name} • ${requirement.label}${requirement.count ? ` • ${requirement.count} lecture(s) estimée(s)` : ''}`;
-  dom.stdinModalHelp.textContent = requirement.mode === 'php-post' ? 'Format : une ligne clé=valeur pour simuler $_POST' : 'Utilisez une ligne par valeur lue par le programme';
+  dom.stdinModalHelp.textContent = requirement.mode === 'php-post'
+    ? 'Séparez les couples clé=valeur par espace ou retour à la ligne. Utilisez des guillemets pour conserver des espaces dans une valeur.'
+    : requirement.count > 1
+      ? 'Séparez les entrées par espace ou retour à la ligne. Entourez une valeur contenant des espaces avec des guillemets.'
+      : 'Saisissez la valeur attendue. Les espaces sont conservés pour une lecture unique.';
   dom.stdinModal.hidden = false;
   document.body.classList.add('modal-open');
   window.setTimeout(() => {
@@ -256,8 +394,9 @@ function closeStdinModal({ restoreView = true } = {}) {
 function launchFromStdinModal(forceEmpty = false) {
   const file = activeFile();
   const requirement = state.stdinRequirement;
-  const stdin = forceEmpty ? '' : dom.stdinModalInput.value;
-  localStorage.setItem(stdinStorageKey(file), stdin);
+  const rawStdin = forceEmpty ? '' : dom.stdinModalInput.value;
+  const stdin = requirement?.mode === 'php-post' ? rawStdin : normalizeInteractiveStdin(rawStdin, requirement);
+  localStorage.setItem(stdinStorageKey(file), rawStdin);
   closeStdinModal({ restoreView: false });
   executeCode(stdin, requirement);
 }
@@ -303,7 +442,9 @@ async function executeCode(stdin = '', requirement = null) {
     if (error.runtimeOutput) dom.terminalOutput.textContent += error.runtimeOutput;
     appendTerminal(error.message || String(error), 'error');
     setTerminalState('erreur', 'error');
-    if (language !== 'python') setRuntimeStatus(language, 'indisponible', 'error');
+    if (language !== 'python') {
+      setRuntimeStatus(language, error.engineError ? 'indisponible' : 'prêt', error.engineError ? 'error' : 'ready');
+    }
     return null;
   } finally {
     setRunning(false);

@@ -458,3 +458,203 @@ a, button, input, textarea, select {
     font-size: .84rem;
   }
 }
+
+/* =====================================================
+   Impression propre des fiches — contenu uniquement
+   ===================================================== */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 12mm;
+  }
+
+  html,
+  body {
+    width: 100% !important;
+    min-width: 0 !important;
+    overflow: visible !important;
+    background: #fff !important;
+    color: #111 !important;
+  }
+
+  body::before {
+    display: none !important;
+  }
+
+  body::after {
+    content: "Rival960" !important;
+    position: static !important;
+    inset: auto !important;
+    display: block !important;
+    width: 100% !important;
+    margin: 12mm 0 0 !important;
+    padding: 4mm 0 0 !important;
+    border-top: 1px solid #aaa !important;
+    background: none !important;
+    color: #555 !important;
+    font-family: "Share Tech Mono", monospace !important;
+    font-size: 9pt !important;
+    line-height: 1.2 !important;
+    text-align: center !important;
+    z-index: auto !important;
+  }
+
+  .site-header,
+  .header,
+  .topnav,
+  .hero,
+  .hero-actions,
+  .stabs,
+  .footer,
+  .source-note,
+  .year-switch,
+  .filters,
+  .filter-label,
+  .smallbtn,
+  .navbtn,
+  .yearbtn,
+  .sb,
+  button {
+    display: none !important;
+  }
+
+  .container,
+  .page-panel,
+  .panel,
+  main {
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: #fff !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+  }
+
+  .sc,
+  .sc.a {
+    display: block !important;
+    animation: none !important;
+    break-inside: auto;
+  }
+
+  .st {
+    color: #111 !important;
+    border-bottom: 1px solid #777 !important;
+    text-shadow: none !important;
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  .card,
+  .cmpc,
+  .alert,
+  .bq,
+  .bs,
+  .code,
+  .tree,
+  .frise,
+  .hf {
+    color: #111 !important;
+    background: #fff !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    border-color: #aaa !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .card::before {
+    box-shadow: none !important;
+  }
+
+  .card *,
+  .cmpc *,
+  .alert *,
+  .bq *,
+  .code *,
+  .tree *,
+  .frise *,
+  .hf * {
+    color: #111 !important;
+    text-shadow: none !important;
+  }
+
+  .tag {
+    color: #111 !important;
+    border-color: #999 !important;
+    background: transparent !important;
+  }
+
+  .table-scroll {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: visible !important;
+  }
+
+  .table-scroll .tbl,
+  .tbl {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    table-layout: fixed !important;
+    border-collapse: collapse !important;
+    font-size: 8.5pt !important;
+  }
+
+  .tbl th,
+  .tbl td {
+    padding: 5px 6px !important;
+    border-color: #999 !important;
+    background: #fff !important;
+    color: #111 !important;
+    white-space: normal !important;
+    word-break: normal !important;
+    overflow-wrap: anywhere !important;
+    vertical-align: top !important;
+  }
+
+  .tbl th {
+    font-weight: 700 !important;
+  }
+
+  .vocab-example,
+  .cn,
+  .ce {
+    color: #111 !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  .code,
+  pre:not(.terminal-output) {
+    max-width: 100% !important;
+    overflow: visible !important;
+    white-space: pre-wrap !important;
+    word-break: break-word !important;
+    overflow-wrap: anywhere !important;
+    color: #111 !important;
+  }
+
+  a,
+  a:visited {
+    color: #111 !important;
+    text-decoration: none !important;
+  }
+
+  .cg,
+  .cmp {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+  }
+}
+
+@media print and (max-width: 700px) {
+  .cg,
+  .cmp {
+    grid-template-columns: 1fr !important;
+  }
+}
