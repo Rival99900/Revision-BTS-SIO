@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="fr">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+  <meta content="R&eacute;visions BTS SIO 1re et 2e ann&eacute;e" name="description"/>
+  <title>
+   BTS SIO &mdash; R&eacute;visions compl&egrave;tes
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&amp;family=VT323&amp;family=Orbitron:wght@700;900&amp;display=swap" rel="stylesheet"/>
+  <link href="assets/css/style.css" rel="stylesheet"/>
+   <link rel="icon" type="image/svg+xml" href="assets/img/site-logo.svg" />
+  <link rel="shortcut icon" href="assets/img/site-logo.svg" />
+ </head>
+ <body>
+  <div class="container">
+   <div class="site-header">
+    <div class="bbar"></div>
+    <h1>
+     BTS SIO &mdash; R&Eacute;VISIONS
+    </h1>
+    <div class="sub">
+     1re &amp; 2e ann&eacute;e
+    </div>
+    <div class="tags">
+     <span class="tag tg">
+      BTS SIO
+     </span>
+     <span class="tag tb">
+      1re ann&eacute;e
+     </span>
+     <span class="tag tp">
+      2e ann&eacute;e
+     </span>
+     <span class="tag ta">
+      Quiz interactifs
+     </span>
+    </div>
+    <div class="prompt">
+     C:\\BTS-SIO\REVISION&gt;
+     <span>
+      &block;
+     </span>
+    </div>
+   </div>
+   <div class="topnav">
+    <button class="yearbtn active" onclick="filterYear('all',this)">
+     Tout
+    </button>
+    <button class="yearbtn" onclick="filterYear('1',this)">
+     1re ann&eacute;e
+    </button>
+    <button class="yearbtn" onclick="filterYear('2',this)">
+     2e ann&eacute;e
+    </button>
+    <a class="navbtn quiz" href="quiz.html">
+     🎯 Quiz g&eacute;n&eacute;ral
+    </a>
+    <a class="navbtn" href="code-lab.html">
+     &lt;/&gt; Code Lab
+    </a>
+   </div>
+   <main class="page-panel">
+    <div class="hero">
+     <div>
+      <div class="hero-kicker">
+       TABLEAU DE BORD
+      </div>
+      <h2>
+       R&eacute;visions BTS SIO &mdash; toutes les fiches
+      </h2>
+      <p>
+       Le site regroupe les fiches de 1re ann&eacute;e et les cours de 2e ann&eacute;e d&eacute;j&agrave; disponibles dans les Drive. Les contenus SQL sont consolid&eacute;s &agrave; partir des dossiers SLAM et SISR.
+      </p>
+     </div>
+    </div>
+    <div class="quickstats">
+     <div class="statbox">
+      <b>
+       14
+      </b>
+      <span>
+       fiches / modules 1re
+      </span>
+     </div>
+     <div class="statbox">
+      <b>
+       11
+      </b>
+      <span>
+       chapitres CEJM 1re
+      </span>
+     </div>
+     <div class="statbox">
+      <b>
+       4
+      </b>
+      <span>
+       fiches disponibles 2e
+      </span>
+     </div>
+     <div class="statbox">
+      <b id="qcount">
+       310
+      </b>
+      <span>
+       questions quiz
+      </span>
+     </div>
+     <div class="statbox" data-code-lab-stat="1">
+      <b>
+       3
+      </b>
+      <span>
+       langages Code Lab
+      </span>
+     </div>
+    </div>
+    <section class="year-section" data-code-lab-tools="1">
+     <div class="year-title">
+      OUTILS INTERACTIFS
+     </div>
+     <div class="module-grid">
+      <a class="module-card pink" href="code-lab.html">
+       <h3>
+        💻 Code Lab &mdash; Python / PHP / Java
+       </h3>
+       <p>
+        &Eacute;diteur color&eacute;, terminal, exercices guid&eacute;s, Sandbox libre et tests automatiques.
+       </p>
+       <div class="module-link">
+        Ouvrir le Code Lab &rarr;
+       </div>
+      </a>
+     </div>
+    </section>
+    <section class="year-section" data-year-section="1">
+     <div class="year-title">
+      1RE ANN&Eacute;E &mdash; PROGRAMME DE R&Eacute;VISION
+     </div>
+     <div class="module-grid">
+      <a class="module-card" href="premiere/dos.html">
+       <div class="module-code">
+        SYST&Egrave;MES
+       </div>
+       <h3>
+        💾 MS-DOS &amp; batch
+       </h3>
+       <p>
+        Commandes, fichiers, arborescence, .BAT
+       </p>
+       <div class="module-link">
+        Ouvrir la fiche &rarr;
+       </div>
+      </a>
+      <a class="module-card" href="premiere/systemes.html">
+       <div class="module-code">
+        SYST&Egrave;MES
+       </div>
+       <h3>
+        🖥️ Information &amp; syst&egrave;mes
+       </h3>
+       <p>
+        Information, bases, OS, DHCP, Active Directory
+       </p>
+       <div class="module-link">
+        Ouvrir la fiche &rarr;
+       </div>
+      </a>
+      <a class="module-card" href="premiere/reseau.html">
+       <div class="module-code">
+        R&Eacute;SEAU
+       </div>
+       <h3>
+        🌐 R&eacute;seau &amp; DNS
+       </h3>
+       <p>
+        TCP/IP, adressage, routage, DNS
+       </p>
+       <div class="module-link">
+        Ouvrir la fiche &rarr;
+       </div>
+      </a>
+      <a class="module-card" href="premiere/rgpd.html">
+       <div class="module-code">
+        DROIT NUM.
+       </div>
+       <h3>
+        🛡️ RGPD &amp; CNIL
+       </h3>
+       <p>
+        Protection des donn&eacute;es &mdash; bases de 1re ann&eacute;e
+       </p>
+       <div class="module-link">
+        Ouvrir la fiche &rarr;
+       </div>
+      </a>
+      <a class="module-card" href="premiere/cyber.html">
+       <div class="module-code">
+        CYBER
+       </div>
+       <h3>
+        🔐 Hash &amp; s&eacute;curit&eacute;
+       </h3>
+       <p>
+        Hachage, sel et cybers&eacute;curit&eacute;
+       </p>
+       <div class="module-link">
+        Ouvrir la fiche &rarr;
+       </div>
+      </a>
+      <a class="module-card" href="premiere/algorithmique.html">
+       <div class="module-code">
+        ALGO
+       </div>
+       <h3>
+        🧠 Algorithmique
+       </h3>
+       <p>
+        Conditions, boucles, cha&icirc;nes et listes
+       </p>
+       <div class="module-link">
+        Ouvrir la fiche &rarr;
+       </div>
+      </a>
+      <a class="module-card" href="premiere/php.html">
+       <div class="module-code">
+        D&Eacute;V.
+       </div>
+       <h3>
+        🐘 PHP
+       </h3>
+       <p>
+        D&eacute;veloppement web c&ocirc;t&eacute; serveur
+       </p>
+       <div class="module-link">
+        Ouvrir la fiche &rarr;
+       </div>
+      </a>
+      <a class="module-card" href="premiere/java.html">
+       <div class="module-code">
+        D&Eacute;V.
+       </div>
+       <h3>
+        ☕ Java POO
+       </h3>
+       <p>
+        Classes, objets et programmation orient&eacute;e objet
+       </p>
+       <div class="module-link">
+        Ouvrir la fiche &rarr;
+       </div>
+      </a>
+      <a class="module-card" href="premiere/mcd.html">
+       <div class="module-code">
+        BDD
+       </div>
+       <h3>
+        🗄️ MCD / Mod&eacute;lisation
+       </h3>
+       <p>
+        Entit&eacute;s, associations, propri&eacute;t&eacute;s, cardinalit&eacute;s
+       </p>
+       <div class="module-link">
+        Ouvrir la fiche &rarr;
+       </div>
+      </a>
+      <a class="module-card" href="premiere/sql.html">
+       <div class="module-code">
+        BDD / SQL &mdash; SLAM + SISR
+       </div>
+       <h3>
+        🗃️ SQL &amp; bases de donn&eacute;es
+       </h3>
+       <p>
+        Cours + exercices : SELECT, filtres, jointures, agr&eacute;gats, LMD, LDD et MySQL
+       </p>
+       <div class="module-link">
+        Ouvrir la fiche &rarr;
+       </div>
+      </a>
+      <a class="module-card" href="premiere/cejm.html">
+       <div class="module-code">
+        CEJM
+       </div>
+       <h3>
+        📊 CEJM
+       </h3>
+       <p>
+        Synth&egrave;se + 11 chapitres d&eacute;taill&eacute;s
+       </p>
+       <div class="module-link">
+        Ouvrir la fiche &rarr;
+       </div>
+      </a>
+      <a class="module-card" href="premiere/maths.html">
+       <div class="module-code">
+        MATHS
+       </div>
+       <h3>
+        🧮 Maths Info
+       </h3>
+       <p>
+        Bases, bool&eacute;en, algorithmique, complexit&eacute;
+       </p>
+       <div class="module-link">
+        Ouvrir la fiche &rarr;
+       </div>
+      </a>
+      <a class="module-card" href="premiere/english.html">
+       <div class="module-code">
+        ANGLAIS
+       </div>
+       <h3>
+        🗺️ Anglais IT
+       </h3>
+       <p>
+        Vocabulaire, temps et email professionnel
+       </p>
+       <div class="module-link">
+        Ouvrir la fiche &rarr;
+       </div>
+      </a>
+      <a class="module-card" href="premiere/culture.html">
+       <div class="module-code">
+        CULTURE
+       </div>
+       <h3>
+        ✍️ Culture g&eacute;n&eacute;rale
+       </h3>
+       <p>
+        Textes, id&eacute;es, voyage et m&eacute;thode
+       </p>
+       <div class="module-link">
+        Ouvrir la fiche &rarr;
+       </div>
+      </a>
+     </div>
+    </section>
+    <section class="year-section" data-year-section="2">
+     <div class="year-title gold">
+      2E ANN&Eacute;E &mdash; COURS D&Eacute;J&Agrave; FAITS
+     </div>
+     <div class="module-grid">
+      <a class="module-card gold" href="deuxieme/cejm-droit-numerique.html">
+       <div class="module-code">
+        CEJM DROIT &mdash; TH&Egrave;ME 4
+       </div>
+       <h3>
+        ⚖️ Impact num&eacute;rique &amp; protection de la personne
+       </h3>
+       <p>
+        DCP, donn&eacute;es sensibles, CNIL, RGPD, droits, obligations, privacy by design/default, identit&eacute; num&eacute;rique et montre connect&eacute;e.
+       </p>
+       <div class="module-link">
+        Ouvrir la fiche &rarr;
+       </div>
+      </a>
+      <a class="module-card gold" href="deuxieme/sql-revision.html">
+       <div class="module-code">
+        BASES DE DONN&Eacute;ES &mdash; SQL
+       </div>
+       <h3>
+        🗃️ R&eacute;vision SQL SIO2
+       </h3>
+       <p>
+        M&eacute;mento SQL, fonctions de date, agr&eacute;gats, UNION, LMD et exercices EQUUS.
+       </p>
+       <div class="module-link">
+        Ouvrir la fiche &rarr;
+       </div>
+      </a>
+      <a class="module-card gold" href="deuxieme/maths-matrices.html">
+       <div class="module-code">
+        MATHS — CALCUL MATRICIEL
+       </div>
+       <h3>
+        🧮 Calcul matriciel
+       </h3>
+       <p>
+        Matrices, addition, produit matriciel et exercices corrigés.
+       </p>
+       <div class="module-link">
+        Ouvrir la fiche &rarr;
+       </div>
+      </a>
+      <a class="module-card gold" href="deuxieme/cge-vrai-faux.html">
+       <div class="module-code">
+        CGE &mdash; LE VRAI DU FAUX
+       </div>
+       <h3>
+        ✍️ Culture g&eacute;n&eacute;rale &mdash; Le vrai du faux
+       </h3>
+       <p>
+        Synth&egrave;se de documents, v&eacute;rit&eacute; et mensonge, mythomanie, vocabulaire et piste d&rsquo;essai personnel.
+       </p>
+       <div class="module-link">
+        Ouvrir la fiche &rarr;
+       </div>
+      </a>
+     </div>
+     <div class="alert agold">
+      <strong>
+       Consolidation :
+      </strong>
+      la 2e ann&eacute;e n&rsquo;int&egrave;gre que les contenus d&eacute;j&agrave; disponibles. La fiche Maths ajoute le calcul matriciel vérifié à partir des documents fournis ; la fiche CGE &laquo; Le vrai du faux &raquo; reprend le document CGE et le Texte 1 du dossier commun ; le contenu SQL SIO2 provient du dossier SLAM.
+     </div>
+    </section>
+    <div class="source-note">
+     Sources : maquette d&rsquo;origine
+     <b>
+      BTS-SIO-Fiches.html
+     </b>
+     et contenus de 1re et 2e ann&eacute;e fournis. Les fiches SQL, CGE et calcul matriciel reprennent uniquement les notions disponibles ; les calculs matriciels ont &eacute;t&eacute; v&eacute;rifi&eacute;s avant int&eacute;gration.
+    </div>
+   </main>
+   <div class="footer">
+    BTS SIO // R&eacute;vision locale &mdash; th&egrave;me CRT conserv&eacute;
+   </div>
+  </div>
+  <script src="assets/js/common.js">
+  </script>
+ </body>
+</html>
