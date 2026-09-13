@@ -19,6 +19,7 @@ const EXTRA_SAFE = Array.isArray(window.EXTRA_QUESTIONS) ? window.EXTRA_QUESTION
 const SQL1_SAFE = Array.isArray(window.SQL_FIRST_YEAR_QUESTIONS) ? window.SQL_FIRST_YEAR_QUESTIONS : [];
 const SECOND_SAFE = Array.isArray(window.SECOND_YEAR_QUESTIONS) ? window.SECOND_YEAR_QUESTIONS : [];
 const SQL2_SAFE = Array.isArray(window.SQL_SECOND_YEAR_QUESTIONS) ? window.SQL_SECOND_YEAR_QUESTIONS : [];
+const MATHS2_SAFE = Array.isArray(window.MATHS_SECOND_YEAR_QUESTIONS) ? window.MATHS_SECOND_YEAR_QUESTIONS : [];
 
 const ORIGINAL_NORMALIZED = FIRST_SAFE.map((q) => ({
   year: 1,
@@ -45,4 +46,5 @@ window.QUIZ_DATA = [
   ...SQL1_SAFE,
   ...SECOND_SAFE,
   ...SQL2_SAFE,
+  ...MATHS2_SAFE,
 ];

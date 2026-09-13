@@ -104,6 +104,18 @@ Fichier : `deuxieme/cejm-droit-numerique.html`
 
 Notions : données à caractère personnel, données sensibles, CNIL, RGPD, droits des personnes, obligations des organisations, accountability, Privacy by Design/Default, identité numérique, phishing, doxing et étude de cas de la montre connectée.
 
+### ✍️ CGE — Le vrai du faux
+
+Fichier : `deuxieme/cge-vrai-faux.html`
+
+Notions : synthèse de documents, vérité et mensonge, mythomanie, vocabulaire et exercices de rédaction.
+
+### 🧮 Maths — Calcul matriciel
+
+Fichier : `deuxieme/maths-matrices.html`
+
+Cette fiche couvre les matrices, l’addition, la multiplication par un réel, le produit matriciel et les exercices vérifiés de 2e année.
+
 ### 🗃️ Révision SQL SIO2
 
 Fichier : `deuxieme/sql-revision.html`
@@ -155,12 +167,12 @@ Il propose :
 
 # 🎯 Quiz interactif
 
-Le site possède actuellement **253 questions** :
+Le site possède actuellement **310 questions** :
 
 - **213** questions de 1re année ;
-- **40** questions de 2e année ;
-- **187** QCM ;
-- **66** réponses à saisir.
+- **97** questions de 2e année ;
+- **227** QCM ;
+- **83** réponses à saisir.
 
 Le quiz peut être filtré par année, matière et type de question.
 
@@ -204,6 +216,8 @@ Revision-BTS-SIO/
 │
 └── deuxieme/
     ├── cejm-droit-numerique.html
+    ├── cge-vrai-faux.html
+    ├── maths-matrices.html
     └── sql-revision.html
 ```
 

@@ -658,3 +658,215 @@ a, button, input, textarea, select {
     grid-template-columns: 1fr !important;
   }
 }
+
+/* =====================================================
+   Tableaux responsives — adaptation automatique mobile
+   ===================================================== */
+.responsive-table {
+  width: 100%;
+}
+
+.table-scroll.is-compact .responsive-table {
+  min-width: 0;
+  table-layout: auto;
+}
+
+.table-scroll.is-wide .responsive-table {
+  min-width: 720px;
+}
+
+@media (max-width: 700px) {
+  .table-scroll.is-compact {
+    overflow-x: visible;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .table-scroll.is-compact .responsive-table {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .table-scroll.is-wide {
+    overflow-x: auto;
+    border: 1px solid rgba(26, 74, 42, .65);
+    background: rgba(0, 0, 0, .13);
+  }
+
+  .table-scroll.is-wide::after {
+    content: "← faites défiler le tableau →";
+    display: block;
+    position: sticky;
+    left: 0;
+    width: max-content;
+    max-width: calc(100vw - 44px);
+    padding: 5px 8px;
+    color: var(--text-dim);
+    font-size: .66rem;
+    letter-spacing: .04em;
+  }
+}
+
+@media (max-width: 560px) {
+  .table-scroll.is-compact .responsive-table,
+  .table-scroll.is-compact .responsive-table tbody,
+  .table-scroll.is-compact .responsive-table tr,
+  .table-scroll.is-compact .responsive-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .table-scroll.is-compact .responsive-table thead,
+  .table-scroll.is-compact .responsive-table tr.responsive-header-row {
+    display: none;
+  }
+
+  .table-scroll.is-compact .responsive-table tbody {
+    display: grid;
+    gap: 10px;
+  }
+
+  .table-scroll.is-compact .responsive-table tr:not(.responsive-header-row) {
+    margin: 0;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    overflow: hidden;
+    background: rgba(4, 15, 9, .72);
+  }
+
+  .table-scroll.is-compact .responsive-table td {
+    display: grid;
+    grid-template-columns: minmax(88px, 34%) minmax(0, 1fr);
+    gap: 9px;
+    align-items: start;
+    padding: 9px 10px;
+    border: 0;
+    border-bottom: 1px solid rgba(26, 74, 42, .55);
+    text-align: left;
+    min-width: 0;
+  }
+
+  .table-scroll.is-compact .responsive-table td:last-child {
+    border-bottom: 0;
+  }
+
+  .table-scroll.is-compact .responsive-table td::before {
+    content: attr(data-label);
+    color: var(--green-dim);
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    overflow-wrap: anywhere;
+  }
+
+  .table-scroll.is-compact .responsive-table td:empty::before {
+    display: none;
+  }
+
+  .table-scroll.is-wide .responsive-table {
+    min-width: 660px;
+  }
+
+  .truth-table {
+    width: 100%;
+    min-width: 0;
+    table-layout: fixed;
+  }
+
+  .truth-table th,
+  .truth-table td {
+    padding: 7px 5px;
+    font-size: .76rem;
+    overflow-wrap: anywhere;
+  }
+
+  .module-grid,
+  .chapter-grid,
+  .quickstats,
+  .cg,
+  .cmp {
+    grid-template-columns: 1fr !important;
+  }
+
+  .module-card,
+  .chapter-card,
+  .statbox,
+  .card,
+  .cmpc,
+  .alert,
+  .bq {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .hero,
+  .qhdr {
+    grid-template-columns: 1fr !important;
+  }
+
+  .hero-actions,
+  .topnav,
+  .stabs {
+    width: 100%;
+  }
+
+  .code,
+  pre {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+}
+
+@media (max-width: 380px) {
+  .container {
+    padding-left: 7px;
+    padding-right: 7px;
+  }
+
+  .page-panel,
+  .panel,
+  .qcard {
+    padding-left: 9px !important;
+    padding-right: 9px !important;
+  }
+
+  .filterbtn,
+  .smallbtn,
+  .navbtn,
+  .yearbtn,
+  .sb,
+  .validate,
+  .nextbtn {
+    font-size: .66rem;
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+
+  .table-scroll.is-compact .responsive-table td {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}
+
+@media print {
+  .responsive-table,
+  .responsive-table tbody,
+  .responsive-table thead,
+  .responsive-table tr,
+  .responsive-table th,
+  .responsive-table td {
+    display: revert !important;
+  }
+
+  .responsive-header-row {
+    display: table-row !important;
+  }
+
+  .responsive-table td::before,
+  .table-scroll.is-wide::after {
+    display: none !important;
+    content: none !important;
+  }
+}

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+  <meta content="Révision de calcul matriciel — BTS SIO 2e année" name="description"/>
+  <title>🧮 Calcul matriciel — 2e année</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&amp;family=VT323&amp;family=Orbitron:wght@700;900&amp;display=swap" rel="stylesheet"/>
+  <link href="../assets/css/style.css" rel="stylesheet"/>
+  <link href="../assets/img/site-logo.svg" rel="icon" type="image/svg+xml"/>
+  <link href="../assets/img/site-logo.svg" rel="shortcut icon"/>
+</head>
+<body data-review-id="2-maths-matrices">
+<div class="container">
+  <div class="site-header">
+    <div class="bbar"></div>
+    <h1>BTS SIO — RÉVISIONS</h1>
+    <div class="sub">2E ANNÉE — MATHS — CALCUL MATRICIEL</div>
+    <div class="tags">
+      <span class="tag tg">BTS SIO</span>
+      <span class="tag tp">2e année</span>
+      <span class="tag tli">Maths</span>
+      <span class="tag tb">Matrices</span>
+    </div>
+    <div class="prompt">C:\BTS-SIO\REVISION&gt; <span>█</span></div>
+  </div>
+
+  <div class="topnav">
+    <a class="navbtn" href="../index.html">⌂ Accueil</a>
+    <a class="navbtn" href="../premiere/maths.html">🧮 Maths 1re année</a>
+    <a class="navbtn quiz" href="../quiz.html?year=2&amp;module=maths2">🎯 Quiz Maths 2e</a>
+    <a class="navbtn" href="../code-lab.html">&lt;/&gt; Code Lab</a>
+  </div>
+
+  <main class="page-panel gold">
+    <div class="hero">
+      <div>
+        <div class="hero-kicker">2E ANNÉE // MATHS // MATRICES</div>
+        <h2>Calcul matriciel</h2>
+        <p>Dimensions, coefficients, addition, multiplication par un réel, produit matriciel et exercices corrigés.</p>
+      </div>
+      <div class="hero-actions">
+        <button class="smallbtn" id="reviewBtn" onclick="setReviewed('2-maths-matrices')">○ Marquer révisé</button>
+        <button class="smallbtn" onclick="printPage()">🖨 Imprimer</button>
+        <a class="smallbtn alt" href="../quiz.html?year=2&amp;module=maths2">🎯 Quiz ciblé</a>
+      </div>
+    </div>
+
+    <div class="alert agold">
+      <strong>Vérification effectuée :</strong> les exemples et corrections ont été recalculés à partir des photos et du PDF fourni. Les valeurs incohérentes de l’exemple <b>B = ((i − j)²)</b> ont été corrigées dans cette fiche.
+    </div>
+
+    <div class="stabs">
+      <button class="sb a" onclick="showSub('mat2','definition',this)">Définitions</button>
+      <button class="sb" onclick="showSub('mat2','operations',this)">Opérations</button>
+      <button class="sb" onclick="showSub('mat2','exo14',this)">Exercices 1–4</button>
+      <button class="sb" onclick="showSub('mat2','exo58',this)">Exercices 5–8</button>
+      <button class="sb" onclick="showSub('mat2','exo11',this)">Exercice 11</button>
+    </div>
+
+    <div class="sc a" id="mat2-definition">
+      <div class="st gold">2.1 — Définition d’une matrice</div>
+      <div class="cg">
+        <div class="card gold">
+          <h3>Matrice n × p</h3>
+          <p>Une matrice de dimension <b>n × p</b> est un tableau rectangulaire composé de <b>n lignes</b> et <b>p colonnes</b>. Le coefficient situé à la ligne <i>i</i> et à la colonne <i>j</i> se note <b>aᵢⱼ</b>.</p>
+        </div>
+        <div class="card bl">
+          <h3>Cas particuliers</h3>
+          <ul>
+            <li>p = 1 : matrice colonne.</li>
+            <li>n = 1 : matrice ligne.</li>
+            <li>n = p : matrice carrée d’ordre n.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="st gold">Exemples vérifiés</div>
+      <div class="cmp">
+        <div class="cmpc">
+          <h4 class="gold">A ∈ M₃₂, aᵢⱼ = i / j</h4>
+          <div class="code gold">A =
+⎛ 1   1/2 ⎞
+⎜ 2    1  ⎟
+⎝ 3   3/2 ⎠</div>
+        </div>
+        <div class="cmpc">
+          <h4 class="gold">B ∈ M₃₂, bᵢⱼ = (i − j)²</h4>
+          <div class="code gold">B =
+⎛ 0   1 ⎞
+⎜ 1   0 ⎟
+⎝ 4   1 ⎠</div>
+        </div>
+      </div>
+      <div class="cmp">
+        <div class="cmpc">
+          <h4 class="gold">C ∈ M₂₂, cᵢⱼ = i + j − 1</h4>
+          <div class="code gold">C =
+⎛ 1   2 ⎞
+⎝ 2   3 ⎠</div>
+        </div>
+        <div class="cmpc">
+          <h4 class="gold">Lecture d’un coefficient</h4>
+          <p>Dans A, <b>a₃₂ = 3/2</b> : troisième ligne, deuxième colonne.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sc" id="mat2-operations">
+      <div class="st gold">2.2.1 — Addition</div>
+      <div class="alert agold"><strong>Condition :</strong> deux matrices peuvent être additionnées uniquement si elles ont exactement la même dimension.</div>
+      <div class="code gold">A + B =
+⎛ 1   3/2 ⎞
+⎜ 3    1  ⎟
+⎝ 7   5/2 ⎠</div>
+      <div class="cg">
+        <div class="card gold"><h3>Commutativité</h3><p>A + B = B + A</p></div>
+        <div class="card gold"><h3>Associativité</h3><p>(A + B) + C = A + (B + C)</p></div>
+        <div class="card gold"><h3>Matrice nulle</h3><p>A + Oₙₚ = A</p></div>
+        <div class="card gold"><h3>Matrice opposée</h3><p>A + (−A) = Oₙₚ</p></div>
+      </div>
+      <div class="code gold">−A =
+⎛ −1   −1/2 ⎞
+⎜ −2    −1  ⎟
+⎝ −3   −3/2 ⎠</div>
+
+      <div class="st gold">2.2.2 — Multiplication par un réel</div>
+      <p>Pour un réel k, chaque coefficient de A est multiplié par k. La dimension ne change pas.</p>
+      <div class="cmp">
+        <div class="cmpc"><h4 class="gold">2A</h4><div class="code gold">⎛ 2   1 ⎞
+⎜ 4   2 ⎟
+⎝ 6   3 ⎠</div></div>
+        <div class="cmpc"><h4 class="gold">−3B</h4><div class="code gold">⎛  0  −3 ⎞
+⎜ −3   0 ⎟
+⎝−12  −3 ⎠</div></div>
+      </div>
+
+      <div class="st gold">2.2.3 — Multiplication de deux matrices</div>
+      <div class="alert abl"><strong>Condition :</strong> si A est de dimension n × m et B de dimension m × p, alors A × B existe et sa dimension est n × p.</div>
+      <div class="code gold">αᵢⱼ = Σₖ₌₁ᵐ aᵢₖ × bₖⱼ</div>
+      <ul>
+        <li>La multiplication matricielle n’est généralement pas commutative : A × B ≠ B × A.</li>
+        <li>Elle est associative : (A × B) × C = A × (B × C).</li>
+        <li>Elle est distributive par rapport à l’addition.</li>
+      </ul>
+      <div class="code gold">A × C =
+⎛ 2   7/2  ⎞
+⎜ 4    7   ⎟
+⎝ 6   21/2 ⎠</div>
+    </div>
+
+    <div class="sc" id="mat2-exo14">
+      <div class="st gold">Exercice 1</div>
+      <div class="card gold">
+        <p><b>A ∈ M₂₂, aᵢⱼ = i + j</b> et <b>B ∈ M₂₂, bᵢⱼ = i × j</b>.</p>
+        <div class="code gold">A = ⎛ 2  3 ⎞    B = ⎛ 1  2 ⎞
+    ⎝ 3  4 ⎠        ⎝ 2  4 ⎠
+
+Σ aₖ₁ = 5    Σ a₁ₖ = 5    Σ aₖₖ = 6</div>
+      </div>
+
+      <div class="st gold">Exercice 2</div>
+      <div class="card gold">
+        <div class="code gold">A = ⎛ 0  1  4 ⎞    B = ⎛ 0  −3  −8 ⎞
+    ⎜ 1  0  1 ⎟        ⎜ 3   0  −5 ⎟
+    ⎝ 4  1  0 ⎠        ⎝ 8   5   0 ⎠
+
+Σ aₖ₁ = 5
+Σ a₁ₖ = 5
+Σ aₖₖ = 0
+Σ aₖ₁bₖ₂ = 20
+Σ aₖₖb₁ₖ = 0</div>
+      </div>
+
+      <div class="st gold">Exercice 3 — calculs vérifiés</div>
+      <div class="code gold">3A = ⎛  0   3  12 ⎞     −B = ⎛  0   3  8 ⎞
+     ⎜  3   0   3 ⎟          ⎜ −3   0  5 ⎟
+     ⎝ 12   3   0 ⎠          ⎝ −8  −5  0 ⎠
+
+3A − B = ⎛ 0   6  20 ⎞
+         ⎜ 0   0   8 ⎟
+         ⎝ 4  −2   0 ⎠
+
+2A − 4B = ⎛   0   14   40 ⎞
+          ⎜ −10    0   22 ⎟
+          ⎝ −24  −18    0 ⎠</div>
+
+      <div class="st gold">Exercice 4 — calculs vérifiés</div>
+      <div class="code gold">A = ⎛ 0   1  −1 ⎞    B = ⎛ 0  1  2 ⎞
+    ⎜ 1  −1   0 ⎟        ⎜ 2  0  1 ⎟
+    ⎝ 1   0  −1 ⎠        ⎝ 1  2  0 ⎠
+
+2A + 3B = ⎛ 0   5   4 ⎞
+          ⎜ 8  −2   3 ⎟
+          ⎝ 5   6  −2 ⎠
+
+4A − 2B = ⎛ 0   2  −8 ⎞
+          ⎜ 0  −4  −2 ⎟
+          ⎝ 2  −4  −4 ⎠</div>
+    </div>
+
+    <div class="sc" id="mat2-exo58">
+      <div class="st gold">Exercice 5 — existence des produits</div>
+      <div class="card gold">
+        <p>A ∈ M₁₃ et B ∈ M₃₂.</p>
+        <ul>
+          <li><b>A × B existe</b> : 3 colonnes pour A et 3 lignes pour B. Le résultat appartient à M₁₂.</li>
+          <li><b>B × A n’existe pas</b> : B possède 2 colonnes alors que A possède 1 ligne.</li>
+        </ul>
+      </div>
+
+      <div class="st gold">Exercice 6</div>
+      <div class="code gold">A = ⎛ 0   1  −1 ⎞    B = ⎛ 1  2 ⎞
+    ⎝ 1  −1   0 ⎠        ⎜ 0  1 ⎟
+                         ⎝ 1  2 ⎠
+
+A × B = ⎛ −1  −1 ⎞ ∈ M₂₂
+        ⎝  1   1 ⎠
+
+B × A = ⎛ 2  −1  −1 ⎞
+        ⎜ 1  −1   0 ⎟ ∈ M₃₃
+        ⎝ 2  −1  −1 ⎠</div>
+
+      <div class="st gold">Exercice 7</div>
+      <div class="code gold">A = ⎛ 1  1  1 ⎞    B = ⎛ 1    1/2  1/3 ⎞
+    ⎝ 2  4  8 ⎠        ⎝ 1/2  1/4  1/6 ⎠</div>
+      <div class="alert aa"><strong>Conclusion :</strong> A × B et B × A n’existent pas : les deux matrices sont de dimension 2 × 3 et 3 ≠ 2.</div>
+
+      <div class="st gold">Exercice 8</div>
+      <div class="code gold">A = ⎛ 0  −1  −2 ⎞    B = ⎛ 1  1  1 ⎞
+    ⎝ 1   0  −1 ⎠        ⎝ 2  4  8 ⎠
+
+B − A = ⎛ 1  2  3 ⎞
+        ⎝ 1  4  9 ⎠
+
+3A + 2B = ⎛ 2  −1  −4 ⎞
+          ⎝ 7   8  13 ⎠
+
+C = ⎛ 0  0 ⎞
+    ⎜ 2  3 ⎟
+    ⎝ 4  6 ⎠
+
+C × A = ⎛ 0   0    0 ⎞
+        ⎜ 3  −2   −7 ⎟ ∈ M₃₃
+        ⎝ 6  −4  −14 ⎠</div>
+      <p>A × B n’existe pas, car A possède 3 colonnes et B seulement 2 lignes.</p>
+    </div>
+
+    <div class="sc" id="mat2-exo11">
+      <div class="st gold">Exercice 11 — matrice carrée telle que A² = O₂</div>
+      <div class="card gold">
+        <p>Pour A = ((a, b), (c, d)), on obtient :</p>
+        <div class="code gold">A² = ⎛ a² + bc    b(a + d) ⎞
+     ⎝ c(a + d)  bc + d²   ⎠</div>
+        <p>Pour obtenir O₂ avec des coefficients entiers non nuls, on peut imposer <b>a + d = 0</b> et <b>a² + bc = 0</b>.</p>
+        <div class="code gold">Choix : a = 1, d = −1, b = 1, c = −1
+
+A = ⎛  1   1 ⎞
+    ⎝ −1  −1 ⎠
+
+A² = O₂</div>
+      </div>
+      <div class="alert ag"><strong>À retenir :</strong> avant de multiplier deux matrices, vérifiez toujours « colonnes de la première = lignes de la seconde ».</div>
+    </div>
+
+    <div class="source-note">Calcul matriciel 2e année : définitions, opérations et exercices 1 à 8 puis 11. Les résultats numériques ont été vérifiés à partir des photos fournies et par recalcul.</div>
+  </main>
+  <div class="footer"><a href="../index.html">← Retour au tableau de bord</a></div>
+</div>
+<script src="../assets/js/common.js"></script>
+</body>
+</html>
