@@ -870,3 +870,213 @@ a, button, input, textarea, select {
     content: none !important;
   }
 }
+
+
+/* =====================================================
+   Correctifs UI robustes — navigation CEJM, matrices et tableaux
+   ===================================================== */
+
+/* Tous les éléments d'une barre de navigation doivent pouvoir rétrécir. */
+.topnav > * {
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+/* Sélecteur des 11 chapitres CEJM : aucune largeur imposée par l'option active. */
+.navselect {
+  min-width: 0;
+  max-width: 100%;
+  width: auto;
+  box-sizing: border-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Les cartes CEJM ne doivent jamais élargir leur grille. */
+.chapter-grid {
+  width: 100%;
+  min-width: 0;
+}
+
+.chapter-card {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.chapter-card h3,
+.chapter-card p,
+.chapter-no,
+.chapter-link {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+/* Les tableaux larges restent contenus dans leur propre zone de scroll. */
+.table-scroll,
+.table-scroll.is-wide {
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  box-sizing: border-box;
+}
+
+.table-scroll.is-wide .responsive-table {
+  width: max(100%, var(--responsive-table-min, 720px));
+  min-width: max(100%, var(--responsive-table-min, 720px));
+  max-width: none;
+  table-layout: auto;
+}
+
+.responsive-table th,
+.responsive-table td {
+  min-width: 0;
+  max-width: none;
+}
+
+/* Matrices : conserver l'alignement vertical des parenthèses et lignes. */
+body[data-review-id="2-maths-matrices"] .matrix-code {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  white-space: pre !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  tab-size: 2;
+  font-variant-numeric: tabular-nums;
+  font-size: clamp(.69rem, 1.15vw, .82rem);
+  line-height: 1.62;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold) rgba(0,0,0,.28);
+}
+
+body[data-review-id="2-maths-matrices"] .matrix-code::-webkit-scrollbar {
+  height: 7px;
+}
+
+body[data-review-id="2-maths-matrices"] .matrix-code::-webkit-scrollbar-track {
+  background: rgba(0,0,0,.28);
+}
+
+body[data-review-id="2-maths-matrices"] .matrix-code::-webkit-scrollbar-thumb {
+  background: var(--gold);
+  border-radius: 999px;
+}
+
+@media (max-width: 760px) {
+  /* Navigation mobile : deux colonnes stables, sélecteur CEJM pleine largeur. */
+  .topnav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+    gap: 6px;
+    align-items: stretch;
+  }
+
+  .topnav .navbtn,
+  .topnav .yearbtn,
+  .topnav .navselect {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    min-height: 40px;
+    margin: 0;
+  }
+
+  .topnav .navbtn,
+  .topnav .yearbtn {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    text-align: center;
+  }
+
+  .topnav .navselect {
+    grid-column: 1 / -1;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding-right: 28px;
+  }
+
+  .chapter-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .chapter-card {
+    min-height: 0;
+    padding: 14px;
+  }
+
+  body[data-review-id="2-maths-matrices"] .matrix-code {
+    font-size: .68rem;
+    line-height: 1.58;
+  }
+
+  .table-scroll.is-wide .responsive-table {
+    width: var(--responsive-table-min, 660px);
+    min-width: var(--responsive-table-min, 660px);
+  }
+}
+
+@media (max-width: 460px) {
+  .topnav {
+    grid-template-columns: 1fr;
+  }
+
+  .topnav .navselect {
+    grid-column: 1;
+  }
+
+  .chapter-card h3 {
+    font-size: .8rem;
+    line-height: 1.45;
+  }
+
+  body[data-review-id="2-maths-matrices"] .matrix-code {
+    font-size: .64rem;
+    line-height: 1.55;
+  }
+
+  .table-scroll.is-wide::after {
+    max-width: calc(100vw - 30px);
+    white-space: normal;
+  }
+}
+
+@media (max-width: 340px) {
+  body[data-review-id="2-maths-matrices"] .matrix-code {
+    font-size: .60rem;
+  }
+}
+
+@media print {
+  body[data-review-id="2-maths-matrices"] .matrix-code {
+    white-space: pre-wrap !important;
+    overflow: visible !important;
+    font-size: 8.5pt !important;
+  }
+}
+
+/* Ordonnancement propre de la navigation des fiches CEJM détaillées. */
+@media (max-width: 760px) {
+  body[data-chapter] .topnav > .navbtn:first-child {
+    grid-column: 1 / -1;
+  }
+
+  body[data-chapter] .topnav .navselect {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 460px) {
+  body[data-chapter] .topnav > .navbtn:first-child,
+  body[data-chapter] .topnav .navselect {
+    grid-column: 1;
+  }
+}

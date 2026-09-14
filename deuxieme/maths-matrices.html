@@ -79,14 +79,14 @@
       <div class="cmp">
         <div class="cmpc">
           <h4 class="gold">A ∈ M₃₂, aᵢⱼ = i / j</h4>
-          <div class="code gold">A =
+          <div class="code gold matrix-code">A =
 ⎛ 1   1/2 ⎞
 ⎜ 2    1  ⎟
 ⎝ 3   3/2 ⎠</div>
         </div>
         <div class="cmpc">
           <h4 class="gold">B ∈ M₃₂, bᵢⱼ = (i − j)²</h4>
-          <div class="code gold">B =
+          <div class="code gold matrix-code">B =
 ⎛ 0   1 ⎞
 ⎜ 1   0 ⎟
 ⎝ 4   1 ⎠</div>
@@ -95,7 +95,7 @@
       <div class="cmp">
         <div class="cmpc">
           <h4 class="gold">C ∈ M₂₂, cᵢⱼ = i + j − 1</h4>
-          <div class="code gold">C =
+          <div class="code gold matrix-code">C =
 ⎛ 1   2 ⎞
 ⎝ 2   3 ⎠</div>
         </div>
@@ -109,7 +109,7 @@
     <div class="sc" id="mat2-operations">
       <div class="st gold">2.2.1 — Addition</div>
       <div class="alert agold"><strong>Condition :</strong> deux matrices peuvent être additionnées uniquement si elles ont exactement la même dimension.</div>
-      <div class="code gold">A + B =
+      <div class="code gold matrix-code">A + B =
 ⎛ 1   3/2 ⎞
 ⎜ 3    1  ⎟
 ⎝ 7   5/2 ⎠</div>
@@ -119,7 +119,7 @@
         <div class="card gold"><h3>Matrice nulle</h3><p>A + Oₙₚ = A</p></div>
         <div class="card gold"><h3>Matrice opposée</h3><p>A + (−A) = Oₙₚ</p></div>
       </div>
-      <div class="code gold">−A =
+      <div class="code gold matrix-code">−A =
 ⎛ −1   −1/2 ⎞
 ⎜ −2    −1  ⎟
 ⎝ −3   −3/2 ⎠</div>
@@ -127,10 +127,10 @@
       <div class="st gold">2.2.2 — Multiplication par un réel</div>
       <p>Pour un réel k, chaque coefficient de A est multiplié par k. La dimension ne change pas.</p>
       <div class="cmp">
-        <div class="cmpc"><h4 class="gold">2A</h4><div class="code gold">⎛ 2   1 ⎞
+        <div class="cmpc"><h4 class="gold">2A</h4><div class="code gold matrix-code">⎛ 2   1 ⎞
 ⎜ 4   2 ⎟
 ⎝ 6   3 ⎠</div></div>
-        <div class="cmpc"><h4 class="gold">−3B</h4><div class="code gold">⎛  0  −3 ⎞
+        <div class="cmpc"><h4 class="gold">−3B</h4><div class="code gold matrix-code">⎛  0  −3 ⎞
 ⎜ −3   0 ⎟
 ⎝−12  −3 ⎠</div></div>
       </div>
@@ -143,7 +143,7 @@
         <li>Elle est associative : (A × B) × C = A × (B × C).</li>
         <li>Elle est distributive par rapport à l’addition.</li>
       </ul>
-      <div class="code gold">A × C =
+      <div class="code gold matrix-code">A × C =
 ⎛ 2   7/2  ⎞
 ⎜ 4    7   ⎟
 ⎝ 6   21/2 ⎠</div>
@@ -153,7 +153,7 @@
       <div class="st gold">Exercice 1</div>
       <div class="card gold">
         <p><b>A ∈ M₂₂, aᵢⱼ = i + j</b> et <b>B ∈ M₂₂, bᵢⱼ = i × j</b>.</p>
-        <div class="code gold">A = ⎛ 2  3 ⎞    B = ⎛ 1  2 ⎞
+        <div class="code gold matrix-code">A = ⎛ 2  3 ⎞    B = ⎛ 1  2 ⎞
     ⎝ 3  4 ⎠        ⎝ 2  4 ⎠
 
 Σ aₖ₁ = 5    Σ a₁ₖ = 5    Σ aₖₖ = 6</div>
@@ -161,7 +161,7 @@
 
       <div class="st gold">Exercice 2</div>
       <div class="card gold">
-        <div class="code gold">A = ⎛ 0  1  4 ⎞    B = ⎛ 0  −3  −8 ⎞
+        <div class="code gold matrix-code">A = ⎛ 0  1  4 ⎞    B = ⎛ 0  −3  −8 ⎞
     ⎜ 1  0  1 ⎟        ⎜ 3   0  −5 ⎟
     ⎝ 4  1  0 ⎠        ⎝ 8   5   0 ⎠
 
@@ -173,7 +173,7 @@
       </div>
 
       <div class="st gold">Exercice 3 — calculs vérifiés</div>
-      <div class="code gold">3A = ⎛  0   3  12 ⎞     −B = ⎛  0   3  8 ⎞
+      <div class="code gold matrix-code">3A = ⎛  0   3  12 ⎞     −B = ⎛  0   3  8 ⎞
      ⎜  3   0   3 ⎟          ⎜ −3   0  5 ⎟
      ⎝ 12   3   0 ⎠          ⎝ −8  −5  0 ⎠
 
@@ -186,7 +186,7 @@
           ⎝ −24  −18    0 ⎠</div>
 
       <div class="st gold">Exercice 4 — calculs vérifiés</div>
-      <div class="code gold">A = ⎛ 0   1  −1 ⎞    B = ⎛ 0  1  2 ⎞
+      <div class="code gold matrix-code">A = ⎛ 0   1  −1 ⎞    B = ⎛ 0  1  2 ⎞
     ⎜ 1  −1   0 ⎟        ⎜ 2  0  1 ⎟
     ⎝ 1   0  −1 ⎠        ⎝ 1  2  0 ⎠
 
@@ -210,7 +210,7 @@
       </div>
 
       <div class="st gold">Exercice 6</div>
-      <div class="code gold">A = ⎛ 0   1  −1 ⎞    B = ⎛ 1  2 ⎞
+      <div class="code gold matrix-code">A = ⎛ 0   1  −1 ⎞    B = ⎛ 1  2 ⎞
     ⎝ 1  −1   0 ⎠        ⎜ 0  1 ⎟
                          ⎝ 1  2 ⎠
 
@@ -222,12 +222,12 @@ B × A = ⎛ 2  −1  −1 ⎞
         ⎝ 2  −1  −1 ⎠</div>
 
       <div class="st gold">Exercice 7</div>
-      <div class="code gold">A = ⎛ 1  1  1 ⎞    B = ⎛ 1    1/2  1/3 ⎞
+      <div class="code gold matrix-code">A = ⎛ 1  1  1 ⎞    B = ⎛ 1    1/2  1/3 ⎞
     ⎝ 2  4  8 ⎠        ⎝ 1/2  1/4  1/6 ⎠</div>
       <div class="alert aa"><strong>Conclusion :</strong> A × B et B × A n’existent pas : les deux matrices sont de dimension 2 × 3 et 3 ≠ 2.</div>
 
       <div class="st gold">Exercice 8</div>
-      <div class="code gold">A = ⎛ 0  −1  −2 ⎞    B = ⎛ 1  1  1 ⎞
+      <div class="code gold matrix-code">A = ⎛ 0  −1  −2 ⎞    B = ⎛ 1  1  1 ⎞
     ⎝ 1   0  −1 ⎠        ⎝ 2  4  8 ⎠
 
 B − A = ⎛ 1  2  3 ⎞
@@ -250,10 +250,10 @@ C × A = ⎛ 0   0    0 ⎞
       <div class="st gold">Exercice 11 — matrice carrée telle que A² = O₂</div>
       <div class="card gold">
         <p>Pour A = ((a, b), (c, d)), on obtient :</p>
-        <div class="code gold">A² = ⎛ a² + bc    b(a + d) ⎞
+        <div class="code gold matrix-code">A² = ⎛ a² + bc    b(a + d) ⎞
      ⎝ c(a + d)  bc + d²   ⎠</div>
         <p>Pour obtenir O₂ avec des coefficients entiers non nuls, on peut imposer <b>a + d = 0</b> et <b>a² + bc = 0</b>.</p>
-        <div class="code gold">Choix : a = 1, d = −1, b = 1, c = −1
+        <div class="code gold matrix-code">Choix : a = 1, d = −1, b = 1, c = −1
 
 A = ⎛  1   1 ⎞
     ⎝ −1  −1 ⎠

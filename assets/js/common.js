@@ -91,10 +91,28 @@ function enhanceResponsiveTables() {
       wrapper.appendChild(table);
     }
 
-    const compact = maxColumns <= 3 && !table.classList.contains('truth-table');
+    const hasMergedCells = rows.some((row) =>
+      Array.from(row.cells || []).some((cell) =>
+        (Number(cell.colSpan) || 1) > 1 || (Number(cell.rowSpan) || 1) > 1
+      )
+    );
+
+    const headerCellCount = (rows.find((row) => row.querySelector('th')) || rows[0]).cells.length;
+    const compact = maxColumns <= 3
+      && !hasMergedCells
+      && headerCellCount === maxColumns
+      && !table.classList.contains('truth-table');
+
     if (wrapper) {
       wrapper.classList.toggle('is-compact', compact);
       wrapper.classList.toggle('is-wide', !compact);
+
+      if (!compact) {
+        const minWidth = Math.max(560, Math.min(980, maxColumns * 150));
+        wrapper.style.setProperty('--responsive-table-min', `${minWidth}px`);
+      } else {
+        wrapper.style.removeProperty('--responsive-table-min');
+      }
     }
 
     if (!compact) return;
