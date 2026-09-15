@@ -46,7 +46,9 @@ const CODE_LAB_EXERCISES = {
       "description": "Lisez un prénom puis un âge et affichez une phrase au format « Prénom a X ans. ».",
       "stdin": "Alex\n19",
       "expected": "Alex a 19 ans.",
-      "hint": "Récupérez les deux valeurs avec input(), puis utilisez une f-string.",
+      "hint": "Récupérez les deux valeurs avec input(), puis affichez-les avec print() et str().",
+      "hintMarker": "# À compléter",
+      "hintCode": "print(prenom + \" a \" + str(age) + \" ans.\")",
       "starter": "prenom = input()\nage = int(input())\n\n# À compléter\n",
       "tests": [
         {
@@ -69,7 +71,7 @@ const CODE_LAB_EXERCISES = {
       "expected": "42 est pair",
       "hint": "Le reste de la division par 2 se calcule avec %.",
       "hintMarker": "# À compléter",
-      "hintCode": "if n % 2 == 0:\n    print(f\"{n} est pair\")\nelse:\n    # affichez le cas impair",
+      "hintCode": "if n % 2 == 0:\n    print(str(n) + \" est pair\")\nelse:\n    print(str(n) + \" est impair\")",
       "starter": "n = int(input())\n\n# À compléter\n",
       "tests": [
         {
@@ -90,9 +92,9 @@ const CODE_LAB_EXERCISES = {
       "description": "Lisez un entier et affichez ses 5 premières multiplications, une par ligne.",
       "stdin": "4",
       "expected": "4 x 1 = 4\n4 x 2 = 8\n4 x 3 = 12\n4 x 4 = 16\n4 x 5 = 20",
-      "hint": "Utilisez range(1, 6) et une f-string.",
+      "hint": "Utilisez range(1, 6), puis construisez l’affichage avec print() et str().",
       "hintMarker": "# À compléter",
-      "hintCode": "for i in range(1, 6):\n    print(f\"{n} x {i} = {n * i}\")",
+      "hintCode": "for i in range(1, 6):\n    print(str(n) + \" x \" + str(i) + \" = \" + str(n * i))",
       "starter": "n = int(input())\n\n# À compléter\n",
       "tests": [
         {
@@ -115,7 +117,7 @@ const CODE_LAB_EXERCISES = {
       "expected": "Somme: 29\nMaximum: 9",
       "hint": "Transformez input().split() avec int(), puis utilisez sum() et max().",
       "hintMarker": "# À compléter",
-      "hintCode": "nombres = [int(valeur) for valeur in input().split()]\nprint(f\"Somme: {sum(nombres)}\")\n# affichez ensuite le maximum",
+      "hintCode": "nombres = [int(valeur) for valeur in input().split()]\nprint(\"Somme: \" + str(sum(nombres)))\nprint(\"Maximum: \" + str(max(nombres)))",
       "starter": "# À compléter\n",
       "tests": [
         {
@@ -160,9 +162,9 @@ const CODE_LAB_EXERCISES = {
       "stdin": "12 15 9 14",
       "expected": "Moyenne: 12.50",
       "hint": "La moyenne vaut sum(nombres) / len(nombres). Formatez avec :.2f.",
-      "hintMarker": "# À compléter",
-      "hintCode": "def moyenne(nombres):\n    return sum(nombres) / len(nombres)",
-      "starter": "def moyenne(nombres):\n    # À compléter\n    return 0\n\nnombres = [float(x) for x in input().split()]\nprint(f\"Moyenne: {moyenne(nombres):.2f}\")\n",
+      "hintMarker": "# À compléter\n    return 0",
+      "hintCode": "return sum(nombres) / len(nombres)",
+      "starter": "def moyenne(nombres):\n    # À compléter\n    return 0\n\nnombres = [float(x) for x in input().split()]\nprint(\"Moyenne: {:.2f}\".format(moyenne(nombres)))\n",
       "tests": [
         {
           "stdin": "12 15 9 14",
@@ -184,7 +186,7 @@ const CODE_LAB_EXERCISES = {
       "expected": "radar: palindrome",
       "hint": "En Python, mot[::-1] produit la chaîne inversée.",
       "hintMarker": "# À compléter",
-      "hintCode": "if mot == mot[::-1]:\n    print(f\"{mot}: palindrome\")\nelse:\n    # affichez « non palindrome »",
+      "hintCode": "if mot == mot[::-1]:\n    print(mot + \": palindrome\")\nelse:\n    print(mot + \": non palindrome\")",
       "starter": "mot = input().strip().lower()\n\n# À compléter\n",
       "tests": [
         {
@@ -208,7 +210,7 @@ const CODE_LAB_EXERCISES = {
       "hint": "Le constructeur __init__ initialise les attributs avec self.",
       "hintMarker": "# À compléter",
       "hintCode": "self.nom = nom\n        self.option = option\n        self.moyenne = moyenne",
-      "starter": "class Etudiant:\n    def __init__(self, nom, option, moyenne):\n        # À compléter\n        pass\n\nnom = input().strip()\noption = input().strip()\nmoyenne = float(input())\ne = Etudiant(nom, option, moyenne)\nprint(f\"{e.nom} - {e.option} - {e.moyenne:g}\")\n",
+      "starter": "class Etudiant:\n    def __init__(self, nom, option, moyenne):\n        # À compléter\n        pass\n\nnom = input().strip()\noption = input().strip()\nmoyenne = float(input())\ne = Etudiant(nom, option, moyenne)\nprint(e.nom + \" - \" + e.option + \" - \" + format(e.moyenne, \"g\"))\n",
       "tests": [
         {
           "stdin": "Alex\nSLAM\n15.5",
@@ -230,7 +232,7 @@ const CODE_LAB_EXERCISES = {
       "expected": "java: 2\nphp: 1\npython: 3",
       "hint": "Utilisez un dictionnaire, get(mot, 0), puis parcourez sorted(compteurs).",
       "hintMarker": "# À compléter",
-      "hintCode": "compteurs = {}\nfor mot in input().split():\n    compteurs[mot] = compteurs.get(mot, 0) + 1\n\nfor mot in sorted(compteurs):\n    print(f\"{mot}: {compteurs[mot]}\")",
+      "hintCode": "compteurs = {}\nfor mot in input().split():\n    compteurs[mot] = compteurs.get(mot, 0) + 1\n\nfor mot in sorted(compteurs):\n    print(mot + \": \" + str(compteurs[mot]))",
       "starter": "# À compléter\n",
       "tests": [
         {
@@ -400,8 +402,8 @@ const CODE_LAB_EXERCISES = {
       "stdin": "12 15 9 14",
       "expected": "Moyenne: 12.50",
       "hint": "La moyenne vaut array_sum($nombres) / count($nombres). Utilisez number_format().",
-      "hintMarker": "// À compléter",
-      "hintCode": "function moyenne(array $nombres): float {\n    return array_sum($nombres) / count($nombres);\n}",
+      "hintMarker": "// À compléter\n    return 0;",
+      "hintCode": "return array_sum($nombres) / count($nombres);",
       "starter": "<?php\nfunction moyenne(array $nombres): float {\n    // À compléter\n    return 0;\n}\n\n$nombres = array_map(\"floatval\", preg_split(\"/\\s+/\", trim(fgets(STDIN))));\necho \"Moyenne: \" . number_format(moyenne($nombres), 2, \".\", \"\");\n?>\n",
       "tests": [
         {
@@ -595,8 +597,8 @@ const CODE_LAB_EXERCISES = {
       "expected": "Somme: 29\nMaximum: 9",
       "hint": "Lisez la ligne avec nextLine(), découpez-la, puis calculez somme et maximum.",
       "hintMarker": "// À compléter",
-      "hintCode": "String[] morceaux = scanner.nextLine().trim().split(\"\\\\s+\");\n        int somme = 0;\n        int maximum = Integer.MIN_VALUE;\n        for (String morceau : morceaux) {\n            int valeur = Integer.parseInt(morceau);\n            somme += valeur;\n            maximum = Math.max(maximum, valeur);\n        }",
-      "starter": "import java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        // À compléter\n        System.out.println(\"Somme: \" + somme);\n        System.out.println(\"Maximum: \" + maximum);\n    }\n}\n",
+      "hintCode": "String[] morceaux = scanner.nextLine().trim().split(\"\\\\s+\");\n        for (String morceau : morceaux) {\n            int valeur = Integer.parseInt(morceau);\n            somme += valeur;\n            maximum = Math.max(maximum, valeur);\n        }",
+      "starter": "import java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        int somme = 0;\n        int maximum = Integer.MIN_VALUE;\n        // À compléter\n        System.out.println(\"Somme: \" + somme);\n        System.out.println(\"Maximum: \" + maximum);\n    }\n}\n",
       "tests": [
         {
           "stdin": "4 7 2 7 9",
@@ -618,8 +620,8 @@ const CODE_LAB_EXERCISES = {
       "expected": "java: 2",
       "hint": "Lisez deux lignes et parcourez phrase.split(\"\\\\s+\").",
       "hintMarker": "// À compléter",
-      "hintCode": "String motRecherche = scanner.nextLine().trim();\n        String[] mots = scanner.nextLine().trim().split(\"\\\\s+\");\n        int compteur = 0;\n        for (String mot : mots) {\n            if (mot.equals(motRecherche)) compteur++;\n        }",
-      "starter": "import java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        // À compléter\n        System.out.println(motRecherche + \": \" + compteur);\n    }\n}\n",
+      "hintCode": "motRecherche = scanner.nextLine().trim();\n        String[] mots = scanner.nextLine().trim().split(\"\\\\s+\");\n        for (String mot : mots) {\n            if (mot.equals(motRecherche)) compteur++;\n        }",
+      "starter": "import java.util.Scanner;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        String motRecherche = \"\";\n        int compteur = 0;\n        // À compléter\n        System.out.println(motRecherche + \": \" + compteur);\n    }\n}\n",
       "tests": [
         {
           "stdin": "java\njava php java python",
@@ -640,7 +642,7 @@ const CODE_LAB_EXERCISES = {
       "stdin": "12 15 9 14",
       "expected": "Moyenne: 12.50",
       "hint": "Découpez la ligne en nombres puis calculez la somme dans moyenne().",
-      "hintMarker": "// À compléter méthode",
+      "hintMarker": "// À compléter méthode\n        return 0;",
       "hintCode": "double somme = 0;\n        for (double valeur : nombres) somme += valeur;\n        return somme / nombres.length;",
       "starter": "import java.util.Scanner;\n\npublic class Main {\n    public static double moyenne(double[] nombres) {\n        // À compléter méthode\n        return 0;\n    }\n\n    public static void main(String[] args) {\n        Scanner scanner = new Scanner(System.in);\n        String[] morceaux = scanner.nextLine().trim().split(\"\\\\s+\");\n        double[] nombres = new double[morceaux.length];\n        for (int i = 0; i < morceaux.length; i++) nombres[i] = Double.parseDouble(morceaux[i]);\n        System.out.printf(java.util.Locale.US, \"Moyenne: %.2f%n\", moyenne(nombres));\n    }\n}\n",
       "tests": [
@@ -726,3 +728,171 @@ const CODE_LAB_EXERCISES = {
     }
   ]
 };
+
+/* =====================================================
+   Jeux de tests renforcés — 20 cas minimum par exercice guidé
+   ===================================================== */
+function codeLabExpectedFrequency(words) {
+  const counts = {};
+  words.forEach((word) => { counts[word] = (counts[word] || 0) + 1; });
+  return Object.keys(counts).sort().map((word) => `${word}: ${counts[word]}`).join('\n');
+}
+
+function codeLabBuildRobustTests(language, exercise) {
+  const concept = exercise?.concept;
+  if (!concept || concept === 'sandbox') return [];
+
+  if (concept === 'message') {
+    return Array.from({ length: 20 }, (_, index) => ({
+      stdin: index === 0 ? '' : `entrée ignorée ${index}`,
+      expected: exercise.expected,
+    }));
+  }
+
+  if (concept === 'profile') {
+    const values = [
+      ['Alex', 19], ['Lina', 20], ['Sam', 18], ['Nora', 21], ['Adam', 17],
+      ['Eva', 22], ['Hugo', 25], ['Ines', 16], ['Leo', 30], ['Mia', 23],
+      ['Tom', 14], ['Sara', 28], ['Paul', 35], ['Jade', 19], ['Yanis', 24],
+      ['Zoe', 31], ['Noa', 20], ['Emma', 27], ['Lucas', 18], ['Ana', 26],
+    ];
+    return values.map(([name, age]) => ({ stdin: `${name}\n${age}`, expected: `${name} a ${age} ans.` }));
+  }
+
+  if (concept === 'pair') {
+    const values = [-100, -99, -42, -7, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 42, 101];
+    return values.map((number) => ({
+      stdin: String(number),
+      expected: `${number} est ${number % 2 === 0 ? 'pair' : 'impair'}`,
+    }));
+  }
+
+  if (concept === 'table') {
+    const values = [-5, -2, -1, 0, 1, 2, 3, 4, 5, 7, 8, 9, 10, 12, 15, 20, 25, 50, 99, 100];
+    return values.map((number) => ({
+      stdin: String(number),
+      expected: Array.from({ length: 5 }, (_, index) => {
+        const multiplier = index + 1;
+        return `${number} x ${multiplier} = ${number * multiplier}`;
+      }).join('\n'),
+    }));
+  }
+
+  if (concept === 'stats') {
+    const values = [
+      [1], [1, 2], [-1, 0, 1], [4, 7, 2, 7, 9], [-2, 5, 3],
+      [10, 10, 10], [-5, -2, -9], [0, 0, 0], [100, 1, 50], [3, 8, 2, 6],
+      [9, -1, 4], [12, 15, 9, 14], [2, 4, 6, 8, 10], [-10, 20, -5, 15], [7, 7, 7, 7],
+      [1, 100, -100], [42, 41, 40], [5, -5, 5, -5], [11, 22, 33], [99, 0, -1, 100],
+    ];
+    return values.map((numbers) => ({
+      stdin: numbers.join(' '),
+      expected: `Somme: ${numbers.reduce((sum, value) => sum + value, 0)}\nMaximum: ${Math.max(...numbers)}`,
+    }));
+  }
+
+  if (concept === 'occurrences') {
+    const values = [
+      ['python', ['python', 'php', 'java', 'python', 'sql', 'python']],
+      ['java', ['java', 'php', 'java', 'python']],
+      ['sql', ['sql', 'sql', 'php', 'java', 'sql']],
+      ['php', ['php', 'python', 'php']],
+      ['web', ['web', 'web', 'web', 'web']],
+      ['code', ['java', 'python', 'sql']],
+      ['a', ['a', 'b', 'a', 'c', 'a']],
+      ['test', ['test']],
+      ['data', ['data', 'base', 'data', 'data', 'sql']],
+      ['slam', ['slam', 'sisr', 'slam']],
+      ['sisr', ['slam', 'sisr', 'sisr', 'sisr']],
+      ['api', ['api', 'web', 'api', 'code']],
+      ['linux', ['windows', 'linux', 'linux']],
+      ['git', ['git', 'github', 'git', 'git']],
+      ['html', ['css', 'html', 'js', 'html']],
+      ['css', ['css', 'css', 'html']],
+      ['js', ['js', 'java', 'js']],
+      ['réseau', ['réseau', 'sql', 'réseau']],
+      ['matrice', ['matrice', 'matrice', 'java']],
+      ['bts', ['bts', 'sio', 'bts', 'bts', 'slam']],
+    ];
+    return values.map(([target, words]) => ({
+      stdin: `${target}\n${words.join(' ')}`,
+      expected: `${target}: ${words.filter((word) => word === target).length}`,
+    }));
+  }
+
+  if (concept === 'average') {
+    const values = [
+      [12, 15, 9, 14], [10, 20, 30], [1, 2], [0, 0, 0], [-2, 2],
+      [5, 5, 5], [1, 2, 3, 4], [10, 11], [2.5, 3.5], [-5, -10],
+      [100, 50], [7, 8, 9], [4, 6, 8, 10], [1.25, 2.75], [20, 30, 40, 50],
+      [-1, 0, 1], [15.5, 14.5], [9, 9, 10, 10], [3, 6, 9, 12, 15], [2, 3, 5, 7, 11],
+    ];
+    return values.map((numbers) => ({
+      stdin: numbers.join(' '),
+      expected: `Moyenne: ${(numbers.reduce((sum, value) => sum + value, 0) / numbers.length).toFixed(2)}`,
+    }));
+  }
+
+  if (concept === 'palindrome') {
+    const values = [
+      ['radar', true], ['python', false], ['kayak', true], ['level', true], ['rotor', true],
+      ['java', false], ['php', false], ['elle', true], ['ici', true], ['noon', true],
+      ['abc', false], ['abba', true], ['a', true], ['test', false], ['civic', true],
+      ['refer', true], ['stats', true], ['sql', false], ['bob', true], ['code', false],
+    ];
+    return values.map(([word, valid]) => ({
+      stdin: word,
+      expected: `${word}: ${valid ? 'palindrome' : 'non palindrome'}`,
+    }));
+  }
+
+  if (concept === 'object') {
+    const values = [
+      ['Alex', 'SLAM', 15.5], ['Lina', 'SISR', 14], ['Sam', 'SLAM', 12.25], ['Nora', 'SISR', 18],
+      ['Adam', 'SLAM', 10], ['Eva', 'SISR', 16.75], ['Hugo', 'SLAM', 11.5], ['Ines', 'SISR', 17.25],
+      ['Leo', 'SLAM', 13], ['Mia', 'SISR', 19], ['Tom', 'SLAM', 9.5], ['Sara', 'SISR', 14.5],
+      ['Paul', 'SLAM', 15], ['Jade', 'SISR', 12.75], ['Yanis', 'SLAM', 16], ['Zoe', 'SISR', 13.5],
+      ['Noa', 'SLAM', 11], ['Emma', 'SISR', 18.5], ['Lucas', 'SLAM', 17], ['Ana', 'SISR', 10.25],
+    ];
+    return values.map(([name, option, average]) => {
+      const averageText = language === 'java' && Number.isInteger(average) ? Number(average).toFixed(1) : String(average);
+      return { stdin: `${name}\n${option}\n${average}`, expected: `${name} - ${option} - ${averageText}` };
+    });
+  }
+
+  if (concept === 'frequency') {
+    const values = [
+      ['python', 'java', 'python', 'php', 'java', 'python'],
+      ['sql', 'php', 'sql', 'java'],
+      ['a', 'b', 'a', 'c', 'b', 'a'],
+      ['web', 'web', 'api'],
+      ['slam', 'sisr', 'slam', 'sql'],
+      ['git', 'github', 'git'],
+      ['html', 'css', 'js', 'html', 'css'],
+      ['java', 'java', 'java'],
+      ['python', 'php', 'java', 'sql'],
+      ['data', 'base', 'data'],
+      ['linux', 'windows', 'linux', 'linux'],
+      ['routeur', 'switch', 'routeur'],
+      ['matrice', 'java', 'matrice', 'sql'],
+      ['bts', 'sio', 'bts', 'slam', 'sio'],
+      ['code', 'lab', 'code', 'lab', 'code'],
+      ['test'],
+      ['x', 'y', 'z', 'x'],
+      ['api', 'api', 'api', 'web'],
+      ['php', 'php', 'python', 'python'],
+      ['réseau', 'sql', 'réseau', 'java', 'sql'],
+    ];
+    return values.map((words) => ({ stdin: words.join(' '), expected: codeLabExpectedFrequency(words) }));
+  }
+
+  return Array.from({ length: 20 }, () => ({ stdin: exercise.stdin || '', expected: exercise.expected || '' }));
+}
+
+Object.entries(CODE_LAB_EXERCISES).forEach(([language, exercises]) => {
+  exercises.forEach((exercise) => {
+    if (exercise.sandbox) return;
+    exercise.tests = codeLabBuildRobustTests(language, exercise);
+  });
+});
+

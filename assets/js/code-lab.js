@@ -121,25 +121,101 @@ function findForwardExpressionEnd(value, start) {
   return index > start ? index : -1;
 }
 
-function wrapForwardExpressionIfUseful(opening, closing) {
-  if (opening !== '(') return false;
+function quoteContextAt(value, position) {
+  let quote = '';
+  let escaped = false;
+
+  for (let index = 0; index < position; index += 1) {
+    const char = value[index];
+    if (quote) {
+      if (escaped) escaped = false;
+      else if (char === '\\') escaped = true;
+      else if (char === quote) quote = '';
+      else if (char === '\n') quote = '';
+      continue;
+    }
+    if (char === '"' || char === "'") quote = char;
+  }
+  return quote;
+}
+
+function findClosingQuote(value, start, quote) {
+  let escaped = false;
+  for (let index = start; index < value.length; index += 1) {
+    const char = value[index];
+    if (escaped) {
+      escaped = false;
+      continue;
+    }
+    if (char === '\\') {
+      escaped = true;
+      continue;
+    }
+    if (char === quote) return index;
+    if (char === '\n') break;
+  }
+  return -1;
+}
+
+function insertOpeningBeforeExistingCloser(opening, position) {
+  const editor = dom.codeEditor;
+  const value = editor.value;
+  applyEditorContent(`${value.slice(0, position)}${opening}${value.slice(position)}`, position + opening.length);
+}
+
+function wrapForwardContentIfUseful(opening, closing) {
   const editor = dom.codeEditor;
   const start = editor.selectionStart;
   const end = editor.selectionEnd;
-  if (start !== end || start === 0) return false;
   const value = editor.value;
-  const left = value[start - 1] || '';
+  if (start !== end) return false;
+
+  /* Un délimiteur fermant est déjà présent : on ajoute uniquement l'ouvrant. */
+  if (value[start] === closing) {
+    insertOpeningBeforeExistingCloser(opening, start);
+    return true;
+  }
+
   const right = value[start] || '';
-  if (!/[A-Za-z0-9_$\])]/.test(left) || !/[A-Za-z_$\[("']/.test(right)) return false;
+  if (!right || /\s/.test(right)) return false;
+
+  /* Dans une chaîne, {, [, (… encadrent le texte restant sans doubler le fermant. */
+  const activeQuote = quoteContextAt(value, start);
+  if (activeQuote && opening !== activeQuote) {
+    const quoteEnd = findClosingQuote(value, start, activeQuote);
+    if (quoteEnd > start) {
+      const alreadyClosed = value[quoteEnd - 1] === closing;
+      if (alreadyClosed) {
+        insertOpeningBeforeExistingCloser(opening, start);
+      } else {
+        const selected = value.slice(start, quoteEnd);
+        applyEditorContent(
+          `${value.slice(0, start)}${opening}${selected}${closing}${value.slice(quoteEnd)}`,
+          start + opening.length,
+        );
+      }
+      return true;
+    }
+  }
+
+  /* Hors chaîne : encadre l'expression placée juste après le curseur. */
+  if (!/[A-Za-z0-9_$\[("']/.test(right)) return false;
   const expressionEnd = findForwardExpressionEnd(value, start);
   if (expressionEnd === -1) return false;
+
+  const alreadyClosed = value[expressionEnd] === closing;
+  if (alreadyClosed) {
+    insertOpeningBeforeExistingCloser(opening, start);
+    return true;
+  }
+
+  const selected = value.slice(start, expressionEnd);
   applyEditorContent(
-    `${value.slice(0, start)}${opening}${value.slice(start, expressionEnd)}${closing}${value.slice(expressionEnd)}`,
-    start + 1,
+    `${value.slice(0, start)}${opening}${selected}${closing}${value.slice(expressionEnd)}`,
+    start + opening.length,
   );
   return true;
 }
-
 function previousNonEmptyLineBeforeCurrent(position) {
   const value = dom.codeEditor.value;
   const currentLineStart = value.lastIndexOf('\n', Math.max(0, position - 1)) + 1;
@@ -284,7 +360,7 @@ function handleEditorKeydown(event) {
       return;
     }
     event.preventDefault();
-    if (!wrapForwardExpressionIfUseful(event.key, EDITOR_PAIRS[event.key])) {
+    if (!wrapForwardContentIfUseful(event.key, EDITOR_PAIRS[event.key])) {
       wrapOrInsertPair(event.key, EDITOR_PAIRS[event.key]);
     }
     return;

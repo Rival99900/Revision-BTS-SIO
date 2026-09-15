@@ -470,11 +470,15 @@ async function testExercise() {
   appendTerminal(`$ test ${file.name} // ${cases.length} cas`);
   scrollTerminalIntoView();
   let failureCount = 0;
+  let executedCount = 0;
+  let interrupted = false;
   try {
     for (let index = 0; index < cases.length; index += 1) {
       const testCase = cases[index];
       const expected = normalizeOutput(testCase.expected);
       const requirement = detectInputRequirement(language, code);
+      executedCount = index + 1;
+      setTerminalState(`tests ${executedCount}/${cases.length}`);
       try {
         const output = await runSource(language, code, testCase.stdin || '', requirement, file.name);
         const actual = normalizeOutput(output);
@@ -488,17 +492,25 @@ async function testExercise() {
         const runtimeDetails = [error.runtimeOutput, error.message || String(error)].filter(Boolean).join('\n');
         addTestFailureReport({ index, total: cases.length, stdin: testCase.stdin || '', output: runtimeDetails, expected, title: 'Erreur d’exécution' });
         appendTerminal(`Cas ${index + 1}/${cases.length} : erreur d’exécution.`, 'error');
-        break;
+
+        const status = String(error.runtimeStatus || '');
+        const fatal = Boolean(error.engineError) || /compilation|internal error|time limit|memory limit/i.test(status);
+        if (fatal) {
+          interrupted = true;
+          appendTerminal('Les tests suivants sont interrompus : corrigez d’abord cette erreur bloquante.', 'error');
+          break;
+        }
       }
     }
-    if (failureCount === 0) {
+    if (failureCount === 0 && executedCount === cases.length) {
       localStorage.setItem(solvedKey(language, exercise), '1');
       renderExerciseList();
-      appendTerminal('Tous les cas de test sont validés.', 'success');
+      appendTerminal(`Tous les ${cases.length} cas de test sont validés.`, 'success');
       setTerminalState('réussi', 'success');
       clearTestReport();
     } else {
-      appendTerminal(`${failureCount} cas de test en échec. Consultez le rapport détaillé.`, 'error');
+      const coverage = interrupted ? ` (${executedCount}/${cases.length} cas exécutés)` : '';
+      appendTerminal(`${failureCount} cas de test en échec${coverage}. Consultez le rapport détaillé.`, 'error');
       setTerminalState('test échoué', 'error');
       dom.testReport?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }

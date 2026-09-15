@@ -561,7 +561,10 @@ function renderExerciseList() {
     button.className = 'exercise-button';
     if (currentConcept === concept) button.classList.add('active');
     if (conceptSolved(concept)) button.classList.add('solved');
-    const status = conceptSolved(concept) ? '✓ réussi' : exercise.difficulty;
+    const testCount = Array.isArray(exercise.tests) ? exercise.tests.length : 0;
+    const status = conceptSolved(concept)
+      ? `✓ réussi${testCount ? ` • ${testCount} cas` : ''}`
+      : `${exercise.difficulty}${testCount ? ` • ${testCount} cas` : ''}`;
     button.innerHTML = `
       <span class="exercise-index">${String(index + 1).padStart(2, '0')}</span>
       <span class="exercise-name">${escapeHtml(exercise.title)}<span class="exercise-status">${escapeHtml(status)}</span></span>
@@ -650,7 +653,8 @@ function renderExerciseBrief() {
   dom.insertHintButton.hidden = !exercise.hintCode;
   dom.testButton.disabled = false;
   dom.hintButton.disabled = !exercise.hint;
-  dom.testButton.textContent = '✓ Tester l’exercice';
+  const testCount = Array.isArray(exercise.tests) ? exercise.tests.length : 0;
+  dom.testButton.textContent = testCount ? `✓ Tester ${testCount} cas` : '✓ Tester l’exercice';
   dom.hintButton.textContent = exercise.hint ? '? Indice' : '? Aucun indice';
 }
 

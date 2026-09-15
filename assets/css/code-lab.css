@@ -1767,3 +1767,123 @@ body.modal-open {
     grid-template-columns: 44px minmax(0, 1fr) !important;
   }
 }
+
+/* ===== FINAL EXERCISE / MOBILE HARDENING ===== */
+.exercise-list {
+  align-content: start;
+}
+
+.exercise-button,
+.exercise-name,
+.exercise-status,
+.exercise-brief,
+.exercise-meta,
+.exercise-meta > div,
+.lab-actions,
+.lab-actions > * {
+  min-width: 0;
+}
+
+.exercise-button {
+  overflow: hidden;
+}
+
+.exercise-name,
+.exercise-status,
+.exercise-brief p,
+.exercise-meta code {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+.exercise-name {
+  overflow: visible;
+}
+
+.exercise-status {
+  white-space: normal;
+  line-height: 1.35;
+}
+
+.lab-actions {
+  align-items: stretch;
+}
+
+.lab-button {
+  min-width: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.test-report,
+.test-report-list,
+.test-failure-card,
+.test-failure-field,
+.test-failure-field pre {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.test-failure-field pre {
+  overflow-x: auto;
+}
+
+@media (max-width: 620px) {
+  .exercise-button {
+    min-height: 58px;
+    grid-template-columns: 34px minmax(0, 1fr);
+    gap: 7px;
+    padding: 8px 7px;
+  }
+
+  .exercise-index {
+    width: 30px;
+    height: 30px;
+  }
+
+  .exercise-name {
+    font-size: .76rem;
+    line-height: 1.35;
+  }
+
+  .exercise-status {
+    margin-top: 2px;
+    font-size: .63rem;
+  }
+
+  .exercise-brief {
+    width: 100%;
+  }
+
+  .brief-topline {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .exercise-position {
+    max-width: 100%;
+    white-space: normal;
+    text-align: right;
+  }
+}
+
+@media (max-width: 390px) {
+  .exercise-button {
+    grid-template-columns: 30px minmax(0, 1fr);
+  }
+
+  .exercise-index {
+    width: 28px;
+    height: 28px;
+    font-size: .68rem;
+  }
+
+  .exercise-name {
+    font-size: .72rem;
+  }
+
+  .lab-button,
+  .file-tool {
+    font-size: .67rem;
+  }
+}
