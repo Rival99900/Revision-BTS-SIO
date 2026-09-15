@@ -37,7 +37,7 @@
       <div>
         <div class="hero-kicker">2E ANNÉE // MATHS // MATRICES</div>
         <h2>Calcul matriciel</h2>
-        <p>Dimensions, coefficients, addition, multiplication par un réel, produit matriciel et exercices corrigés.</p>
+        <p>Dimensions, coefficients, opérations, produit matriciel, matrices identité, puissances et exercices corrigés.</p>
       </div>
       <div class="hero-actions">
         <button class="smallbtn" id="reviewBtn" onclick="setReviewed('2-maths-matrices')">○ Marquer révisé</button>
@@ -47,15 +47,14 @@
     </div>
 
     <div class="alert agold">
-      <strong>Vérification effectuée :</strong> les exemples et corrections ont été recalculés à partir des photos et du PDF fourni. Les valeurs incohérentes de l’exemple <b>B = ((i − j)²)</b> ont été corrigées dans cette fiche.
+      <strong>Vérification effectuée :</strong> les exemples et corrections ont été recalculés à partir des photos et du PDF fourni. Les valeurs incohérentes de l’exemple <b>B = ((i − j)²)</b> ont été corrigées dans cette fiche. Les dernières notes manuscrites de l’exercice 9 p.12 ainsi que le cours 2.4 sur les matrices carrées de référence ont également été intégrés.
     </div>
 
     <div class="stabs">
       <button class="sb a" onclick="showSub('mat2','definition',this)">Définitions</button>
       <button class="sb" onclick="showSub('mat2','operations',this)">Opérations</button>
-      <button class="sb" onclick="showSub('mat2','exo14',this)">Exercices 1–4</button>
-      <button class="sb" onclick="showSub('mat2','exo58',this)">Exercices 5–8</button>
-      <button class="sb" onclick="showSub('mat2','exo11',this)">Exercice 11</button>
+      <button class="sb" onclick="showSub('mat2','square',this)">Matrices carrées</button>
+      <button class="sb" data-mat-exercises="1" onclick="showSub('mat2','exercises',this)">Exercices</button>
     </div>
 
     <div class="sc a" id="mat2-definition">
@@ -80,24 +79,24 @@
         <div class="cmpc">
           <h4 class="gold">A ∈ M₃₂, aᵢⱼ = i / j</h4>
           <div class="code gold matrix-code">A =
-⎛ 1   1/2 ⎞
-⎜ 2    1  ⎟
-⎝ 3   3/2 ⎠</div>
+( 1   1/2 )
+( 2    1  )
+( 3   3/2 )</div>
         </div>
         <div class="cmpc">
           <h4 class="gold">B ∈ M₃₂, bᵢⱼ = (i − j)²</h4>
           <div class="code gold matrix-code">B =
-⎛ 0   1 ⎞
-⎜ 1   0 ⎟
-⎝ 4   1 ⎠</div>
+( 0   1 )
+( 1   0 )
+( 4   1 )</div>
         </div>
       </div>
       <div class="cmp">
         <div class="cmpc">
           <h4 class="gold">C ∈ M₂₂, cᵢⱼ = i + j − 1</h4>
           <div class="code gold matrix-code">C =
-⎛ 1   2 ⎞
-⎝ 2   3 ⎠</div>
+( 1   2 )
+( 2   3 )</div>
         </div>
         <div class="cmpc">
           <h4 class="gold">Lecture d’un coefficient</h4>
@@ -110,9 +109,9 @@
       <div class="st gold">2.2.1 — Addition</div>
       <div class="alert agold"><strong>Condition :</strong> deux matrices peuvent être additionnées uniquement si elles ont exactement la même dimension.</div>
       <div class="code gold matrix-code">A + B =
-⎛ 1   3/2 ⎞
-⎜ 3    1  ⎟
-⎝ 7   5/2 ⎠</div>
+( 1   3/2 )
+( 3    1  )
+( 7   5/2 )</div>
       <div class="cg">
         <div class="card gold"><h3>Commutativité</h3><p>A + B = B + A</p></div>
         <div class="card gold"><h3>Associativité</h3><p>(A + B) + C = A + (B + C)</p></div>
@@ -120,19 +119,19 @@
         <div class="card gold"><h3>Matrice opposée</h3><p>A + (−A) = Oₙₚ</p></div>
       </div>
       <div class="code gold matrix-code">−A =
-⎛ −1   −1/2 ⎞
-⎜ −2    −1  ⎟
-⎝ −3   −3/2 ⎠</div>
+( −1   −1/2 )
+( −2    −1  )
+( −3   −3/2 )</div>
 
       <div class="st gold">2.2.2 — Multiplication par un réel</div>
       <p>Pour un réel k, chaque coefficient de A est multiplié par k. La dimension ne change pas.</p>
       <div class="cmp">
-        <div class="cmpc"><h4 class="gold">2A</h4><div class="code gold matrix-code">⎛ 2   1 ⎞
-⎜ 4   2 ⎟
-⎝ 6   3 ⎠</div></div>
-        <div class="cmpc"><h4 class="gold">−3B</h4><div class="code gold matrix-code">⎛  0  −3 ⎞
-⎜ −3   0 ⎟
-⎝−12  −3 ⎠</div></div>
+        <div class="cmpc"><h4 class="gold">2A</h4><div class="code gold matrix-code">( 2   1 )
+( 4   2 )
+( 6   3 )</div></div>
+        <div class="cmpc"><h4 class="gold">−3B</h4><div class="code gold matrix-code">(  0  −3 )
+( −3   0 )
+(−12  −3 )</div></div>
       </div>
 
       <div class="st gold">2.2.3 — Multiplication de deux matrices</div>
@@ -144,26 +143,164 @@
         <li>Elle est distributive par rapport à l’addition.</li>
       </ul>
       <div class="code gold matrix-code">A × C =
-⎛ 2   7/2  ⎞
-⎜ 4    7   ⎟
-⎝ 6   21/2 ⎠</div>
+( 2   7/2  )
+( 4    7   )
+( 6   21/2 )</div>
+    </div>
+
+    <div class="sc" id="mat2-square">
+      <div class="st gold">2.4 — Matrices carrées de référence</div>
+
+      <div class="st gold">2.4.1 — La matrice identité</div>
+      <div class="card gold">
+        <h3>Définition</h3>
+        <p>Pour un entier naturel non nul <b>n</b>, la matrice identité d’ordre <b>n</b>, notée <b>Iₙ</b>, est la matrice carrée dont les coefficients vérifient :</p>
+        <div class="code gold">aᵢⱼ = 1 si i = j
+aᵢⱼ = 0 si i ≠ j</div>
+        <p>Autrement dit, les coefficients de la diagonale principale valent <b>1</b> et tous les autres valent <b>0</b>.</p>
+      </div>
+
+      <div class="st gold">Exemples de matrices identité</div>
+      <div class="cg">
+        <div class="card gold">
+          <h3>I₂</h3>
+          <div class="code gold matrix-code">I₂ =
+( 1  0 )
+( 0  1 )</div>
+        </div>
+        <div class="card gold">
+          <h3>I₃</h3>
+          <div class="code gold matrix-code">I₃ =
+( 1  0  0 )
+( 0  1  0 )
+( 0  0  1 )</div>
+        </div>
+        <div class="card gold">
+          <h3>I₄</h3>
+          <div class="code gold matrix-code">I₄ =
+( 1  0  0  0 )
+( 0  1  0  0 )
+( 0  0  1  0 )
+( 0  0  0  1 )</div>
+        </div>
+      </div>
+
+      <div class="alert agold">
+        <strong>Théorème — élément neutre :</strong> si A ∈ Mₙₚ, alors <b>A × Iₚ = A</b> et <b>Iₙ × A = A</b>.
+      </div>
+
+      <div class="st gold">Exemple avec A ∈ M₃₂</div>
+      <div class="alert aa">
+        <strong>Correction de cohérence du support :</strong> la ligne imprimée inverse I₂ et I₃. Comme A possède 3 lignes et 2 colonnes, les produits compatibles sont <b>A × I₂</b> et <b>I₃ × A</b>.
+      </div>
+      <div class="cmp">
+        <div class="cmpc">
+          <h4 class="gold">Matrice A</h4>
+          <div class="code gold matrix-code">A =
+( 1    1  )
+( 1   1/2 )
+( 1   1/3 )</div>
+        </div>
+        <div class="cmpc">
+          <h4 class="gold">Produit à droite</h4>
+          <div class="code gold matrix-code">A × I₂ =
+( 1    1  )
+( 1   1/2 )
+( 1   1/3 )
+= A</div>
+        </div>
+        <div class="cmpc">
+          <h4 class="gold">Produit à gauche</h4>
+          <div class="code gold matrix-code">I₃ × A =
+( 1    1  )
+( 1   1/2 )
+( 1   1/3 )
+= A</div>
+        </div>
+      </div>
+
+      <div class="st gold">2.4.2 — Les matrices puissances</div>
+      <div class="card gold">
+        <h3>Définition</h3>
+        <p>Si <b>A ∈ Mₙₙ</b> est une matrice carrée d’ordre n et si <b>p ∈ ℕ*</b>, alors :</p>
+        <div class="code gold">Aᵖ = A × A × … × A   (p facteurs)
+A⁰ = Iₙ</div>
+        <p>La puissance d’une matrice est donc obtenue par des <b>produits matriciels successifs</b>.</p>
+      </div>
+
+      <div class="st gold">Exemple avec D</div>
+      <div class="cmp">
+        <div class="cmpc">
+          <h4 class="gold">Matrice de départ</h4>
+          <div class="code gold matrix-code">D =
+( −1   1 )
+(  1   1 )</div>
+        </div>
+        <div class="cmpc">
+          <h4 class="gold">D² = D × D</h4>
+          <div class="code gold matrix-code">D² =
+( 2  0 )
+( 0  2 )</div>
+        </div>
+        <div class="cmpc">
+          <h4 class="gold">D³ = D² × D</h4>
+          <div class="code gold matrix-code">D³ =
+( −2   2 )
+(  2   2 )</div>
+        </div>
+      </div>
+
+      <div class="alert ar">
+        <strong>Attention :</strong> élever une matrice à une puissance ne signifie pas élever séparément chacun de ses coefficients. Par exemple, D² n’est pas la matrice obtenue en calculant (−1)², 1², 1² et 1² coefficient par coefficient : <b>D² = ((2,0),(0,2))</b>.
+      </div>
+    </div>
+
+    <div class="sc" id="mat2-exercises">
+      <div class="st gold">Exercices — accès rapide</div>
+      <p class="exercise-intro">Sélectionnez une série pour afficher directement les énoncés et corrections, sur le même principe que les chapitres CEJM.</p>
+      <div class="chapter-grid math-exercise-grid">
+        <a class="chapter-card" href="#mat2-exo14" onclick="event.preventDefault(); showSub('mat2','exo14',document.querySelector('[data-mat-exercises]'));">
+          <span class="chapter-num">01–04</span>
+          <h3>Opérations et coefficients</h3>
+          <p>Construction de matrices, sommes, combinaisons linéaires et calculs vérifiés.</p>
+          <span class="module-link">Ouvrir les exercices →</span>
+        </a>
+        <a class="chapter-card" href="#mat2-exo58" onclick="event.preventDefault(); showSub('mat2','exo58',document.querySelector('[data-mat-exercises]'));">
+          <span class="chapter-num">05–08</span>
+          <h3>Produits matriciels</h3>
+          <p>Conditions d’existence, dimensions et produits de matrices.</p>
+          <span class="module-link">Ouvrir les exercices →</span>
+        </a>
+        <a class="chapter-card" href="#mat2-exo9" onclick="event.preventDefault(); showSub('mat2','exo9',document.querySelector('[data-mat-exercises]'));">
+          <span class="chapter-num">09</span>
+          <h3>QCM p.12 — nouvelles notions</h3>
+          <p>Dimensions, somme de coefficients, calcul d’un coefficient et recherche d’une inconnue.</p>
+          <span class="module-link">Ouvrir l’exercice →</span>
+        </a>
+        <a class="chapter-card" href="#mat2-exo11" onclick="event.preventDefault(); showSub('mat2','exo11',document.querySelector('[data-mat-exercises]'));">
+          <span class="chapter-num">11</span>
+          <h3>Matrice nilpotente</h3>
+          <p>Construire une matrice carrée A d’ordre 2 telle que A² = O₂.</p>
+          <span class="module-link">Ouvrir l’exercice →</span>
+        </a>
+      </div>
     </div>
 
     <div class="sc" id="mat2-exo14">
       <div class="st gold">Exercice 1</div>
       <div class="card gold">
         <p><b>A ∈ M₂₂, aᵢⱼ = i + j</b> et <b>B ∈ M₂₂, bᵢⱼ = i × j</b>.</p>
-        <div class="code gold matrix-code">A = ⎛ 2  3 ⎞    B = ⎛ 1  2 ⎞
-    ⎝ 3  4 ⎠        ⎝ 2  4 ⎠
+        <div class="code gold matrix-code">A = ( 2  3 )    B = ( 1  2 )
+    ( 3  4 )        ( 2  4 )
 
 Σ aₖ₁ = 5    Σ a₁ₖ = 5    Σ aₖₖ = 6</div>
       </div>
 
       <div class="st gold">Exercice 2</div>
       <div class="card gold">
-        <div class="code gold matrix-code">A = ⎛ 0  1  4 ⎞    B = ⎛ 0  −3  −8 ⎞
-    ⎜ 1  0  1 ⎟        ⎜ 3   0  −5 ⎟
-    ⎝ 4  1  0 ⎠        ⎝ 8   5   0 ⎠
+        <div class="code gold matrix-code">A = ( 0  1  4 )    B = ( 0  −3  −8 )
+    ( 1  0  1 )        ( 3   0  −5 )
+    ( 4  1  0 )        ( 8   5   0 )
 
 Σ aₖ₁ = 5
 Σ a₁ₖ = 5
@@ -173,30 +310,30 @@
       </div>
 
       <div class="st gold">Exercice 3 — calculs vérifiés</div>
-      <div class="code gold matrix-code">3A = ⎛  0   3  12 ⎞     −B = ⎛  0   3  8 ⎞
-     ⎜  3   0   3 ⎟          ⎜ −3   0  5 ⎟
-     ⎝ 12   3   0 ⎠          ⎝ −8  −5  0 ⎠
+      <div class="code gold matrix-code">3A = (  0   3  12 )     −B = (  0   3  8 )
+     (  3   0   3 )          ( −3   0  5 )
+     ( 12   3   0 )          ( −8  −5  0 )
 
-3A − B = ⎛ 0   6  20 ⎞
-         ⎜ 0   0   8 ⎟
-         ⎝ 4  −2   0 ⎠
+3A − B = ( 0   6  20 )
+         ( 0   0   8 )
+         ( 4  −2   0 )
 
-2A − 4B = ⎛   0   14   40 ⎞
-          ⎜ −10    0   22 ⎟
-          ⎝ −24  −18    0 ⎠</div>
+2A − 4B = (   0   14   40 )
+          ( −10    0   22 )
+          ( −24  −18    0 )</div>
 
       <div class="st gold">Exercice 4 — calculs vérifiés</div>
-      <div class="code gold matrix-code">A = ⎛ 0   1  −1 ⎞    B = ⎛ 0  1  2 ⎞
-    ⎜ 1  −1   0 ⎟        ⎜ 2  0  1 ⎟
-    ⎝ 1   0  −1 ⎠        ⎝ 1  2  0 ⎠
+      <div class="code gold matrix-code">A = ( 0   1  −1 )    B = ( 0  1  2 )
+    ( 1  −1   0 )        ( 2  0  1 )
+    ( 1   0  −1 )        ( 1  2  0 )
 
-2A + 3B = ⎛ 0   5   4 ⎞
-          ⎜ 8  −2   3 ⎟
-          ⎝ 5   6  −2 ⎠
+2A + 3B = ( 0   5   4 )
+          ( 8  −2   3 )
+          ( 5   6  −2 )
 
-4A − 2B = ⎛ 0   2  −8 ⎞
-          ⎜ 0  −4  −2 ⎟
-          ⎝ 2  −4  −4 ⎠</div>
+4A − 2B = ( 0   2  −8 )
+          ( 0  −4  −2 )
+          ( 2  −4  −4 )</div>
     </div>
 
     <div class="sc" id="mat2-exo58">
@@ -210,60 +347,89 @@
       </div>
 
       <div class="st gold">Exercice 6</div>
-      <div class="code gold matrix-code">A = ⎛ 0   1  −1 ⎞    B = ⎛ 1  2 ⎞
-    ⎝ 1  −1   0 ⎠        ⎜ 0  1 ⎟
-                         ⎝ 1  2 ⎠
+      <div class="code gold matrix-code">A = ( 0   1  −1 )    B = ( 1  2 )
+    ( 1  −1   0 )        ( 0  1 )
+                         ( 1  2 )
 
-A × B = ⎛ −1  −1 ⎞ ∈ M₂₂
-        ⎝  1   1 ⎠
+A × B = ( −1  −1 ) ∈ M₂₂
+        (  1   1 )
 
-B × A = ⎛ 2  −1  −1 ⎞
-        ⎜ 1  −1   0 ⎟ ∈ M₃₃
-        ⎝ 2  −1  −1 ⎠</div>
+B × A = ( 2  −1  −1 )
+        ( 1  −1   0 ) ∈ M₃₃
+        ( 2  −1  −1 )</div>
 
       <div class="st gold">Exercice 7</div>
-      <div class="code gold matrix-code">A = ⎛ 1  1  1 ⎞    B = ⎛ 1    1/2  1/3 ⎞
-    ⎝ 2  4  8 ⎠        ⎝ 1/2  1/4  1/6 ⎠</div>
+      <div class="code gold matrix-code">A = ( 1  1  1 )    B = ( 1    1/2  1/3 )
+    ( 2  4  8 )        ( 1/2  1/4  1/6 )</div>
       <div class="alert aa"><strong>Conclusion :</strong> A × B et B × A n’existent pas : les deux matrices sont de dimension 2 × 3 et 3 ≠ 2.</div>
 
       <div class="st gold">Exercice 8</div>
-      <div class="code gold matrix-code">A = ⎛ 0  −1  −2 ⎞    B = ⎛ 1  1  1 ⎞
-    ⎝ 1   0  −1 ⎠        ⎝ 2  4  8 ⎠
+      <div class="code gold matrix-code">A = ( 0  −1  −2 )    B = ( 1  1  1 )
+    ( 1   0  −1 )        ( 2  4  8 )
 
-B − A = ⎛ 1  2  3 ⎞
-        ⎝ 1  4  9 ⎠
+B − A = ( 1  2  3 )
+        ( 1  4  9 )
 
-3A + 2B = ⎛ 2  −1  −4 ⎞
-          ⎝ 7   8  13 ⎠
+3A + 2B = ( 2  −1  −4 )
+          ( 7   8  13 )
 
-C = ⎛ 0  0 ⎞
-    ⎜ 2  3 ⎟
-    ⎝ 4  6 ⎠
+C = ( 0  0 )
+    ( 2  3 )
+    ( 4  6 )
 
-C × A = ⎛ 0   0    0 ⎞
-        ⎜ 3  −2   −7 ⎟ ∈ M₃₃
-        ⎝ 6  −4  −14 ⎠</div>
+C × A = ( 0   0    0 )
+        ( 3  −2   −7 ) ∈ M₃₃
+        ( 6  −4  −14 )</div>
       <p>A × B n’existe pas, car A possède 3 colonnes et B seulement 2 lignes.</p>
+    </div>
+
+    <div class="sc" id="mat2-exo9">
+      <div class="st gold">Exercice 9 p.12 — QCM et méthode</div>
+      <div class="cg">
+        <div class="card gold">
+          <h3>1 — Dimension d’un produit</h3>
+          <p>Si <b>B ∈ M₆₄</b> et <b>A ∈ M₄₅</b>, le nombre de colonnes de B est égal au nombre de lignes de A. Le produit <b>B × A existe</b> et appartient à <b>M₆₅</b>.</p>
+        </div>
+        <div class="card bl">
+          <h3>2 — Somme d’une colonne</h3>
+          <div class="code gold">Σᵢ₌₁³ aᵢ₃ = a₁₃ + a₂₃ + a₃₃
+= 1/3 + 2/3 + 3/3
+= 2</div>
+        </div>
+        <div class="card am">
+          <h3>3 — Coefficient d’un produit</h3>
+          <p>Un coefficient du produit se calcule en faisant le produit scalaire de la ligne et de la colonne correspondantes.</p>
+          <div class="code gold">α₁₃ = 1 × a + 0 × 0 + a × 0 = a</div>
+        </div>
+        <div class="card">
+          <h3>4 — Retrouver une inconnue</h3>
+          <p>Pour le coefficient <b>α₂₂ = −18</b>, la note utilise la ligne <b>(−2, 1, 2)</b> et la colonne <b>(4, n, −2)</b>.</p>
+          <div class="code gold">−2 × 4 + 1 × n + 2 × (−2) = −18
+−8 + n − 4 = −18
+n = −6</div>
+        </div>
+      </div>
+      <div class="alert ag"><strong>Méthode :</strong> pour chaque coefficient d’un produit matriciel, associez une ligne de la première matrice à une colonne de la seconde, multipliez terme à terme puis additionnez.</div>
     </div>
 
     <div class="sc" id="mat2-exo11">
       <div class="st gold">Exercice 11 — matrice carrée telle que A² = O₂</div>
       <div class="card gold">
         <p>Pour A = ((a, b), (c, d)), on obtient :</p>
-        <div class="code gold matrix-code">A² = ⎛ a² + bc    b(a + d) ⎞
-     ⎝ c(a + d)  bc + d²   ⎠</div>
+        <div class="code gold matrix-code">A² = ( a² + bc    b(a + d) )
+     ( c(a + d)  bc + d²   )</div>
         <p>Pour obtenir O₂ avec des coefficients entiers non nuls, on peut imposer <b>a + d = 0</b> et <b>a² + bc = 0</b>.</p>
         <div class="code gold matrix-code">Choix : a = 1, d = −1, b = 1, c = −1
 
-A = ⎛  1   1 ⎞
-    ⎝ −1  −1 ⎠
+A = (  1   1 )
+    ( −1  −1 )
 
 A² = O₂</div>
       </div>
       <div class="alert ag"><strong>À retenir :</strong> avant de multiplier deux matrices, vérifiez toujours « colonnes de la première = lignes de la seconde ».</div>
     </div>
 
-    <div class="source-note">Calcul matriciel 2e année : définitions, opérations et exercices 1 à 8 puis 11. Les résultats numériques ont été vérifiés à partir des photos fournies et par recalcul.</div>
+    <div class="source-note">Calcul matriciel 2e année : définitions, opérations et exercices 1 à 9 puis 11. Les résultats numériques ont été vérifiés à partir des photos fournies et par recalcul.</div>
   </main>
   <div class="footer"><a href="../index.html">← Retour au tableau de bord</a></div>
 </div>

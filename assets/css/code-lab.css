@@ -1719,3 +1719,51 @@ body.modal-open {
   color: var(--syn-interpolation);
   font-weight: 700;
 }
+
+/* ===== Alignement éditeur mobile / curseur ===== */
+.editor-shell,
+.line-numbers,
+.code-highlight,
+.code-editor {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  font-variant-ligatures: none;
+  font-feature-settings: "liga" 0, "calt" 0;
+}
+
+.code-highlight,
+.code-editor {
+  letter-spacing: 0;
+  word-spacing: 0;
+  text-rendering: geometricPrecision;
+}
+
+@media (max-width: 560px) {
+  .editor-shell {
+    --mobile-editor-font: 16px;
+    --mobile-editor-line: 1.5;
+  }
+
+  .line-numbers,
+  .code-highlight,
+  .code-editor {
+    font-size: var(--mobile-editor-font) !important;
+    line-height: var(--mobile-editor-line) !important;
+  }
+
+  .line-numbers {
+    padding-top: 13px !important;
+  }
+
+  .code-highlight,
+  .code-editor {
+    padding-top: 13px !important;
+    padding-bottom: 13px !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .editor-shell {
+    grid-template-columns: 44px minmax(0, 1fr) !important;
+  }
+}

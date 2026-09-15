@@ -1080,3 +1080,87 @@ body[data-review-id="2-maths-matrices"] .matrix-code::-webkit-scrollbar-thumb {
     grid-column: 1;
   }
 }
+
+/* =====================================================
+   Harmonisation finale — Maths 2e / CEJM / cartes
+   ===================================================== */
+
+/* Les matrices utilisent désormais des parenthèses simples par ligne :
+   police stable, compacte et sans glyphes Unicode surdimensionnés. */
+body[data-review-id="2-maths-matrices"] .matrix-code {
+  font-family: "Share Tech Mono", Consolas, "Courier New", monospace !important;
+  font-size: clamp(.72rem, .82vw, .82rem) !important;
+  line-height: 1.48 !important;
+  letter-spacing: 0 !important;
+  white-space: pre !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  padding: 12px 14px !important;
+}
+
+body[data-review-id="2-maths-matrices"] .math-exercise-grid {
+  margin-top: 12px;
+}
+
+body[data-review-id="2-maths-matrices"] .exercise-intro {
+  margin: 0 0 13px;
+  color: var(--text);
+  opacity: .88;
+  line-height: 1.6;
+}
+
+/* Garantit une charte sombre et colorée cohérente sur les fiches CEJM. */
+body[data-chapter] .panel,
+body[data-chapter] .cmpc,
+body[data-chapter] .card {
+  background-color: var(--card) !important;
+  color: var(--text) !important;
+}
+
+body[data-chapter] .cmpc h4:not(.bl):not(.am):not(.rd):not(.pu):not(.or):not(.te):not(.gold):not(.cy):not(.li):not(.co) {
+  color: var(--green) !important;
+}
+
+body[data-chapter="1"] .cmpc:first-child {
+  border-color: rgba(255, 215, 0, .32);
+}
+
+body[data-chapter="1"] .cmpc:first-child h4 {
+  color: var(--gold) !important;
+}
+
+/* Évite qu'un contenu intrinsèquement large impose la largeur du viewport. */
+.chapter-grid,
+.module-grid,
+.cg,
+.cmp,
+.math-exercise-grid {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.chapter-card,
+.module-card,
+.math-exercise-grid > * {
+  min-width: 0;
+  overflow: hidden;
+}
+
+@media (max-width: 760px) {
+  body[data-review-id="2-maths-matrices"] .matrix-code {
+    font-size: .70rem !important;
+    line-height: 1.45 !important;
+    padding: 10px 11px !important;
+  }
+
+  body[data-review-id="2-maths-matrices"] .math-exercise-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 420px) {
+  body[data-review-id="2-maths-matrices"] .matrix-code {
+    font-size: .66rem !important;
+    padding-inline: 9px !important;
+  }
+}

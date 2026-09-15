@@ -233,4 +233,124 @@ window.MATHS_SECOND_YEAR_QUESTIONS = [
     answers: ['3x3', '3 x 3', '3×3', 'm33', 'm₃₃'],
     exp: 'C est 3 × 2 et A est 2 × 3 : le produit est donc 3 × 3.'
   }
+
+  ,{
+    year: 2,
+    module: 'maths2',
+    cat: '🧮 Maths 2e — exercice 9',
+    type: 'mcq',
+    q: 'Si B ∈ M₆₄ et A ∈ M₄₅, quelle est la dimension de B × A ?',
+    opts: ['M₆₅', 'M₄₄', 'M₅₆', 'Le produit n’existe pas'],
+    answer: 0,
+    exp: 'B possède 4 colonnes et A possède 4 lignes : le produit existe. On conserve les 6 lignes de B et les 5 colonnes de A, donc B × A ∈ M₆₅.'
+  },
+  {
+    year: 2,
+    module: 'maths2',
+    cat: '🧮 Maths 2e — exercice 9',
+    type: 'text',
+    q: 'Calculez Σᵢ₌₁³ aᵢ₃ si a₁₃ = 1/3, a₂₃ = 2/3 et a₃₃ = 3/3.',
+    answers: ['2', 'deux'],
+    exp: 'On additionne les trois coefficients de la troisième colonne : 1/3 + 2/3 + 3/3 = 6/3 = 2.'
+  },
+  {
+    year: 2,
+    module: 'maths2',
+    cat: '🧮 Maths 2e — exercice 9',
+    type: 'text',
+    q: 'Dans le calcul α₁₃ = 1 × a + 0 × 0 + a × 0, quelle est la valeur de α₁₃ ?',
+    answers: ['a'],
+    exp: 'Les deux produits contenant 0 s’annulent : α₁₃ = a.'
+  },
+  {
+    year: 2,
+    module: 'maths2',
+    cat: '🧮 Maths 2e — exercice 9',
+    type: 'text',
+    q: 'Résolvez : −2 × 4 + n + 2 × (−2) = −18.',
+    answers: ['-6', '−6'],
+    exp: '−8 + n − 4 = −18, donc n − 12 = −18 et n = −6.'
+  }
+
+  ,{
+    year: 2,
+    module: 'maths2',
+    cat: '🧮 Maths 2e — matrice identité',
+    type: 'mcq',
+    q: 'Dans une matrice identité Iₙ, quels coefficients valent 1 ?',
+    opts: ['Tous les coefficients', 'Uniquement ceux de la diagonale principale', 'Uniquement ceux au-dessus de la diagonale', 'Uniquement ceux en première ligne'],
+    answer: 1,
+    exp: 'Dans Iₙ, aᵢⱼ = 1 lorsque i = j ; tous les autres coefficients valent 0.'
+  },
+  {
+    year: 2,
+    module: 'maths2',
+    cat: '🧮 Maths 2e — matrice identité',
+    type: 'mcq',
+    q: 'Quelle matrice est I₃ ?',
+    opts: ['((1,0,0),(0,1,0),(0,0,1))', '((1,1,1),(1,1,1),(1,1,1))', '((0,1,0),(1,0,1),(0,1,0))', '((1,0),(0,1))'],
+    answer: 0,
+    exp: 'I₃ est une matrice 3 × 3 avec des 1 sur la diagonale et des 0 ailleurs.'
+  },
+  {
+    year: 2,
+    module: 'maths2',
+    cat: '🧮 Maths 2e — matrice identité',
+    type: 'mcq',
+    q: 'Si A ∈ Mₙₚ, quelles égalités expriment le rôle d’élément neutre de la matrice identité ?',
+    opts: ['A × Iₙ = A et Iₚ × A = A', 'A × Iₚ = A et Iₙ × A = A', 'A × Iₚ = Iₙ et Iₙ × A = Iₚ', 'A + Iₚ = A et Iₙ + A = A'],
+    answer: 1,
+    exp: 'La matrice identité est l’élément neutre de la multiplication : A × Iₚ = A et Iₙ × A = A.'
+  },
+  {
+    year: 2,
+    module: 'maths2',
+    cat: '🧮 Maths 2e — matrice identité',
+    type: 'mcq',
+    q: 'Pour A ∈ M₃₂, quels produits avec les matrices identité sont dimensionnellement corrects ?',
+    opts: ['A × I₃ et I₂ × A', 'A × I₂ et I₃ × A', 'A × I₄ et I₄ × A', 'A × I₃ uniquement'],
+    answer: 1,
+    exp: 'A possède 2 colonnes : on multiplie à droite par I₂. A possède 3 lignes : on multiplie à gauche par I₃.'
+  },
+  {
+    year: 2,
+    module: 'maths2',
+    cat: '🧮 Maths 2e — puissances',
+    type: 'mcq',
+    q: 'Par convention, si A est une matrice carrée d’ordre n, A⁰ vaut :',
+    opts: ['Oₙ', 'A', 'Iₙ', '0'],
+    answer: 2,
+    exp: 'Pour une matrice carrée A d’ordre n, la convention est A⁰ = Iₙ.'
+  },
+  {
+    year: 2,
+    module: 'maths2',
+    cat: '🧮 Maths 2e — puissances',
+    type: 'mcq',
+    q: 'Pour D = ((−1,1),(1,1)), quelle est la valeur de D² ?',
+    opts: ['((2,0),(0,2))', '((1,1),(1,1))', '((−2,2),(2,2))', '((0,2),(2,0))'],
+    answer: 0,
+    exp: 'En calculant D × D, on obtient D² = ((2,0),(0,2)).'
+  },
+  {
+    year: 2,
+    module: 'maths2',
+    cat: '🧮 Maths 2e — puissances',
+    type: 'text',
+    q: 'Pour D = ((−1,1),(1,1)), donnez la première ligne de D³.',
+    answers: ['-2 2', '−2 2', '(-2,2)', '(−2,2)', '-2;2', '−2;2'],
+    exp: 'D³ = D² × D = ((−2,2),(2,2)). Sa première ligne est donc (−2,2).'
+  },
+  {
+    year: 2,
+    module: 'maths2',
+    cat: '🧮 Maths 2e — puissances',
+    type: 'mcq',
+    q: 'Pour calculer A², peut-on simplement mettre chaque coefficient de A au carré ?',
+    opts: ['Oui, toujours', 'Oui, seulement pour une matrice 2 × 2', 'Non, il faut effectuer le produit matriciel A × A', 'Non, A² est toujours égal à Iₙ'],
+    answer: 2,
+    exp: 'Une puissance de matrice se calcule par multiplication matricielle. Elle ne correspond pas à une puissance coefficient par coefficient.'
+  }
+
+
 ];

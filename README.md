@@ -10,7 +10,7 @@ Fiches synthétiques, cours structurés, rappels essentiels et quiz interactifs 
 ![HTML](https://img.shields.io/badge/HTML5-Revision-00cfff?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS](https://img.shields.io/badge/CSS3-CRT%20Theme-b06aff?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-Quiz-ffb300?style=for-the-badge&logo=javascript&logoColor=111)
-![Questions](https://img.shields.io/badge/Quiz-253%20questions-ff6ec7?style=for-the-badge)
+![Questions](https://img.shields.io/badge/Quiz-322%20questions-ff6ec7?style=for-the-badge)
 
 **Projet évolutif : de nouveaux cours et quiz sont ajoutés au fur et à mesure de l'avancement en BTS SIO.**
 
@@ -112,6 +112,8 @@ Notions : synthèse de documents, vérité et mensonge, mythomanie, vocabulaire 
 
 ### 🧮 Maths — Calcul matriciel
 
+La fiche 2e année couvre également les **matrices carrées de référence** : matrices identité `Iₙ`, rôle d’élément neutre, puissances `Aᵖ`, convention `A⁰ = Iₙ` et exemples calculés.
+
 Fichier : `deuxieme/maths-matrices.html`
 
 Cette fiche couvre les matrices, l’addition, la multiplication par un réel, le produit matriciel et les exercices vérifiés de 2e année.
@@ -167,132 +169,18 @@ Il propose :
 
 # 🎯 Quiz interactif
 
-Le site possède actuellement **310 questions** :
+Le site possède actuellement **322 questions** :
 
 - **213** questions de 1re année ;
-- **97** questions de 2e année ;
-- **227** QCM ;
-- **83** réponses à saisir.
+- **101** questions de 2e année ;
+- **228** QCM ;
+- **86** réponses à saisir.
 
 Le quiz peut être filtré par année, matière et type de question.
 
 Les banques de questions sont réparties dans plusieurs fichiers JavaScript afin de faciliter leur maintenance.
 
----
 
-# 🗂️ Structure du projet
-
-```text
-Revision-BTS-SIO/
-│
-├── index.html
-├── quiz.html
-├── code-lab.html
-├── README.md
-│
-├── assets/
-│   ├── css/
-│   └── js/
-│
-├── premiere/
-│   ├── algorithmique.html
-│   ├── cejm.html
-│   ├── culture.html
-│   ├── cyber.html
-│   ├── dos.html
-│   ├── english.html
-│   ├── java.html
-│   ├── maths.html
-│   ├── mcd.html
-│   ├── php.html
-│   ├── reseau.html
-│   ├── rgpd.html
-│   ├── sql.html
-│   ├── systemes.html
-│   └── cejm/
-│       ├── chapitre-01.html
-│       ├── ...
-│       └── chapitre-11.html
-│
-└── deuxieme/
-    ├── cejm-droit-numerique.html
-    ├── cge-vrai-faux.html
-    ├── maths-matrices.html
-    └── sql-revision.html
-```
-
----
-
-# 🚀 Utilisation
-
-Le projet ne nécessite **aucune installation particulière**.
-
-### 🌐 Accès direct — GitHub Pages
-
-➡️ **[Ouvrir le site de révision BTS SIO](https://rival99900.github.io/Revision-BTS-SIO/)**
-
-➡️ **[Ouvrir le quiz interactif](https://rival99900.github.io/Revision-BTS-SIO/quiz.html)**
-
-➡️ **[Ouvrir le Code Lab](https://rival99900.github.io/Revision-BTS-SIO/code-lab.html)**
-
-### 📦 Utilisation en local
-
-1. Téléchargez et décompressez le projet.
-2. Ouvrez `index.html` dans votre navigateur.
-
-### 💻 Avec Git
-
-```bash
-git clone https://github.com/Rival99900/Revision-BTS-SIO.git
-cd Revision-BTS-SIO
-```
-
-Le site fonctionne en HTML/CSS/JavaScript et ne nécessite ni serveur web, ni base de données, ni dépendance Node.js pour consulter les fiches et utiliser les quiz actuels.
-
----
-
-# 🛠️ Technologies utilisées
-
-- **HTML5** — structure des fiches ;
-- **CSS3** — design responsive et thème CRT ;
-- **JavaScript** — navigation, filtres et quiz ;
-- **LocalStorage** — mémorisation locale de certaines informations de révision ;
-- **Google Fonts** — Share Tech Mono, VT323 et Orbitron.
-
----
-
-# 🎨 Interface
-
-Le design reprend une ambiance **terminal informatique / écran CRT** : fond sombre, couleurs néon, cartes par matière, scanlines, typographies monospace et navigation par année.
-
----
-
-# 🔄 Évolution du projet
-
-Le dépôt sert de base permanente au site de révision. Les nouveaux cours peuvent être ajoutés progressivement avec leurs fiches et leurs questions associées.
-
-### Idées d'évolution
-
-- 📚 compléter progressivement les nouveaux cours de 2e année ;
-- 🎯 enrichir les banques de questions ;
-- 📊 ajouter davantage de statistiques de progression ;
-- 🔀 proposer un mode examen aléatoire ;
-- ❌ mémoriser les erreurs fréquentes ;
-- 🌐 continuer les déploiements avec GitHub Pages.
-
----
-
-# 📌 Sources et méthode
-
-Le projet est conçu à partir des supports de cours utilisés en BTS SIO et centralisés pour les révisions.
-
-Les fiches cherchent à conserver le vocabulaire du cours, synthétiser les notions importantes et éviter d'ajouter artificiellement des chapitres non encore étudiés.
-
-La rédaction utilise le **vouvoiement** afin que le site puisse être partagé avec l'ensemble de la classe.
-
----
-
-<div align="center">
 
 ## 💻 Réviser. Tester. Corriger. Progresser.
 
