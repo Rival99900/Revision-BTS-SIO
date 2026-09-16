@@ -1887,3 +1887,34 @@ body.modal-open {
     font-size: .67rem;
   }
 }
+
+
+/* ===== 2026-09-16 STRUCTURE / MOBILE UPDATE ===== */
+/* Alignement strict du curseur mobile sur la couche de coloration. */
+.code-highlight,
+.code-editor {
+  box-sizing: border-box;
+  font-synthesis: none;
+  font-kerning: none;
+  font-variant-ligatures: none;
+  font-feature-settings: "liga" 0, "calt" 0, "kern" 0;
+  text-align: left;
+  direction: ltr;
+}
+@media (max-width: 560px) {
+  .code-highlight,
+  .code-editor {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+    font-size: 16px !important;
+    line-height: 24px !important;
+    letter-spacing: 0 !important;
+    word-spacing: 0 !important;
+    padding: 13px 15px !important;
+  }
+  .line-numbers {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+    font-size: 16px !important;
+    line-height: 24px !important;
+    padding-top: 13px !important;
+  }
+}

@@ -3,12 +3,12 @@
  <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width,initial-scale=1.0" name="viewport"/>
-  <meta content="R&eacute;visions BTS SIO 1re et 2e ann&eacute;e" name="description"/>
+  <meta content="Révisions BTS SIO 1re et 2e année" name="description"/>
   <title>
    💾 MS-DOS &amp; batch
   </title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&amp;family=VT323&amp;family=Orbitron:wght@700;900&amp;display=swap" rel="stylesheet"/>
-  <link href="../assets/css/style.css" rel="stylesheet"/>
+  <link href="../assets/css/style.css?v=20260916-1" rel="stylesheet"/>
    <link rel="icon" type="image/svg+xml" href="../assets/img/site-logo.svg" />
   <link rel="shortcut icon" href="../assets/img/site-logo.svg" />
  </head>
@@ -17,20 +17,20 @@
    <div class="site-header">
     <div class="bbar"></div>
     <h1>
-     BTS SIO &mdash; R&Eacute;VISIONS
+     BTS SIO — RÉVISIONS
     </h1>
     <div class="sub">
-     1RE ANN&Eacute;E &mdash; SYST&Egrave;MES
+     1RE ANNÉE — SYSTÈMES
     </div>
     <div class="tags">
      <span class="tag tg">
       BTS SIO
      </span>
      <span class="tag tb">
-      1re ann&eacute;e
+      1re année
      </span>
      <span class="tag tp">
-      2e ann&eacute;e
+      2e année
      </span>
      <span class="tag ta">
       Quiz interactifs
@@ -39,7 +39,7 @@
     <div class="prompt">
      C:\\BTS-SIO\REVISION&gt;
      <span>
-      &block;
+      █
      </span>
     </div>
    </div>
@@ -48,7 +48,7 @@
      ⌂ Accueil
     </a>
     <a class="navbtn quiz" href="../quiz.html">
-     🎯 Quiz g&eacute;n&eacute;ral
+     🎯 Quiz général
     </a>
     <a class="navbtn" href="../code-lab.html">
      &lt;/&gt; Code Lab
@@ -58,24 +58,24 @@
     <div class="hero">
      <div>
       <div class="hero-kicker">
-       1RE ANN&Eacute;E // SYST&Egrave;MES
+       1RE ANNÉE // SYSTÈMES
       </div>
       <h2>
        💾 MS-DOS &amp; batch
       </h2>
       <p>
-       Commandes, arborescence, redirections et fichiers .BAT
+       Commandes, arborescence, redirections et fichiers.BAT
       </p>
      </div>
      <div class="hero-actions">
       <button class="smallbtn" id="reviewBtn" onclick="setReviewed('1-dos')">
-       &cir; Marquer r&eacute;vis&eacute;
+       ○ Marquer révisé
       </button>
       <button class="smallbtn" onclick="printPage()">
        🖨 Imprimer
       </button>
       <a class="smallbtn alt" href="../quiz.html?year=1&amp;module=dos">
-       🎯 Quiz cibl&eacute;
+       🎯 Quiz ciblé
       </a>
      </div>
     </div>
@@ -87,7 +87,7 @@
       Commandes
      </button>
      <button class="sb" onclick="showSub('dos','bat',this)">
-      Fichiers .BAT
+      Fichiers.BAT
      </button>
     </div>
     INTRODUCTION
@@ -98,17 +98,17 @@
      <div class="cg">
       <div class="card">
        <h3>
-        D&eacute;finition
+        Définition
        </h3>
        <p>
         <b>
          MicroSoft Disk Operating System
         </b>
-        &mdash; cr&eacute;&eacute; en
+        — créé en
         <b>
          1981
         </b>
-        par Microsoft pour l'IBM PC. Mono-t&acirc;che, mono-utilisateur. Version finale :
+        par Microsoft pour l'IBM PC. Mono-tâche, mono-utilisateur. Version finale :
         <span class="tag ta">
          6.22
         </span>
@@ -116,23 +116,23 @@
       </div>
       <div class="card bl">
        <h3>
-        R&ocirc;le du DOS
+        Rôle du DOS
        </h3>
        <ul>
         <li>
-         Gestion fichiers &amp; r&eacute;pertoires
+         Gestion fichiers &amp; répertoires
         </li>
         <li>
-         Gestion m&eacute;moires de stockage
+         Gestion mémoires de stockage
         </li>
         <li>
-         Ex&eacute;cution de programmes
+         Exécution de programmes
         </li>
         <li>
-         Configuration du mat&eacute;riel
+         Configuration du matériel
         </li>
         <li>
-         Gestion entr&eacute;es / sorties
+         Gestion entrées / sorties
         </li>
        </ul>
       </div>
@@ -145,19 +145,19 @@
          <b>
           IO.SYS
          </b>
-         &mdash; lien BIOS &harr; DOS
+         — lien BIOS ↔ DOS
         </li>
         <li>
          <b>
           MSDOS.SYS
          </b>
-         &mdash; routines disques
+         — routines disques
         </li>
         <li>
          <b>
           COMMAND.COM
          </b>
-         &mdash; interpr&eacute;teur de commandes
+         — interpréteur de commandes
         </li>
        </ul>
       </div>
@@ -169,22 +169,22 @@
         <span class="tag tg">
          Internes
         </span>
-        Stock&eacute;es dans COMMAND.COM (DIR, CD, MD&hellip;)
+        Stockées dans COMMAND.COM (DIR, CD, MD…)
         <br/>
         <span class="tag ta">
          Externes
         </span>
-        Fichiers .EXE/.COM ind&eacute;pendants
+        Fichiers.EXE/.COM indépendants
         <br/>
         <span class="tag tb">
          Utilitaires
         </span>
-        DEFRAG, SCANDISK, FORMAT&hellip;
+        DEFRAG, SCANDISK, FORMAT…
        </p>
       </div>
      </div>
      <div class="st gn">
-      Structure fichiers &amp; r&eacute;pertoires
+      Structure fichiers &amp; répertoires
      </div>
      <div class="cg">
       <div class="card">
@@ -201,17 +201,16 @@
          3 car. max
         </span>
         <br/>
-        S&eacute;par&eacute;s par un
-        <b>
-         .
+        Séparés par un
+        <b>.
         </b>
-        &mdash; pas d'espace autoris&eacute;
+        — pas d'espace autorisé
         <br/>
         Ex:
         <code style="color:var(--blue)">
          SIO1DOSCDE.xls
         </code>
-        &rarr;
+        →
         <code style="color:var(--amber)">
          SIO1DO~1.xls
         </code>
@@ -223,34 +222,29 @@
        </h3>
        <ul>
         <li>
-         <b>
-          .COM
+         <b>.COM
          </b>
-         &mdash; commandes ex&eacute;cutables
+         — commandes exécutables
         </li>
         <li>
-         <b>
-          .EXE
+         <b>.EXE
          </b>
-         &mdash; programmes ex&eacute;cutables
+         — programmes exécutables
         </li>
         <li>
-         <b>
-          .BAT
+         <b>.BAT
          </b>
-         &mdash; fichier batch (lot de commandes)
+         — fichier batch (lot de commandes)
         </li>
         <li>
-         <b>
-          .SYS
+         <b>.SYS
          </b>
-         &mdash; fichier syst&egrave;me
+         — fichier système
         </li>
         <li>
-         <b>
-          .TXT
+         <b>.TXT
          </b>
-         &mdash; fichier texte ASCII
+         — fichier texte ASCII
         </li>
        </ul>
       </div>
@@ -269,31 +263,31 @@
          <span class="tag tb">
           h
          </span>
-         Cach&eacute; (hidden)
+         Caché (hidden)
         </li>
         <li>
          <span class="tag tr2">
           s
          </span>
-         Syst&egrave;me (system)
+         Système (system)
         </li>
         <li>
          <span class="tag tg">
           a
          </span>
-         Archive (sauvegard&eacute;)
+         Archive (sauvegardé)
         </li>
        </ul>
       </div>
       <div class="card">
        <h3>
-        M&eacute;ta-caract&egrave;res
+        Méta-caractères
        </h3>
        <p>
         <span class="tag tg">
          *
         </span>
-        Remplace n'importe quelle cha&icirc;ne de caract&egrave;res
+        Remplace n'importe quelle chaîne de caractères
         <br/>
         <br/>
         <span class="tag ta">
@@ -303,7 +297,7 @@
         <b>
          un seul
         </b>
-        caract&egrave;re
+        caractère
         <br/>
         <br/>
         Exemples :
@@ -332,7 +326,7 @@
         <b>
          racine \
         </b>
-        &mdash; utilisable depuis n'importe quel r&eacute;pertoire
+        — utilisable depuis n'importe quel répertoire
        </p>
        <div class="code" style="margin-top:8px">C:\SIO1\LOGICIEL\TP-DOS</div>
       </div>
@@ -343,12 +337,11 @@
        <p>
         Depuis le
         <b>
-         r&eacute;pertoire courant
+         répertoire courant
         </b>
        </p>
-       <div class="code bl" style="margin-top:8px">..        # r&eacute;pertoire p&egrave;re
-..\..     # 2 niveaux au-dessus
-COURS     # sous-r&eacute;pertoire COURS</div>
+       <div class="code bl" style="margin-top:8px">..        # répertoire père..\..     # 2 niveaux au-dessus
+COURS     # sous-répertoire COURS</div>
       </div>
      </div>
      <div class="tree">
@@ -359,7 +352,7 @@ COURS     # sous-r&eacute;pertoire COURS</div>
       </div>
       <div>
        <span class="tr-s">
-        &boxur;&boxh;&boxh;
+        └──
        </span>
        <span class="tr-d">
         SIO1\
@@ -367,58 +360,58 @@ COURS     # sous-r&eacute;pertoire COURS</div>
       </div>
       <div>
        <span class="tr-s">
-        &boxvr;&boxh;&boxh;
+        ├──
        </span>
        <span class="tr-d">
         RESEAUX\
        </span>
        <span class="tr-s">
-        &boxur;&boxh;&boxh;
+        └──
        </span>
        <span class="tr-d">
         COURS\
        </span>
        <span class="tr-f">
-        LesReseaux.txt &nbsp;LeCablage.txt &nbsp;TCP-IP.txt&hellip;
+        LesReseaux.txt  LeCablage.txt  TCP-IP.txt…
        </span>
       </div>
       <div>
        <span class="tr-s">
-        &boxvr;&boxh;&boxh;
+        ├──
        </span>
        <span class="tr-d">
         LOGICIEL\
        </span>
        <span class="tr-s">
-        &boxvr;&boxh;&boxh;
+        ├──
        </span>
        <span class="tr-d">
         TP-DOS\
        </span>
        <span class="tr-f">
-        SupportDos.txt &nbsp;ExoDOS1.txt&hellip;
+        SupportDos.txt  ExoDOS1.txt…
        </span>
       </div>
       <div>
        <span class="tr-s">
-        &boxur;&boxh;&boxh;
+        └──
        </span>
        <span class="tr-d">
         TP-OS\
        </span>
        <span class="tr-f">
-        SupportXP.pdf&hellip;
+        SupportXP.pdf…
        </span>
       </div>
       <div>
        <span class="tr-s">
-        &boxur;&boxh;&boxh;
+        └──
        </span>
        <span class="tr-d">
         MATERIEL\
        </span>
        <span class="tr-s">
-        &boxur;&boxh;&boxh;
+        └──
        </span>
        <span class="tr-d">
         INFORMATION\
@@ -429,7 +422,7 @@ COURS     # sous-r&eacute;pertoire COURS</div>
     COMMANDES
     <div class="sc" id="dos-cmds">
      <div class="st gn">
-      Commandes r&eacute;pertoires
+      Commandes répertoires
      </div>
      <div class="table-scroll"><table class="tbl">
       <tr>
@@ -450,11 +443,11 @@ COURS     # sous-r&eacute;pertoire COURS</div>
         </span>
        </td>
        <td>
-        Liste le contenu d'un r&eacute;pertoire
+        Liste le contenu d'un répertoire
        </td>
        <td>
         <span class="ce">
-         dir *.txt /p &nbsp; dir c:\SIO1 /w
+         dir *.txt /p   dir c:\SIO1 /w
         </span>
        </td>
       </tr>
@@ -465,7 +458,7 @@ COURS     # sous-r&eacute;pertoire COURS</div>
         </span>
        </td>
        <td>
-        Cr&eacute;e un r&eacute;pertoire
+        Crée un répertoire
        </td>
        <td>
         <span class="ce">
@@ -480,11 +473,11 @@ COURS     # sous-r&eacute;pertoire COURS</div>
         </span>
        </td>
        <td>
-        Change le r&eacute;pertoire courant
+        Change le répertoire courant
        </td>
        <td>
         <span class="ce">
-         cd SIO1 &nbsp; cd .. &nbsp; cd \
+         cd SIO1   cd..   cd \
         </span>
        </td>
       </tr>
@@ -495,8 +488,7 @@ COURS     # sous-r&eacute;pertoire COURS</div>
         </span>
        </td>
        <td>
-        Supprime un r&eacute;pertoire (
-        <b>
+        Supprime un répertoire ( <b>
          VIDE
         </b>
         obligatoire !)
@@ -518,7 +510,7 @@ COURS     # sous-r&eacute;pertoire COURS</div>
        </td>
        <td>
         <span class="ce">
-         tree c:\ &nbsp; tree c:\SIO1
+         tree c:\   tree c:\SIO1
         </span>
        </td>
       </tr>
@@ -529,7 +521,7 @@ COURS     # sous-r&eacute;pertoire COURS</div>
         </span>
        </td>
        <td>
-        Copie une arborescence compl&egrave;te avec sous-dossiers
+        Copie une arborescence complète avec sous-dossiers
        </td>
        <td>
         <span class="ce">
@@ -560,7 +552,7 @@ COURS     # sous-r&eacute;pertoire COURS</div>
         </span>
        </td>
        <td>
-        Cr&eacute;e / &eacute;dite un fichier texte
+        Crée / édite un fichier texte
        </td>
        <td>
         <span class="ce">
@@ -579,7 +571,7 @@ COURS     # sous-r&eacute;pertoire COURS</div>
        </td>
        <td>
         <span class="ce">
-         del *.* &nbsp; del toto.txt
+         del *.*   del toto.txt
         </span>
        </td>
       </tr>
@@ -609,7 +601,7 @@ COURS     # sous-r&eacute;pertoire COURS</div>
        </td>
        <td>
         <span class="ce">
-         copy lettre.doc a: &nbsp; copy *.txt c:\txt
+         copy lettre.doc a:   copy *.txt c:\txt
         </span>
        </td>
       </tr>
@@ -639,7 +631,7 @@ COURS     # sous-r&eacute;pertoire COURS</div>
        </td>
        <td>
         <span class="ce">
-         attrib +r test.txt &nbsp; attrib -h fich
+         attrib +r test.txt   attrib -h fich
         </span>
        </td>
       </tr>
@@ -650,7 +642,7 @@ COURS     # sous-r&eacute;pertoire COURS</div>
         </span>
        </td>
        <td>
-        Imprime un fichier en t&acirc;che de fond
+        Imprime un fichier en tâche de fond
        </td>
        <td>
         <span class="ce">
@@ -665,7 +657,7 @@ COURS     # sous-r&eacute;pertoire COURS</div>
         </span>
        </td>
        <td>
-        R&eacute;cup&egrave;re un fichier effac&eacute;
+        Récupère un fichier effacé
        </td>
        <td>
         <span class="ce">
@@ -675,9 +667,9 @@ COURS     # sous-r&eacute;pertoire COURS</div>
       </tr>
      </table></div>
      <div class="st gn">
-      Syntaxe &amp; op&eacute;rateurs importants
+      Syntaxe &amp; opérateurs importants
      </div>
-     <div class="code"># Redirection &gt; &eacute;crit (&eacute;crase), &gt;&gt; ajoute :
+     <div class="code"># Redirection &gt; écrit (écrase), &gt;&gt; ajoute :
 echo TEXTE &gt; LesReseaux.txt
 echo SUITE &gt;&gt; LesReseaux.txt
 
@@ -692,18 +684,18 @@ dir | find "SIO"</div>
       <code>
        &gt;
       </code>
-      &eacute;crase le fichier.
+      écrase le fichier.
       <code>
        &gt;&gt;
       </code>
-      ajoute &agrave; la fin.
+      ajoute à la fin.
       <code>
        |
       </code>
-      encha&icirc;ne les commandes.
+      enchaîne les commandes.
      </div>
     </div>
-    FICHIERS .BAT
+    FICHIERS.BAT
     <div class="sc" id="dos-bat">
      <div class="bq am">
       <span class="qt">
@@ -714,50 +706,50 @@ dir | find "SIO"</div>
        <strong>
         BATCH (.bat)
        </strong>
-       est un programme texte ex&eacute;cut&eacute;
+       est un programme texte exécuté
        <strong>
         ligne par ligne
        </strong>
-       par COMMAND.COM. Il automatise des t&acirc;ches r&eacute;p&eacute;titives.
+       par COMMAND.COM. Il automatise des tâches répétitives.
        <br/>
        Appel :
        <code>
-        Nom_Fichier.BAT [P1] [P2]&hellip;[Pn]
+        Nom_Fichier.BAT [P1] [P2]…[Pn]
        </code>
       </p>
      </div>
      <div class="st gn">
-      Param&egrave;tres formels
+      Paramètres formels
      </div>
      <div class="cg">
       <div class="card bl">
        <h3>
-        Les %n (param&egrave;tres)
+        Les %n (paramètres)
        </h3>
        <ul>
         <li>
          <span class="tag tg">
           %0
          </span>
-         nom du fichier batch lui-m&ecirc;me
+         nom du fichier batch lui-même
         </li>
         <li>
          <span class="tag tb">
           %1
          </span>
-         1er param&egrave;tre r&eacute;el pass&eacute;
+         1er paramètre réel passé
         </li>
         <li>
          <span class="tag tb">
           %2
          </span>
-         2e param&egrave;tre r&eacute;el pass&eacute;
+         2e paramètre réel passé
         </li>
         <li>
          <span class="tag tb">
           %n
          </span>
-         ni&egrave;me param&egrave;tre (max 9, puis utiliser SHIFT)
+         nième paramètre (max 9, puis utiliser SHIFT)
         </li>
        </ul>
       </div>
@@ -770,12 +762,12 @@ ECHO %2
 ECHO %1
 
 # Appel : C:\&gt; affiche rouge noir
-# R&eacute;sultat affich&eacute; : noir
+# Résultat affiché : noir
 #                    rouge</div>
       </div>
      </div>
      <div class="st gn">
-      Instructions sp&eacute;cifiques .BAT
+      Instructions spécifiques.BAT
      </div>
      <div class="table-scroll"><table class="tbl">
       <tr>
@@ -783,7 +775,7 @@ ECHO %1
         Instruction
        </th>
        <th>
-        R&ocirc;le
+        Rôle
        </th>
       </tr>
       <tr>
@@ -793,7 +785,7 @@ ECHO %1
         </span>
        </td>
        <td>
-        Masque l'affichage des commandes + masque lui-m&ecirc;me (gr&acirc;ce au @)
+        Masque l'affichage des commandes + masque lui-même (grâce au @)
        </td>
       </tr>
       <tr>
@@ -803,7 +795,7 @@ ECHO %1
         </span>
        </td>
        <td>
-        Affiche un message &agrave; l'&eacute;cran
+        Affiche un message à l'écran
        </td>
       </tr>
       <tr>
@@ -823,7 +815,7 @@ ECHO %1
         </span>
        </td>
        <td>
-        Suspend l'ex&eacute;cution &mdash; "Appuyez sur une touche pour continuer&hellip;"
+        Suspend l'exécution — "Appuyez sur une touche pour continuer…"
        </td>
       </tr>
       <tr>
@@ -833,7 +825,7 @@ ECHO %1
         </span>
        </td>
        <td>
-        Saut inconditionnel vers une &eacute;tiquette (1&ndash;8 caract&egrave;res)
+        Saut inconditionnel vers une étiquette (1–8 caractères)
        </td>
       </tr>
       <tr>
@@ -843,7 +835,7 @@ ECHO %1
         </span>
        </td>
        <td>
-        Ex&eacute;cution conditionnelle d'une commande
+        Exécution conditionnelle d'une commande
        </td>
       </tr>
       <tr>
@@ -873,31 +865,31 @@ ECHO %1
         </span>
        </td>
        <td>
-        D&eacute;cale les param&egrave;tres : %1&rarr;%0, %2&rarr;%1, etc.
+        Décale les paramètres : %1→%0, %2→%1, etc.
        </td>
       </tr>
      </table></div>
-     <div class="code">REM ===== trouve.bat : v&eacute;rifie si un fichier existe =====
+     <div class="code">REM ===== trouve.bat : vérifie si un fichier existe =====
 IF NOT EXIST %1 GOTO :erreur
-ECHO Ce fichier est pr&eacute;sent !
+ECHO Ce fichier est présent !
 GOTO :fin
 :erreur
 ECHO Ce fichier est introuvable !
 :fin
 
-REM ===== FOR : affiche tous les .txt et .pdf =====
+REM ===== FOR : affiche tous les.txt et.pdf =====
 FOR %1 IN (*.pdf *.txt) DO type %1
 
-REM Op&eacute;rateurs de comparaison utilisables dans IF :
-REM EQU (&eacute;gal)   NEQ (diff&eacute;rent)   LSS (strictement inf&eacute;rieur)
-REM GTR (strictement sup&eacute;rieur)   GEQ (sup&eacute;rieur ou &eacute;gal)   LEQ (inf&eacute;rieur ou &eacute;gal)
-REM == (&eacute;galit&eacute; cha&icirc;nes)   EXIST (fichier existe)</div>
+REM Opérateurs de comparaison utilisables dans IF :
+REM EQU (égal)   NEQ (différent)   LSS (strictement inférieur)
+REM GTR (strictement supérieur)   GEQ (supérieur ou égal)   LEQ (inférieur ou égal)
+REM == (égalité chaînes)   EXIST (fichier existe)</div>
      <div class="alert aa">
       💡
       <strong>
        Astuce :
       </strong>
-      Toujours commencer un .bat par
+      Toujours commencer un.bat par
       <code>
        @ECHO OFF
       </code>
@@ -905,24 +897,23 @@ REM == (&eacute;galit&eacute; cha&icirc;nes)   EXIST (fichier existe)</div>
       <code>
        CLS
       </code>
-      pour effacer l'&eacute;cran.
+      pour effacer l'écran.
      </div>
     </div>
     <div class="source-note">
-     R&eacute;f&eacute;rence p&eacute;dagogique :
+     Référence pédagogique :
      <b>
       BTS-SIO-Fiches.html
-     </b>
-     . Cette fiche reprend les notions de 1re ann&eacute;e ; la CEJM d&eacute;taill&eacute;e est accessible dans ses chapitres d&eacute;di&eacute;s.
+     </b>. Cette fiche reprend les notions de 1re année ; la CEJM détaillée est accessible dans ses chapitres dédiés.
     </div>
    </main>
    <div class="footer">
     <a href="../index.html">
-     &larr; Retour au tableau de bord
+     ← Retour au tableau de bord
     </a>
    </div>
   </div>
-  <script src="../assets/js/common.js">
+  <script src="../assets/js/common.js?v=20260916-1">
   </script>
  </body>
 </html>

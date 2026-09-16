@@ -26,9 +26,30 @@ function getQuizData() {
   return Array.isArray(window.QUIZ_DATA) ? window.QUIZ_DATA : [];
 }
 
+function updateModuleFilterVisibility() {
+  const available = new Set(
+    getQuizData()
+      .filter((q) => yearFilter === 'all' || String(q.year) === String(yearFilter))
+      .map((q) => q.module)
+  );
+
+  document.querySelectorAll('[data-filter-module]').forEach((button) => {
+    const value = button.dataset.filterModule;
+    button.hidden = !(value === 'all' || available.has(value));
+  });
+
+  if (moduleFilter !== 'all' && !available.has(moduleFilter)) {
+    moduleFilter = 'all';
+    document.querySelectorAll('[data-filter-module]').forEach((button) => {
+      button.classList.toggle('active', button.dataset.filterModule === 'all');
+    });
+  }
+}
+
 function setFilter(kind, value, btn) {
   if (kind === 'year') {
     yearFilter = value;
+    updateModuleFilterVisibility();
   } else if (kind === 'module') {
     moduleFilter = value;
   } else {
@@ -329,6 +350,7 @@ function showQuizLoadError(error) {
 document.addEventListener('DOMContentLoaded', () => {
   try {
     activateFromQuery();
+    updateModuleFilterVisibility();
     restart();
   } catch (error) {
     showQuizLoadError(error);

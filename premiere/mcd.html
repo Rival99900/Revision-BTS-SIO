@@ -1,411 +1,404 @@
 <!DOCTYPE html>
+
 <html lang="fr">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width,initial-scale=1.0" name="viewport"/>
-  <meta content="R&eacute;visions BTS SIO 1re et 2e ann&eacute;e" name="description"/>
-  <title>
-   🗄️ MCD / Mod&eacute;lisation
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<meta content="Révisions BTS SIO 1re et 2e année" name="description"/>
+<title>
+   🗄️ MCD / Modélisation
   </title>
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&amp;family=VT323&amp;family=Orbitron:wght@700;900&amp;display=swap" rel="stylesheet"/>
-  <link href="../assets/css/style.css" rel="stylesheet"/>
-   <link rel="icon" type="image/svg+xml" href="../assets/img/site-logo.svg" />
-  <link rel="shortcut icon" href="../assets/img/site-logo.svg" />
- </head>
- <body data-review-id="1-mcd">
-  <div class="container">
-   <div class="site-header">
-    <div class="bbar"></div>
-    <h1>
-     BTS SIO &mdash; R&Eacute;VISIONS
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&amp;family=VT323&amp;family=Orbitron:wght@700;900&amp;display=swap" rel="stylesheet"/>
+<link href="../assets/css/style.css?v=20260916-1" rel="stylesheet"/>
+<link href="../assets/img/site-logo.svg" rel="icon" type="image/svg+xml"/>
+<link href="../assets/img/site-logo.svg" rel="shortcut icon"/>
+</head>
+<body data-review-id="1-mcd">
+<div class="container">
+<div class="site-header">
+<div class="bbar"></div>
+<h1>
+     BTS SIO — RÉVISIONS
     </h1>
-    <div class="sub">
-     1RE ANN&Eacute;E &mdash; BASE DE DONN&Eacute;ES
+<div class="sub">
+     1RE ANNÉE — BASE DE DONNÉES
     </div>
-    <div class="tags">
-     <span class="tag tg">
+<div class="tags">
+<span class="tag tg">
       BTS SIO
      </span>
-     <span class="tag tb">
-      1re ann&eacute;e
+<span class="tag tb">
+      1re année
      </span>
-     <span class="tag tp">
-      2e ann&eacute;e
+<span class="tag tp">
+      2e année
      </span>
-     <span class="tag ta">
+<span class="tag ta">
       Quiz interactifs
      </span>
-    </div>
-    <div class="prompt">
+</div>
+<div class="prompt">
      C:\\BTS-SIO\REVISION&gt;
      <span>
-      &block;
+      █
      </span>
-    </div>
-   </div>
-   <div class="topnav">
-    <a class="navbtn" href="../index.html">
+</div>
+</div>
+<div class="topnav">
+<a class="navbtn" href="../index.html">
      ⌂ Accueil
     </a>
-    <a class="navbtn" href="sql.html">
+<a class="navbtn" href="sql.html">
      🗃️ SQL
     </a>
-    <a class="navbtn quiz" href="../quiz.html">
-     🎯 Quiz g&eacute;n&eacute;ral
+<a class="navbtn quiz" href="../quiz.html">
+     🎯 Quiz général
     </a>
-    <a class="navbtn" href="../code-lab.html">
+<a class="navbtn" href="../code-lab.html">
      &lt;/&gt; Code Lab
     </a>
-   </div>
-   <main class="page-panel">
-    <div class="hero">
-     <div>
-      <div class="hero-kicker">
-       1RE ANN&Eacute;E // BASE DE DONN&Eacute;ES
+</div>
+<main class="page-panel">
+<div class="hero">
+<div>
+<div class="hero-kicker">
+       1RE ANNÉE // BASE DE DONNÉES
       </div>
-      <h2>
-       🗄️ MCD / Mod&eacute;lisation
+<h2>
+       🗄️ MCD / Modélisation
       </h2>
-      <p>
-       Entit&eacute;s, propri&eacute;t&eacute;s, associations et cardinalit&eacute;s
+<p>
+       Entités, propriétés, associations et cardinalités
       </p>
-     </div>
-     <div class="hero-actions">
-      <button class="smallbtn" id="reviewBtn" onclick="setReviewed('1-mcd')">
-       &cir; Marquer r&eacute;vis&eacute;
+</div>
+<div class="hero-actions">
+<button class="smallbtn" id="reviewBtn" onclick="setReviewed('1-mcd')">
+       ○ Marquer révisé
       </button>
-      <button class="smallbtn" onclick="printPage()">
+<button class="smallbtn" onclick="printPage()">
        🖨 Imprimer
       </button>
-      <a class="smallbtn alt" href="../quiz.html?year=1&amp;module=mcd">
-       🎯 Quiz cibl&eacute;
+<a class="smallbtn alt" href="../quiz.html?year=1&amp;module=mcd">
+       🎯 Quiz ciblé
       </a>
-     </div>
-    </div>
-    <div class="stabs">
-     <button class="sb te a" onclick="showSub('mcd','base',this,'te')">
-      Entit&eacute;s &amp; Propri&eacute;t&eacute;s
+</div>
+</div>
+<div class="stabs">
+<button class="sb te a" onclick="showSub('mcd','base',this,'te')">
+      Entités &amp; Propriétés
      </button>
-     <button class="sb te" onclick="showSub('mcd','asso',this,'te')">
-      Associations &amp; Cardinalit&eacute;s
+<button class="sb te" onclick="showSub('mcd','asso',this,'te')">
+      Associations &amp; Cardinalités
      </button>
-     <button class="sb te" onclick="showSub('mcd','dico',this,'te')">
-      Dictionnaire de donn&eacute;es
+<button class="sb te" onclick="showSub('mcd','dico',this,'te')">
+      Dictionnaire de données
      </button>
-     <button class="sb te" onclick="showSub('mcd','regles',this,'te')">
-      R&egrave;gles de gestion
+<button class="sb te" onclick="showSub('mcd','regles',this,'te')">
+      Règles de gestion
      </button>
-    </div>
-    ENTIT&Eacute;S &amp; PROPRI&Eacute;T&Eacute;S
+<button class="sb te" onclick="showSub('mcd','mld',this,'te')">Passage MLD / MPD</button></div>
+    ENTITÉS &amp; PROPRIÉTÉS
     <div class="sc a" id="mcd-base">
-     <div class="bq te">
-      <span class="qt">
+<div class="bq te">
+<span class="qt">
        "
       </span>
-      <p>
+<p>
        Le
        <strong>
-        MCD (Mod&egrave;le Conceptuel de Donn&eacute;es)
+        MCD (Modèle Conceptuel de Données)
        </strong>
-       est une repr&eacute;sentation simplifi&eacute;e d'un syst&egrave;me d'information. Dans MERISE, il est aussi appel&eacute;
+       est une représentation simplifiée d'un système d'information. Dans MERISE, il est aussi appelé
        <strong>
-        Mod&egrave;le Entit&eacute;-Association
-       </strong>
-       . L'objectif : construire une base de donn&eacute;es coh&eacute;rente,
+        Modèle Entité-Association
+       </strong>. L'objectif : construire une base de données cohérente,
        <strong>
         sans redondances
-       </strong>
-       .
+       </strong>.
       </p>
+</div>
+<div class="st te">
+      Les entités
      </div>
-     <div class="st te">
-      Les entit&eacute;s
-     </div>
-     <div class="cg">
-      <div class="card te">
-       <h3>
-        D&eacute;finition
+<div class="cg">
+<div class="card te">
+<h3>
+        Définition
        </h3>
-       <p>
+<p>
         Une
         <b>
-         entit&eacute;
+         entité
         </b>
-        repr&eacute;sente un objet, une personne, un lieu ou un concept du monde r&eacute;el
+        représente un objet, une personne, un lieu ou un concept du monde réel
         <b>
          pertinent
         </b>
-        pour le syst&egrave;me d'information.
+        pour le système d'information.
         <br/>
-        <br/>
+<br/>
         Ex : CLIENT, CASSETTE, FILM, ACTEUR, EDITEUR
        </p>
-      </div>
-      <div class="card bl">
-       <h3>
-        Repr&eacute;sentation graphique
+</div>
+<div class="card bl">
+<h3>
+        Représentation graphique
        </h3>
-       <p>
+<p>
         Un
         <b>
          rectangle
         </b>
         contenant :
         <br/>
-        &bull; Le
+        • Le
         <b>
          nom
         </b>
-        de l'entit&eacute; (en MAJUSCULES)
+        de l'entité (en MAJUSCULES)
         <br/>
-        &bull; La liste de ses
+        • La liste de ses
         <b>
-         propri&eacute;t&eacute;s
+         propriétés
         </b>
-        <br/>
-        &bull; L'
+<br/>
+        • L'
         <b>
-         identifiant soulign&eacute;
+         identifiant souligné
         </b>
         en premier
        </p>
-      </div>
-      <div class="card am">
-       <h3>
-        Exemple : entit&eacute; CLIENT
+</div>
+<div class="card am">
+<h3>
+        Exemple : entité CLIENT
        </h3>
-       <div style="background:var(--bg);border:1px solid var(--teal);padding:10px 14px;margin-top:8px;font-size:.82rem;text-align:center;border-radius:4px;max-width:180px">
-        <div style="color:var(--teal);font-weight:bold;border-bottom:1px solid var(--border);padding-bottom:4px;margin-bottom:6px">
+<div style="background:var(--bg);border:1px solid var(--teal);padding:10px 14px;margin-top:8px;font-size:.82rem;text-align:center;border-radius:4px;max-width:180px">
+<div style="color:var(--teal);font-weight:bold;border-bottom:1px solid var(--border);padding-bottom:4px;margin-bottom:6px">
          CLIENT
         </div>
-        <div style="color:var(--text-dim);text-decoration:underline">
+<div style="color:var(--text-dim);text-decoration:underline">
          NumClient
         </div>
-        <div style="color:var(--text)">
+<div style="color:var(--text)">
          NomClient
         </div>
-        <div style="color:var(--text)">
+<div style="color:var(--text)">
          PrenomClient
         </div>
-        <div style="color:var(--text)">
+<div style="color:var(--text)">
          RueClient
         </div>
-        <div style="color:var(--text)">
+<div style="color:var(--text)">
          VilleClient
         </div>
-       </div>
-      </div>
-      <div class="card rd">
-       <h3>
+</div>
+</div>
+<div class="card rd">
+<h3>
         ⚠️ Attention
        </h3>
-       <p>
-        Une entit&eacute; peut avoir plusieurs appellations possibles (synonymes). Ex : CASSETTE et FILM peuvent d&eacute;signer la m&ecirc;me entit&eacute; &rarr;
+<p>
+        Une entité peut avoir plusieurs appellations possibles (synonymes). Ex : CASSETTE et FILM peuvent désigner la même entité →
         <b>
          ne retenir qu'une seule appellation
         </b>
-        par entit&eacute; !
+        par entité !
        </p>
-      </div>
+</div>
+</div>
+<div class="st te">
+      Les propriétés — Règles fondamentales
      </div>
-     <div class="st te">
-      Les propri&eacute;t&eacute;s &mdash; R&egrave;gles fondamentales
-     </div>
-     <div class="cg">
-      <div class="card te">
-       <h3>
-        D&eacute;finition
+<div class="cg">
+<div class="card te">
+<h3>
+        Définition
        </h3>
-       <p>
+<p>
         Une
         <b>
-         propri&eacute;t&eacute;
+         propriété
         </b>
         est la plus petite information pertinente du SI.
         <br/>
-        <br/>
+<br/>
         Synonymes selon le niveau :
         <br/>
-        <span class="tag tte">
-         Propri&eacute;t&eacute;
+<span class="tag tte">
+         Propriété
         </span>
-        (MCD) &rarr;
+        (MCD) →
         <span class="tag tb">
          Attribut
         </span>
-        (relationnel) &rarr;
+        (relationnel) →
         <span class="tag ta">
          Champ
         </span>
         (physique)
        </p>
-      </div>
-      <div class="card bl">
-       <h3>
-        Pas de polys&egrave;mes
+</div>
+<div class="card bl">
+<h3>
+        Pas de polysèmes
        </h3>
-       <p>
-        Deux propri&eacute;t&eacute;s
+<p>
+        Deux propriétés
         <b>
-         diff&eacute;rentes
+         différentes
         </b>
         ne doivent pas avoir le
         <b>
-         m&ecirc;me nom
-        </b>
-        .
+         même nom
+        </b>.
         <br/>
-        Ex: NomCli (client) &ne; NomFour (fournisseur) &rarr; ne pas les appeler tous deux "Nom".
+        Ex: NomCli (client) ≠ NomFour (fournisseur) → ne pas les appeler tous deux "Nom".
        </p>
-      </div>
-      <div class="card am">
-       <h3>
+</div>
+<div class="card am">
+<h3>
         Pas de synonymes
        </h3>
-       <p>
-        Deux propri&eacute;t&eacute;s
+<p>
+        Deux propriétés
         <b>
-         diff&eacute;rentes
+         différentes
         </b>
-        ne doivent pas d&eacute;signer
+        ne doivent pas désigner
         <b>
-         la m&ecirc;me donn&eacute;e
-        </b>
-        .
+         la même donnée
+        </b>.
         <br/>
-        Ex: si "NomMembre" et "NomAdh&eacute;rent" d&eacute;signent la m&ecirc;me info &rarr; garder un seul.
+        Ex: si "NomMembre" et "NomAdhérent" désignent la même info → garder un seul.
        </p>
-      </div>
-      <div class="card rd">
-       <h3>
-        Simple &amp; &Eacute;l&eacute;mentaire
+</div>
+<div class="card rd">
+<h3>
+        Simple &amp; Élémentaire
        </h3>
-       <p>
-        <b>
+<p>
+<b>
          Simple
         </b>
-        = non d&eacute;composable
+        = non décomposable
         <br/>
-        "Adresse" &rarr; d&eacute;composer en
+        "Adresse" → décomposer en
         <code>
          Rue, CP, Ville
         </code>
-        <br/>
-        <br/>
-        <b>
-         &Eacute;l&eacute;mentaire
+<br/>
+<br/>
+<b>
+         Élémentaire
         </b>
-        = non calcul&eacute;
+        = non calculé
         <br/>
-        MontantHT = QTES &times; PRIX_UNIT &rarr;
+        MontantHT = QTES × PRIX_UNIT →
         <b>
-         &eacute;limin&eacute; du MCD
+         éliminé du MCD
         </b>
-       </p>
-      </div>
+</p>
+</div>
+</div>
+<div class="st te">
+      L'identifiant (clé primaire)
      </div>
-     <div class="st te">
-      L'identifiant (cl&eacute; primaire)
-     </div>
-     <div class="cg">
-      <div class="card te">
-       <h3>
-        D&eacute;finition
+<div class="cg">
+<div class="card te">
+<h3>
+        Définition
        </h3>
-       <p>
-        Propri&eacute;t&eacute; (ou groupe de propri&eacute;t&eacute;s)
+<p>
+        Propriété (ou groupe de propriétés)
         <b>
          unique
         </b>
-        qui identifie sans ambigu&iuml;t&eacute; chaque occurrence d'une entit&eacute;.
+        qui identifie sans ambiguïté chaque occurrence d'une entité.
         <br/>
         Dans le MCD, les identifiants sont
         <b>
-         soulign&eacute;s
-        </b>
-        .
+         soulignés
+        </b>.
        </p>
-      </div>
-      <div class="card bl">
-       <h3>
-        R&egrave;gle fondamentale
+</div>
+<div class="card bl">
+<h3>
+        Règle fondamentale
        </h3>
-       <p>
-        Toute entit&eacute;
+<p>
+        Toute entité
         <b>
-         doit poss&eacute;der un identifiant
-        </b>
-        . Il est pr&eacute;f&eacute;rable d'utiliser un num&eacute;ro s&eacute;quentiel (NumClient, NumFacture) plut&ocirc;t qu'une cl&eacute; concat&eacute;n&eacute;e (NOM+PRENOM) pour des raisons de performance et d'unicit&eacute;.
+         doit posséder un identifiant
+        </b>. Il est préférable d'utiliser un numéro séquentiel (NumClient, NumFacture) plutôt qu'une clé concaténée (NOM+PRENOM) pour des raisons de performance et d'unicité.
        </p>
-      </div>
-     </div>
-     <div class="st te">
+</div>
+</div>
+<div class="st te">
       Les occurrences
      </div>
-     <div class="alert ate">
+<div class="alert ate">
       💡
       <strong>
        Occurrence
       </strong>
-      = les valeurs prises par les propri&eacute;t&eacute;s pour une entit&eacute; particuli&egrave;re. Exemple :
+      = les valeurs prises par les propriétés pour une entité particulière. Exemple :
       <code>
-       712 &mdash; NOUT Marion &mdash; 125 rue des Alb&egrave;res &mdash; 59500 DOUAI
+       712 — NOUT Marion — 125 rue des Albères — 59500 DOUAI
       </code>
-      est une occurrence de l'entit&eacute; CLIENT.
+      est une occurrence de l'entité CLIENT.
      </div>
-    </div>
-    ASSOCIATIONS &amp; CARDINALIT&Eacute;S
+</div>
+    ASSOCIATIONS &amp; CARDINALITÉS
     <div class="sc" id="mcd-asso">
-     <div class="st te">
+<div class="st te">
       Les associations
      </div>
-     <div class="cg">
-      <div class="card te">
-       <h3>
-        D&eacute;finition
+<div class="cg">
+<div class="card te">
+<h3>
+        Définition
        </h3>
-       <p>
+<p>
         Une
         <b>
          association
         </b>
-        est un lien logique entre deux ou plusieurs entit&eacute;s. Elle est
+        est un lien logique entre deux ou plusieurs entités. Elle est
         <b>
-         repr&eacute;sent&eacute;e par un verbe dans un ovale/ellipse
-        </b>
-        .
+         représentée par un verbe dans un ovale/ellipse
+        </b>.
         <br/>
         Ex : Loue, Joue, Commercialise, Enseigne
        </p>
-      </div>
-      <div class="card bl">
-       <h3>
-        Propri&eacute;t&eacute; d'association
+</div>
+<div class="card bl">
+<h3>
+        Propriété d'association
        </h3>
-       <p>
-        Une association peut porter des propri&eacute;t&eacute;s quand cette propri&eacute;t&eacute;
+<p>
+        Une association peut porter des propriétés quand cette propriété
         <b>
-         ne peut pas &ecirc;tre rattach&eacute;e &agrave; une seule entit&eacute;
-        </b>
-        .
+         ne peut pas être rattachée à une seule entité
+        </b>.
         <br/>
-        Ex: Enseigner (CLASSE, MATIERE) &rarr;
+        Ex: Enseigner (CLASSE, MATIERE) →
         <b>
          Horaire
         </b>
-        d&eacute;pend des deux &agrave; la fois.
+        dépend des deux à la fois.
        </p>
-      </div>
+</div>
+</div>
+<div class="st te">
+      Les cardinalités
      </div>
-     <div class="st te">
-      Les cardinalit&eacute;s
-     </div>
-     <div class="bq te">
-      <span class="qt">
+<div class="bq te">
+<span class="qt">
        "
       </span>
-      <p>
-       Les cardinalit&eacute;s expriment le nombre de fois
+<p>
+       Les cardinalités expriment le nombre de fois
        <strong>
         au minimum
        </strong>
@@ -413,94 +406,90 @@
        <strong>
         au maximum
        </strong>
-       o&ugrave; une occurrence d'une entit&eacute; participe &agrave; l'association avec une occurrence de l'autre entit&eacute;.
+       où une occurrence d'une entité participe à l'association avec une occurrence de l'autre entité.
       </p>
-     </div>
-     <div class="cg">
-      <div class="card te">
-       <h3>
-        <span class="tag tte">
+</div>
+<div class="cg">
+<div class="card te">
+<h3>
+<span class="tag tte">
          0,1
         </span>
-       </h3>
-       <p>
+</h3>
+<p>
         Au minimum
         <b>
          0
-        </b>
-        , au maximum
+        </b>, au maximum
         <b>
          1
         </b>
+<br/>
+        → Participation facultative et unique
         <br/>
-        &rarr; Participation facultative et unique
-        <br/>
-        Ex : un film peut ne pas encore &ecirc;tre en cassette
+        Ex : un film peut ne pas encore être en cassette
        </p>
-      </div>
-      <div class="card bl">
-       <h3>
-        <span class="tag tb">
+</div>
+<div class="card bl">
+<h3>
+<span class="tag tb">
          1,1
         </span>
-       </h3>
-       <p>
+</h3>
+<p>
         Au minimum
         <b>
          1
-        </b>
-        , au maximum
+        </b>, au maximum
         <b>
          1
         </b>
-        <br/>
-        &rarr; Participation obligatoire et unique
+<br/>
+        → Participation obligatoire et unique
         <br/>
         Ex : une cassette est vendue par
         <b>
          un seul
         </b>
-        &eacute;diteur
+        éditeur
        </p>
-      </div>
-      <div class="card am">
-       <h3>
-        <span class="tag ta">
+</div>
+<div class="card am">
+<h3>
+<span class="tag ta">
          0,n
         </span>
-       </h3>
-       <p>
+</h3>
+<p>
         Au minimum
         <b>
          0
-        </b>
-        , au maximum
+        </b>, au maximum
         <b>
          plusieurs
         </b>
-        <br/>
-        &rarr; Participation facultative et multiple
+<br/>
+        → Participation facultative et multiple
         <br/>
         Ex : un acteur peut ne tourner dans aucun film
        </p>
-      </div>
-      <div class="card">
-       <h3>
-        <span class="tag tg">
+</div>
+<div class="card">
+<h3>
+<span class="tag tg">
          1,n
         </span>
-       </h3>
-       <p>
+</h3>
+<p>
         Au minimum
         <b>
          1
-        </b>
-        , au maximum
+        </b>, au maximum
         <b>
          plusieurs
         </b>
-        <br/>
-        &rarr; Participation obligatoire et multiple
+<br/>
+        → Participation obligatoire et multiple
         <br/>
         Ex : un client loue
         <b>
@@ -508,492 +497,513 @@
         </b>
         cassette
        </p>
-      </div>
+</div>
+</div>
+<div class="st te">
+      Exemple MCD — Vidéo Club Route 66
      </div>
-     <div class="st te">
-      Exemple MCD &mdash; Vid&eacute;o Club Route 66
-     </div>
-     <div class="table-scroll"><table class="tbl te">
-      <tr>
-       <th>
-        Entit&eacute;
+<div class="table-scroll"><table class="tbl te">
+<tr>
+<th>
+        Entité
        </th>
-       <th>
+<th>
         Association
        </th>
-       <th>
-        Cardinalit&eacute;
+<th>
+        Cardinalité
        </th>
-       <th>
+<th>
         Justification
        </th>
-      </tr>
-      <tr>
-       <td>
+</tr>
+<tr>
+<td>
         Cassette
        </td>
-       <td>
+<td>
         Loue
        </td>
-       <td>
-        <span class="cn">
+<td>
+<span class="cn">
          1,n
         </span>
+</td>
+<td>
+        Une cassette est louée par 1 ou plusieurs clients
        </td>
-       <td>
-        Une cassette est lou&eacute;e par 1 ou plusieurs clients
-       </td>
-      </tr>
-      <tr>
-       <td>
+</tr>
+<tr>
+<td>
         Client
        </td>
-       <td>
+<td>
         Loue
        </td>
-       <td>
-        <span class="cn">
+<td>
+<span class="cn">
          1,n
         </span>
-       </td>
-       <td>
+</td>
+<td>
         Un client loue au moins 1 cassette
        </td>
-      </tr>
-      <tr>
-       <td>
+</tr>
+<tr>
+<td>
         Cassette
        </td>
-       <td>
+<td>
         Commercialise
        </td>
-       <td>
-        <span class="cn">
+<td>
+<span class="cn">
          1,1
         </span>
+</td>
+<td>
+        Une cassette est vendue par un seul éditeur
        </td>
-       <td>
-        Une cassette est vendue par un seul &eacute;diteur
-       </td>
-      </tr>
-      <tr>
-       <td>
+</tr>
+<tr>
+<td>
         Editeur
        </td>
-       <td>
+<td>
         Commercialise
        </td>
-       <td>
-        <span class="cn">
+<td>
+<span class="cn">
          1,n
         </span>
+</td>
+<td>
+        Un éditeur commercialise au moins une cassette
        </td>
-       <td>
-        Un &eacute;diteur commercialise au moins une cassette
-       </td>
-      </tr>
-      <tr>
-       <td>
+</tr>
+<tr>
+<td>
         Cassette
        </td>
-       <td>
+<td>
         Joue
        </td>
-       <td>
-        <span class="cn">
+<td>
+<span class="cn">
          1,n
         </span>
-       </td>
-       <td>
+</td>
+<td>
         Une cassette contient au moins un acteur
        </td>
-      </tr>
-      <tr>
-       <td>
+</tr>
+<tr>
+<td>
         Acteur
        </td>
-       <td>
+<td>
         Joue
        </td>
-       <td>
-        <span class="cn">
+<td>
+<span class="cn">
          0,n
         </span>
-       </td>
-       <td>
+</td>
+<td>
         Un acteur peut ne jouer dans aucun film disponible
        </td>
-      </tr>
-     </table></div>
-    </div>
-    DICTIONNAIRE DE DONN&Eacute;ES
+</tr>
+</table></div>
+</div>
+    DICTIONNAIRE DE DONNÉES
     <div class="sc" id="mcd-dico">
-     <div class="bq te">
-      <span class="qt">
+<div class="bq te">
+<span class="qt">
        "
       </span>
-      <p>
+<p>
        Le
        <strong>
-        dictionnaire des donn&eacute;es
+        dictionnaire des données
        </strong>
        est un outil qui catalogue
        <strong>
-        TOUTES les propri&eacute;t&eacute;s
+        TOUTES les propriétés
        </strong>
-       d'un syst&egrave;me d'information. Il se construit en deux &eacute;tapes : dictionnaire complet &rarr; dictionnaire r&eacute;duit (sans donn&eacute;es calcul&eacute;es ni param&egrave;tres).
+       d'un système d'information. Il se construit en deux étapes : dictionnaire complet → dictionnaire réduit (sans données calculées ni paramètres).
       </p>
+</div>
+<div class="st te">
+      Types de propriétés
      </div>
-     <div class="st te">
-      Types de propri&eacute;t&eacute;s
-     </div>
-     <div class="table-scroll"><table class="tbl te">
-      <tr>
-       <th>
+<div class="table-scroll"><table class="tbl te">
+<tr>
+<th>
         Type
        </th>
-       <th>
-        D&eacute;finition
+<th>
+        Définition
        </th>
-       <th>
+<th>
         Exemple
        </th>
-      </tr>
-      <tr>
-       <td>
-        <span class="cn">
-         Signal&eacute;tique
+</tr>
+<tr>
+<td>
+<span class="cn">
+         Signalétique
         </span>
+</td>
+<td>
+        Identifie ou décrit une entité
        </td>
-       <td>
-        Identifie ou d&eacute;crit une entit&eacute;
-       </td>
-       <td>
+<td>
         NomClient, NumFacture
        </td>
-      </tr>
-      <tr>
-       <td>
-        <span class="cn">
+</tr>
+<tr>
+<td>
+<span class="cn">
          Situation
         </span>
+</td>
+<td>
+        Indique l'état actuel d'une entité
        </td>
-       <td>
-        Indique l'&eacute;tat actuel d'une entit&eacute;
-       </td>
-       <td>
+<td>
         StockActuel, SoldeCompte
        </td>
-      </tr>
-      <tr>
-       <td>
-        <span class="cn">
+</tr>
+<tr>
+<td>
+<span class="cn">
          Historique
         </span>
+</td>
+<td>
+        Garde une trace du passé
        </td>
-       <td>
-        Garde une trace du pass&eacute;
-       </td>
-       <td>
+<td>
         DateCreation, DateDernierAchat
        </td>
-      </tr>
-      <tr>
-       <td>
-        <span class="cn">
+</tr>
+<tr>
+<td>
+<span class="cn">
          Commande (logique)
         </span>
+</td>
+<td>
+        Pilote le fonctionnement d'un système
        </td>
-       <td>
-        Pilote le fonctionnement d'un syst&egrave;me
-       </td>
-       <td>
+<td>
         StatutCommande, Actif/Inactif
        </td>
-      </tr>
-      <tr>
-       <td>
-        <span class="cn" style="color:var(--red)">
-         Calcul&eacute; ❌
+</tr>
+<tr>
+<td>
+<span class="cn" style="color:var(--red)">
+         Calculé ❌
         </span>
-       </td>
-       <td>
-        Calcul&eacute; &agrave; partir d'autres champs &rarr;
+</td>
+<td>
+        Calculé à partir d'autres champs →
         <b>
-         &eacute;limin&eacute; du MCD
+         éliminé du MCD
         </b>
+</td>
+<td>
+        TotalHT = QTES × PRIX_UNIT
        </td>
-       <td>
-        TotalHT = QTES &times; PRIX_UNIT
-       </td>
-      </tr>
-      <tr>
-       <td>
-        <span class="cn" style="color:var(--red)">
-         Param&egrave;tre ❌
+</tr>
+<tr>
+<td>
+<span class="cn" style="color:var(--red)">
+         Paramètre ❌
         </span>
-       </td>
-       <td>
-        Donn&eacute;e stable et ind&eacute;pendante &rarr;
+</td>
+<td>
+        Donnée stable et indépendante →
         <b>
-         &eacute;limin&eacute; du MCD
+         éliminé du MCD
         </b>
+</td>
+<td>
+        TauxTVA, TauxKilométrique
        </td>
-       <td>
-        TauxTVA, TauxKilom&eacute;trique
-       </td>
-      </tr>
-     </table></div>
-     <div class="st te">
+</tr>
+</table></div>
+<div class="st te">
       Structure du dictionnaire
      </div>
-     <div class="cg">
-      <div class="card te">
-       <h3>
+<div class="cg">
+<div class="card te">
+<h3>
         Colonnes du dictionnaire
        </h3>
-       <ul>
-        <li>
-         <b>
-          Propri&eacute;t&eacute;
+<ul>
+<li>
+<b>
+          Propriété
          </b>
-         &mdash; nom symbolique unique
+         — nom symbolique unique
         </li>
-        <li>
-         <b>
+<li>
+<b>
           Contenu
          </b>
-         &mdash; description courte
+         — description courte
         </li>
-        <li>
-         <b>
+<li>
+<b>
           Nature
          </b>
-         &mdash; Num&eacute;rique / Alphanum&eacute;rique / Date
+         — Numérique / Alphanumérique / Date
         </li>
-        <li>
-         <b>
+<li>
+<b>
           Type
          </b>
-         &mdash; Sign, Sit, Histo, Calc, Param&hellip;
+         — Sign, Sit, Histo, Calc, Param…
         </li>
-        <li>
-         <b>
-          R&egrave;gle de calcul
+<li>
+<b>
+          Règle de calcul
          </b>
-         &mdash; si calcul&eacute;
+         — si calculé
         </li>
-        <li>
-         <b>
+<li>
+<b>
           Document source
          </b>
-         &mdash; provenance (facultatif)
+         — provenance (facultatif)
         </li>
-       </ul>
-      </div>
-      <div class="card bl">
-       <h3>
-        Marche &agrave; suivre
+</ul>
+</div>
+<div class="card bl">
+<h3>
+        Marche à suivre
        </h3>
-       <ol style="list-style:decimal;padding-left:18px">
-        <li style="margin-bottom:6px">
+<ol style="list-style:decimal;padding-left:18px">
+<li style="margin-bottom:6px">
          Rassembler
          <b>
           toutes
          </b>
-         les propri&eacute;t&eacute;s &rarr; dictionnaire complet
+         les propriétés → dictionnaire complet
         </li>
-        <li style="margin-bottom:6px">
-         Barrer les donn&eacute;es
+<li style="margin-bottom:6px">
+         Barrer les données
          <b>
-          calcul&eacute;es
+          calculées
          </b>
          et les
          <b>
-          param&egrave;tres
+          paramètres
          </b>
-        </li>
-        <li>
-         R&eacute;sultat = dictionnaire
+</li>
+<li>
+         Résultat = dictionnaire
          <b>
-          r&eacute;duit
+          réduit
          </b>
-         &rarr; base du MCD
+         → base du MCD
         </li>
-       </ol>
-      </div>
-     </div>
-     <div class="alert ate">
+</ol>
+</div>
+</div>
+<div class="alert ate">
       💡
       <strong>
        Exception :
       </strong>
-      Les donn&eacute;es de
+      Les données de
       <strong>
        situation
       </strong>
-      (solde d'un compte, stock, cumuls) peuvent &ecirc;tre conserv&eacute;es m&ecirc;me si elles semblent "calculables", car elles refl&egrave;tent un &eacute;tat &agrave; un moment donn&eacute;.
+      (solde d'un compte, stock, cumuls) peuvent être conservées même si elles semblent "calculables", car elles reflètent un état à un moment donné.
      </div>
-    </div>
-    R&Egrave;GLES DE GESTION
+</div>
+    RÈGLES DE GESTION
     <div class="sc" id="mcd-regles">
-     <div class="bq te">
-      <span class="qt">
+<div class="bq te">
+<span class="qt">
        "
       </span>
-      <p>
+<p>
        Les
        <strong>
-        r&egrave;gles de gestion
+        règles de gestion
        </strong>
-       d&eacute;finissent les contraintes que doit respecter le MCD. La mod&eacute;lisation est d'autant plus facile qu'elles sont
+       définissent les contraintes que doit respecter le MCD. La modélisation est d'autant plus facile qu'elles sont
        <strong>
-        d&eacute;taill&eacute;es et pr&eacute;cises
-       </strong>
-       .
+        détaillées et précises
+       </strong>.
       </p>
+</div>
+<div class="st te">
+      Types de règles de gestion
      </div>
-     <div class="st te">
-      Types de r&egrave;gles de gestion
-     </div>
-     <div class="cg">
-      <div class="card te">
-       <h3>
-        Contraintes sur les donn&eacute;es
+<div class="cg">
+<div class="card te">
+<h3>
+        Contraintes sur les données
        </h3>
-       <p>
+<p>
         Ex :
         <br/>
-        <b>
+<b>
          RG1
         </b>
-        : Un &eacute;l&egrave;ve appartient &agrave; une seule classe
+        : Un élève appartient à une seule classe
         <br/>
-        <b>
+<b>
          RG2
         </b>
-        : Une classe comporte au maximum 35 &eacute;l&egrave;ves
+        : Une classe comporte au maximum 35 élèves
         <br/>
-        <b>
+<b>
          RG3
         </b>
         : Un client doit louer au moins une cassette
        </p>
-      </div>
-      <div class="card bl">
-       <h3>
-        R&egrave;gles de calcul
+</div>
+<div class="card bl">
+<h3>
+        Règles de calcul
        </h3>
-       <p>
-        Formules entre propri&eacute;t&eacute;s :
+<p>
+        Formules entre propriétés :
         <br/>
-        <b>
+<b>
          RG4
         </b>
-        : MontantHT = QTES &times; PRIX_UNIT
+        : MontantHT = QTES × PRIX_UNIT
         <br/>
-        <b>
+<b>
          RG5
         </b>
-        : TotalTTC = TotalHT &times; (1 + TauxTVA)
+        : TotalTTC = TotalHT × (1 + TauxTVA)
         <br/>
-        <b>
+<b>
          RG6
         </b>
-        : Age = DateActuelle &minus; DateNaissance
+        : Age = DateActuelle − DateNaissance
        </p>
-      </div>
+</div>
+</div>
+<div class="st te">
+      Démarche complète pour construire un MCD
      </div>
-     <div class="st te">
-      D&eacute;marche compl&egrave;te pour construire un MCD
-     </div>
-     <div class="hf" style="flex-wrap:wrap;gap:8px">
-      <div class="hfb">
-       <div class="hfv te" style="font-size:.73rem">
+<div class="hf" style="flex-wrap:wrap;gap:8px">
+<div class="hfb">
+<div class="hfv te" style="font-size:.73rem">
         1. Analyser les documents sources
        </div>
+</div>
+<div class="hfa">
+       →
       </div>
-      <div class="hfa">
-       &rarr;
-      </div>
-      <div class="hfb" style="border-color:var(--teal)">
-       <div class="hfv te" style="font-size:.73rem">
-        2. R&eacute;diger les r&egrave;gles de gestion
+<div class="hfb" style="border-color:var(--teal)">
+<div class="hfv te" style="font-size:.73rem">
+        2. Rédiger les règles de gestion
        </div>
+</div>
+<div class="hfa">
+       →
       </div>
-      <div class="hfa">
-       &rarr;
-      </div>
-      <div class="hfb">
-       <div class="hfv te" style="font-size:.73rem">
+<div class="hfb">
+<div class="hfv te" style="font-size:.73rem">
         3. Dictionnaire complet
        </div>
+</div>
+<div class="hfa">
+       →
       </div>
-      <div class="hfa">
-       &rarr;
-      </div>
-      <div class="hfb" style="border-color:var(--teal)">
-       <div class="hfv te" style="font-size:.73rem">
-        4. Dictionnaire r&eacute;duit
+<div class="hfb" style="border-color:var(--teal)">
+<div class="hfv te" style="font-size:.73rem">
+        4. Dictionnaire réduit
        </div>
+</div>
+<div class="hfa">
+       →
       </div>
-      <div class="hfa">
-       &rarr;
-      </div>
-      <div class="hfb">
-       <div class="hfv te" style="font-size:.73rem">
-        5. Identifier entit&eacute;s + identifiants
+<div class="hfb">
+<div class="hfv te" style="font-size:.73rem">
+        5. Identifier entités + identifiants
        </div>
+</div>
+<div class="hfa">
+       →
       </div>
-      <div class="hfa">
-       &rarr;
-      </div>
-      <div class="hfb" style="border-color:var(--teal)">
-       <div class="hfv te" style="font-size:.73rem">
-        6. Associations + Cardinalit&eacute;s &rarr; MCD final
+<div class="hfb" style="border-color:var(--teal)">
+<div class="hfv te" style="font-size:.73rem">
+        6. Associations + Cardinalités → MCD final
        </div>
-      </div>
-     </div>
-     <div class="alert ate">
+</div>
+</div>
+<div class="alert ate">
       ⚠️
       <strong>
-       R&egrave;gle cl&eacute; :
+       Règle clé :
       </strong>
-      Si une propri&eacute;t&eacute; ne peut pas &ecirc;tre rattach&eacute;e &agrave;
+      Si une propriété ne peut pas être rattachée à
       <strong>
-       une seule entit&eacute;
-      </strong>
-      , elle appartient &agrave; une
+       une seule entité
+      </strong>, elle appartient à une
       <strong>
        association
-      </strong>
-      . Exemple : l'horaire d'une mati&egrave;re dans une classe d&eacute;pend &agrave; la fois de la CLASSE et de la MATIERE &rarr; propri&eacute;t&eacute; de l'association ENSEIGNER.
+      </strong>. Exemple : l'horaire d'une matière dans une classe dépend à la fois de la CLASSE et de la MATIERE → propriété de l'association ENSEIGNER.
      </div>
-     <div class="code te"># Exemple : CLASSE &mdash; Enseigner(Horaire, NbHeures) &mdash; MATIERE
+<div class="code te"># Exemple : CLASSE — Enseigner(Horaire, NbHeures) — MATIERE
 
-CLASSE (1,n) &mdash;&mdash;&mdash;[ Enseigner ]&mdash;&mdash;&mdash; (1,n) MATIERE
+CLASSE (1,n) ———[ Enseigner ]——— (1,n) MATIERE
                    | Horaire  |
                    | NbHeures |
 
 # Une CLASSE enseigne plusieurs MATIERES (1,n)
-# Une MATIERE est enseign&eacute;e dans plusieurs CLASSES (1,n)
-# L'horaire et le NbHeures d&eacute;pendent DE LA CLASSE et DE LA MATIERE ensemble</div>
-    </div>
-    <div class="source-note">
-     R&eacute;f&eacute;rence p&eacute;dagogique :
-     <b>
-      BTS-SIO-Fiches.html
-     </b>
-     . Cette fiche reprend les notions de 1re ann&eacute;e ; la CEJM d&eacute;taill&eacute;e est accessible dans ses chapitres d&eacute;di&eacute;s.
-    </div>
-   </main>
-   <div class="footer">
-    <a href="../index.html">
-     &larr; Retour au tableau de bord
+# Une MATIERE est enseignée dans plusieurs CLASSES (1,n)
+# L'horaire et le NbHeures dépendent DE LA CLASSE et DE LA MATIERE ensemble</div>
+</div>
+<div class="sc" id="mcd-mld">
+<div class="st te">Passage du MCD au MLD (schéma relationnel) puis au MPD</div>
+<div class="alert ate"><strong>Principe :</strong> le MCD décrit les données et leurs associations. Le MLD/MLDR traduit cette organisation sous forme de relations (tables), puis le MPD prépare l'implémentation physique dans le SGBD.</div>
+<div class="st te">Règle 1 — Une entité devient une relation</div>
+<div class="card te"><p>Chaque entité du MCD devient une relation du MLD. Chaque propriété devient un attribut et l'identifiant devient la <b>clé primaire</b>.</p><div class="code te">CLIENT (id_client, Nom_Client, Tel_client)
+Clé primaire : id_client</div></div>
+<div class="st te">Règle 2 — Association binaire (X,1) — (X,n)</div>
+<div class="card te"><p>La clé primaire de l'entité du côté <b>(X,n)</b> devient une <b>clé étrangère</b> dans la relation du côté <b>(X,1)</b>.</p><div class="code te">SOCIETE (id_Societe, Nom_Societe)
+EMPLOYE (id_Employe, Nom_Employe, id_Societe)
+FK : EMPLOYE.id_Societe → SOCIETE.id_Societe</div></div>
+<div class="st te">Règle 3 — Association binaire (X,n) — (X,n)</div>
+<div class="card te"><p>On crée une relation supplémentaire. Sa clé primaire est composée des identifiants des deux entités. Les propriétés portées par l'association deviennent des attributs de cette nouvelle relation.</p><div class="code te">COMMANDE (id_Commande, Date_commande)
+PRODUIT (id_Produit, libelle)
+COMPOSE (id_Commande, id_Produit, quantité)
+PK COMPOSE : id_Commande + id_Produit</div></div>
+<div class="st te">Règle 4 — Association n-aire</div>
+<div class="card te"><p>Une association entre plusieurs entités crée une relation supplémentaire dont la clé primaire concatène les identifiants de toutes les entités participantes.</p><div class="code te">ETUDIANT (id_Etudiant, Nom_Etudiant)
+NIVEAU (id_Niveau, Nom_Niveau)
+LANGUE (id_Langue, Nom_Langue)
+PARLE (id_Etudiant, id_Niveau, id_Langue)</div></div>
+<div class="st te">Règle 5 — Association réflexive</div>
+<div class="cmp">
+<div class="cmpc"><h4 class="te">Cas (X,1) — (X,n)</h4><p>La clé primaire de l'entité est réutilisée comme clé étrangère dans la même table.</p><div class="code te">EMPLOYE (id_Employe, Nom_Employe, id_Sup_Hierarchique)</div></div>
+<div class="cmpc"><h4 class="te">Cas (X,n) — (X,n)</h4><p>Une nouvelle relation est créée, exactement comme pour une association plusieurs-à-plusieurs.</p><div class="code te">PERSONNE (id_Personne, Nom_Personne)
+PARENTE (id_Parent, id_Enfant)</div></div>
+</div>
+<div class="st te">Règle 6 — Association binaire (0,1) — (1,1)</div>
+<div class="card te"><p>La clé primaire de la table du côté (0,1) devient une clé étrangère de la table du côté (1,1).</p><div class="code te">ANIMATEUR (id_Animateur, Nom_Animateur)
+GROUPE (id_Groupe, Nom_Groupe, id_Animateur)</div></div>
+<div class="alert ag"><strong>Résumé :</strong> entité → table ; 1,n → clé étrangère du côté 1 ; n,n → table d'association ; association n-aire → table supplémentaire ; réflexive → clé étrangère sur elle-même ou table d'association selon les cardinalités.</div>
+</div><div class="source-note">Sources : fiches MCD de 1re année et document <b>3-Passage du MCD au MLD.docx</b> du dossier SLAM1 / COURS fourni sur Drive.</div>
+</main>
+<div class="footer">
+<a href="../index.html">
+     ← Retour au tableau de bord
     </a>
-   </div>
-  </div>
-  <script src="../assets/js/common.js">
-  </script>
- </body>
+</div>
+</div>
+<script src="../assets/js/common.js?v=20260916-1">
+</script>
+</body>
 </html>

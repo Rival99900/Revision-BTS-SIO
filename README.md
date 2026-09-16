@@ -10,7 +10,7 @@ Fiches synthétiques, cours structurés, rappels essentiels et quiz interactifs 
 ![HTML](https://img.shields.io/badge/HTML5-Revision-00cfff?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS](https://img.shields.io/badge/CSS3-CRT%20Theme-b06aff?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-Quiz-ffb300?style=for-the-badge&logo=javascript&logoColor=111)
-![Questions](https://img.shields.io/badge/Quiz-322%20questions-ff6ec7?style=for-the-badge)
+![Questions](https://img.shields.io/badge/Quiz-342%20questions-ff6ec7?style=for-the-badge)
 
 **Projet évolutif : de nouveaux cours et quiz sont ajoutés au fur et à mesure de l'avancement en BTS SIO.**
 
@@ -67,7 +67,7 @@ Le tableau de bord contient actuellement **14 modules de révision** pour la 1re
 | 🧠 **Algorithmique** | `premiere/algorithmique.html` | Conditions, boucles, chaînes de caractères et listes |
 | 🐘 **PHP** | `premiere/php.html` | Développement web côté serveur et bases du langage PHP |
 | ☕ **Java / POO** | `premiere/java.html` | Classes, objets, méthodes et programmation orientée objet |
-| 🗄️ **MCD / Modélisation** | `premiere/mcd.html` | Entités, associations, propriétés, identifiants et cardinalités |
+| 🗄️ **MCD / Modélisation** | `premiere/mcd.html` | Entités, associations, cardinalités, passage MCD → MLD/MLDR et MPD |
 | 🗃️ **SQL & bases de données** | `premiere/sql.html` | SELECT, filtres, jointures, agrégats, LMD, LDD et commandes MySQL |
 | 📊 **CEJM** | `premiere/cejm.html` | Culture économique, juridique et managériale + 11 chapitres détaillés |
 | 🧮 **Maths pour l'informatique** | `premiere/maths.html` | Bases, logique booléenne, algorithmique et complexité |
@@ -108,7 +108,7 @@ Notions : données à caractère personnel, données sensibles, CNIL, RGPD, droi
 
 Fichier : `deuxieme/cge-vrai-faux.html`
 
-Notions : synthèse de documents, vérité et mensonge, mythomanie, vocabulaire et exercices de rédaction.
+Notions : synthèse de documents, vérité et mensonge, mythomanie, **Texte 2 — Dom Juan de Molière**, stratégie du séducteur, vocabulaire et exercices de rédaction.
 
 ### 🧮 Maths — Calcul matriciel
 
@@ -169,12 +169,12 @@ Il propose :
 
 # 🎯 Quiz interactif
 
-Le site possède actuellement **322 questions** :
+Le site possède actuellement **342 questions** :
 
-- **213** questions de 1re année ;
-- **101** questions de 2e année ;
-- **228** QCM ;
-- **86** réponses à saisir.
+- **223** questions de 1re année ;
+- **119** questions de 2e année ;
+- **255** QCM ;
+- **87** réponses à saisir.
 
 Le quiz peut être filtré par année, matière et type de question.
 

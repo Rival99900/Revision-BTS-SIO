@@ -1164,3 +1164,102 @@ body[data-chapter="1"] .cmpc:first-child h4 {
     padding-inline: 9px !important;
   }
 }
+
+
+/* ===== 2026-09-16 STRUCTURE / MOBILE UPDATE ===== */
+.filterbtn[hidden] { display: none !important; }
+
+.section-stepper,
+.lesson-nav {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+  margin: 12px 0 20px;
+}
+.section-stepper .step-prev { justify-self: start; }
+.section-stepper .step-next { justify-self: end; }
+.step-status {
+  color: var(--text-dim);
+  font-size: .75rem;
+  letter-spacing: .08em;
+  white-space: nowrap;
+}
+.lesson-nav { grid-template-columns: minmax(0,1fr) minmax(0,1fr); }
+.lesson-nav-btn {
+  min-width: 0;
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--green);
+  text-decoration: none;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+.lesson-nav-btn:last-child { justify-self: stretch; }
+.lesson-nav-btn:first-child { justify-self: stretch; }
+.lesson-nav-btn.disabled { opacity: .35; pointer-events: none; }
+.lesson-nav-btn:hover { border-color: var(--green); background: rgba(0,255,136,.06); }
+
+.lesson-glossary { margin-top: 24px; }
+.glossary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 10px;
+}
+.glossary-item {
+  min-width: 0;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--card);
+  padding: 11px 13px;
+  display: grid;
+  gap: 5px;
+}
+.glossary-item strong { color: var(--gold); }
+.glossary-item span { font-size: .8rem; line-height: 1.55; overflow-wrap: anywhere; }
+
+.source-visual-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 14px;
+  margin: 12px 0 20px;
+}
+.source-visual-card {
+  min-width: 0;
+  margin: 0;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  background: #030906;
+}
+.source-visual-card img {
+  width: 100%;
+  display: block;
+  height: auto;
+  background: #fff;
+}
+.source-visual-card figcaption {
+  padding: 9px 11px;
+  color: var(--text-dim);
+  font-size: .72rem;
+  line-height: 1.45;
+}
+
+@media (max-width: 700px) {
+  .glossary-grid,
+  .source-visual-grid { grid-template-columns: 1fr; }
+  .section-stepper { grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); gap: 6px; }
+  .section-stepper .smallbtn { min-width: 0; padding: 8px 7px; font-size: .72rem; }
+  .lesson-nav { gap: 7px; }
+}
+@media (max-width: 420px) {
+  .section-stepper { grid-template-columns: 1fr 1fr; }
+  .step-status { grid-column: 1 / -1; grid-row: 1; text-align: center; }
+  .section-stepper .step-prev, .section-stepper .step-next { grid-row: 2; width: 100%; }
+  .lesson-nav { grid-template-columns: 1fr 1fr !important; }
+}

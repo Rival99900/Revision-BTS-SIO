@@ -3,12 +3,12 @@
  <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width,initial-scale=1.0" name="viewport"/>
-  <meta content="R&eacute;visions BTS SIO 1re et 2e ann&eacute;e" name="description"/>
+  <meta content="Révisions BTS SIO 1re et 2e année" name="description"/>
   <title>
    ☕ Java POO
   </title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&amp;family=VT323&amp;family=Orbitron:wght@700;900&amp;display=swap" rel="stylesheet"/>
-  <link href="../assets/css/style.css" rel="stylesheet"/>
+  <link href="../assets/css/style.css?v=20260916-1" rel="stylesheet"/>
    <link rel="icon" type="image/svg+xml" href="../assets/img/site-logo.svg" />
   <link rel="shortcut icon" href="../assets/img/site-logo.svg" />
  </head>
@@ -17,20 +17,20 @@
    <div class="site-header">
     <div class="bbar"></div>
     <h1>
-     BTS SIO &mdash; R&Eacute;VISIONS
+     BTS SIO — RÉVISIONS
     </h1>
     <div class="sub">
-     1RE ANN&Eacute;E &mdash; D&Eacute;VELOPPEMENT
+     1RE ANNÉE — DÉVELOPPEMENT
     </div>
     <div class="tags">
      <span class="tag tg">
       BTS SIO
      </span>
      <span class="tag tb">
-      1re ann&eacute;e
+      1re année
      </span>
      <span class="tag tp">
-      2e ann&eacute;e
+      2e année
      </span>
      <span class="tag ta">
       Quiz interactifs
@@ -39,7 +39,7 @@
     <div class="prompt">
      C:\\BTS-SIO\REVISION&gt;
      <span>
-      &block;
+      █
      </span>
     </div>
    </div>
@@ -48,7 +48,7 @@
      ⌂ Accueil
     </a>
     <a class="navbtn quiz" href="../quiz.html">
-     🎯 Quiz g&eacute;n&eacute;ral
+     🎯 Quiz général
     </a>
     <a class="navbtn" href="../code-lab.html">
      &lt;/&gt; Code Lab
@@ -58,24 +58,24 @@
     <div class="hero">
      <div>
       <div class="hero-kicker">
-       1RE ANN&Eacute;E // D&Eacute;VELOPPEMENT
+       1RE ANNÉE // DÉVELOPPEMENT
       </div>
       <h2>
        ☕ Java POO
       </h2>
       <p>
-       Classes, objets, h&eacute;ritage, encapsulation et collections
+       Classes, objets, héritage, encapsulation et collections
       </p>
      </div>
      <div class="hero-actions">
       <button class="smallbtn" id="reviewBtn" onclick="setReviewed('1-java')">
-       &cir; Marquer r&eacute;vis&eacute;
+       ○ Marquer révisé
       </button>
       <button class="smallbtn" onclick="printPage()">
        🖨 Imprimer
       </button>
       <a class="smallbtn alt" href="../quiz.html?year=1&amp;module=java">
-       🎯 Quiz cibl&eacute;
+       🎯 Quiz ciblé
       </a>
      </div>
     </div>
@@ -87,7 +87,7 @@
       Boucles
      </button>
      <button class="sb or" onclick="showSub('java','heritage',this,'or')">
-      H&eacute;ritage
+      Héritage
      </button>
      <button class="sb or" onclick="showSub('java','polymorphisme',this,'or')">
       Polymorphisme
@@ -105,17 +105,16 @@
       <p>
        La
        <strong>
-        Programmation Orient&eacute;e Objet (POO)
+        Programmation Orientée Objet (POO)
        </strong>
        est un paradigme de programmation qui organise le code autour d'
        <strong>
         objets
        </strong>
-       regroupant donn&eacute;es et comportements. Les 4 piliers :
+       regroupant données et comportements. Les 4 piliers :
        <strong>
-        Encapsulation, H&eacute;ritage, Polymorphisme, Abstraction
-       </strong>
-       .
+        Encapsulation, Héritage, Polymorphisme, Abstraction
+       </strong>.
       </p>
      </div>
      <div class="st or">
@@ -129,23 +128,23 @@
        <p>
         Un
         <b>
-         mod&egrave;le / plan de construction
+         modèle / plan de construction
         </b>
-        qui d&eacute;finit :
+        qui définit :
         <br/>
-        &rarr; Des
+        → Des
         <b>
          attributs
         </b>
-        (donn&eacute;es/&eacute;tat de l'objet)
+        (données/état de l'objet)
         <br/>
-        &rarr; Des
+        → Des
         <b>
-         m&eacute;thodes
+         méthodes
         </b>
         (comportements/fonctions)
         <br/>
-        Mot-cl&eacute; Java :
+        Mot-clé Java :
         <code style="color:var(--orange)">
          class
         </code>
@@ -158,11 +157,11 @@
        <p>
         Un objet est une
         <b>
-         instance concr&egrave;te
+         instance concrète
         </b>
         d'une classe.
         <br/>
-        Cr&eacute;&eacute; avec le mot-cl&eacute;
+        Créé avec le mot-clé
         <code style="color:var(--blue)">
          new
         </code>
@@ -172,7 +171,7 @@
          Voiture v = new Voiture("Toyota", 2020);
         </code>
         <br/>
-        On peut cr&eacute;er plusieurs objets d'une m&ecirc;me classe.
+        On peut créer plusieurs objets d'une même classe.
        </p>
       </div>
       <div class="card am">
@@ -180,9 +179,9 @@
         Attribut
        </h3>
        <p>
-        Variable d&eacute;finie dans une classe, repr&eacute;sente l'
+        Variable définie dans une classe, représente l'
         <b>
-         &eacute;tat
+         état
         </b>
         d'un objet. Chaque objet a ses propres valeurs d'attributs.
         <br/>
@@ -199,10 +198,10 @@
       </div>
       <div class="card">
        <h3>
-        M&eacute;thode
+        Méthode
        </h3>
        <p>
-        Fonction d&eacute;finie dans une classe, repr&eacute;sente le
+        Fonction définie dans une classe, représente le
         <b>
          comportement
         </b>
@@ -210,12 +209,12 @@
         <br/>
         Ex:
         <code>
-         public void afficher() {&hellip;}
+         public void afficher() {…}
         </code>
         <br/>
         Ex:
         <code>
-         public String getNom() {&hellip;}
+         public String getNom() {…}
         </code>
        </p>
       </div>
@@ -229,21 +228,21 @@
         Constructeur
        </h3>
        <p>
-        M&eacute;thode sp&eacute;ciale appel&eacute;e &agrave; la cr&eacute;ation d'un objet.
+        Méthode spéciale appelée à la création d'un objet.
         <br/>
-        &bull;
+        •
         <b>
-         M&ecirc;me nom
+         Même nom
         </b>
         que la classe
         <br/>
-        &bull;
+        •
         <b>
          Pas de type de retour
         </b>
         (ni void)
         <br/>
-        &bull; Appel&eacute; avec
+        • Appelé avec
         <code>
          new
         </code>
@@ -254,36 +253,35 @@
         this
        </h3>
        <p>
-        R&eacute;f&eacute;rence &agrave;
+        Référence à
         <b>
          l'objet courant
-        </b>
-        . Utilis&eacute; pour distinguer les attributs des param&egrave;tres du m&ecirc;me nom. Obligatoire quand il y a ambigu&iuml;t&eacute;.
+        </b>. Utilisé pour distinguer les attributs des paramètres du même nom. Obligatoire quand il y a ambiguïté.
        </p>
       </div>
      </div>
      <div class="code or">public class Voiture {
-    // Attributs priv&eacute;s (encapsulation)
+    // Attributs privés (encapsulation)
     private String marque;
     private int    annee;
 
-    // Constructeur : m&ecirc;me nom que la classe, PAS de type de retour
+    // Constructeur : même nom que la classe, PAS de type de retour
     public Voiture(String marque, int annee) {
         this.marque = marque; // this = l'objet courant
         this.annee  = annee;
     }
 
-    // Getter (lit l'attribut priv&eacute; depuis l'ext&eacute;rieur)
+    // Getter (lit l'attribut privé depuis l'extérieur)
     public String getMarque() {
         return this.marque;
     }
 
-    // Setter (modifie l'attribut depuis l'ext&eacute;rieur)
+    // Setter (modifie l'attribut depuis l'extérieur)
     public void setMarque(String marque) {
         this.marque = marque;
     }
 
-    // M&eacute;thode d'affichage
+    // Méthode d'affichage
     public void afficher() {
         System.out.println(this.marque + " - " + this.annee);
     }
@@ -303,13 +301,12 @@ v2.afficher(); // Renault - 2019</div>
         1. Encapsulation
        </h3>
        <p>
-        Cacher les d&eacute;tails d'impl&eacute;mentation. Les attributs sont souvent
+        Cacher les détails d'implémentation. Les attributs sont souvent
         <b>
          private
-        </b>
-        , accessibles uniquement via des m&eacute;thodes (getters/setters).
+        </b>, accessibles uniquement via des méthodes (getters/setters).
         <br/>
-        &rarr;
+        →
         <span class="tag tor">
          private / protected / public
         </span>
@@ -317,12 +314,12 @@ v2.afficher(); // Renault - 2019</div>
       </div>
       <div class="card bl">
        <h3>
-        2. H&eacute;ritage
+        2. Héritage
        </h3>
        <p>
-        Une classe peut h&eacute;riter des attributs et m&eacute;thodes d'une autre classe. &Eacute;vite la duplication de code (r&eacute;utilisabilit&eacute;).
+        Une classe peut hériter des attributs et méthodes d'une autre classe. Évite la duplication de code (réutilisabilité).
         <br/>
-        &rarr;
+        →
         <span class="tag tb">
          extends
         </span>
@@ -333,13 +330,13 @@ v2.afficher(); // Renault - 2019</div>
         3. Polymorphisme
        </h3>
        <p>
-        La m&eacute;thode ex&eacute;cut&eacute;e d&eacute;pend du
+        La méthode exécutée dépend du
         <b>
-         type r&eacute;el
+         type réel
         </b>
-        de l'objet, m&ecirc;me si la variable est de type parent. "Dispatch dynamique".
+        de l'objet, même si la variable est de type parent. "Dispatch dynamique".
         <br/>
-        &rarr; Override (red&eacute;finition de m&eacute;thode)
+        → Override (redéfinition de méthode)
        </p>
       </div>
       <div class="card">
@@ -347,9 +344,9 @@ v2.afficher(); // Renault - 2019</div>
         4. Abstraction
        </h3>
        <p>
-        Classe non instanciable qui d&eacute;finit un mod&egrave;le (interface). Force les sous-classes &agrave; impl&eacute;menter certaines m&eacute;thodes.
+        Classe non instanciable qui définit un modèle (interface). Force les sous-classes à implémenter certaines méthodes.
         <br/>
-        &rarr;
+        →
         <span class="tag tg">
          abstract
         </span>
@@ -357,7 +354,7 @@ v2.afficher(); // Renault - 2019</div>
       </div>
      </div>
      <div class="st or">
-      Modificateurs d'acc&egrave;s
+      Modificateurs d'accès
      </div>
      <div class="table-scroll"><table class="tbl or">
       <tr>
@@ -365,7 +362,7 @@ v2.afficher(); // Renault - 2019</div>
         Modificateur
        </th>
        <th>
-        Accessibilit&eacute;
+        Accessibilité
        </th>
        <th>
         Utilisation typique
@@ -378,7 +375,7 @@ v2.afficher(); // Renault - 2019</div>
         </span>
        </td>
        <td>
-        Seulement dans la classe elle-m&ecirc;me
+        Seulement dans la classe elle-même
        </td>
        <td>
         Attributs (encapsulation)
@@ -394,7 +391,7 @@ v2.afficher(); // Renault - 2019</div>
         Dans la classe + ses sous-classes
        </td>
        <td>
-        Attributs/m&eacute;thodes utiles aux filles
+        Attributs/méthodes utiles aux filles
        </td>
       </tr>
       <tr>
@@ -404,10 +401,10 @@ v2.afficher(); // Renault - 2019</div>
         </span>
        </td>
        <td>
-        Depuis n'importe o&ugrave;
+        Depuis n'importe où
        </td>
        <td>
-        M&eacute;thodes de l'interface publique
+        Méthodes de l'interface publique
        </td>
       </tr>
      </table></div>
@@ -446,29 +443,29 @@ while (i &lt;= 3) {
     System.out.println(i);
     i++;
 } while (i &lt;= 3);
-// S'ex&eacute;cute AU MOINS UNE FOIS !</div>
+// S'exécute AU MOINS UNE FOIS !</div>
       </div>
      </div>
      <div class="st or">
-      Boucles imbriqu&eacute;es &mdash; Triangle d'&eacute;toiles
+      Boucles imbriquées — Triangle d'étoiles
      </div>
      <div class="bq or">
       <span class="qt">
        "
       </span>
       <p>
-       Une boucle peut &ecirc;tre &eacute;crite &agrave; l'int&eacute;rieur d'une autre boucle. La boucle interne s'ex&eacute;cute
+       Une boucle peut être écrite à l'intérieur d'une autre boucle. La boucle interne s'exécute
        <strong>
         en entier
        </strong>
-       pour chaque it&eacute;ration de la boucle externe.
+       pour chaque itération de la boucle externe.
       </p>
      </div>
      <div class="code or">for (int i = 1; i &lt;= 5; i++) {
     for (int j = 0; j &lt; i; j++) {
         System.out.print("*");
     }
-    System.out.println(""); // retour &agrave; la ligne
+    System.out.println(""); // retour à la ligne
 }
 // Affiche :
 // *
@@ -477,12 +474,12 @@ while (i &lt;= 3) {
 // ****
 // *****</div>
      <div class="st or">
-      Op&eacute;rateurs de comparaison Java
+      Opérateurs de comparaison Java
      </div>
      <div class="table-scroll"><table class="tbl or">
       <tr>
        <th>
-        Op&eacute;rateur
+        Opérateur
        </th>
        <th>
         Signification
@@ -498,7 +495,7 @@ while (i &lt;= 3) {
         </span>
        </td>
        <td>
-        &Eacute;galit&eacute; (valeurs primitives)
+        Égalité (valeurs primitives)
        </td>
        <td>
         <code>
@@ -513,7 +510,7 @@ while (i &lt;= 3) {
         </span>
        </td>
        <td>
-        Diff&eacute;rent
+        Différent
        </td>
        <td>
         <code>
@@ -528,7 +525,7 @@ while (i &lt;= 3) {
         </span>
        </td>
        <td>
-        In&eacute;galit&eacute;s strictes
+        Inégalités strictes
        </td>
        <td>
         <code>
@@ -543,7 +540,7 @@ while (i &lt;= 3) {
         </span>
        </td>
        <td>
-        In&eacute;galit&eacute;s larges
+        Inégalités larges
        </td>
        <td>
         <code>
@@ -568,7 +565,7 @@ while (i &lt;= 3) {
       </tr>
      </table></div>
     </div>
-    H&Eacute;RITAGE
+    HÉRITAGE
     <div class="sc" id="java-heritage">
      <div class="bq or">
       <span class="qt">
@@ -576,13 +573,13 @@ while (i &lt;= 3) {
       </span>
       <p>
        <strong>
-        H&eacute;ritage
+        Héritage
        </strong>
-       : m&eacute;canisme de la POO qui permet &agrave; une classe d'acc&eacute;der aux attributs et m&eacute;thodes d'une autre classe. La classe fille
+       : mécanisme de la POO qui permet à une classe d'accéder aux attributs et méthodes d'une autre classe. La classe fille
        <strong>
-        h&eacute;rite
+        hérite
        </strong>
-       de la classe m&egrave;re. Mot-cl&eacute; Java :
+       de la classe mère. Mot-clé Java :
        <strong>
         extends
        </strong>
@@ -606,7 +603,7 @@ while (i &lt;= 3) {
         </i>
         Personne
         <br/>
-        &rarr;
+        →
         <code>
          class Employe extends Personne
         </code>
@@ -621,7 +618,7 @@ while (i &lt;= 3) {
         </i>
         Figure
         <br/>
-        &rarr;
+        →
         <code>
          class Cercle extends Figure
         </code>
@@ -629,13 +626,13 @@ while (i &lt;= 3) {
       </div>
       <div class="card am">
        <h3>
-        Accessibilit&eacute; dans l'h&eacute;ritage
+        Accessibilité dans l'héritage
        </h3>
        <p>
         <span class="tag tr2">
          private
         </span>
-        &rarr;
+        →
         <b>
          inaccessible
         </b>
@@ -644,7 +641,7 @@ while (i &lt;= 3) {
         <span class="tag ta">
          protected
         </span>
-        &rarr;
+        →
         <b>
          accessible
         </b>
@@ -653,7 +650,7 @@ while (i &lt;= 3) {
         <span class="tag tg">
          public
         </span>
-        &rarr;
+        →
         <b>
          accessible
         </b>
@@ -661,7 +658,7 @@ while (i &lt;= 3) {
        </p>
       </div>
      </div>
-     <div class="code or">// === Classe M&Egrave;RE ===
+     <div class="code or">// === Classe MÈRE ===
 public class Personne {
     private String nom;   // private = inaccessible dans les filles !
 
@@ -679,11 +676,11 @@ public class Employe extends Personne {
     private double salaire;
 
     public Employe(String leNom, double leSalaire) {
-        super(leNom); // OBLIGATOIRE en PREMI&Egrave;RE INSTRUCTION !
+        super(leNom); // OBLIGATOIRE en PREMIÈRE INSTRUCTION !
         this.salaire = leSalaire;
     }
 
-    // Red&eacute;finition (Override) de toString() :
+    // Redéfinition (Override) de toString() :
     public String toString() {
         String debut = super.toString(); // appelle Personne.toString()
         return debut + " mon salaire est " + salaire;
@@ -693,17 +690,17 @@ public class Employe extends Personne {
 // === Utilisation ===
 Employe e1 = new Employe("Sarah", 2000);
 System.out.println(e1.toString());
-// &rarr; "je m'appelle Sarah mon salaire est 2000.0"</div>
+// → "je m'appelle Sarah mon salaire est 2000.0"</div>
      <div class="alert aor">
       ⚠️
       <strong>
        super()
       </strong>
-      doit &ecirc;tre la
+      doit être la
       <strong>
-       premi&egrave;re instruction
+       première instruction
       </strong>
-      du constructeur de la classe fille. L'h&eacute;ritage
+      du constructeur de la classe fille. L'héritage
       <strong>
        ne rompt pas l'encapsulation
       </strong>
@@ -724,45 +721,44 @@ System.out.println(e1.toString());
        <strong>
         Polymorphisme
        </strong>
-       : pour chaque objet, c'est la m&eacute;thode de la
+       : pour chaque objet, c'est la méthode de la
        <strong>
-        classe r&eacute;elle
+        classe réelle
        </strong>
-       de l'objet qui est ex&eacute;cut&eacute;e, m&ecirc;me si la variable est d&eacute;clar&eacute;e avec le type de la classe m&egrave;re.
+       de l'objet qui est exécutée, même si la variable est déclarée avec le type de la classe mère.
       </p>
      </div>
      <div class="code or">Personne p1 = new Personne("Joe");
 Employe  e1 = new Employe("Sarah", 2000);
 Employe  e2 = new Employe("Sunny", 1800);
 
-afficherPersonne(p1); // &rarr; "je m'appelle Joe"
-afficherPersonne(e1); // &rarr; "je m'appelle Sarah mon salaire est 2000.0"
-afficherPersonne(e2); // &rarr; "je m'appelle Sunny mon salaire est 1800.0"
+afficherPersonne(p1); // → "je m'appelle Joe"
+afficherPersonne(e1); // → "je m'appelle Sarah mon salaire est 2000.0"
+afficherPersonne(e2); // → "je m'appelle Sunny mon salaire est 1800.0"
 
-// La m&eacute;thode re&ccedil;oit un type Personne...
+// La méthode reçoit un type Personne...
 public static void afficherPersonne(Personne unePersonne) {
-    // ...mais ex&eacute;cute la m&eacute;thode de la CLASSE R&Eacute;ELLE de l'objet !
+    //...mais exécute la méthode de la CLASSE RÉELLE de l'objet !
     System.out.println(unePersonne.toString());
 }</div>
      <div class="cg">
       <div class="card or">
        <h3>
-        Principe cl&eacute;
+        Principe clé
        </h3>
        <p>
         Variable
         <code>
          Personne
-        </code>
-        , objet
+        </code>, objet
         <code>
          Employe
         </code>
-        &rarr; c'est la m&eacute;thode de
+        → c'est la méthode de
         <b>
          Employe
         </b>
-        qui s'ex&eacute;cute. C'est le
+        qui s'exécute. C'est le
         <b>
          dispatch dynamique
         </b>
@@ -780,17 +776,14 @@ public static void afficherPersonne(Personne unePersonne) {
         </b>
         est la
         <b>
-         classe m&egrave;re de TOUTES les classes
-        </b>
-        . Toute classe en h&eacute;rite directement ou indirectement. Elle fournit des m&eacute;thodes comme
+         classe mère de TOUTES les classes
+        </b>. Toute classe en hérite directement ou indirectement. Elle fournit des méthodes comme
         <code>
          toString()
-        </code>
-        ,
+        </code>,
         <code>
          equals()
-        </code>
-        .
+        </code>.
        </p>
       </div>
      </div>
@@ -808,25 +801,25 @@ public static void afficherPersonne(Personne unePersonne) {
        </strong>
        est une classe qui ne peut
        <strong>
-        pas &ecirc;tre instanci&eacute;e
+        pas être instanciée
        </strong>
-       directement. Elle sert &agrave; factoriser des propri&eacute;t&eacute;s communes et force les sous-classes &agrave; impl&eacute;menter certaines m&eacute;thodes.
+       directement. Elle sert à factoriser des propriétés communes et force les sous-classes à implémenter certaines méthodes.
       </p>
      </div>
      <div class="code or">// === Classe ABSTRAITE ===
 public abstract class Figure {
-    // M&eacute;thodes abstraites : PAS de corps, juste la signature
+    // Méthodes abstraites : PAS de corps, juste la signature
     public abstract double getPerimetre();
     public abstract double getAire();
 
-    // M&eacute;thode non-abstraite : partag&eacute;e par toutes les figures
+    // Méthode non-abstraite : partagée par toutes les figures
     public void afficher() {
         System.out.println("Aire = " + getAire() + ", Perimetre = " + getPerimetre());
     }
 }
-// INTERDIT : Figure f = new Figure(); &rarr; ERREUR de compilation !
+// INTERDIT : Figure f = new Figure(); → ERREUR de compilation !
 
-// === Classe concr&egrave;te : Rectangle ===
+// === Classe concrète : Rectangle ===
 public class Rectangle extends Figure {
     private double largeur;
     private double hauteur;
@@ -836,12 +829,12 @@ public class Rectangle extends Figure {
         this.hauteur = h;
     }
 
-    // OBLIGATION d'impl&eacute;menter TOUTES les m&eacute;thodes abstraites :
+    // OBLIGATION d'implémenter TOUTES les méthodes abstraites :
     public double getAire()      { return largeur * hauteur; }
     public double getPerimetre() { return 2 * (largeur + hauteur); }
 }
 
-// === Classe concr&egrave;te : Cercle ===
+// === Classe concrète : Cercle ===
 public class Cercle extends Figure {
     private double rayon;
 
@@ -857,29 +850,29 @@ Figure f2 = new Cercle(4);
 f1.afficher(); // Aire = 15.0, Perimetre = 16.0
 f2.afficher(); // Aire = 50.26..., Perimetre = 25.13...</div>
      <div class="st or">
-      R&eacute;cap H&eacute;ritage &amp; Abstraction &mdash; Mots-cl&eacute;s
+      Récap Héritage &amp; Abstraction — Mots-clés
      </div>
      <div class="bs">
       <div class="bs-h">
        Concept
       </div>
       <div class="bs-h">
-       Mot-cl&eacute; / Syntaxe Java
+       Mot-clé / Syntaxe Java
       </div>
       <div class="bs-c">
-       H&eacute;riter d'une classe
+       Hériter d'une classe
       </div>
       <div class="bs-c">
        class Fille extends Mere
       </div>
       <div class="bs-c">
-       Appeler le constructeur m&egrave;re
+       Appeler le constructeur mère
       </div>
       <div class="bs-c">
-       super(parametres) &mdash; 1re instruction
+       super(parametres) — 1re instruction
       </div>
       <div class="bs-c">
-       Appeler une m&eacute;thode de la m&egrave;re
+       Appeler une méthode de la mère
       </div>
       <div class="bs-c">
        super.methode()
@@ -891,7 +884,7 @@ f2.afficher(); // Aire = 50.26..., Perimetre = 25.13...</div>
        public abstract class X
       </div>
       <div class="bs-c">
-       M&eacute;thode sans corps (&agrave; impl&eacute;menter)
+       Méthode sans corps (à implémenter)
       </div>
       <div class="bs-c">
        public abstract void methode()
@@ -903,7 +896,7 @@ f2.afficher(); // Aire = 50.26..., Perimetre = 25.13...</div>
        protected
       </div>
       <div class="bs-c">
-       D&eacute;signer l'objet courant
+       Désigner l'objet courant
       </div>
       <div class="bs-c">
        this
@@ -912,34 +905,31 @@ f2.afficher(); // Aire = 50.26..., Perimetre = 25.13...</div>
      <div class="alert aor">
       ⚠️
       <strong>
-       R&egrave;gle importante :
+       Règle importante :
       </strong>
-      Si une classe h&eacute;rite d'une classe abstraite, elle
+      Si une classe hérite d'une classe abstraite, elle
       <strong>
-       doit impl&eacute;menter toutes les m&eacute;thodes abstraites
-      </strong>
-      , sinon elle doit aussi &ecirc;tre d&eacute;clar&eacute;e
+       doit implémenter toutes les méthodes abstraites
+      </strong>, sinon elle doit aussi être déclarée
       <strong>
        abstract
-      </strong>
-      .
+      </strong>.
      </div>
     </div>
     <div class="source-note">
-     R&eacute;f&eacute;rence p&eacute;dagogique :
+     Référence pédagogique :
      <b>
       BTS-SIO-Fiches.html
-     </b>
-     . Cette fiche reprend les notions de 1re ann&eacute;e ; la CEJM d&eacute;taill&eacute;e est accessible dans ses chapitres d&eacute;di&eacute;s.
+     </b>. Cette fiche reprend les notions de 1re année ; la CEJM détaillée est accessible dans ses chapitres dédiés.
     </div>
    </main>
    <div class="footer">
     <a href="../index.html">
-     &larr; Retour au tableau de bord
+     ← Retour au tableau de bord
     </a>
    </div>
   </div>
-  <script src="../assets/js/common.js">
+  <script src="../assets/js/common.js?v=20260916-1">
   </script>
  </body>
 </html>

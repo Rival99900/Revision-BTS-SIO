@@ -362,3 +362,126 @@ window.FIRST_YEAR_ORIGINAL.push(...[
     "exp": "Une propriété appartient à une association quand elle <strong>dépend de PLUSIEURS entités</strong> simultanément. Ex : l'horaire dépend de la Classe ET de la Matière."
   }
 ]);
+
+window.FIRST_YEAR_ORIGINAL.push(...[
+  {
+    "cat": "🗄️ MCD / MLD",
+    "q": "Lors du passage du MCD au MLD, une entité devient :",
+    "opts": [
+      "Une relation (table)",
+      "Une requête SQL",
+      "Un formulaire",
+      "Un index uniquement"
+    ],
+    "a": 0,
+    "exp": "Toute entité du MCD devient une relation du MLD ; ses propriétés deviennent des attributs et son identifiant devient la clé primaire."
+  },
+  {
+    "cat": "🗄️ MCD / MLD",
+    "q": "Que devient l’identifiant d’une entité lors du passage au MLD ?",
+    "opts": [
+      "Une clé primaire",
+      "Une clé étrangère systématiquement",
+      "Une vue",
+      "Une contrainte CHECK"
+    ],
+    "a": 0,
+    "exp": "L’identifiant de l’entité devient la clé primaire de la relation correspondante."
+  },
+  {
+    "cat": "🗄️ MCD / MLD",
+    "q": "Dans une association binaire (X,1) — (X,n), que fait-on au MLD ?",
+    "opts": [
+      "On ajoute la clé du côté (X,n) comme clé étrangère du côté (X,1)",
+      "On supprime les deux entités",
+      "On crée toujours trois nouvelles tables",
+      "On ne conserve aucune clé"
+    ],
+    "a": 0,
+    "exp": "La clé primaire de la relation du côté (X,n) devient une clé étrangère dans la relation du côté (X,1)."
+  },
+  {
+    "cat": "🗄️ MCD / MLD",
+    "q": "Une association (X,n) — (X,n) se traduit principalement par :",
+    "opts": [
+      "Une nouvelle relation d’association",
+      "La suppression d’une entité",
+      "Une seule clé étrangère dans une table au hasard",
+      "Aucune modification"
+    ],
+    "a": 0,
+    "exp": "Une relation supplémentaire est créée avec une clé primaire composée des identifiants des deux entités."
+  },
+  {
+    "cat": "🗄️ MCD / MLD",
+    "q": "Dans COMPOSE(id_Commande, id_Produit, quantité), quelle est la clé primaire ?",
+    "opts": [
+      "id_Commande uniquement",
+      "id_Produit uniquement",
+      "id_Commande + id_Produit",
+      "quantité"
+    ],
+    "a": 2,
+    "exp": "La relation d’association COMPOSE possède une clé primaire composée de id_Commande et id_Produit."
+  },
+  {
+    "cat": "🗄️ MCD / MLD",
+    "q": "Pour une association n-aire, la nouvelle relation possède généralement comme clé primaire :",
+    "opts": [
+      "La concaténation des identifiants des entités participantes",
+      "Le nom de l’association seulement",
+      "Une valeur aléatoire sans lien avec les entités",
+      "Aucune clé primaire"
+    ],
+    "a": 0,
+    "exp": "La clé primaire de la relation créée concatène les identifiants des entités qui participent à l’association."
+  },
+  {
+    "cat": "🗄️ MCD / MLD",
+    "q": "Dans une association réflexive (X,1) — (X,n), la clé étrangère peut :",
+    "opts": [
+      "Référencer une autre ligne de la même table",
+      "Référencer uniquement une base externe",
+      "Être supprimée",
+      "Remplacer toutes les propriétés"
+    ],
+    "a": 0,
+    "exp": "Dans le cas hiérarchique EMPLOYE, id_Sup_Hierarchique référence l’identifiant d’un autre employé de la même table."
+  },
+  {
+    "cat": "🗄️ MCD / MLD",
+    "q": "Dans l’exemple familial réflexif (n,n), quelle relation est créée ?",
+    "opts": [
+      "PARENTE(id_Parent, id_Enfant)",
+      "EMPLOYE(id_Employe)",
+      "COMMANDE(id_Commande)",
+      "ANIMATEUR(id_Animateur)"
+    ],
+    "a": 0,
+    "exp": "Le cas réflexif plusieurs-à-plusieurs crée la relation PARENTE avec les identifiants du parent et de l’enfant."
+  },
+  {
+    "cat": "🗄️ MCD / MLD",
+    "q": "Dans le cas (0,1) — (1,1) ANIMATEUR / GROUPE, où place-t-on id_Animateur ?",
+    "opts": [
+      "Comme clé étrangère dans GROUPE",
+      "Comme clé étrangère dans une table PRODUIT",
+      "On le supprime",
+      "Dans une relation COMPOSE"
+    ],
+    "a": 0,
+    "exp": "Le groupe, qui doit être encadré par un animateur, reçoit id_Animateur comme clé étrangère."
+  },
+  {
+    "cat": "🗄️ MCD / MLD",
+    "q": "MLD signifie :",
+    "opts": [
+      "Modèle Logique de Données",
+      "Méthode Locale de Développement",
+      "Modèle Linéaire de Distribution",
+      "Module Logique de Débogage"
+    ],
+    "a": 0,
+    "exp": "MLD signifie Modèle Logique de Données ; le support parle aussi de MLDR pour Modèle Logique de Données Relationnelles."
+  }
+]);

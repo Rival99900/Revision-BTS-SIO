@@ -776,5 +776,155 @@ window.SECOND_YEAR_QUESTIONS = [
       "minWords": 10,
       "label": "Distordu"
     }
-  }
+  },
+{
+  "year": 2,
+  "module": "cge2",
+  "cat": "📚 CGE 2e — Texte 2 — Dom Juan",
+  "type": "mcq",
+  "q": "Dans quel acte et quelle scène se situe l’extrait étudié de Dom Juan ?",
+  "opts": [
+    "Acte I, scène II",
+    "Acte II, scène I",
+    "Acte III, scène IV",
+    "Acte V, scène II"
+  ],
+  "answer": 0,
+  "exp": "L’extrait étudié est tiré de Dom Juan de Molière, acte I, scène II."
+},
+{
+  "year": 2,
+  "module": "cge2",
+  "cat": "📚 CGE 2e — Texte 2 — Dom Juan",
+  "type": "mcq",
+  "q": "Quels personnages confrontent leur vision de l’amour dans l’extrait ?",
+  "opts": [
+    "Dom Juan et Elvire",
+    "Dom Juan et Sganarelle",
+    "Sganarelle et Elvire",
+    "Dom Juan et son père"
+  ],
+  "answer": 1,
+  "exp": "Dom Juan et son valet Sganarelle défendent des points de vue antagonistes sur le sentiment amoureux."
+},
+{
+  "year": 2,
+  "module": "cge2",
+  "cat": "📚 CGE 2e — Texte 2 — Dom Juan",
+  "type": "mcq",
+  "q": "Quelle valeur Dom Juan condamne-t-il au début de sa tirade ?",
+  "opts": [
+    "Le courage",
+    "La fidélité",
+    "L’amitié",
+    "La richesse"
+  ],
+  "answer": 1,
+  "exp": "Dom Juan condamne la fidélité, qu’il présente comme un « faux honneur », puis fait l’éloge de l’inconstance."
+},
+{
+  "year": 2,
+  "module": "cge2",
+  "cat": "📚 CGE 2e — Texte 2 — Dom Juan",
+  "type": "mcq",
+  "q": "Que valorise Dom Juan à la place de la fidélité ?",
+  "opts": [
+    "Le silence",
+    "La solitude",
+    "L’inconstance et le changement",
+    "Le mariage"
+  ],
+  "answer": 2,
+  "exp": "Il valorise l’inconstance, le changement et le plaisir de nouvelles conquêtes."
+},
+{
+  "year": 2,
+  "module": "cge2",
+  "cat": "📚 CGE 2e — Texte 2 — Dom Juan",
+  "type": "mcq",
+  "q": "À quoi Dom Juan compare-t-il sa manière de séduire ?",
+  "opts": [
+    "À un commerce",
+    "À une conquête militaire",
+    "À une enquête",
+    "À un voyage religieux"
+  ],
+  "answer": 1,
+  "exp": "Dom Juan se compare aux conquérants et décrit la séduction à l’aide d’un vocabulaire de conquête et de victoire."
+},
+{
+  "year": 2,
+  "module": "cge2",
+  "cat": "📚 CGE 2e — Texte 2 — Dom Juan",
+  "type": "mcq",
+  "q": "Que révèle la technique de séduction de Dom Juan ?",
+  "opts": [
+    "Une volonté de protéger les autres",
+    "Un comportement manipulateur et mensonger",
+    "Une peur de parler",
+    "Une grande fidélité"
+  ],
+  "answer": 1,
+  "exp": "La technique de séduction met en évidence le caractère manipulateur et mensonger du personnage."
+},
+{
+  "year": 2,
+  "module": "cge2",
+  "cat": "📚 CGE 2e — Texte 2 — Dom Juan",
+  "type": "mcq",
+  "q": "Pourquoi peut-on qualifier Dom Juan d’autocentré ?",
+  "opts": [
+    "Il privilégie son plaisir sans se soucier des conséquences pour les autres",
+    "Il refuse toute relation amoureuse",
+    "Il cherche uniquement à protéger Sganarelle",
+    "Il veut renoncer au monde"
+  ],
+  "answer": 0,
+  "exp": "Il recherche son plaisir personnel et ne se préoccupe pas réellement des conséquences de ses actes sur les personnes séduites."
+},
+{
+  "year": 2,
+  "module": "cge2",
+  "cat": "📚 CGE 2e — Texte 2 — Dom Juan",
+  "type": "mcq",
+  "q": "Dans le cours, le mot « antagonistes » signifie que les deux points de vue sont :",
+  "opts": [
+    "Identiques",
+    "Opposés",
+    "Incomplets",
+    "Comiques"
+  ],
+  "answer": 1,
+  "exp": "Des positions antagonistes sont des positions qui s’opposent directement."
+},
+{
+  "year": 2,
+  "module": "cge2",
+  "cat": "📚 CGE 2e — Texte 2 — Dom Juan",
+  "type": "mcq",
+  "q": "Qu’est-ce qu’une tirade ?",
+  "opts": [
+    "Une didascalie",
+    "Une longue réplique d’un personnage",
+    "Une scène sans paroles",
+    "Un changement de décor"
+  ],
+  "answer": 1,
+  "exp": "Une tirade est une longue réplique prononcée par un personnage."
+},
+{
+  "year": 2,
+  "module": "cge2",
+  "cat": "📚 CGE 2e — Texte 2 — Dom Juan",
+  "type": "mcq",
+  "q": "Quel regard général le cours porte-t-il sur Dom Juan dans cet extrait ?",
+  "opts": [
+    "Un personnage radical, insatiable et manipulateur",
+    "Un personnage entièrement altruiste",
+    "Un personnage qui refuse de mentir",
+    "Un personnage passif et silencieux"
+  ],
+  "answer": 0,
+  "exp": "Le cours souligne son appétit insatiable de séduire, son usage du mensonge et son indifférence aux conséquences de ses actes."
+}
 ];

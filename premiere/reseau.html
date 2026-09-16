@@ -3,12 +3,12 @@
  <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width,initial-scale=1.0" name="viewport"/>
-  <meta content="R&eacute;visions BTS SIO 1re et 2e ann&eacute;e" name="description"/>
+  <meta content="Révisions BTS SIO 1re et 2e année" name="description"/>
   <title>
-   🌐 R&eacute;seau &amp; DNS
+   🌐 Réseau &amp; DNS
   </title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&amp;family=VT323&amp;family=Orbitron:wght@700;900&amp;display=swap" rel="stylesheet"/>
-  <link href="../assets/css/style.css" rel="stylesheet"/>
+  <link href="../assets/css/style.css?v=20260916-1" rel="stylesheet"/>
    <link rel="icon" type="image/svg+xml" href="../assets/img/site-logo.svg" />
   <link rel="shortcut icon" href="../assets/img/site-logo.svg" />
  </head>
@@ -17,20 +17,20 @@
    <div class="site-header">
     <div class="bbar"></div>
     <h1>
-     BTS SIO &mdash; R&Eacute;VISIONS
+     BTS SIO — RÉVISIONS
     </h1>
     <div class="sub">
-     1RE ANN&Eacute;E &mdash; R&Eacute;SEAU
+     1RE ANNÉE — RÉSEAU
     </div>
     <div class="tags">
      <span class="tag tg">
       BTS SIO
      </span>
      <span class="tag tb">
-      1re ann&eacute;e
+      1re année
      </span>
      <span class="tag tp">
-      2e ann&eacute;e
+      2e année
      </span>
      <span class="tag ta">
       Quiz interactifs
@@ -39,7 +39,7 @@
     <div class="prompt">
      C:\\BTS-SIO\REVISION&gt;
      <span>
-      &block;
+      █
      </span>
     </div>
    </div>
@@ -48,7 +48,7 @@
      ⌂ Accueil
     </a>
     <a class="navbtn quiz" href="../quiz.html">
-     🎯 Quiz g&eacute;n&eacute;ral
+     🎯 Quiz général
     </a>
     <a class="navbtn" href="../code-lab.html">
      &lt;/&gt; Code Lab
@@ -58,10 +58,10 @@
     <div class="hero">
      <div>
       <div class="hero-kicker">
-       1RE ANN&Eacute;E // R&Eacute;SEAU
+       1RE ANNÉE // RÉSEAU
       </div>
       <h2>
-       🌐 R&eacute;seau &amp; DNS
+       🌐 Réseau &amp; DNS
       </h2>
       <p>
        TCP/IP, adressage, routage, DNS et services
@@ -69,13 +69,13 @@
      </div>
      <div class="hero-actions">
       <button class="smallbtn" id="reviewBtn" onclick="setReviewed('1-reseau')">
-       &cir; Marquer r&eacute;vis&eacute;
+       ○ Marquer révisé
       </button>
       <button class="smallbtn" onclick="printPage()">
        🖨 Imprimer
       </button>
       <a class="smallbtn alt" href="../quiz.html?year=1&amp;module=reseau">
-       🎯 Quiz cibl&eacute;
+       🎯 Quiz ciblé
       </a>
      </div>
     </div>
@@ -87,7 +87,7 @@
       DNS
      </button>
      <button class="sb cy" onclick="showSub('reseau','attaques',this,'cy')">
-      Attaques r&eacute;seau
+      Attaques réseau
      </button>
     </div>
     DHCP
@@ -109,7 +109,7 @@
        <strong>
         attribution des adresses IP
        </strong>
-       aux h&ocirc;tes d'un r&eacute;seau. C'est une extension du protocole BOOTP.
+       aux hôtes d'un réseau. C'est une extension du protocole BOOTP.
       </p>
      </div>
      <div class="st cy">
@@ -126,18 +126,18 @@
          <b>
           adresse IP
          </b>
-         unique sur le r&eacute;seau
+         unique sur le réseau
         </li>
         <li>
          Le
          <b>
-          masque de sous-r&eacute;seau
+          masque de sous-réseau
          </b>
         </li>
         <li>
          La
          <b>
-          dur&eacute;e du bail
+          durée du bail
          </b>
          (lease time)
         </li>
@@ -151,7 +151,7 @@
         <li>
          Adresse de la
          <b>
-          passerelle par d&eacute;faut
+          passerelle par défaut
          </b>
         </li>
         <li>
@@ -167,7 +167,7 @@
          </b>
         </li>
         <li>
-         Nom de domaine, NTP&hellip;
+         Nom de domaine, NTP…
         </li>
        </ul>
       </div>
@@ -179,32 +179,32 @@
         <li>
          Distribution d'adresses
          <b>
-          centralis&eacute;e
+          centralisée
          </b>
         </li>
         <li>
          Changement de plan d'adressage
          <b>
-          facilit&eacute;
+          facilité
          </b>
         </li>
         <li>
          Gestion des postes
          <b>
-          itin&eacute;rants
+          itinérants
          </b>
         </li>
         <li>
-         &Eacute;vite la configuration manuelle poste par poste
+         Évite la configuration manuelle poste par poste
         </li>
         <li>
-         &Eacute;vite les conflits d'adresses IP
+         Évite les conflits d'adresses IP
         </li>
        </ul>
       </div>
      </div>
      <div class="st cy">
-      Fonctionnement DHCP &mdash; Les 4 phases (DORA)
+      Fonctionnement DHCP — Les 4 phases (DORA)
      </div>
      <div class="hf" style="flex-wrap:wrap;gap:8px">
       <div class="hfb" style="border-color:var(--cyan)">
@@ -212,7 +212,7 @@
         1. DHCPDISCOVER
        </div>
        <div class="hfl">
-        Client &rarr; broadcast
+        Client → broadcast
         <br/>
         src: 0.0.0.0 / dst: 255.255.255.255
         <br/>
@@ -220,44 +220,44 @@
        </div>
       </div>
       <div class="hfa">
-       &rarr;
+       →
       </div>
       <div class="hfb" style="border-color:var(--cyan)">
        <div class="hfv cy" style="font-size:.73rem">
         2. DHCPOFFER
        </div>
        <div class="hfl">
-        Serveur &rarr; propose une IP
+        Serveur → propose une IP
         <br/>
-        + dur&eacute;e du bail
+        + durée du bail
         <br/>
         + adresse IP du serveur
        </div>
       </div>
       <div class="hfa">
-       &rarr;
+       →
       </div>
       <div class="hfb" style="border-color:var(--cyan)">
        <div class="hfv cy" style="font-size:.73rem">
         3. DHCPREQUEST
        </div>
        <div class="hfl">
-        Client &rarr; accepte la 1re offre
+        Client → accepte la 1re offre
         <br/>
         (broadcast pour informer tous les serveurs)
        </div>
       </div>
       <div class="hfa">
-       &rarr;
+       →
       </div>
       <div class="hfb" style="border-color:var(--cyan)">
        <div class="hfv cy" style="font-size:.73rem">
         4. DHCPACK
        </div>
        <div class="hfl">
-        Serveur &rarr; confirme l'attribution
+        Serveur → confirme l'attribution
         <br/>
-        L'adresse est marqu&eacute;e "utilis&eacute;e"
+        L'adresse est marquée "utilisée"
        </div>
       </div>
      </div>
@@ -266,11 +266,10 @@
       <strong>
        Pourquoi le broadcast ?
       </strong>
-      Le client n'ayant pas encore d'IP, il utilise son adresse MAC et envoie en broadcast Ethernet (
-      <code>
+      Le client n'ayant pas encore d'IP, il utilise son adresse MAC et envoie en broadcast Ethernet ( <code>
        ff:ff:ff:ff:ff:ff
       </code>
-      ). Tous les serveurs DHCP du r&eacute;seau re&ccedil;oivent la demande.
+      ). Tous les serveurs DHCP du réseau reçoivent la demande.
      </div>
      <div class="st cy">
       Renouvellement du bail
@@ -278,26 +277,26 @@
      <div class="cg">
       <div class="card cy">
        <h3>
-        &Agrave; 50% du bail
+        À 50% du bail
        </h3>
        <p>
         Le client envoie un
         <b>
          DHCPREQUEST unicast
         </b>
-        directement au serveur qui lui a attribu&eacute; l'adresse pour renouveler le bail.
+        directement au serveur qui lui a attribué l'adresse pour renouveler le bail.
        </p>
       </div>
       <div class="card bl">
        <h3>
-        &Agrave; 87,5% du bail
+        À 87,5% du bail
        </h3>
        <p>
-        Si le renouvellement &eacute;choue &agrave; 50 %, le client contacte
+        Si le renouvellement échoue à 50 %, le client contacte
         <b>
          n'importe quel serveur DHCP
         </b>
-        en broadcast. R&eacute;ponse possible :
+        en broadcast. Réponse possible :
         <b>
          DHCPACK
         </b>
@@ -310,14 +309,14 @@
       </div>
       <div class="card am">
        <h3>
-        &Agrave; expiration du bail
+        À expiration du bail
        </h3>
        <p>
         Le client doit
         <b>
          cesser d'utiliser l'adresse IP
         </b>
-        imm&eacute;diatement et relancer le processus DORA depuis le d&eacute;but.
+        immédiatement et relancer le processus DORA depuis le début.
        </p>
       </div>
      </div>
@@ -327,9 +326,9 @@
      <div class="code cy"># Commandes Windows (ipconfig) :
 ipconfig /all       # affiche toute la configuration IP
 ipconfig /renew     # envoie DHCPREQUEST (renouvellement du bail)
-ipconfig /release   # envoie DHCPRELEASE (lib&egrave;re l'adresse)
+ipconfig /release   # envoie DHCPRELEASE (libère l'adresse)
 
-# &Eacute;quivalent Linux :
+# Équivalent Linux :
 ifconfig
 dhclient -r         # release
 dhclient            # renew</div>
@@ -338,11 +337,11 @@ dhclient            # renew</div>
       <strong>
        Agent relais DHCP
       </strong>
-      : quand le serveur DHCP est sur un autre sous-r&eacute;seau (le broadcast ne traverse pas les routeurs), un
+      : quand le serveur DHCP est sur un autre sous-réseau (le broadcast ne traverse pas les routeurs), un
       <strong>
        agent relais
       </strong>
-      (configur&eacute; sur le routeur) intercepte le DHCPDISCOVER et le transmet en unicast au serveur DHCP distant.
+      (configuré sur le routeur) intercepte le DHCPDISCOVER et le transmet en unicast au serveur DHCP distant.
      </div>
     </div>
     DNS
@@ -360,19 +359,17 @@ dhclient            # renew</div>
        <strong>
         RFC 1034 &amp; 1035
        </strong>
-       ) est une base de donn&eacute;es
+       ) est une base de données
        <strong>
-        distribu&eacute;e et hi&eacute;rarchis&eacute;e
+        distribuée et hiérarchisée
        </strong>
-       qui r&eacute;sout les noms de domaine en adresses IP. Les clients DNS sont des
+       qui résout les noms de domaine en adresses IP. Les clients DNS sont des
        <strong>
         solveurs (resolvers)
-       </strong>
-       , les serveurs sont des
+       </strong>, les serveurs sont des
        <strong>
         serveurs de noms (name servers)
-       </strong>
-       .
+       </strong>.
       </p>
      </div>
      <div class="st cy">
@@ -381,39 +378,36 @@ dhclient            # renew</div>
      <div class="cg">
       <div class="card cy">
        <h3>
-        Nom d'h&ocirc;te
+        Nom d'hôte
        </h3>
        <p>
-        Alias assign&eacute; &agrave; un ordinateur pour l'identifier sur TCP/IP. Jusqu'&agrave;
+        Alias assigné à un ordinateur pour l'identifier sur TCP/IP. Jusqu'à
         <b>
-         256 caract&egrave;res
-        </b>
-        . Un h&ocirc;te peut avoir
+         256 caractères
+        </b>. Un hôte peut avoir
         <b>
-         plusieurs noms d'h&ocirc;tes
-        </b>
-        .
+         plusieurs noms d'hôtes
+        </b>.
        </p>
       </div>
       <div class="card bl">
        <h3>
-        Besoin de r&eacute;solution
+        Besoin de résolution
        </h3>
        <p>
-        Pour envoyer une trame r&eacute;seau, il faut l'
+        Pour envoyer une trame réseau, il faut l'
         <b>
          adresse MAC
         </b>
-        (via ARP), qui n&eacute;cessite l'
+        (via ARP), qui nécessite l'
         <b>
          adresse IP
-        </b>
-        . Or l'utilisateur travaille avec des noms &rarr; besoin de conversion nom &rarr; IP.
+        </b>. Or l'utilisateur travaille avec des noms → besoin de conversion nom → IP.
        </p>
       </div>
       <div class="card am">
        <h3>
-        4 m&eacute;thodes de r&eacute;solution
+        4 méthodes de résolution
        </h3>
        <ul>
         <li>
@@ -434,13 +428,13 @@ dhclient            # renew</div>
          <b>
           DNS
          </b>
-         &larr; la solution TCP/IP
+         ← la solution TCP/IP
         </li>
        </ul>
       </div>
      </div>
      <div class="st cy">
-      Hi&eacute;rarchie de domaines DNS
+      Hiérarchie de domaines DNS
      </div>
      <div class="cg">
       <div class="card cy">
@@ -452,68 +446,62 @@ dhclient            # renew</div>
          <b>
           Domaine racine
          </b>
-         : repr&eacute;sent&eacute; par un point (.)
+         : représenté par un point (.)
         </li>
         <li>
          <b>
           TLD (Top Level Domain)
          </b>
-         : 1er niveau (.fr, .com&hellip;)
+         : 1er niveau (.fr,.com…)
         </li>
         <li>
          <b>
           Sous-domaines
          </b>
-         : niveaux inf&eacute;rieurs
+         : niveaux inférieurs
         </li>
         <li>
          Dernier niveau : le
          <b>
-          nom d'h&ocirc;te
+          nom d'hôte
          </b>
         </li>
        </ul>
       </div>
       <div class="card bl">
        <h3>
-        TLD g&eacute;n&eacute;riques (gTLD)
+        TLD génériques (gTLD)
        </h3>
        <ul>
         <li>
-         <b>
-          .com
+         <b>.com
          </b>
-         &mdash; Entreprises commerciales
+         — Entreprises commerciales
         </li>
         <li>
-         <b>
-          .edu
+         <b>.edu
          </b>
-         &mdash; &Eacute;ducation
+         — Éducation
         </li>
         <li>
-         <b>
-          .gov
+         <b>.gov
          </b>
-         &mdash; Gouvernement am&eacute;ricain
+         — Gouvernement américain
         </li>
         <li>
-         <b>
-          .org
+         <b>.org
          </b>
-         &mdash; Organisations non commerciales
+         — Organisations non commerciales
         </li>
         <li>
-         <b>
-          .net
+         <b>.net
          </b>
-         &mdash; Fournisseurs r&eacute;seaux
+         — Fournisseurs réseaux
         </li>
         <li>
-         <b>
-          .mil
+         <b>.mil
          </b>
-         &mdash; Arm&eacute;e am&eacute;ricaine
+         — Armée américaine
         </li>
        </ul>
       </div>
@@ -523,68 +511,58 @@ dhclient            # renew</div>
        </h3>
        <ul>
         <li>
-         <b>
-          .biz
+         <b>.biz
          </b>
-         &mdash; Business
+         — Business
         </li>
         <li>
-         <b>
-          .info
+         <b>.info
          </b>
-         &mdash; Information
+         — Information
         </li>
         <li>
-         <b>
-          .pro
+         <b>.pro
          </b>
-         &mdash; Professions r&eacute;glement&eacute;es
+         — Professions réglementées
         </li>
         <li>
-         <b>
-          .museum
+         <b>.museum
          </b>
          /
-         <b>
-          .coop
+         <b>.coop
          </b>
          /
-         <b>
-          .name
+         <b>.name
          </b>
-         &hellip;
+         …
         </li>
        </ul>
       </div>
       <div class="card">
        <h3>
-        TLD g&eacute;ographiques (ccTLD)
+        TLD géographiques (ccTLD)
        </h3>
        <p>
         Codes de pays ISO 3166 :
-        <b>
-         .fr
+        <b>.fr
         </b>
         France,
-        <b>
-         .uk
+        <b>.uk
         </b>
         Royaume-Uni,
-        <b>
-         .de
+        <b>.de
         </b>
         Allemagne,
-        <b>
-         .jp
+        <b>.jp
         </b>
-        Japon&hellip;
+        Japon…
         <br/>
         <br/>
-        Domaine sp&eacute;cial :
+        Domaine spécial :
         <b>
          in-addr.arpa
         </b>
-        &rarr; r&eacute;solution inverse (IP &rarr; nom)
+        → résolution inverse (IP → nom)
        </p>
       </div>
      </div>
@@ -593,19 +571,18 @@ dhclient            # renew</div>
       <strong>
        FQDN (Fully Qualified Domain Name)
       </strong>
-      = nom d'h&ocirc;te + nom de domaine complet. Exemple :
+      = nom d'hôte + nom de domaine complet. Exemple :
       <code>
        montblanc.btsig.lmd.fr
       </code>
-      d&eacute;signe la machine
+      désigne la machine
       <strong>
        montblanc
       </strong>
       dans le domaine
       <strong>
        btsig.lmd.fr
-      </strong>
-      .
+      </strong>.
      </div>
      <div class="st cy">
       Types de serveurs DNS
@@ -616,15 +593,14 @@ dhclient            # renew</div>
         Serveur Primaire (Principal)
        </h3>
        <p>
-        G&egrave;re directement une ou plusieurs zones. Informations stock&eacute;es dans des
+        Gère directement une ou plusieurs zones. Informations stockées dans des
         <b>
          fichiers locaux
-        </b>
-        . Il a
+        </b>. Il a
         <b>
-         autorit&eacute;
+         autorité
         </b>
-        sur sa zone. Seul &agrave; pouvoir modifier les donn&eacute;es.
+        sur sa zone. Seul à pouvoir modifier les données.
        </p>
       </div>
       <div class="card bl">
@@ -632,19 +608,18 @@ dhclient            # renew</div>
         Serveur Secondaire
        </h3>
        <p>
-        Obtient ses donn&eacute;es via un
+        Obtient ses données via un
         <b>
          transfert de zone
         </b>
         depuis le serveur primaire. Fichiers en
         <b>
          lecture seule
-        </b>
-        . R&ocirc;le :
+        </b>. Rôle :
         <b>
-         tol&eacute;rance aux pannes
+         tolérance aux pannes
         </b>
-        + r&eacute;duction de charge sur le primaire.
+        + réduction de charge sur le primaire.
        </p>
       </div>
       <div class="card am">
@@ -654,43 +629,40 @@ dhclient            # renew</div>
        <p>
         N'a
         <b>
-         aucune autorit&eacute;
+         aucune autorité
         </b>
-        et ne fait aucun transfert de zone. Met en cache les r&eacute;solutions effectu&eacute;es. Int&eacute;r&ecirc;t : acc&eacute;l&egrave;re les requ&ecirc;tes, r&eacute;duit le trafic r&eacute;seau.
+        et ne fait aucun transfert de zone. Met en cache les résolutions effectuées. Intérêt : accélère les requêtes, réduit le trafic réseau.
        </p>
       </div>
       <div class="card">
        <h3>
-        Zone d'autorit&eacute;
+        Zone d'autorité
        </h3>
        <p>
-        Portion de l'arborescence DNS sous la responsabilit&eacute; d'un serveur. Un serveur peut g&eacute;rer
+        Portion de l'arborescence DNS sous la responsabilité d'un serveur. Un serveur peut gérer
         <b>
          plusieurs zones
-        </b>
-        , chacune stock&eacute;e dans un
+        </b>, chacune stockée dans un
         <b>
          fichier distinct
-        </b>
-        .
+        </b>.
        </p>
       </div>
      </div>
      <div class="st cy">
-      Resource Records (RR) &mdash; Types principaux
+      Resource Records (RR) — Types principaux
      </div>
      <div class="bq cy">
       <span class="qt">
        "
       </span>
       <p>
-       Chaque information &eacute;l&eacute;mentaire de la base DNS est un
+       Chaque information élémentaire de la base DNS est un
        <strong>
         Resource Record (RR)
-       </strong>
-       . Format :
+       </strong>. Format :
        <code>
-        [domaine] [ttl] [classe] type donn&eacute;es
+        [domaine] [ttl] [classe] type données
        </code>
       </p>
      </div>
@@ -703,7 +675,7 @@ dhclient            # renew</div>
         Nom complet
        </th>
        <th>
-        R&ocirc;le
+        Rôle
        </th>
       </tr>
       <tr>
@@ -716,7 +688,7 @@ dhclient            # renew</div>
         Start Of Authority
        </td>
        <td>
-        Informations d'autorit&eacute; sur la zone : serveur primaire, n&deg; de s&eacute;rie, intervalles de rafra&icirc;chissement et TTL minimum
+        Informations d'autorité sur la zone : serveur primaire, n° de série, intervalles de rafraîchissement et TTL minimum
        </td>
       </tr>
       <tr>
@@ -733,7 +705,7 @@ dhclient            # renew</div>
         <b>
          adresse IPv4
         </b>
-        &agrave; un nom de machine (r&eacute;solution directe nom &rarr; IP)
+        à un nom de machine (résolution directe nom → IP)
        </td>
       </tr>
       <tr>
@@ -750,7 +722,7 @@ dhclient            # renew</div>
         <b>
          IPv6
         </b>
-        &agrave; un nom de machine
+        à un nom de machine
        </td>
       </tr>
       <tr>
@@ -763,7 +735,7 @@ dhclient            # renew</div>
         Name Server
        </td>
        <td>
-        Sp&eacute;cifie le ou les serveurs de noms de la zone
+        Spécifie le ou les serveurs de noms de la zone
        </td>
       </tr>
       <tr>
@@ -780,7 +752,7 @@ dhclient            # renew</div>
         <b>
          alias
         </b>
-        au nom canonique d'un h&ocirc;te (point&eacute; par un enregistrement A)
+        au nom canonique d'un hôte (pointé par un enregistrement A)
        </td>
       </tr>
       <tr>
@@ -793,7 +765,7 @@ dhclient            # renew</div>
         Pointer
        </td>
        <td>
-        R&eacute;solution inverse : retrouver un nom &agrave; partir d'une IP (utilis&eacute; pour la s&eacute;curit&eacute;)
+        Résolution inverse : retrouver un nom à partir d'une IP (utilisé pour la sécurité)
        </td>
       </tr>
       <tr>
@@ -806,7 +778,7 @@ dhclient            # renew</div>
         Mail Exchanger
        </td>
        <td>
-        D&eacute;signe le serveur SMTP charg&eacute; de recevoir les emails du domaine
+        Désigne le serveur SMTP chargé de recevoir les emails du domaine
        </td>
       </tr>
      </table></div>
@@ -815,15 +787,14 @@ dhclient            # renew</div>
       <strong>
        TTL (Time To Live)
       </strong>
-      : dur&eacute;e en secondes pendant laquelle une r&eacute;solution peut rester en cache. Plus il est long, moins il y a de requ&ecirc;tes mais plus les changements mettent du temps &agrave; se propager.
+      : durée en secondes pendant laquelle une résolution peut rester en cache. Plus il est long, moins il y a de requêtes mais plus les changements mettent du temps à se propager.
      </div>
      <div class="st cy">
       Fichiers de configuration DNS
      </div>
      <div class="code cy"># === Fichier named.hosts (zone btsig.lmd.fr) ===
-@ IN SOA bach.btsig.lmd.fr Daniel.Dennet.bach.btsig.lmd.fr (
-    32        ; num&eacute;ro de s&eacute;rie (incr&eacute;ment&eacute; &agrave; chaque modification)
-    86400     ; rafra&icirc;chissement : 1 fois par jour
+@ IN SOA bach.btsig.lmd.fr Daniel.Dennet.bach.btsig.lmd.fr ( 32        ; numéro de série (incrémenté à chaque modification)
+    86400     ; rafraîchissement : 1 fois par jour
     3600      ; tentatives de retry : 1 heure
     3600000   ; expiration : 42 jours
     604800    ; TTL minimum : 1 semaine
@@ -833,18 +804,18 @@ dhclient            # renew</div>
 Bach   IN A   200.100.40.11      ; IP de la machine Bach
 Escher IN A   200.100.40.12      ; IP de la machine Escher
 Godel  IN A   200.100.40.10      ; IP de la machine Godel
-www    IN CNAME escher           ; alias www &rarr; escher
-ftp    IN CNAME Godel            ; alias ftp &rarr; Godel</div>
-     <div class="code cy"># === Fichier d'amor&ccedil;age named.boot (BIND) ===
+www    IN CNAME escher           ; alias www → escher
+ftp    IN CNAME Godel            ; alias ftp → Godel</div>
+     <div class="code cy"># === Fichier d'amorçage named.boot (BIND) ===
 Directory  c:\winnts\system32\dns
-Cache      .              named.ca    ; serveurs racine Internet
+Cache.              named.ca    ; serveurs racine Internet
 Primary    btsig.lmd.fr   named.hosts ; zone primaire de ce serveur
 
-# === Commandes de v&eacute;rification ===
-nslookup montblanc.btsig.lmd.fr   # r&eacute;solution directe (nom &rarr; IP)
-nslookup 200.100.40.11             # r&eacute;solution inverse (IP &rarr; nom)</div>
+# === Commandes de vérification ===
+nslookup montblanc.btsig.lmd.fr   # résolution directe (nom → IP)
+nslookup 200.100.40.11             # résolution inverse (IP → nom)</div>
      <div class="st cy">
-      Int&eacute;gration DNS-WINS (environnement Windows)
+      Intégration DNS-WINS (environnement Windows)
      </div>
      <div class="cg">
       <div class="card cy">
@@ -870,7 +841,7 @@ nslookup 200.100.40.11             # r&eacute;solution inverse (IP &rarr; nom)</
         </b>
         (enregistrements automatiques).
         <br/>
-        Les deux sont compl&eacute;mentaires dans un environnement Microsoft.
+        Les deux sont complémentaires dans un environnement Microsoft.
        </p>
       </div>
       <div class="card bl">
@@ -882,16 +853,16 @@ nslookup 200.100.40.11             # r&eacute;solution inverse (IP &rarr; nom)</
          Client interroge le serveur DNS
         </li>
         <li>
-         DNS cherche dans sa base &rarr; nom non trouv&eacute;
+         DNS cherche dans sa base → nom non trouvé
         </li>
         <li>
-         DNS convertit la partie h&ocirc;te en nom NetBIOS
+         DNS convertit la partie hôte en nom NetBIOS
         </li>
         <li>
          DNS interroge le serveur WINS
         </li>
         <li>
-         WINS conna&icirc;t le nom &rarr; retourne l'adresse IP au DNS
+         WINS connaît le nom → retourne l'adresse IP au DNS
         </li>
         <li>
          DNS transmet l'IP au client
@@ -900,7 +871,7 @@ nslookup 200.100.40.11             # r&eacute;solution inverse (IP &rarr; nom)</
       </div>
      </div>
     </div>
-    ATTAQUES R&Eacute;SEAU
+    ATTAQUES RÉSEAU
     <div class="sc" id="reseau-attaques">
      <div class="bq cy">
       <span class="qt">
@@ -909,13 +880,13 @@ nslookup 200.100.40.11             # r&eacute;solution inverse (IP &rarr; nom)</
       <p>
        Une
        <strong>
-        attaque par D&eacute;ni de Service (DoS)
+        attaque par Déni de Service (DoS)
        </strong>
-       vise &agrave; rendre indisponible pendant un temps ind&eacute;termin&eacute; les services ou ressources d'une organisation, sans n&eacute;cessairement acc&eacute;der aux donn&eacute;es.
+       vise à rendre indisponible pendant un temps indéterminé les services ou ressources d'une organisation, sans nécessairement accéder aux données.
       </p>
      </div>
      <div class="st cy">
-      Attaques DoS &mdash; Descriptions d&eacute;taill&eacute;es
+      Attaques DoS — Descriptions détaillées
      </div>
      <div class="cg">
       <div class="card cy">
@@ -927,25 +898,24 @@ nslookup 200.100.40.11             # r&eacute;solution inverse (IP &rarr; nom)</
         <b>
          Three-Ways Handshake TCP
         </b>
-        (SYN &rarr; SYN/ACK &rarr; ACK).
+        (SYN → SYN/ACK → ACK).
         <br/>
         L'attaquant envoie des milliers de paquets SYN avec des
         <b>
-         IP sources invalides ou usurp&eacute;es
-        </b>
-        . La cible attend des ACK qui n'arrivent jamais &rarr; file d'attente de connexions satur&eacute;e &rarr; plantage ou indisponibilit&eacute;.
+         IP sources invalides ou usurpées
+        </b>. La cible attend des ACK qui n'arrivent jamais → file d'attente de connexions saturée → plantage ou indisponibilité.
        </p>
       </div>
       <div class="card bl">
        <h3>
-        Smurf &mdash; Attaque par r&eacute;flexion
+        Smurf — Attaque par réflexion
        </h3>
        <p>
-        L'attaquant envoie un ping ICMP &agrave; l'
+        L'attaquant envoie un ping ICMP à l'
         <b>
-         adresse broadcast d'un r&eacute;seau
+         adresse broadcast d'un réseau
         </b>
-        en falsifiant l'IP source (= IP de la cible). Toutes les machines du r&eacute;seau r&eacute;pondent en m&ecirc;me temps &agrave; la cible &rarr; saturation du lien.
+        en falsifiant l'IP source (= IP de la cible). Toutes les machines du réseau répondent en même temps à la cible → saturation du lien.
        </p>
       </div>
       <div class="card am">
@@ -953,28 +923,28 @@ nslookup 200.100.40.11             # r&eacute;solution inverse (IP &rarr; nom)</
         Ping of Death
        </h3>
        <p>
-        Envoie un datagramme IP dont la taille exc&egrave;de
+        Envoie un datagramme IP dont la taille excède
         <b>
          65 536 octets
         </b>
-        (taille maximale autoris&eacute;e par IP). Lors du r&eacute;assemblage &rarr; d&eacute;passement de tampon &rarr; plantage.
+        (taille maximale autorisée par IP). Lors du réassemblage → dépassement de tampon → plantage.
         <span class="tag tg">
-         Syst&egrave;mes r&eacute;cents non vuln&eacute;rables
+         Systèmes récents non vulnérables
         </span>
        </p>
       </div>
       <div class="card rd">
        <h3>
-        Teardrop &mdash; Fragmentation
+        Teardrop — Fragmentation
        </h3>
        <p>
-        Ins&egrave;re des
+        Insère des
         <b>
-         informations de d&eacute;calage (offset) erron&eacute;es
+         informations de décalage (offset) erronées
         </b>
-        dans des paquets IP fragment&eacute;s. Lors du r&eacute;assemblage c&ocirc;t&eacute; destination &rarr; vides ou chevauchements &rarr; instabilit&eacute; et plantage.
+        dans des paquets IP fragmentés. Lors du réassemblage côté destination → vides ou chevauchements → instabilité et plantage.
         <span class="tag tg">
-         Syst&egrave;mes r&eacute;cents non vuln&eacute;rables
+         Systèmes récents non vulnérables
         </span>
        </p>
       </div>
@@ -985,11 +955,11 @@ nslookup 200.100.40.11             # r&eacute;solution inverse (IP &rarr; nom)</
        <p>
         Envoie un paquet avec la
         <b>
-         m&ecirc;me adresse IP et le m&ecirc;me port
+         même adresse IP et le même port
         </b>
-        en source ET en destination. La machine tente de r&eacute;pondre &agrave; elle-m&ecirc;me ind&eacute;finiment &rarr; boucle &rarr; plantage.
+        en source ET en destination. La machine tente de répondre à elle-même indéfiniment → boucle → plantage.
         <span class="tag tg">
-         Syst&egrave;mes r&eacute;cents non vuln&eacute;rables
+         Systèmes récents non vulnérables
         </span>
        </p>
       </div>
@@ -1002,16 +972,16 @@ nslookup 200.100.40.11             # r&eacute;solution inverse (IP &rarr; nom)</
         <b>
          ARP
         </b>
-        (r&eacute;solution IP &rarr; MAC). L'attaquant envoie des r&eacute;ponses ARP falsifi&eacute;es aux deux victimes en associant sa propre MAC &agrave; leurs IP. Les deux victimes envoient tout leur trafic &agrave; l'attaquant &rarr;
+        (résolution IP → MAC). L'attaquant envoie des réponses ARP falsifiées aux deux victimes en associant sa propre MAC à leurs IP. Les deux victimes envoient tout leur trafic à l'attaquant →
         <b>
          Man-in-the-Middle
         </b>
-        : &eacute;coute, modification.
+        : écoute, modification.
        </p>
       </div>
      </div>
      <div class="st cy">
-      Tableau r&eacute;capitulatif des attaques
+      Tableau récapitulatif des attaques
      </div>
      <div class="table-scroll"><table class="tbl cy">
       <tr>
@@ -1019,10 +989,10 @@ nslookup 200.100.40.11             # r&eacute;solution inverse (IP &rarr; nom)</
         Attaque
        </th>
        <th>
-        Protocole exploit&eacute;
+        Protocole exploité
        </th>
        <th>
-        M&eacute;canisme
+        Mécanisme
        </th>
       </tr>
       <tr>
@@ -1041,14 +1011,14 @@ nslookup 200.100.40.11             # r&eacute;solution inverse (IP &rarr; nom)</
       <tr>
        <td>
         <span class="cn">
-         Smurf (R&eacute;flexion)
+         Smurf (Réflexion)
         </span>
        </td>
        <td>
         ICMP + Broadcast
        </td>
        <td>
-        Amplification par broadcast, IP source usurp&eacute;e = IP de la cible
+        Amplification par broadcast, IP source usurpée = IP de la cible
        </td>
       </tr>
       <tr>
@@ -1061,7 +1031,7 @@ nslookup 200.100.40.11             # r&eacute;solution inverse (IP &rarr; nom)</
         ICMP / IP
        </td>
        <td>
-        Datagramme de taille &gt; 65 536 octets &rarr; buffer overflow au r&eacute;assemblage
+        Datagramme de taille &gt; 65 536 octets → buffer overflow au réassemblage
        </td>
       </tr>
       <tr>
@@ -1074,7 +1044,7 @@ nslookup 200.100.40.11             # r&eacute;solution inverse (IP &rarr; nom)</
         IP (fragmentation)
        </td>
        <td>
-        Offset erron&eacute; dans les fragments &rarr; chevauchement au r&eacute;assemblage
+        Offset erroné dans les fragments → chevauchement au réassemblage
        </td>
       </tr>
       <tr>
@@ -1087,7 +1057,7 @@ nslookup 200.100.40.11             # r&eacute;solution inverse (IP &rarr; nom)</
         TCP/IP
        </td>
        <td>
-        IP source = IP destination avec m&ecirc;me port &rarr; boucle infinie
+        IP source = IP destination avec même port → boucle infinie
        </td>
       </tr>
       <tr>
@@ -1100,7 +1070,7 @@ nslookup 200.100.40.11             # r&eacute;solution inverse (IP &rarr; nom)</
         ARP (couche 2)
        </td>
        <td>
-        Cache ARP empoisonn&eacute; &rarr; man-in-the-middle entre deux h&ocirc;tes
+        Cache ARP empoisonné → man-in-the-middle entre deux hôtes
        </td>
       </tr>
      </table></div>
@@ -1114,13 +1084,13 @@ nslookup 200.100.40.11             # r&eacute;solution inverse (IP &rarr; nom)</
        </h4>
        <ul>
         <li>
-         Envoie des paquets sur le r&eacute;seau
+         Envoie des paquets sur le réseau
         </li>
         <li>
-         D&eacute;tectable par IDS/firewall
+         Détectable par IDS/firewall
         </li>
         <li>
-         Plus d'informations r&eacute;colt&eacute;es
+         Plus d'informations récoltées
         </li>
         <li>
          Ex : Nmap, scanner de ports
@@ -1133,10 +1103,10 @@ nslookup 200.100.40.11             # r&eacute;solution inverse (IP &rarr; nom)</
        </h4>
        <ul>
         <li>
-         &Eacute;coute uniquement le trafic existant
+         Écoute uniquement le trafic existant
         </li>
         <li>
-         Ind&eacute;tectable (pas d'&eacute;mission)
+         Indétectable (pas d'émission)
         </li>
         <li>
          Moins d'informations mais discret
@@ -1149,20 +1119,19 @@ nslookup 200.100.40.11             # r&eacute;solution inverse (IP &rarr; nom)</
      </div>
     </div>
     <div class="source-note">
-     R&eacute;f&eacute;rence p&eacute;dagogique :
+     Référence pédagogique :
      <b>
       BTS-SIO-Fiches.html
-     </b>
-     . Cette fiche reprend les notions de 1re ann&eacute;e ; la CEJM d&eacute;taill&eacute;e est accessible dans ses chapitres d&eacute;di&eacute;s.
+     </b>. Cette fiche reprend les notions de 1re année ; la CEJM détaillée est accessible dans ses chapitres dédiés.
     </div>
    </main>
    <div class="footer">
     <a href="../index.html">
-     &larr; Retour au tableau de bord
+     ← Retour au tableau de bord
     </a>
    </div>
   </div>
-  <script src="../assets/js/common.js">
+  <script src="../assets/js/common.js?v=20260916-1">
   </script>
  </body>
 </html>

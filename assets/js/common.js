@@ -23,6 +23,8 @@ function showSub(mod, id, btn) {
   if (btn) {
     btn.classList.add('a');
   }
+
+  updateSectionSteppers(mod);
 }
 
 function printPage() {
@@ -137,3 +139,39 @@ function enhanceResponsiveTables() {
 }
 
 document.addEventListener('DOMContentLoaded', enhanceResponsiveTables);
+
+
+function updateSectionSteppers(prefix) {
+  document.querySelectorAll(`.section-stepper[data-prefix="${prefix}"]`).forEach((stepper) => {
+    const ids = (stepper.dataset.sections || '').split(',').map((v) => v.trim()).filter(Boolean);
+    if (!ids.length) return;
+    let index = ids.findIndex((id) => document.getElementById(`${prefix}-${id}`)?.classList.contains('a'));
+    if (index < 0) index = 0;
+    const status = stepper.querySelector('.step-status');
+    if (status) status.textContent = `${index + 1} / ${ids.length}`;
+    const prev = stepper.querySelector('.step-prev');
+    const next = stepper.querySelector('.step-next');
+    if (prev) prev.disabled = index === 0;
+    if (next) next.disabled = index === ids.length - 1;
+  });
+}
+
+function stepSection(button, direction) {
+  const stepper = button?.closest('.section-stepper');
+  if (!stepper) return;
+  const prefix = stepper.dataset.prefix;
+  const ids = (stepper.dataset.sections || '').split(',').map((v) => v.trim()).filter(Boolean);
+  if (!prefix || !ids.length) return;
+  let index = ids.findIndex((id) => document.getElementById(`${prefix}-${id}`)?.classList.contains('a'));
+  if (index < 0) index = 0;
+  const nextIndex = Math.max(0, Math.min(ids.length - 1, index + direction));
+  const id = ids[nextIndex];
+  const tabButton = Array.from(document.querySelectorAll('.stabs .sb')).find((b) => (b.getAttribute('onclick') || '').includes(`'${id}'`));
+  showSub(prefix, id, tabButton || null);
+  updateSectionSteppers(prefix);
+  document.querySelector('.stabs')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.section-stepper[data-prefix]').forEach((el) => updateSectionSteppers(el.dataset.prefix));
+});

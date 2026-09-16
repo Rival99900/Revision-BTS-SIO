@@ -3,12 +3,12 @@
  <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width,initial-scale=1.0" name="viewport"/>
-  <meta content="R&eacute;visions BTS SIO 1re et 2e ann&eacute;e" name="description"/>
+  <meta content="Révisions BTS SIO 1re et 2e année" name="description"/>
   <title>
    🐘 PHP
   </title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&amp;family=VT323&amp;family=Orbitron:wght@700;900&amp;display=swap" rel="stylesheet"/>
-  <link href="../assets/css/style.css" rel="stylesheet"/>
+  <link href="../assets/css/style.css?v=20260916-1" rel="stylesheet"/>
    <link rel="icon" type="image/svg+xml" href="../assets/img/site-logo.svg" />
   <link rel="shortcut icon" href="../assets/img/site-logo.svg" />
  </head>
@@ -17,20 +17,20 @@
    <div class="site-header">
     <div class="bbar"></div>
     <h1>
-     BTS SIO &mdash; R&Eacute;VISIONS
+     BTS SIO — RÉVISIONS
     </h1>
     <div class="sub">
-     1RE ANN&Eacute;E &mdash; D&Eacute;VELOPPEMENT WEB
+     1RE ANNÉE — DÉVELOPPEMENT WEB
     </div>
     <div class="tags">
      <span class="tag tg">
       BTS SIO
      </span>
      <span class="tag tb">
-      1re ann&eacute;e
+      1re année
      </span>
      <span class="tag tp">
-      2e ann&eacute;e
+      2e année
      </span>
      <span class="tag ta">
       Quiz interactifs
@@ -39,7 +39,7 @@
     <div class="prompt">
      C:\\BTS-SIO\REVISION&gt;
      <span>
-      &block;
+      █
      </span>
     </div>
    </div>
@@ -48,7 +48,7 @@
      ⌂ Accueil
     </a>
     <a class="navbtn quiz" href="../quiz.html">
-     🎯 Quiz g&eacute;n&eacute;ral
+     🎯 Quiz général
     </a>
     <a class="navbtn" href="../code-lab.html">
      &lt;/&gt; Code Lab
@@ -58,7 +58,7 @@
     <div class="hero">
      <div>
       <div class="hero-kicker">
-       1RE ANN&Eacute;E // D&Eacute;VELOPPEMENT WEB
+       1RE ANNÉE // DÉVELOPPEMENT WEB
       </div>
       <h2>
        🐘 PHP
@@ -69,13 +69,13 @@
      </div>
      <div class="hero-actions">
       <button class="smallbtn" id="reviewBtn" onclick="setReviewed('1-php')">
-       &cir; Marquer r&eacute;vis&eacute;
+       ○ Marquer révisé
       </button>
       <button class="smallbtn" onclick="printPage()">
        🖨 Imprimer
       </button>
       <a class="smallbtn alt" href="../quiz.html?year=1&amp;module=php">
-       🎯 Quiz cibl&eacute;
+       🎯 Quiz ciblé
       </a>
      </div>
     </div>
@@ -84,7 +84,7 @@
       Variables &amp; I/O
      </button>
      <button class="sb pu" onclick="showSub('php','types',this,'pu')">
-      Types &amp; Op&eacute;rateurs
+      Types &amp; Opérateurs
      </button>
      <button class="sb pu" onclick="showSub('php','cond',this,'pu')">
       Conditions
@@ -93,7 +93,7 @@
       Boucles
      </button>
      <button class="sb pu" onclick="showSub('php','tab',this,'pu')">
-      Tableaux &amp; Cha&icirc;nes
+      Tableaux &amp; Chaînes
      </button>
     </div>
     VARIABLES &amp; I/O
@@ -103,23 +103,20 @@
        "
       </span>
       <p>
-       Un script PHP est d&eacute;limit&eacute; par
+       Un script PHP est délimité par
        <strong>
         &lt;?php
        </strong>
        et
        <strong>
         ?&gt;
-       </strong>
-       . Les instructions sont s&eacute;par&eacute;es par des
+       </strong>. Les instructions sont séparées par des
        <strong>
         points-virgules
-       </strong>
-       . Les variables commencent toujours par
+       </strong>. Les variables commencent toujours par
        <strong>
         $
-       </strong>
-       .
+       </strong>.
       </p>
      </div>
      <div class="st pu">
@@ -128,33 +125,31 @@
      <div class="cg">
       <div class="card pu">
        <h3>
-        D&eacute;finition
+        Définition
        </h3>
        <ul>
         <li>
          Emplacement
          <b>
-          m&eacute;moire temporaire
+          mémoire temporaire
          </b>
-         nomm&eacute;
+         nommé
         </li>
         <li>
-         Une seule valeur &agrave; la fois
+         Une seule valeur à la fois
         </li>
         <li>
-         Nom commen&ccedil;ant par
+         Nom commençant par
          <b>
           $
          </b>
          :
          <code>
           $a
-         </code>
-         ,
+         </code>,
          <code>
           $nom
-         </code>
-         ,
+         </code>,
          <code>
           $compteur
          </code>
@@ -207,16 +202,16 @@
         <span class="tag tr2">
          print('$toto')
         </span>
-        &rarr; affiche
+        → affiche
         <b>
          $toto
         </b>
-        (litt&eacute;ral)
+        (littéral)
         <br/>
         <span class="tag tg">
          print("$toto")
         </span>
-        &rarr; affiche la
+        → affiche la
         <b>
          valeur
         </b>
@@ -231,15 +226,15 @@
         <b>
          simples
         </b>
-        sont litt&eacute;raux.
+        sont littéraux.
        </p>
       </div>
       <div class="card pu">
        <h3>
-        fgets(STDIN) &mdash; Saisie clavier
+        fgets(STDIN) — Saisie clavier
        </h3>
        <p>
-        Saisit une cha&icirc;ne depuis l'entr&eacute;e standard (inclut le
+        Saisit une chaîne depuis l'entrée standard (inclut le
         <b>
          \n
         </b>
@@ -253,21 +248,21 @@ $a = trim(fgets(STDIN)); // sans le \n ✅</div>
       Saisie de plusieurs variables
      </div>
      <div class="code pu">&lt;?php
-// M&eacute;thode 1 : saisies s&eacute;par&eacute;es
+// Méthode 1 : saisies séparées
 $a = trim(fgets(STDIN));
 $b = trim(fgets(STDIN));
 
-// M&eacute;thode 2 : saisie sur une ligne "10 20"
+// Méthode 2 : saisie sur une ligne "10 20"
 $s = fgets(STDIN);
 list($a, $b) = explode(' ', trim($s));
-// Si saisie : "10 20" &rarr; $a = "10", $b = "20"
+// Si saisie : "10 20" → $a = "10", $b = "20"
 
 // Affichage
-print("la valeur $a a &eacute;t&eacute; saisie dans \$a\n");
-print("Premi&egrave;re: $a, Deuxi&egrave;me: $b\n");
+print("la valeur $a a été saisie dans \$a\n");
+print("Première: $a, Deuxième: $b\n");
 ?&gt;</div>
     </div>
-    TYPES &amp; OP&Eacute;RATEURS
+    TYPES &amp; OPÉRATEURS
     <div class="sc" id="php-types">
      <div class="st pu">
       Les types en PHP
@@ -285,8 +280,7 @@ print("Premi&egrave;re: $a, Deuxi&egrave;me: $b\n");
          Entier :
          <code>
           $a = 3
-         </code>
-         ,
+         </code>,
          <code>
           $a = -4
          </code>
@@ -304,7 +298,7 @@ print("Premi&egrave;re: $a, Deuxi&egrave;me: $b\n");
          <span class="tag tpu">
           string
          </span>
-         Cha&icirc;ne :
+         Chaîne :
          <code>
           $a = "Bonjour"
          </code>
@@ -313,7 +307,7 @@ print("Premi&egrave;re: $a, Deuxi&egrave;me: $b\n");
          <span class="tag tpu">
           bool
          </span>
-         Bool&eacute;en :
+         Booléen :
          <code>
           true
          </code>
@@ -332,7 +326,7 @@ print("Premi&egrave;re: $a, Deuxi&egrave;me: $b\n");
       </div>
       <div class="card bl">
        <h3>
-        Op&eacute;rations enti&egrave;res
+        Opérations entières
        </h3>
        <ul>
         <li>
@@ -357,7 +351,7 @@ print("Premi&egrave;re: $a, Deuxi&egrave;me: $b\n");
          <span class="tag tb">
           /
          </span>
-         Division (renvoie un nombre d&eacute;cimal si n&eacute;cessaire)
+         Division (renvoie un nombre décimal si nécessaire)
         </li>
         <li>
          <span class="tag tb">
@@ -369,18 +363,18 @@ print("Premi&egrave;re: $a, Deuxi&egrave;me: $b\n");
       </div>
       <div class="card am">
        <h3>
-        Fonctions num&eacute;riques utiles
+        Fonctions numériques utiles
        </h3>
        <p>
         <b>
          intdiv($a, $b)
         </b>
-        &mdash; division enti&egrave;re
+        — division entière
         <br/>
         <code>
          intdiv(7, 2)
         </code>
-        &rarr;
+        →
         <b>
          3
         </b>
@@ -389,22 +383,22 @@ print("Premi&egrave;re: $a, Deuxi&egrave;me: $b\n");
         <b>
          abs($a)
         </b>
-        &mdash; valeur absolue
+        — valeur absolue
         <br/>
         <b>
          round($a)
         </b>
-        &mdash; arrondi
+        — arrondi
         <br/>
         <b>
          floor($a)
         </b>
-        &mdash; arrondi vers le bas
+        — arrondi vers le bas
         <br/>
         <b>
          ceil($a)
         </b>
-        &mdash; arrondi vers le haut
+        — arrondi vers le haut
        </p>
       </div>
       <div class="card">
@@ -416,12 +410,12 @@ $b = 2;
 $c = $a + $b;    // 3
 print($c);       // affiche 3
 
-print(intdiv(7, 2));  // &rarr; 3
-print(7 % 2);         // &rarr; 1 (reste)</div>
+print(intdiv(7, 2));  // → 3
+print(7 % 2);         // → 1 (reste)</div>
       </div>
      </div>
      <div class="st pu">
-      Caract&egrave;res &amp; Code ASCII
+      Caractères &amp; Code ASCII
      </div>
      <div class="cg">
       <div class="card pu">
@@ -432,7 +426,7 @@ print(7 % 2);         // &rarr; 1 (reste)</div>
         <b>
          ord('a')
         </b>
-        &rarr; code ASCII =
+        → code ASCII =
         <b>
          97
         </b>
@@ -440,7 +434,7 @@ print(7 % 2);         // &rarr; 1 (reste)</div>
         <b>
          chr(97)
         </b>
-        &rarr; caract&egrave;re =
+        → caractère =
         <b>
          'a'
         </b>
@@ -449,7 +443,7 @@ print(7 % 2);         // &rarr; 1 (reste)</div>
         <code>
          chr(ord('a') + 1)
         </code>
-        &rarr;
+        →
         <b>
          'b'
         </b>
@@ -457,63 +451,61 @@ print(7 % 2);         // &rarr; 1 (reste)</div>
       </div>
       <div class="card bl">
        <h3>
-        Op&eacute;rations sur caract&egrave;res
+        Opérations sur caractères
        </h3>
        <div class="code bl" style="margin-top:8px">$t = 'b';   // code ASCII 98
-$t++;       // code 99 = 'c'
-print("$t\n"); // affiche c
+$t++;       // code 99 = 'c'print("$t\n"); // affiche c
 
 // Boucle sur les lettres :
 for ($c = 'a'; $c &lt;= 'z'; $c++) {
-    print($c . " ");  // a b c ... z
+    print($c. " ");  // a b c... z
 }</div>
       </div>
       <div class="card am">
        <h3>
-        Manipulation de cha&icirc;nes
+        Manipulation de chaînes
        </h3>
        <p>
-        Concat&eacute;nation : op&eacute;rateur
-        <b>
-         .
+        Concaténation : opérateur
+        <b>.
         </b>
         (point)
         <br/>
         <code>
-         $a = "Bon" . "jour";
+         $a = "Bon". "jour";
         </code>
         <br/>
         <br/>
         <b>
          strlen($s)
         </b>
-        &rarr; nombre de caract&egrave;res
+        → nombre de caractères
         <br/>
         <b>
          strtolower($s)
         </b>
-        &rarr; en minuscules
+        → en minuscules
         <br/>
         <b>
          strtoupper($s)
         </b>
-        &rarr; en majuscules
+        → en majuscules
         <br/>
         <b>
          trim($s)
         </b>
-        &rarr; supprime espaces/\n
+        → supprime espaces/\n
        </p>
       </div>
       <div class="card">
        <h3>
-        Acc&egrave;s par indice
+        Accès par indice
        </h3>
        <p>
         <b>
          $s[$i]
         </b>
-        &mdash; lettre &agrave; l'indice $i (commence &agrave; 0)
+        — lettre à l'indice $i (commence à 0)
        </p>
        <div class="code" style="margin-top:8px">$t = "Bonjour";
 print($t[0]);         // B
@@ -525,7 +517,7 @@ print(strlen($t));    // 7</div>
     CONDITIONS
     <div class="sc" id="php-cond">
      <div class="st pu">
-      Traitement conditionnel &mdash; if / else
+      Traitement conditionnel — if / else
      </div>
      <div class="cg">
       <div class="card pu">
@@ -533,7 +525,7 @@ print(strlen($t));    // 7</div>
         Syntaxe if
        </h3>
        <div class="code pu" style="margin-top:8px">if ($a &gt; 1) {
-    print('Sup&eacute;rieur &agrave; 1');
+    print('Supérieur à 1');
 }</div>
       </div>
       <div class="card bl">
@@ -541,9 +533,9 @@ print(strlen($t));    // 7</div>
         Syntaxe if / else
        </h3>
        <div class="code bl" style="margin-top:8px">if ($a &gt; 1) {
-    print('Sup&eacute;rieur &agrave; 1');
+    print('Supérieur à 1');
 } else {
-    print('Inf&eacute;rieur ou &eacute;gal &agrave; 1');
+    print('Inférieur ou égal à 1');
 }</div>
       </div>
       <div class="card am">
@@ -554,9 +546,9 @@ print(strlen($t));    // 7</div>
         Si une seule instruction, les accolades sont facultatives :
        </p>
        <div class="code am" style="margin-top:8px">if ($a &gt; 1)
-    print('Sup &agrave; 1');
+    print('Sup à 1');
 else
-    print('Inf ou &eacute;gal');</div>
+    print('Inf ou égal');</div>
       </div>
       <div class="card pu">
        <h3>
@@ -567,17 +559,17 @@ else
 } elseif ($a &gt; 0) {
     print("Positif");
 } else {
-    print("N&eacute;gatif ou z&eacute;ro");
+    print("Négatif ou zéro");
 }</div>
       </div>
      </div>
      <div class="st pu">
-      Op&eacute;rateurs de comparaison
+      Opérateurs de comparaison
      </div>
      <div class="table-scroll"><table class="tbl pu">
       <tr>
        <th>
-        Op&eacute;rateur
+        Opérateur
        </th>
        <th>
         Signification
@@ -593,7 +585,7 @@ else
         </span>
        </td>
        <td>
-        &Eacute;galit&eacute; (valeur seulement)
+        Égalité (valeur seulement)
        </td>
        <td>
         <code>
@@ -608,7 +600,7 @@ else
         </span>
        </td>
        <td>
-        &Eacute;galit&eacute; stricte (valeur + type)
+        Égalité stricte (valeur + type)
        </td>
        <td>
         <code>
@@ -623,7 +615,7 @@ else
         </span>
        </td>
        <td>
-        Diff&eacute;rent
+        Différent
        </td>
        <td>
         <code>
@@ -638,7 +630,7 @@ else
         </span>
        </td>
        <td>
-        In&eacute;galit&eacute;s strictes
+        Inégalités strictes
        </td>
        <td>
         <code>
@@ -653,7 +645,7 @@ else
         </span>
        </td>
        <td>
-        In&eacute;galit&eacute;s larges
+        Inégalités larges
        </td>
        <td>
         <code>
@@ -675,7 +667,7 @@ else
       <code>
        ==
       </code>
-      (comparaison). Erreur tr&egrave;s fr&eacute;quente !
+      (comparaison). Erreur très fréquente !
      </div>
      <div class="st pu">
       Connecteurs logiques
@@ -715,15 +707,15 @@ else
       </div>
       <div class="card am">
        <h3>
-        N&eacute;gation : !
+        Négation : !
        </h3>
        <p>
-        Inverse le r&eacute;sultat bool&eacute;en.
+        Inverse le résultat booléen.
         <br/>
         <code>
          !($a == 1)
         </code>
-        &rarr; vrai si $a &ne; 1
+        → vrai si $a ≠ 1
        </p>
       </div>
       <div class="card rd">
@@ -731,7 +723,7 @@ else
         ⚠️ Valeurs Falsy
        </h3>
        <p>
-        PHP consid&egrave;re comme
+        PHP considère comme
         <b>
          false
         </b>
@@ -740,27 +732,27 @@ else
         <code>
          0
         </code>
-        &middot;
+        ·
         <code>
          0.0
         </code>
-        &middot;
+        ·
         <code>
          ""
         </code>
-        &middot;
+        ·
         <code>
          "0"
         </code>
-        &middot;
+        ·
         <code>
          null
         </code>
-        &middot;
+        ·
         <code>
          []
         </code>
-        &middot; variable non d&eacute;finie
+        · variable non définie
        </p>
       </div>
      </div>
@@ -775,7 +767,7 @@ $peutEntrer = $estMajeur &amp;&amp; $aAssezArgent; // false
 if ($peutEntrer) {
     print("Bienvenue au club !");
 } else {
-    print("Acc&egrave;s refus&eacute;.");
+    print("Accès refusé.");
 }
 
 // Test valeur falsy :
@@ -790,52 +782,50 @@ if (!$nom) print("Erreur : nom vide !");</div>
      <div class="cg">
       <div class="card pu">
        <h3>
-        While &mdash; TANT QUE
+        While — TANT QUE
        </h3>
        <p>
         Continue tant que la condition est vraie. Peut ne
         <b>
-         jamais s'ex&eacute;cuter
-        </b>
-        .
+         jamais s'exécuter
+        </b>.
        </p>
        <div class="code pu" style="margin-top:8px">$count = 1;
 while ($count &lt;= 5) {
-    print($count . " ");
+    print($count. " ");
     $count++;
 }
 // Affiche : 1 2 3 4 5</div>
       </div>
       <div class="card bl">
        <h3>
-        Do-While &mdash; FAIRE &hellip; TANT QUE
+        Do-While — FAIRE … TANT QUE
        </h3>
        <p>
-        S'ex&eacute;cute
+        S'exécute
         <b>
          au minimum une fois
-        </b>
-        , puis v&eacute;rifie la condition.
+        </b>, puis vérifie la condition.
        </p>
        <div class="code bl" style="margin-top:8px">do {
-    print($count . " ");
+    print($count. " ");
     $count++;
 } while ($count &lt;= 5);
-// Ex&eacute;cut&eacute; au moins 1 fois !</div>
+// Exécuté au moins 1 fois !</div>
       </div>
       <div class="card am">
        <h3>
-        For &mdash; POUR
+        For — POUR
        </h3>
        <p>
         Quand on sait
         <b>
          combien de fois
         </b>
-        it&eacute;rer.
+        itérer.
        </p>
        <div class="code am" style="margin-top:8px">for ($i = 1; $i &lt;= 5; $i++) {
-    print($i . " ");
+    print($i. " ");
 }
 // Affiche : 1 2 3 4 5</div>
       </div>
@@ -849,7 +839,7 @@ while ($count &lt;= 5) {
         Boucle
        </th>
        <th>
-        Utiliser quand&hellip;
+        Utiliser quand…
        </th>
        <th>
         Exemple typique
@@ -862,7 +852,7 @@ while ($count &lt;= 5) {
         </span>
        </td>
        <td>
-        Nombre d'it&eacute;rations inconnu &agrave; l'avance, peut s'ex&eacute;cuter 0 fois
+        Nombre d'itérations inconnu à l'avance, peut s'exécuter 0 fois
        </td>
        <td>
         Lire un fichier ligne par ligne
@@ -875,10 +865,10 @@ while ($count &lt;= 5) {
         </span>
        </td>
        <td>
-        Doit s'ex&eacute;cuter au moins 1 fois (menu, contr&ocirc;le de saisie)
+        Doit s'exécuter au moins 1 fois (menu, contrôle de saisie)
        </td>
        <td>
-        Demander un MDP jusqu'&agrave; ce qu'il soit correct
+        Demander un MDP jusqu'à ce qu'il soit correct
        </td>
       </tr>
       <tr>
@@ -888,23 +878,23 @@ while ($count &lt;= 5) {
         </span>
        </td>
        <td>
-        Nombre d'it&eacute;rations connu (parcourir un tableau de n &eacute;l&eacute;ments)
+        Nombre d'itérations connu (parcourir un tableau de n éléments)
        </td>
        <td>
-        Afficher les &eacute;l&eacute;ments d'un tableau
+        Afficher les éléments d'un tableau
        </td>
       </tr>
      </table></div>
-     <div class="code pu">// Exemple concret : contr&ocirc;le de saisie avec do-while
+     <div class="code pu">// Exemple concret : contrôle de saisie avec do-while
 do {
     $age = intval(trim(fgets(STDIN)));
     if ($age &lt; 0 || $age &gt; 120) {
-        print("&Acirc;ge invalide, ressaissez !\n");
+        print("Âge invalide, ressaissez !\n");
     }
 } while ($age &lt; 0 || $age &gt; 120);
-print("&Acirc;ge saisi : $age\n");</div>
+print("Âge saisi : $age\n");</div>
     </div>
-    TABLEAUX &amp; CHA&Icirc;NES
+    TABLEAUX &amp; CHAÎNES
     <div class="sc" id="php-tab">
      <div class="st pu">
       Les tableaux
@@ -912,25 +902,25 @@ print("&Acirc;ge saisi : $age\n");</div>
      <div class="cg">
       <div class="card pu">
        <h3>
-        Cr&eacute;er un tableau
+        Créer un tableau
        </h3>
        <div class="code pu" style="margin-top:8px">$a = array();    // vide
-$a = [1, 2, 3]; // initialis&eacute;
-$a[] = $v;      // ajouter &agrave; la fin</div>
+$a = [1, 2, 3]; // initialisé
+$a[] = $v;      // ajouter à la fin</div>
       </div>
       <div class="card bl">
        <h3>
-        Acc&egrave;s aux &eacute;l&eacute;ments
+        Accès aux éléments
        </h3>
        <p>
-        Indices commencent &agrave;
+        Indices commencent à
         <b>
          0
         </b>
        </p>
        <div class="code bl" style="margin-top:8px">$a[0]; $a[1]; $a[2];
 // Taille : count($a)
-// Plage valide : 0 &agrave; count($a)-1</div>
+// Plage valide : 0 à count($a)-1</div>
       </div>
       <div class="card am">
        <h3>
@@ -938,12 +928,12 @@ $a[] = $v;      // ajouter &agrave; la fin</div>
        </h3>
        <div class="code am" style="margin-top:8px">$t = [10, 20, 30, 40];
 for ($i = 0; $i &lt; count($t); $i++) {
-    print($t[$i] . "\n");
+    print($t[$i]. "\n");
 }</div>
       </div>
       <div class="card">
        <h3>
-        Ajout d'&eacute;l&eacute;ment
+        Ajout d'élément
        </h3>
        <p>
         <code>
@@ -952,7 +942,7 @@ for ($i = 0; $i &lt; count($t); $i++) {
         <br/>
         Ajoute $valeur
         <b>
-         &agrave; la fin
+         à la fin
         </b>
         du tableau.
        </p>
@@ -965,14 +955,14 @@ $noms[] = "Carla";  // index 2</div>
      <div class="st pu">
       Parcours avec foreach
      </div>
-     <div class="code pu">// foreach avec cl&eacute; et valeur :
+     <div class="code pu">// foreach avec clé et valeur :
 foreach ($tableau as $index =&gt; $valeur) {
     print("$index : $valeur\n");
 }
 
 // foreach valeur seulement :
 foreach ($tableau as $valeur) {
-    print($valeur . "\n");
+    print($valeur. "\n");
 }</div>
      <div class="st pu">
       Tableaux associatifs
@@ -980,14 +970,14 @@ foreach ($tableau as $valeur) {
      <div class="cg">
       <div class="card pu">
        <h3>
-        D&eacute;finition
+        Définition
        </h3>
        <p>
-        L'indice peut &ecirc;tre une
+        L'indice peut être une
         <b>
-         cha&icirc;ne de caract&egrave;res
+         chaîne de caractères
         </b>
-        (cl&eacute;). Tr&egrave;s utilis&eacute; pour repr&eacute;senter des "objets" simples.
+        (clé). Très utilisé pour représenter des "objets" simples.
        </p>
       </div>
       <div class="card bl">
@@ -1005,26 +995,26 @@ foreach ($etudiant as $cle =&gt; $val) {
       </div>
       <div class="card am">
        <h3>
-        isset() &mdash; v&eacute;rifier existence
+        isset() — vérifier existence
        </h3>
        <p>
         <b>
          isset($v)
         </b>
-        &rarr; vrai si $v existe et n'est pas null
+        → vrai si $v existe et n'est pas null
         <br/>
         <b>
          isset($t[$cle])
         </b>
-        &rarr; vrai si la cl&eacute; est d&eacute;finie
+        → vrai si la clé est définie
        </p>
        <div class="code am" style="margin-top:8px">if (isset($etudiant['note'])) {
-    print("Note : " . $etudiant['note']);
+    print("Note : ". $etudiant['note']);
 }</div>
       </div>
      </div>
      <div class="st pu">
-      Fonctions utiles sur les cha&icirc;nes
+      Fonctions utiles sur les chaînes
      </div>
      <div class="cg">
       <div class="card pu">
@@ -1032,12 +1022,12 @@ foreach ($etudiant as $cle =&gt; $val) {
         explode()
        </h3>
        <p>
-        Subdivise une cha&icirc;ne en tableau selon un s&eacute;parateur.
+        Subdivise une chaîne en tableau selon un séparateur.
        </p>
        <div class="code pu" style="margin-top:8px">$t = explode(',', "a,b,c,d");
 // $t[0]="a" $t[1]="b" $t[2]="c" $t[3]="d"
 
-// Lire une ligne d'entiers s&eacute;par&eacute;s par espaces :
+// Lire une ligne d'entiers séparés par espaces :
 $s = trim(fgets(STDIN));
 $nums = explode(' ', $s);</div>
       </div>
@@ -1050,12 +1040,12 @@ $nums = explode(' ', $s);</div>
         <b>
          type et la valeur
         </b>
-        d'une variable. Outil de d&eacute;bogage essentiel.
+        d'une variable. Outil de débogage essentiel.
        </p>
        <div class="code bl" style="margin-top:8px">var_dump($t);
 // array(4) {
 //   [0]=&gt; string(1) "a"
-//   [1]=&gt; string(1) "b" ...
+//   [1]=&gt; string(1) "b"...
 // }</div>
       </div>
       <div class="card am">
@@ -1066,41 +1056,40 @@ $nums = explode(' ', $s);</div>
         <b>
          substr($s, $debut, $longueur)
         </b>
-        &mdash; sous-cha&icirc;ne
+        — sous-chaîne
         <br/>
         <b>
          strpos($s, $cherche)
         </b>
-        &mdash; position d'une sous-cha&icirc;ne
+        — position d'une sous-chaîne
         <br/>
         <b>
          str_replace($old, $new, $s)
         </b>
-        &mdash; remplacement
+        — remplacement
         <br/>
         <b>
          implode(',', $t)
         </b>
-        &mdash; tableau &rarr; cha&icirc;ne
+        — tableau → chaîne
        </p>
       </div>
      </div>
     </div>
     <div class="source-note">
-     R&eacute;f&eacute;rence p&eacute;dagogique :
+     Référence pédagogique :
      <b>
       BTS-SIO-Fiches.html
-     </b>
-     . Cette fiche reprend les notions de 1re ann&eacute;e ; la CEJM d&eacute;taill&eacute;e est accessible dans ses chapitres d&eacute;di&eacute;s.
+     </b>. Cette fiche reprend les notions de 1re année ; la CEJM détaillée est accessible dans ses chapitres dédiés.
     </div>
    </main>
    <div class="footer">
     <a href="../index.html">
-     &larr; Retour au tableau de bord
+     ← Retour au tableau de bord
     </a>
    </div>
   </div>
-  <script src="../assets/js/common.js">
+  <script src="../assets/js/common.js?v=20260916-1">
   </script>
  </body>
 </html>
