@@ -70,6 +70,48 @@ _bts_stdout.getvalue()
   `);
 }
 
+async function runPythonBatch(code, cases) {
+  const pyodide = await loadPyodideRuntime();
+  pyodide.globals.set('__bts_user_code', code);
+  pyodide.globals.set('__bts_test_inputs_json', JSON.stringify(cases.map((testCase) => String(testCase.stdin || ''))));
+  const raw = await pyodide.runPythonAsync(`
+import sys, io, traceback, builtins, json
+_bts_results = []
+_bts_inputs_json = json.loads(__bts_test_inputs_json)
+for _bts_stdin in _bts_inputs_json:
+    _bts_stdout = io.StringIO()
+    _bts_old_stdout = sys.stdout
+    _bts_old_stderr = sys.stderr
+    _bts_old_stdin = sys.stdin
+    _bts_old_input = builtins.input
+    _bts_buffer = io.StringIO(_bts_stdin)
+    _bts_inputs = iter(_bts_stdin.splitlines())
+    def _bts_input(prompt=''):
+        if prompt:
+            print(prompt, end='')
+        try:
+            return next(_bts_inputs)
+        except StopIteration:
+            return ''
+    sys.stdout = _bts_stdout
+    sys.stderr = _bts_stdout
+    sys.stdin = _bts_buffer
+    builtins.input = _bts_input
+    try:
+        exec(compile(__bts_user_code, '<CodeLab>', 'exec'), {'__name__': '__main__'})
+    except BaseException:
+        traceback.print_exc()
+    finally:
+        sys.stdout = _bts_old_stdout
+        sys.stderr = _bts_old_stderr
+        sys.stdin = _bts_old_stdin
+        builtins.input = _bts_old_input
+    _bts_results.append(_bts_stdout.getvalue())
+json.dumps(_bts_results, ensure_ascii=False)
+  `);
+  return JSON.parse(String(raw || '[]'));
+}
+
 async function getJudgeLanguages() {
   if (state.judgeLanguages) return state.judgeLanguages;
   const response = await fetch('https://ce.judge0.com/languages');
@@ -309,6 +351,133 @@ async function runSource(language, code, stdin, requirement = null, filename = '
   return language === 'python' ? runPython(prepared, stdin) : runJudge0(language, prepared, stdin);
 }
 
+function judgeBatchOutcome(result) {
+  const stdout = decodeBase64Utf8(result?.stdout);
+  const compileOutput = decodeBase64Utf8(result?.compile_output);
+  const stderr = decodeBase64Utf8(result?.stderr);
+  const message = decodeBase64Utf8(result?.message);
+  const details = [compileOutput, stderr, message].filter((value) => String(value || '').trim()).join('\n').trim();
+  const statusId = Number(result?.status?.id || 0);
+
+  if (statusId === 3) {
+    return { output: `${stdout}${details ? `${stdout && !stdout.endsWith('\n') ? '\n' : ''}${details}` : ''}` };
+  }
+
+  const description = result?.status?.description || (statusId <= 2 ? 'Exécution incomplète' : 'Erreur d’exécution');
+  const error = new Error(details || description);
+  error.runtimeOutput = stdout;
+  error.runtimeStatus = description;
+  return { error };
+}
+
+async function runJudge0Batch(language, code, cases, requirement, filename) {
+  setRuntimeStatus(language, 'tests rapides…');
+  const languages = await getJudgeLanguages();
+  const languageId = findJudgeLanguageId(languages, language);
+  const submissions = cases.map((testCase) => {
+    const stdin = String(testCase.stdin || '');
+    const prepared = prepareSource(language, code, stdin, requirement, filename);
+    return {
+      language_id: languageId,
+      source_code: encodeBase64Utf8(prepared),
+      stdin: encodeBase64Utf8(stdin),
+    };
+  });
+
+  let createResponse;
+  try {
+    createResponse = await fetch('https://ce.judge0.com/submissions/batch?base64_encoded=true', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({ submissions }),
+    });
+  } catch {
+    throw markEngineError(new Error('Impossible de contacter Judge0 pour lancer les tests groupés.'));
+  }
+
+  if (!createResponse.ok) {
+    const error = await judgeHttpError(createResponse, 'Impossible de lancer les tests groupés');
+    error.batchFailed = true;
+    throw error;
+  }
+
+  const createdPayload = await createResponse.json();
+  const created = Array.isArray(createdPayload) ? createdPayload : (createdPayload?.submissions || []);
+  const tokens = created.map((item) => item?.token).filter(Boolean);
+  if (tokens.length !== cases.length) {
+    const error = new Error('Le moteur n’a pas créé tous les cas de test groupés.');
+    error.batchFailed = true;
+    throw error;
+  }
+
+  let results = [];
+  for (let attempt = 0; attempt < 30; attempt += 1) {
+    await new Promise((resolve) => window.setTimeout(resolve, attempt < 3 ? 180 : 280));
+    let response;
+    try {
+      const fields = 'token,stdout,stderr,compile_output,message,status,time,memory';
+      response = await fetch(`https://ce.judge0.com/submissions/batch?tokens=${encodeURIComponent(tokens.join(','))}&base64_encoded=true&fields=${fields}`);
+    } catch {
+      throw markEngineError(new Error('La connexion à Judge0 a été interrompue pendant les tests groupés.'));
+    }
+    if (!response.ok) {
+      const error = await judgeHttpError(response, 'Impossible de récupérer les tests groupés');
+      error.batchFailed = true;
+      throw error;
+    }
+
+    const payload = await response.json();
+    const submissionsResult = Array.isArray(payload) ? payload : (payload?.submissions || []);
+    const byToken = new Map(submissionsResult.map((item) => [item?.token, item]));
+    results = tokens.map((token, index) => byToken.get(token) || submissionsResult[index] || null);
+    if (results.every((item) => Number(item?.status?.id || 0) > 2)) break;
+  }
+
+  if (!results.length || results.some((item) => Number(item?.status?.id || 0) <= 2)) {
+    const error = new Error('Les tests groupés n’ont pas terminé dans le délai prévu.');
+    error.batchFailed = true;
+    throw error;
+  }
+
+  setRuntimeStatus(language, 'prêt', 'ready');
+  return results.map(judgeBatchOutcome);
+}
+
+async function runRemoteCasesLimited(language, code, cases, requirement, filename, concurrency = 4) {
+  const results = new Array(cases.length);
+  let cursor = 0;
+  const workers = Array.from({ length: Math.min(concurrency, cases.length) }, async () => {
+    while (true) {
+      const index = cursor;
+      cursor += 1;
+      if (index >= cases.length) return;
+      const stdin = String(cases[index].stdin || '');
+      try {
+        results[index] = { output: await runSource(language, code, stdin, requirement, filename) };
+      } catch (error) {
+        results[index] = { error };
+      }
+    }
+  });
+  await Promise.all(workers);
+  return results;
+}
+
+async function runTestCasesFast(language, code, cases, requirement, filename) {
+  if (language === 'python') {
+    const outputs = await runPythonBatch(code, cases);
+    return outputs.map((output) => ({ output }));
+  }
+
+  try {
+    return await runJudge0Batch(language, code, cases, requirement, filename);
+  } catch (error) {
+    if (!error?.batchFailed) throw error;
+    appendTerminal('Le mode groupé est indisponible : bascule automatique sur 4 tests simultanés.');
+    return runRemoteCasesLimited(language, code, cases, requirement, filename, 4);
+  }
+}
+
 function stripStringsAndComments(code, language) {
   let source = String(code || '');
   const preserveLines = (match) => match.replace(/[^\n]/g, ' ');
@@ -457,65 +626,109 @@ async function testExercise() {
   const file = activeFile();
   const language = activeLanguage();
   if (!exercise || !file) return;
+
   const code = dom.codeEditor.value;
-  const cases = Array.isArray(exercise.tests) && exercise.tests.length ? exercise.tests : [{ stdin: exercise.stdin || '', expected: exercise.expected || '' }];
+  const cases = Array.isArray(exercise.tests) && exercise.tests.length
+    ? exercise.tests
+    : [{ stdin: exercise.stdin || '', expected: exercise.expected || '' }];
+
   if (!code.trim()) {
     clearTerminal();
     appendTerminal('Le code est vide. Complétez l’exercice avant de le tester.', 'error');
     return;
   }
+
   setRunning(true);
   clearTerminal();
-  setTerminalState('tests…');
-  appendTerminal(`$ test ${file.name} // ${cases.length} cas`);
+  clearTestReport();
+  setTerminalState(`tests 0/${cases.length}`);
+  appendTerminal(`$ test ${file.name} // ${cases.length} cas en mode rapide`);
   scrollTerminalIntoView();
+
   let failureCount = 0;
   let executedCount = 0;
   let interrupted = false;
+
   try {
-    for (let index = 0; index < cases.length; index += 1) {
+    const requirement = detectInputRequirement(language, code);
+    const startedAt = performance.now();
+    const outcomes = await runTestCasesFast(language, code, cases, requirement, file.name);
+    const elapsed = Math.max(0, performance.now() - startedAt);
+
+    for (let index = 0; index < outcomes.length; index += 1) {
+      const outcome = outcomes[index] || {};
       const testCase = cases[index];
       const expected = normalizeOutput(testCase.expected);
-      const requirement = detectInputRequirement(language, code);
       executedCount = index + 1;
       setTerminalState(`tests ${executedCount}/${cases.length}`);
-      try {
-        const output = await runSource(language, code, testCase.stdin || '', requirement, file.name);
-        const actual = normalizeOutput(output);
-        if (actual !== expected) {
-          failureCount += 1;
-          addTestFailureReport({ index, total: cases.length, stdin: testCase.stdin || '', output: actual, expected, title: actual ? 'Sortie différente' : 'Aucune sortie produite' });
-          appendTerminal(`Cas ${index + 1}/${cases.length} non validé.`, 'error');
-        } else appendTerminal(`Cas ${index + 1}/${cases.length} validé.`, 'success');
-      } catch (error) {
+
+      if (outcome.error) {
+        const error = outcome.error;
         failureCount += 1;
         const runtimeDetails = [error.runtimeOutput, error.message || String(error)].filter(Boolean).join('\n');
-        addTestFailureReport({ index, total: cases.length, stdin: testCase.stdin || '', output: runtimeDetails, expected, title: 'Erreur d’exécution' });
+        addTestFailureReport({
+          index,
+          total: cases.length,
+          stdin: testCase.stdin || '',
+          output: runtimeDetails,
+          expected,
+          title: 'Erreur d’exécution',
+        });
         appendTerminal(`Cas ${index + 1}/${cases.length} : erreur d’exécution.`, 'error');
 
         const status = String(error.runtimeStatus || '');
         const fatal = Boolean(error.engineError) || /compilation|internal error|time limit|memory limit/i.test(status);
         if (fatal) {
           interrupted = true;
-          appendTerminal('Les tests suivants sont interrompus : corrigez d’abord cette erreur bloquante.', 'error');
+          appendTerminal('Erreur bloquante détectée : le rapport s’arrête ici pour rester lisible.', 'error');
           break;
         }
+        continue;
+      }
+
+      const actual = normalizeOutput(outcome.output);
+      if (actual !== expected) {
+        failureCount += 1;
+        addTestFailureReport({
+          index,
+          total: cases.length,
+          stdin: testCase.stdin || '',
+          output: actual,
+          expected,
+          title: actual ? 'Sortie différente' : 'Aucune sortie produite',
+        });
+        appendTerminal(`Cas ${index + 1}/${cases.length} non validé.`, 'error');
       }
     }
-    if (failureCount === 0 && executedCount === cases.length) {
+
+    const durationLabel = elapsed < 1000 ? `${Math.round(elapsed)} ms` : `${(elapsed / 1000).toFixed(2)} s`;
+    if (failureCount === 0 && outcomes.length === cases.length) {
       localStorage.setItem(solvedKey(language, exercise), '1');
       renderExerciseList();
-      appendTerminal(`Tous les ${cases.length} cas de test sont validés.`, 'success');
+      appendTerminal(`Tous les ${cases.length} cas sont validés en ${durationLabel}.`, 'success');
       setTerminalState('réussi', 'success');
       clearTestReport();
     } else {
-      const coverage = interrupted ? ` (${executedCount}/${cases.length} cas exécutés)` : '';
-      appendTerminal(`${failureCount} cas de test en échec${coverage}. Consultez le rapport détaillé.`, 'error');
+      const coverage = interrupted ? ` (${executedCount}/${cases.length} résultats affichés)` : '';
+      appendTerminal(`${failureCount} cas en échec${coverage}. Temps de test : ${durationLabel}.`, 'error');
       setTerminalState('test échoué', 'error');
       dom.testReport?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
+  } catch (error) {
+    const runtimeDetails = [error.runtimeOutput, error.message || String(error)].filter(Boolean).join('\n');
+    addTestFailureReport({
+      index: 0,
+      total: cases.length,
+      stdin: cases[0]?.stdin || '',
+      output: runtimeDetails,
+      expected: normalizeOutput(cases[0]?.expected || ''),
+      title: 'Impossible de lancer les tests',
+    });
+    appendTerminal(error.message || String(error), 'error');
+    setTerminalState('erreur', 'error');
   } finally {
     setRunning(false);
     dom.terminalOutput.scrollTop = dom.terminalOutput.scrollHeight;
   }
 }
+

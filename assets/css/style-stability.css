@@ -1082,184 +1082,83 @@ body[data-review-id="2-maths-matrices"] .matrix-code::-webkit-scrollbar-thumb {
 }
 
 /* =====================================================
-   Harmonisation finale — Maths 2e / CEJM / cartes
+   Navigation Précédent / Suivant — placée sous le contenu actif
    ===================================================== */
-
-/* Les matrices utilisent désormais des parenthèses simples par ligne :
-   police stable, compacte et sans glyphes Unicode surdimensionnés. */
-body[data-review-id="2-maths-matrices"] .matrix-code {
-  font-family: "Share Tech Mono", Consolas, "Courier New", monospace !important;
-  font-size: clamp(.72rem, .82vw, .82rem) !important;
-  line-height: 1.48 !important;
-  letter-spacing: 0 !important;
-  white-space: pre !important;
-  overflow-x: auto !important;
-  overflow-y: hidden !important;
-  padding: 12px 14px !important;
-}
-
-body[data-review-id="2-maths-matrices"] .math-exercise-grid {
-  margin-top: 12px;
-}
-
-body[data-review-id="2-maths-matrices"] .exercise-intro {
-  margin: 0 0 13px;
-  color: var(--text);
-  opacity: .88;
-  line-height: 1.6;
-}
-
-/* Garantit une charte sombre et colorée cohérente sur les fiches CEJM. */
-body[data-chapter] .panel,
-body[data-chapter] .cmpc,
-body[data-chapter] .card {
-  background-color: var(--card) !important;
-  color: var(--text) !important;
-}
-
-body[data-chapter] .cmpc h4:not(.bl):not(.am):not(.rd):not(.pu):not(.or):not(.te):not(.gold):not(.cy):not(.li):not(.co) {
-  color: var(--green) !important;
-}
-
-body[data-chapter="1"] .cmpc:first-child {
-  border-color: rgba(255, 215, 0, .32);
-}
-
-body[data-chapter="1"] .cmpc:first-child h4 {
-  color: var(--gold) !important;
-}
-
-/* Évite qu'un contenu intrinsèquement large impose la largeur du viewport. */
-.chapter-grid,
-.module-grid,
-.cg,
-.cmp,
-.math-exercise-grid {
-  min-width: 0;
+.section-stepper {
+  width: 100%;
   max-width: 100%;
-}
-
-.chapter-card,
-.module-card,
-.math-exercise-grid > * {
-  min-width: 0;
-  overflow: hidden;
-}
-
-@media (max-width: 760px) {
-  body[data-review-id="2-maths-matrices"] .matrix-code {
-    font-size: .70rem !important;
-    line-height: 1.45 !important;
-    padding: 10px 11px !important;
-  }
-
-  body[data-review-id="2-maths-matrices"] .math-exercise-grid {
-    grid-template-columns: 1fr !important;
-  }
-}
-
-@media (max-width: 420px) {
-  body[data-review-id="2-maths-matrices"] .matrix-code {
-    font-size: .66rem !important;
-    padding-inline: 9px !important;
-  }
-}
-
-
-/* ===== 2026-09-16 STRUCTURE / MOBILE UPDATE ===== */
-.filterbtn[hidden] { display: none !important; }
-
-.section-stepper,
-.lesson-nav {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
   gap: 10px;
-  margin: 12px 0 20px;
+  margin: 24px 0 8px;
+  padding: 16px 0 0;
+  border-top: 1px solid var(--border);
+  box-sizing: border-box;
 }
-.section-stepper .step-prev { justify-self: start; }
-.section-stepper .step-next { justify-self: end; }
-.step-status {
+
+.section-stepper .step-prev {
+  justify-self: start;
+}
+
+.section-stepper .step-next {
+  justify-self: end;
+}
+
+.section-stepper .step-status {
+  min-width: 64px;
   color: var(--text-dim);
-  font-size: .75rem;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: .78rem;
   letter-spacing: .08em;
+  text-align: center;
   white-space: nowrap;
 }
-.lesson-nav { grid-template-columns: minmax(0,1fr) minmax(0,1fr); }
-.lesson-nav-btn {
-  min-width: 0;
-  min-height: 42px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 9px 12px;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  color: var(--green);
-  text-decoration: none;
-  text-align: center;
-  overflow-wrap: anywhere;
-}
-.lesson-nav-btn:last-child { justify-self: stretch; }
-.lesson-nav-btn:first-child { justify-self: stretch; }
-.lesson-nav-btn.disabled { opacity: .35; pointer-events: none; }
-.lesson-nav-btn:hover { border-color: var(--green); background: rgba(0,255,136,.06); }
 
-.lesson-glossary { margin-top: 24px; }
-.glossary-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0,1fr));
-  gap: 10px;
-}
-.glossary-item {
-  min-width: 0;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  background: var(--card);
-  padding: 11px 13px;
-  display: grid;
-  gap: 5px;
-}
-.glossary-item strong { color: var(--gold); }
-.glossary-item span { font-size: .8rem; line-height: 1.55; overflow-wrap: anywhere; }
-
-.source-visual-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0,1fr));
-  gap: 14px;
-  margin: 12px 0 20px;
-}
-.source-visual-card {
-  min-width: 0;
-  margin: 0;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  overflow: hidden;
-  background: #030906;
-}
-.source-visual-card img {
-  width: 100%;
-  display: block;
-  height: auto;
-  background: #fff;
-}
-.source-visual-card figcaption {
-  padding: 9px 11px;
-  color: var(--text-dim);
-  font-size: .72rem;
-  line-height: 1.45;
+.section-stepper .smallbtn {
+  min-width: 132px;
+  max-width: 100%;
 }
 
-@media (max-width: 700px) {
-  .glossary-grid,
-  .source-visual-grid { grid-template-columns: 1fr; }
-  .section-stepper { grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); gap: 6px; }
-  .section-stepper .smallbtn { min-width: 0; padding: 8px 7px; font-size: .72rem; }
-  .lesson-nav { gap: 7px; }
+.section-stepper .smallbtn:disabled {
+  opacity: .38;
+  cursor: not-allowed;
 }
-@media (max-width: 420px) {
-  .section-stepper { grid-template-columns: 1fr 1fr; }
-  .step-status { grid-column: 1 / -1; grid-row: 1; text-align: center; }
-  .section-stepper .step-prev, .section-stepper .step-next { grid-row: 2; width: 100%; }
-  .lesson-nav { grid-template-columns: 1fr 1fr !important; }
+
+@media (max-width: 560px) {
+  .section-stepper {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas:
+      "status status"
+      "prev next";
+    gap: 8px;
+    margin-top: 20px;
+  }
+
+  .section-stepper .step-status {
+    grid-area: status;
+    width: 100%;
+  }
+
+  .section-stepper .step-prev {
+    grid-area: prev;
+    justify-self: stretch;
+  }
+
+  .section-stepper .step-next {
+    grid-area: next;
+    justify-self: stretch;
+  }
+
+  .section-stepper .smallbtn {
+    width: 100%;
+    min-width: 0;
+    white-space: normal;
+  }
+}
+
+@media print {
+  .section-stepper {
+    display: none !important;
+  }
 }

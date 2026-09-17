@@ -4,27 +4,169 @@ function goChapter(sel) {
   }
 }
 
+function parseShowSubButton(button) {
+  const source = button?.getAttribute('onclick') || '';
+  const match = source.match(/showSub\(\s*['"]([^'"]+)['"]\s*,\s*['"]([^'"]+)['"]/);
+  return match ? { prefix: match[1], id: match[2] } : null;
+}
+
+function tabButtonForSection(prefix, id, stepper = null) {
+  const buttons = Array.from(document.querySelectorAll('.stabs .sb'));
+  const direct = buttons.find((button) => {
+    const parsed = parseShowSubButton(button);
+    return parsed?.prefix === prefix && parsed.id === id;
+  });
+  if (direct) return direct;
+
+  const parentId = stepper?.dataset.parentSection || '';
+  if (parentId) {
+    return buttons.find((button) => {
+      const parsed = parseShowSubButton(button);
+      return parsed?.prefix === prefix && parsed.id === parentId;
+    }) || null;
+  }
+  return null;
+}
+
+function activeSectionId(prefix, ids = []) {
+  const known = ids.find((id) => document.getElementById(`${prefix}-${id}`)?.classList.contains('a'));
+  if (known) return known;
+  const active = Array.from(document.querySelectorAll(`[id^="${prefix}-"].sc.a`))[0];
+  return active ? active.id.slice(prefix.length + 1) : '';
+}
+
+function placeSectionStepper(prefix) {
+  const stepper = document.querySelector(`.section-stepper[data-prefix="${prefix}"]`);
+  if (!stepper) return;
+  const ids = (stepper.dataset.sections || '').split(',').map((value) => value.trim()).filter(Boolean);
+  const id = activeSectionId(prefix, ids);
+  const target = id ? document.getElementById(`${prefix}-${id}`) : null;
+  if (!target || target.nextElementSibling === stepper) return;
+  target.insertAdjacentElement('afterend', stepper);
+}
+
+function updateSectionSteppers(prefix) {
+  document.querySelectorAll(`.section-stepper[data-prefix="${prefix}"]`).forEach((stepper) => {
+    const ids = (stepper.dataset.sections || '').split(',').map((value) => value.trim()).filter(Boolean);
+    if (!ids.length) return;
+
+    const currentId = activeSectionId(prefix, ids) || ids[0];
+    let index = ids.indexOf(currentId);
+    if (index < 0) index = 0;
+
+    const status = stepper.querySelector('.step-status');
+    if (status) status.textContent = `${index + 1} / ${ids.length}`;
+
+    const prev = stepper.querySelector('.step-prev');
+    const next = stepper.querySelector('.step-next');
+    if (prev) prev.disabled = index === 0;
+    if (next) next.disabled = index === ids.length - 1 && !stepper.dataset.endTarget;
+
+    placeSectionStepper(prefix);
+  });
+}
+
 function showSub(mod, id, btn) {
   const prefix = `${mod}-`;
 
   document.querySelectorAll(`[id^="${prefix}"]`).forEach((element) => {
-    element.classList.remove('a');
+    if (element.classList.contains('sc')) element.classList.remove('a');
   });
 
-  document.querySelectorAll('.sb').forEach((button) => {
-    button.classList.remove('a');
+  document.querySelectorAll('.stabs .sb').forEach((button) => {
+    const parsed = parseShowSubButton(button);
+    if (parsed?.prefix === mod) button.classList.remove('a');
   });
 
   const target = document.getElementById(prefix + id);
-  if (target) {
-    target.classList.add('a');
-  }
+  if (target) target.classList.add('a');
 
-  if (btn) {
-    btn.classList.add('a');
-  }
+  const stepper = document.querySelector(`.section-stepper[data-prefix="${mod}"]`);
+  const activeButton = btn || tabButtonForSection(mod, id, stepper);
+  if (activeButton) activeButton.classList.add('a');
 
   updateSectionSteppers(mod);
+}
+
+function buildSectionStepper(prefix, ids) {
+  const wrapper = document.createElement('div');
+  wrapper.className = 'section-stepper section-stepper-auto';
+  wrapper.dataset.prefix = prefix;
+  wrapper.dataset.sections = ids.join(',');
+
+  const prev = document.createElement('button');
+  prev.className = 'smallbtn step-prev';
+  prev.type = 'button';
+  prev.textContent = '← Précédent';
+  prev.addEventListener('click', () => stepSection(prev, -1));
+
+  const status = document.createElement('span');
+  status.className = 'step-status';
+  status.setAttribute('aria-live', 'polite');
+  status.textContent = `1 / ${ids.length}`;
+
+  const next = document.createElement('button');
+  next.className = 'smallbtn alt step-next';
+  next.type = 'button';
+  next.textContent = 'Suivant →';
+  next.addEventListener('click', () => stepSection(next, 1));
+
+  wrapper.append(prev, status, next);
+  return wrapper;
+}
+
+function initSectionSteppers() {
+  document.querySelectorAll('.stabs').forEach((tabs) => {
+    const groups = new Map();
+    tabs.querySelectorAll('.sb').forEach((button) => {
+      const parsed = parseShowSubButton(button);
+      if (!parsed) return;
+      if (!groups.has(parsed.prefix)) groups.set(parsed.prefix, []);
+      const ids = groups.get(parsed.prefix);
+      if (!ids.includes(parsed.id)) ids.push(parsed.id);
+    });
+
+    groups.forEach((ids, prefix) => {
+      if (ids.length < 2) return;
+      let stepper = document.querySelector(`.section-stepper[data-prefix="${prefix}"]`);
+      if (!stepper) {
+        stepper = buildSectionStepper(prefix, ids);
+        tabs.insertAdjacentElement('afterend', stepper);
+      } else if (!stepper.dataset.sections) {
+        stepper.dataset.sections = ids.join(',');
+      }
+      updateSectionSteppers(prefix);
+    });
+  });
+}
+
+function stepSection(button, direction) {
+  const stepper = button?.closest('.section-stepper');
+  if (!stepper) return;
+
+  const prefix = stepper.dataset.prefix;
+  const ids = (stepper.dataset.sections || '').split(',').map((value) => value.trim()).filter(Boolean);
+  if (!prefix || !ids.length) return;
+
+  const currentId = activeSectionId(prefix, ids) || ids[0];
+  let index = ids.indexOf(currentId);
+  if (index < 0) index = 0;
+
+  let targetId = '';
+  if (direction > 0 && index === ids.length - 1 && stepper.dataset.endTarget) {
+    targetId = stepper.dataset.endTarget;
+  } else {
+    const nextIndex = index + direction;
+    if (nextIndex < 0 || nextIndex >= ids.length) return;
+    targetId = ids[nextIndex];
+  }
+
+  const tabButton = tabButtonForSection(prefix, targetId, stepper);
+  showSub(prefix, targetId, tabButton);
+
+  window.requestAnimationFrame(() => {
+    document.getElementById(`${prefix}-${targetId}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
 }
 
 function printPage() {
@@ -52,23 +194,12 @@ function filterYear(year, btn) {
     button.classList.remove('active');
   });
 
-  if (btn) {
-    btn.classList.add('active');
-  }
+  if (btn) btn.classList.add('active');
 
   document.querySelectorAll('[data-year-section]').forEach((section) => {
-    section.style.display = year === 'all' || section.dataset.yearSection === year
-      ? 'block'
-      : 'none';
+    section.style.display = year === 'all' || section.dataset.yearSection === year ? 'block' : 'none';
   });
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-  const bodyId = document.body.dataset.reviewId || document.body.dataset.chapter;
-  if (bodyId) {
-    refreshReview(bodyId);
-  }
-});
 
 function enhanceResponsiveTables() {
   document.querySelectorAll('table').forEach((table) => {
@@ -138,40 +269,9 @@ function enhanceResponsiveTables() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', enhanceResponsiveTables);
-
-
-function updateSectionSteppers(prefix) {
-  document.querySelectorAll(`.section-stepper[data-prefix="${prefix}"]`).forEach((stepper) => {
-    const ids = (stepper.dataset.sections || '').split(',').map((v) => v.trim()).filter(Boolean);
-    if (!ids.length) return;
-    let index = ids.findIndex((id) => document.getElementById(`${prefix}-${id}`)?.classList.contains('a'));
-    if (index < 0) index = 0;
-    const status = stepper.querySelector('.step-status');
-    if (status) status.textContent = `${index + 1} / ${ids.length}`;
-    const prev = stepper.querySelector('.step-prev');
-    const next = stepper.querySelector('.step-next');
-    if (prev) prev.disabled = index === 0;
-    if (next) next.disabled = index === ids.length - 1;
-  });
-}
-
-function stepSection(button, direction) {
-  const stepper = button?.closest('.section-stepper');
-  if (!stepper) return;
-  const prefix = stepper.dataset.prefix;
-  const ids = (stepper.dataset.sections || '').split(',').map((v) => v.trim()).filter(Boolean);
-  if (!prefix || !ids.length) return;
-  let index = ids.findIndex((id) => document.getElementById(`${prefix}-${id}`)?.classList.contains('a'));
-  if (index < 0) index = 0;
-  const nextIndex = Math.max(0, Math.min(ids.length - 1, index + direction));
-  const id = ids[nextIndex];
-  const tabButton = Array.from(document.querySelectorAll('.stabs .sb')).find((b) => (b.getAttribute('onclick') || '').includes(`'${id}'`));
-  showSub(prefix, id, tabButton || null);
-  updateSectionSteppers(prefix);
-  document.querySelector('.stabs')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.section-stepper[data-prefix]').forEach((el) => updateSectionSteppers(el.dataset.prefix));
+  const bodyId = document.body.dataset.reviewId || document.body.dataset.chapter;
+  if (bodyId) refreshReview(bodyId);
+  enhanceResponsiveTables();
+  initSectionSteppers();
 });
