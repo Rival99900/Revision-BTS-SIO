@@ -836,7 +836,7 @@ function codeLabBuildRobustTests(language, exercise) {
   if (concept === 'palindrome') {
     const values = [
       ['radar', true], ['python', false], ['kayak', true], ['level', true], ['rotor', true],
-      ['java', false], ['php', false], ['elle', true], ['ici', true], ['noon', true],
+      ['java', false], ['php', true], ['elle', true], ['ici', true], ['noon', true],
       ['abc', false], ['abba', true], ['a', true], ['test', false], ['civic', true],
       ['refer', true], ['stats', true], ['sql', false], ['bob', true], ['code', false],
     ];

@@ -324,6 +324,7 @@ function handleTab(event) {
 }
 
 function handleEditorKeydown(event) {
+  if (event.isComposing) return;
   const editor = dom.codeEditor;
   const command = event.ctrlKey || event.metaKey;
   if (command && event.key.toLowerCase() === 's') {
@@ -380,7 +381,7 @@ function handleEditorInput() {
     pushHistory(previous);
     file.content = current;
     file.updatedAt = Date.now();
-    persistProject();
+    queueProjectSave();
   }
   if (activeLanguage() === 'php') {
     const editor = dom.codeEditor;
@@ -447,6 +448,12 @@ function bindEvents() {
       saveActiveFile();
     }
   });
+
+  // Mobile browsers may suspend a tab without firing beforeunload.
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') syncEditorToActiveFile();
+  });
+  window.addEventListener('pagehide', syncEditorToActiveFile);
 
   window.addEventListener('beforeunload', (event) => {
     syncEditorToActiveFile();

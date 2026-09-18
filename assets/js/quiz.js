@@ -19,7 +19,12 @@ function norm(s) {
 }
 
 function shuffle(a) {
-  return [...a].sort(() => Math.random() - 0.5);
+  const result = [...a];
+  for (let i = result.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  return result;
 }
 
 function getQuizData() {
@@ -47,6 +52,7 @@ function updateModuleFilterVisibility() {
 }
 
 function setFilter(kind, value, btn) {
+  if (kind === 'year' || kind === 'module') chapterFilter = 'all';
   if (kind === 'year') {
     yearFilter = value;
     updateModuleFilterVisibility();
@@ -80,12 +86,13 @@ function buildActive() {
 
 function updateStats() {
   document.getElementById('sv').textContent = score;
-  document.getElementById('tv').textContent = cur;
+  const completed = Math.min(activeQ.length, cur + (answered ? 1 : 0));
+  document.getElementById('tv').textContent = completed;
 
-  const pct = cur ? Math.round((score / cur) * 100) : 0;
-  document.getElementById('pctv').textContent = cur ? `${pct}%` : '-';
-  document.getElementById('plb').textContent = `PROGRESSION : ${cur} / ${activeQ.length}`;
-  document.getElementById('pfb').style.width = `${activeQ.length ? (cur / activeQ.length) * 100 : 0}%`;
+  const pct = completed ? Math.round((score / completed) * 100) : 0;
+  document.getElementById('pctv').textContent = completed ? `${pct}%` : '-';
+  document.getElementById('plb').textContent = `PROGRESSION : ${completed} / ${activeQ.length}`;
+  document.getElementById('pfb').style.width = `${activeQ.length ? (completed / activeQ.length) * 100 : 0}%`;
   document.getElementById('count').textContent = `${activeQ.length} questions`;
 }
 
@@ -144,7 +151,10 @@ function render() {
     button.onclick = () => answerText(input.value);
 
     input.addEventListener('keydown', (event) => {
-      if (event.key === 'Enter') answerText(input.value);
+      if (event.key === 'Enter' && (!isSentenceExample || event.ctrlKey || event.metaKey)) {
+        event.preventDefault();
+        answerText(input.value);
+      }
     });
 
     wrap.append(input, button);
@@ -257,7 +267,9 @@ function answerText(value) {
 }
 
 function nextQ() {
+  if (!answered || cur >= activeQ.length) return;
   cur += 1;
+  answered = false;
   updateStats();
   render();
 }

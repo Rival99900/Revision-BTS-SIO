@@ -1,3 +1,13 @@
+async function fetchWithTimeout(url, options = {}) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 15000);
+  try { return await fetch(url, { ...options, signal: controller.signal }); }
+  catch (error) {
+    if (error.name === 'AbortError') throw markEngineError(new Error('Le moteur distant ne répond pas. Réessayez dans quelques instants.'));
+    throw error;
+  } finally { clearTimeout(timer); }
+}
+
 /* Code Lab — moteurs d’exécution et détection des entrées */
 
 function setRunning(value) {
@@ -6,115 +16,57 @@ function setRunning(value) {
   if (value) dom.runButton.textContent = '… Exécution';
 }
 
-async function loadPyodideRuntime() {
-  if (state.pyodide) return state.pyodide;
-  if (state.pyodideLoading) return state.pyodideLoading;
-  setRuntimeStatus('python', 'chargement…');
-  setTerminalState('chargement Python');
-  state.pyodideLoading = new Promise((resolve, reject) => {
-    const existing = document.querySelector('script[data-pyodide-loader]');
-    if (existing && typeof window.loadPyodide === 'function') return resolve();
-    const script = document.createElement('script');
-    script.dataset.pyodideLoader = '1';
-    script.src = 'https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js';
-    script.onload = resolve;
-    script.onerror = () => reject(new Error('Impossible de charger Pyodide. Vérifiez la connexion Internet.'));
-    document.head.appendChild(script);
-  }).then(async () => {
-    if (typeof window.loadPyodide !== 'function') throw new Error('Pyodide est chargé mais loadPyodide() est indisponible.');
-    state.pyodide = await window.loadPyodide({ indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.26.4/full/' });
-    setRuntimeStatus('python', 'prêt', 'ready');
-    return state.pyodide;
-  }).catch((error) => {
-    setRuntimeStatus('python', 'indisponible', 'error');
-    state.pyodideLoading = null;
-    throw error;
+function runPythonWorker(code, inputs) {
+  return new Promise((resolve, reject) => {
+    let timer;
+    const fail = (message) => {
+      clearTimeout(timer);
+      state.pythonWorker?.terminate();
+      state.pythonWorker = null;
+      setRuntimeStatus('python', 'indisponible', 'error');
+      reject(new Error(message));
+    };
+    try {
+      if (!state.pythonWorker) {
+        state.pythonWorker = new Worker(new URL('code-lab-python-worker.js', pythonRuntimeScriptURL));
+        setRuntimeStatus('python', 'chargement…');
+      }
+      // Initial download gets more time than execution itself.
+      timer = setTimeout(() => fail('Le chargement Python prend trop de temps. Vérifiez votre connexion puis réessayez.'), 60000);
+      state.pythonWorker.onerror = () => fail('Impossible de démarrer Python. Vérifiez votre connexion puis réessayez.');
+      state.pythonWorker.onmessage = ({ data }) => {
+        clearTimeout(timer);
+        if (data.ready) {
+          setRuntimeStatus('python', 'prêt', 'ready');
+          timer = setTimeout(() => fail('Exécution arrêtée après 10 secondes. Vérifiez vos boucles puis réessayez.'), 10000);
+        } else if (data.error) fail(data.error);
+        else resolve(data.results.map((item) => {
+          if (!item.error) return { output: item.output };
+          const error = new Error(item.error);
+          error.runtimeOutput = item.output;
+          return { error };
+        }));
+      };
+      state.pythonWorker.postMessage({ code, inputs });
+    } catch (error) { fail(error.message); }
   });
-  return state.pyodideLoading;
 }
 
+const pythonRuntimeScriptURL = document.currentScript.src;
+
 async function runPython(code, stdin) {
-  const pyodide = await loadPyodideRuntime();
-  pyodide.globals.set('__bts_user_code', code);
-  pyodide.globals.set('__bts_stdin', stdin || '');
-  return pyodide.runPythonAsync(`
-import sys, io, traceback, builtins
-_bts_stdout = io.StringIO()
-_bts_old_stdout = sys.stdout
-_bts_old_stderr = sys.stderr
-_bts_old_stdin = sys.stdin
-_bts_old_input = builtins.input
-_bts_buffer = io.StringIO(__bts_stdin)
-_bts_inputs = iter(__bts_stdin.splitlines())
-def _bts_input(prompt=''):
-    if prompt:
-        print(prompt, end='')
-    try:
-        return next(_bts_inputs)
-    except StopIteration:
-        return ''
-sys.stdout = _bts_stdout
-sys.stderr = _bts_stdout
-sys.stdin = _bts_buffer
-builtins.input = _bts_input
-try:
-    exec(__bts_user_code, {'__name__': '__main__'})
-except Exception:
-    traceback.print_exc()
-finally:
-    sys.stdout = _bts_old_stdout
-    sys.stderr = _bts_old_stderr
-    sys.stdin = _bts_old_stdin
-    builtins.input = _bts_old_input
-_bts_stdout.getvalue()
-  `);
+  const [result] = await runPythonWorker(code, [stdin || '']);
+  if (result.error) throw result.error;
+  return result.output;
 }
 
 async function runPythonBatch(code, cases) {
-  const pyodide = await loadPyodideRuntime();
-  pyodide.globals.set('__bts_user_code', code);
-  pyodide.globals.set('__bts_test_inputs_json', JSON.stringify(cases.map((testCase) => String(testCase.stdin || ''))));
-  const raw = await pyodide.runPythonAsync(`
-import sys, io, traceback, builtins, json
-_bts_results = []
-_bts_inputs_json = json.loads(__bts_test_inputs_json)
-for _bts_stdin in _bts_inputs_json:
-    _bts_stdout = io.StringIO()
-    _bts_old_stdout = sys.stdout
-    _bts_old_stderr = sys.stderr
-    _bts_old_stdin = sys.stdin
-    _bts_old_input = builtins.input
-    _bts_buffer = io.StringIO(_bts_stdin)
-    _bts_inputs = iter(_bts_stdin.splitlines())
-    def _bts_input(prompt=''):
-        if prompt:
-            print(prompt, end='')
-        try:
-            return next(_bts_inputs)
-        except StopIteration:
-            return ''
-    sys.stdout = _bts_stdout
-    sys.stderr = _bts_stdout
-    sys.stdin = _bts_buffer
-    builtins.input = _bts_input
-    try:
-        exec(compile(__bts_user_code, '<CodeLab>', 'exec'), {'__name__': '__main__'})
-    except BaseException:
-        traceback.print_exc()
-    finally:
-        sys.stdout = _bts_old_stdout
-        sys.stderr = _bts_old_stderr
-        sys.stdin = _bts_old_stdin
-        builtins.input = _bts_old_input
-    _bts_results.append(_bts_stdout.getvalue())
-json.dumps(_bts_results, ensure_ascii=False)
-  `);
-  return JSON.parse(String(raw || '[]'));
+  return runPythonWorker(code, cases.map((testCase) => String(testCase.stdin || '')));
 }
 
 async function getJudgeLanguages() {
   if (state.judgeLanguages) return state.judgeLanguages;
-  const response = await fetch('https://ce.judge0.com/languages');
+  const response = await fetchWithTimeout('https://ce.judge0.com/languages');
   if (!response.ok) throw new Error(`Judge0 indisponible (HTTP ${response.status}).`);
   state.judgeLanguages = await response.json();
   return state.judgeLanguages;
@@ -202,7 +154,7 @@ async function runJudge0(language, code, stdin) {
 
   let createResponse;
   try {
-    createResponse = await fetch('https://ce.judge0.com/submissions?base64_encoded=true&wait=false', {
+    createResponse = await fetchWithTimeout('https://ce.judge0.com/submissions?base64_encoded=true&wait=false', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
       body: JSON.stringify(payload),
@@ -221,7 +173,7 @@ async function runJudge0(language, code, stdin) {
     await new Promise((resolve) => window.setTimeout(resolve, 350));
     let resultResponse;
     try {
-      resultResponse = await fetch(`https://ce.judge0.com/submissions/${created.token}?base64_encoded=true&fields=stdout,stderr,compile_output,message,status,time,memory`);
+      resultResponse = await fetchWithTimeout(`https://ce.judge0.com/submissions/${created.token}?base64_encoded=true&fields=stdout,stderr,compile_output,message,status,time,memory`);
     } catch {
       throw markEngineError(new Error('La connexion au moteur d’exécution a été interrompue pendant le traitement.'));
     }
@@ -290,6 +242,8 @@ function splitInteractiveInputValues(value) {
 function normalizeInteractiveStdin(value, requirement) {
   const raw = String(value ?? '').replace(/\r\n/g, '\n');
   if (!requirement || requirement.mode !== 'stdin' || Number(requirement.count || 0) <= 1) return raw;
+  // Explicit lines are already input records: preserve spaces and empty lines.
+  if (raw.includes('\n')) return raw;
   const tokens = splitInteractiveInputValues(raw);
   return tokens.length ? `${tokens.join('\n')}\n` : '';
 }
@@ -332,7 +286,7 @@ function prepareJavaSource(source, filename) {
   const preferredPattern = new RegExp(`\\bclass\\s+${escapeRegExp(preferred)}\\b`);
   if (preferredPattern.test(code)) className = preferred;
   else className = code.match(/\bpublic\s+class\s+([A-Za-z_$][\w$]*)/)?.[1] || code.match(/\bclass\s+([A-Za-z_$][\w$]*)/)?.[1] || '';
-  if (className && className !== 'Main') code = code.replace(new RegExp(`\\b${escapeRegExp(className)}\\b`, 'g'), 'Main');
+  if (className && className !== 'Main') code = renameJavaIdentifier(code, className, 'Main');
   return code;
 }
 
@@ -386,7 +340,7 @@ async function runJudge0Batch(language, code, cases, requirement, filename) {
 
   let createResponse;
   try {
-    createResponse = await fetch('https://ce.judge0.com/submissions/batch?base64_encoded=true', {
+    createResponse = await fetchWithTimeout('https://ce.judge0.com/submissions/batch?base64_encoded=true', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
       body: JSON.stringify({ submissions }),
@@ -416,7 +370,7 @@ async function runJudge0Batch(language, code, cases, requirement, filename) {
     let response;
     try {
       const fields = 'token,stdout,stderr,compile_output,message,status,time,memory';
-      response = await fetch(`https://ce.judge0.com/submissions/batch?tokens=${encodeURIComponent(tokens.join(','))}&base64_encoded=true&fields=${fields}`);
+      response = await fetchWithTimeout(`https://ce.judge0.com/submissions/batch?tokens=${encodeURIComponent(tokens.join(','))}&base64_encoded=true&fields=${fields}`);
     } catch {
       throw markEngineError(new Error('La connexion à Judge0 a été interrompue pendant les tests groupés.'));
     }
@@ -465,8 +419,7 @@ async function runRemoteCasesLimited(language, code, cases, requirement, filenam
 
 async function runTestCasesFast(language, code, cases, requirement, filename) {
   if (language === 'python') {
-    const outputs = await runPythonBatch(code, cases);
-    return outputs.map((output) => ({ output }));
+    return runPythonBatch(code, cases);
   }
 
   try {
@@ -535,7 +488,7 @@ function openStdinModal(requirement) {
   state.stdinReturnSelection = dom.codeEditor
     ? { start: dom.codeEditor.selectionStart, end: dom.codeEditor.selectionEnd }
     : null;
-  const saved = localStorage.getItem(stdinStorageKey(file));
+  const saved = appStorage.getItem(stdinStorageKey(file));
   let suggested = saved ?? exercise?.stdin ?? '';
   if (requirement.mode === 'php-post' && requirement.keys?.length && !saved) suggested = requirement.keys.map((key) => `${key}=`).join('\n');
   dom.stdinModalInput.value = suggested;
@@ -565,12 +518,13 @@ function launchFromStdinModal(forceEmpty = false) {
   const requirement = state.stdinRequirement;
   const rawStdin = forceEmpty ? '' : dom.stdinModalInput.value;
   const stdin = requirement?.mode === 'php-post' ? rawStdin : normalizeInteractiveStdin(rawStdin, requirement);
-  localStorage.setItem(stdinStorageKey(file), rawStdin);
+  appStorage.setItem(stdinStorageKey(file), rawStdin);
   closeStdinModal({ restoreView: false });
   executeCode(stdin, requirement);
 }
 
 function requestExecution() {
+  if (state.running) return;
   const language = activeLanguage();
   if (!['python', 'php', 'java'].includes(language)) {
     clearTerminal();
@@ -591,6 +545,7 @@ function requestExecution() {
 }
 
 async function executeCode(stdin = '', requirement = null) {
+  if (state.running) return null;
   const file = activeFile();
   const language = activeLanguage();
   const code = dom.codeEditor.value;
@@ -622,6 +577,7 @@ async function executeCode(stdin = '', requirement = null) {
 }
 
 async function testExercise() {
+  if (state.running) return;
   const exercise = currentExercise();
   const file = activeFile();
   const language = activeLanguage();
@@ -703,7 +659,7 @@ async function testExercise() {
 
     const durationLabel = elapsed < 1000 ? `${Math.round(elapsed)} ms` : `${(elapsed / 1000).toFixed(2)} s`;
     if (failureCount === 0 && outcomes.length === cases.length) {
-      localStorage.setItem(solvedKey(language, exercise), '1');
+      appStorage.setItem(solvedKey(language, exercise), '1');
       renderExerciseList();
       appendTerminal(`Tous les ${cases.length} cas sont validés en ${durationLabel}.`, 'success');
       setTerminalState('réussi', 'success');

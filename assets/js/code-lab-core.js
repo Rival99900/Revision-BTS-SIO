@@ -71,8 +71,8 @@ const EXTENSION_LANGUAGE = {
 const state = {
   project: null,
   activeFileId: null,
-  pyodide: null,
-  pyodideLoading: null,
+  pythonWorker: null,
+  storageFailed: false,
   judgeLanguages: null,
   running: false,
   history: new Map(),
@@ -152,7 +152,7 @@ function solvedKey(language, exercise) {
 function conceptSolved(concept) {
   return ['python', 'php', 'java'].some((language) => {
     const variant = exerciseVariant(concept, language);
-    return variant && localStorage.getItem(solvedKey(language, variant)) === '1';
+    return variant && appStorage.getItem(solvedKey(language, variant)) === '1';
   });
 }
 
@@ -404,8 +404,18 @@ function validateFilename(rawName, ignoreFileId = null) {
   return { ok: true, name };
 }
 
+function queueProjectSave() {
+  window.clearTimeout(persistProject.timer);
+  persistProject.timer = window.setTimeout(() => {
+    persistProject();
+    updateSaveState();
+  }, 250);
+}
+
 function persistProject() {
-  localStorage.setItem(PROJECT_STORAGE_KEY, JSON.stringify(state.project));
+  window.clearTimeout(persistProject.timer);
+  state.storageFailed = !appStorage.setItem(PROJECT_STORAGE_KEY, JSON.stringify(state.project));
+  return !state.storageFailed;
 }
 
 function createFileObject(name, content = null, exerciseId = null) {
@@ -424,12 +434,12 @@ function createFileObject(name, content = null, exerciseId = null) {
 function loadProject() {
   let parsed = null;
   try {
-    parsed = JSON.parse(localStorage.getItem(PROJECT_STORAGE_KEY) || 'null');
+    parsed = JSON.parse(appStorage.getItem(PROJECT_STORAGE_KEY) || 'null');
   } catch (_) {
     parsed = null;
   }
 
-  if (!parsed || !Array.isArray(parsed.files) || !parsed.files.length) {
+  if (!parsed || !Array.isArray(parsed.files) || !parsed.files.some((file) => file && typeof file === 'object')) {
     const first = createFileObject('main.py', '# Sandbox Python\nprint("Bonjour BTS SIO")\n');
     state.project = {
       version: PROJECT_VERSION,
@@ -445,7 +455,7 @@ function loadProject() {
 
   state.project = {
     version: PROJECT_VERSION,
-    files: parsed.files.map((file) => ({
+    files: parsed.files.filter((file) => file && typeof file === 'object').map((file) => ({
       id: file.id || uid('file'),
       name: file.name || 'fichier.txt',
       content: String(file.content ?? ''),
@@ -478,7 +488,7 @@ function fileDirty(file = activeFile()) {
 }
 
 function anyDirtyFiles() {
-  return Boolean(state.project?.files.some(fileDirty));
+  return Boolean(state.storageFailed || state.project?.files.some(fileDirty));
 }
 
 function historyFor(fileId = state.activeFileId) {
@@ -500,7 +510,7 @@ function setActiveFileContent(value, { history = true } = {}) {
   if (history && file.content !== next) pushHistory(file.content);
   file.content = next;
   file.updatedAt = Date.now();
-  persistProject();
+  queueProjectSave();
   updateSaveState();
 }
 
@@ -521,9 +531,11 @@ function updateSaveState(forcedText = '') {
   const file = activeFile();
   if (!file || !dom.saveState) return;
   const dirty = fileDirty(file);
-  dom.saveState.textContent = forcedText || (dirty ? '● non enregistré' : 'enregistré');
+  dom.saveState.textContent = state.storageFailed
+    ? 'Stockage indisponible : téléchargez vos fichiers'
+    : forcedText || (dirty ? '● non enregistré' : 'enregistré');
   dom.saveState.classList.toggle('dirty', dirty);
-  if (dom.saveFileButton) dom.saveFileButton.disabled = !dirty;
+  if (dom.saveFileButton) dom.saveFileButton.disabled = !dirty && !state.storageFailed;
 }
 
 function renderFileList() {
@@ -749,6 +761,12 @@ function closeFileModal() {
   if (dom.stdinModal.hidden) document.body.classList.remove('modal-open');
 }
 
+// Match literals/comments before identifiers to preserve displayed text.
+function renameJavaIdentifier(source, oldName, newName) {
+  return String(source).replace(/"""[\s\S]*?"""|"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\/\/[^\n]*|\/\*[\s\S]*?\*\/|[A-Za-z_$][\w$]*/g,
+    (token) => token === oldName ? newName : token);
+}
+
 function renameJavaClassInFile(file, oldName, newName) {
   const oldLanguage = languageFromFilename(oldName);
   const newLanguage = languageFromFilename(newName);
@@ -756,8 +774,8 @@ function renameJavaClassInFile(file, oldName, newName) {
   const oldClass = javaClassNameFromFilename(oldName);
   const newClass = javaClassNameFromFilename(newName);
   if (oldClass === newClass) return;
-  file.content = file.content.replace(new RegExp(`\\b${escapeRegExp(oldClass)}\\b`, 'g'), newClass);
-  file.savedContent = file.savedContent.replace(new RegExp(`\\b${escapeRegExp(oldClass)}\\b`, 'g'), newClass);
+  file.content = renameJavaIdentifier(file.content, oldClass, newClass);
+  file.savedContent = renameJavaIdentifier(file.savedContent, oldClass, newClass);
 }
 
 function confirmFileModal() {

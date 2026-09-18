@@ -1,3 +1,22 @@
+// Storage may be blocked or full; keep navigation usable in that case.
+const sessionStorageFallback = new Map();
+const appStorage = {
+  getItem(key) {
+    if (sessionStorageFallback.has(key)) return sessionStorageFallback.get(key);
+    try { return localStorage.getItem(key); } catch { return null; }
+  },
+  setItem(key, value) {
+    try {
+      localStorage.setItem(key, String(value));
+      sessionStorageFallback.delete(key);
+      return true;
+    } catch {
+      sessionStorageFallback.set(key, String(value));
+      return false;
+    }
+  },
+};
+
 function goChapter(sel) {
   if (sel && sel.value) {
     location.href = sel.value;
@@ -175,8 +194,8 @@ function printPage() {
 
 function setReviewed(id) {
   const key = `bts-review-${id}`;
-  const done = localStorage.getItem(key) === '1';
-  localStorage.setItem(key, done ? '0' : '1');
+  const done = appStorage.getItem(key) === '1';
+  appStorage.setItem(key, done ? '0' : '1');
   refreshReview(id);
 }
 
@@ -184,7 +203,7 @@ function refreshReview(id) {
   const button = document.getElementById('reviewBtn');
   if (!button) return;
 
-  const done = localStorage.getItem(`bts-review-${id}`) === '1';
+  const done = appStorage.getItem(`bts-review-${id}`) === '1';
   button.textContent = done ? '✓ Révisé' : '○ Marquer révisé';
   button.classList.toggle('done', done);
 }
