@@ -1,399 +1,284 @@
 <!DOCTYPE html>
 <html lang="fr">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width,initial-scale=1.0" name="viewport"/>
-  <meta content="Révisions BTS SIO 1re et 2e année" name="description"/>
-  <title>
-   CEJM Droit — Impact numérique — 2e année
-  </title>
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&amp;family=VT323&amp;family=Orbitron:wght@700;900&amp;display=swap" rel="stylesheet"/>
-  <link href="../assets/css/style.css?v=20260916-1" rel="stylesheet"/>
-   <link rel="icon" type="image/svg+xml" href="../assets/img/site-logo.svg" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <meta name="description" content="Révision CEJM Droit 2e année — protection des données, CNIL, RGPD, identité numérique et usages en entreprise" />
+  <title>CEJM Droit — Impact numérique — 2e année</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&amp;family=VT323&amp;family=Orbitron:wght@700;900&amp;display=swap" rel="stylesheet" />
+  <link href="../assets/css/style.css?v=20260918-1" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="../assets/img/site-logo.svg" />
   <link rel="shortcut icon" href="../assets/img/site-logo.svg" />
- </head>
- <body data-review-id="2-cejm-droit">
+</head>
+<body data-review-id="2-cejm-droit">
   <div class="container">
-   <div class="site-header">
-    <div class="bbar"></div>
-    <h1>
-     BTS SIO — RÉVISIONS
-    </h1>
-    <div class="sub">
-     2E ANNÉE — CEJM DROIT
+    <div class="site-header">
+      <div class="bbar"></div>
+      <h1>BTS SIO — RÉVISIONS</h1>
+      <div class="sub">2E ANNÉE — CEJM DROIT</div>
+      <div class="tags">
+        <span class="tag tg">BTS SIO</span>
+        <span class="tag tp">2e année</span>
+        <span class="tag tgold">CEJM Droit</span>
+        <span class="tag ta">Impact numérique</span>
+      </div>
+      <div class="prompt">C:\\BTS-SIO\REVISION&gt; <span>█</span></div>
     </div>
-    <div class="tags">
-     <span class="tag tg">
-      BTS SIO
-     </span>
-     <span class="tag tb">
-      1re année
-     </span>
-     <span class="tag tp">
-      2e année
-     </span>
-     <span class="tag ta">
-      Quiz interactifs
-     </span>
+
+    <div class="topnav">
+      <a class="navbtn" href="../index.html">⌂ Accueil</a>
+      <a class="navbtn quiz" href="../quiz.html?year=2&amp;module=cejm2">🎯 Quiz CEJM 2e</a>
+      <a class="navbtn" href="../code-lab.html">&lt;/&gt; Code Lab</a>
     </div>
-    <div class="prompt">
-     C:\\BTS-SIO\REVISION&gt;
-     <span>
-      █
-     </span>
-    </div>
-   </div>
-   <div class="topnav">
-    <a class="navbtn" href="../index.html">
-     ⌂ Accueil
-    </a>
-    <a class="navbtn quiz" href="../quiz.html">
-     🎯 Quiz général
-    </a>
-    <a class="navbtn" href="../code-lab.html">
-     &lt;/&gt; Code Lab
-    </a>
-   </div>
-   <main class="page-panel gold">
-    <div class="hero">
-     <div>
-      <div class="hero-kicker">
-       2E ANNÉE // CEJM DROIT
+
+    <main class="page-panel gold">
+      <div class="hero">
+        <div>
+          <div class="hero-kicker">2E ANNÉE // CEJM DROIT</div>
+          <h2>Thème 4 — L’impact numérique</h2>
+          <p>Séquence 4.2 : dans quelle mesure le droit répond-il aux questions du développement du numérique ?</p>
+        </div>
+        <div class="hero-actions">
+          <button class="smallbtn" id="reviewBtn" onclick="setReviewed('2-cejm-droit')">○ Marquer révisé</button>
+          <button class="smallbtn" onclick="printPage()">🖨 Imprimer</button>
+          <a class="smallbtn alt" href="../quiz.html?year=2&amp;module=cejm2">🎯 Quiz ciblé</a>
+        </div>
       </div>
-      <h2>
-       Thème 4 — L’impact numérique
-      </h2>
-      <p>
-       Séquence 4.2 : dans quelle mesure le droit répond-il aux questions du développement du numérique ?
-      </p>
-     </div>
-     <div class="hero-actions">
-      <button class="smallbtn" id="reviewBtn" onclick="setReviewed('2-cejm-droit')">
-       ○ Marquer révisé
-      </button>
-      <button class="smallbtn" onclick="printPage()">
-       🖨 Imprimer
-      </button>
-      <a class="smallbtn alt" href="../quiz.html?year=2&amp;module=cejm2">
-       🎯 Quiz ciblé
-      </a>
-     </div>
-    </div>
-    <div class="stabs">
-     <button class="sb gold a" onclick="showSub('num','dcp',this)">
-      DCP &amp; sensibles
-     </button>
-     <button class="sb gold" onclick="showSub('num','cnil',this)">
-      CNIL &amp; RGPD
-     </button>
-     <button class="sb gold" onclick="showSub('num','principes',this)">
-      Principes
-     </button>
-     <button class="sb gold" onclick="showSub('num','risques',this)">
-      Identité &amp; risques
-     </button>
-     <button class="sb gold" onclick="showSub('num','cas',this)">
-      Cas montre connectée
-     </button>
-    </div>
-    <div class="sc a" id="num-dcp">
-     <div class="st gold">
-      Données à caractère personnel
-     </div>
-     <div class="bq gold">
-      <span class="qt">
-       "
-      </span>
-      <p>
-       Une DCP est toute information relative à une
-       <strong>
-        personne physique identifiée directement ou indirectement
-       </strong>, par référence à un ou plusieurs éléments qui lui sont propres.
-      </p>
-     </div>
-     <div class="cmp">
-      <div class="cmpc">
-       <h4 class="gold">
-        Données personnelles
-       </h4>
-       <ul>
-        <li>
-         Nom, prénom, pseudonyme
-        </li>
-        <li>
-         Date de naissance
-        </li>
-        <li>
-         Photo et voix
-        </li>
-        <li>
-         Téléphone
-        </li>
-        <li>
-         Adresse postale / email
-        </li>
-        <li>
-         Âge, genre, image
-        </li>
-       </ul>
+
+      <div class="stabs">
+        <button class="sb gold a" onclick="showSub('num','dcp',this)">DCP &amp; sensibles</button>
+        <button class="sb gold" onclick="showSub('num','cnil',this)">CNIL &amp; sanctions</button>
+        <button class="sb gold" onclick="showSub('num','rgpd',this)">RGPD &amp; principes</button>
+        <button class="sb gold" onclick="showSub('num','risques',this)">Identité &amp; risques</button>
+        <button class="sb gold" onclick="showSub('num','travail',this)">Employeur &amp; numérique</button>
+        <button class="sb gold" onclick="showSub('num','cas',this)">Cas montre connectée</button>
       </div>
-      <div class="cmpc">
-       <h4 class="rd">
-        Données sensibles
-       </h4>
-       <ul>
-        <li>
-         Origine raciale ou ethnique supposée
-        </li>
-        <li>
-         Opinions politiques
-        </li>
-        <li>
-         Convictions religieuses/philosophiques
-        </li>
-        <li>
-         Appartenance syndicale
-        </li>
-        <li>
-         Données génétiques/biométriques
-        </li>
-        <li>
-         Données de santé
-        </li>
-        <li>
-         Vie sexuelle / orientation sexuelle
-        </li>
-       </ul>
+
+      <div class="sc a" id="num-dcp">
+        <div class="st gold">1.1 — Les données à caractère personnel</div>
+        <div class="bq gold">
+          <span class="qt">"</span>
+          <p>Une DCP est toute information relative à une <strong>personne physique identifiée directement ou indirectement</strong>, par référence à un ou plusieurs éléments qui lui sont propres.</p>
+        </div>
+
+        <div class="cmp">
+          <div class="cmpc">
+            <h4 class="gold">Données personnelles</h4>
+            <ul>
+              <li>Nom, prénom, pseudonyme</li>
+              <li>Date de naissance</li>
+              <li>Photos et enregistrements sonores de la voix</li>
+              <li>Numéro de téléphone fixe ou portable</li>
+              <li>Adresse postale et adresse électronique</li>
+              <li>Âge, genre, image</li>
+            </ul>
+          </div>
+          <div class="cmpc">
+            <h4 class="rd">Données sensibles</h4>
+            <ul>
+              <li>Origine raciale ou ethnique supposée</li>
+              <li>Opinions politiques</li>
+              <li>Convictions religieuses ou philosophiques</li>
+              <li>Appartenance syndicale</li>
+              <li>Données génétiques</li>
+              <li>Données biométriques utilisées pour identifier une personne de façon unique</li>
+              <li>Données de santé</li>
+              <li>Données relatives à la vie sexuelle ou à l’orientation sexuelle</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="alert aa"><strong>À distinguer :</strong> les coordonnées génériques d’une entreprise, comme l’adresse de l’entreprise, le téléphone du standard ou un email de contact générique, ne sont en principe pas des données personnelles.</div>
       </div>
-     </div>
-     <div class="alert aa">
-      <strong>
-       Attention :
-      </strong>
-      les coordonnées génériques d’une entreprise (standard, email générique) ne sont en principe pas des données personnelles.
-     </div>
-    </div>
-    <div class="sc" id="num-cnil">
-     <div class="st gold">
-      CNIL
-     </div>
-     <div class="cg">
-      <div class="card gold">
-       <h3>
-        Origine
-       </h3>
-       <p>
-        Créée en 1978 par la loi Informatique et Libertés. C’est une autorité administrative indépendante chargée de réguler les données personnelles.
-       </p>
+
+      <div class="sc" id="num-cnil">
+        <div class="st gold">1.2 — Le rôle de la CNIL</div>
+        <div class="cg">
+          <div class="card gold">
+            <h3>Origine</h3>
+            <p>Créée en 1978 par la loi Informatique et Libertés, la CNIL est une autorité administrative indépendante chargée de réguler les données personnelles des utilisateurs.</p>
+          </div>
+          <div class="card bl">
+            <h3>4 missions principales</h3>
+            <ul>
+              <li>Informer et conseiller les particuliers et les professionnels.</li>
+              <li>Accompagner la mise en conformité.</li>
+              <li>Participer aux débats de société sur les enjeux éthiques des données.</li>
+              <li>Contrôler et sanctionner.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="st gold">Sanctions citées dans le cours — 2025</div>
+        <div class="table-scroll">
+          <table class="tbl gold sanctions-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Entreprise / organisme</th>
+                <th>Montant</th>
+                <th>Motif indiqué dans le cours</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1er septembre 2025</td>
+                <td>GOOGLE — Google LLC / Google Ireland Limited</td>
+                <td>325 000 000 €</td>
+                <td>Publicités insérées entre les courriels Gmail sans consentement et dépôt de cookies lors de la création d’un compte sans consentement valide.</td>
+              </tr>
+              <tr>
+                <td>1er septembre 2025</td>
+                <td>SHEIN — Infinite Styles Services Co. Limited</td>
+                <td>150 000 000 €</td>
+                <td>Cookies déposés sans consentement de l’utilisateur, en non-respect des règles applicables aux traceurs.</td>
+              </tr>
+              <tr>
+                <td>22 décembre 2025</td>
+                <td>NEXPUBLICA FRANCE</td>
+                <td>1 700 000 €</td>
+                <td>Absence de mesures de sécurité suffisantes pour son logiciel PCRM.</td>
+              </tr>
+              <tr>
+                <td>30 décembre 2025</td>
+                <td>Société non identifiée publiquement par la CNIL</td>
+                <td>3 500 000 €</td>
+                <td>Transmission des données de membres d’un programme de fidélité à un réseau social à des fins publicitaires, sans consentement.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-      <div class="card bl">
-       <h3>
-        4 missions
-       </h3>
-       <ul>
-        <li>
-         Informer et conseiller
-        </li>
-        <li>
-         Accompagner la mise en conformité
-        </li>
-        <li>
-         Participer aux débats de société
-        </li>
-        <li>
-         Contrôler et sanctionner
-        </li>
-       </ul>
+
+      <div class="sc" id="num-rgpd">
+        <div class="st gold">1.3 — Le RGPD</div>
+        <div class="alert agold"><strong>Repère :</strong> le RGPD, adopté le 27 avril 2016, constitue le texte de référence européen en matière de protection des données à caractère personnel et modifie le cadre de la loi Informatique et Libertés de 1978.</div>
+
+        <div class="st gold">Droits des personnes</div>
+        <div class="cg">
+          <div class="card">
+            <h3>Droit d’accès</h3>
+            <p>Consulter les données personnelles collectées à son sujet.</p>
+          </div>
+          <div class="card bl">
+            <h3>Droit de rectification</h3>
+            <p>Faire rectifier les données personnelles qui sont inexactes.</p>
+          </div>
+          <div class="card am">
+            <h3>Droit d’opposition</h3>
+            <p>S’opposer à l’utilisation de ses données lorsque les conditions prévues le permettent.</p>
+          </div>
+          <div class="card rd">
+            <h3>Droit à l’oubli</h3>
+            <p>Demander l’effacement des données et, dans le contexte évoqué dans le cours, le déréférencement de contenus portant préjudice à une personne.</p>
+          </div>
+          <div class="card pk">
+            <h3>Droit à la portabilité</h3>
+            <p>Récupérer les données concernées afin de pouvoir les réutiliser ou les transmettre.</p>
+          </div>
+        </div>
+
+        <div class="st gold">Obligations de l’entreprise</div>
+        <div class="cg">
+          <div class="card gold">
+            <h3>Organisation</h3>
+            <ul>
+              <li>Nommer un responsable du traitement des données / DPO.</li>
+              <li>Créer un registre des traitements des données.</li>
+              <li>Ne collecter que les données utiles.</li>
+              <li>Obtenir le consentement préalable lorsque celui-ci est nécessaire.</li>
+              <li>Respecter les droits des personnes.</li>
+              <li>Sécuriser les données.</li>
+            </ul>
+          </div>
+          <div class="card bl">
+            <h3>Accountability</h3>
+            <p>Mettre en œuvre des mécanismes et procédures internes permettant de démontrer le respect des règles relatives à la protection des données.</p>
+          </div>
+          <div class="card am">
+            <h3>Privacy by design</h3>
+            <p>Prendre en compte l’objectif de protection des données personnelles dès la conception du service ou du produit de l’entreprise.</p>
+          </div>
+          <div class="card pk">
+            <h3>Privacy by default</h3>
+            <p>Prévoir des paramètres par défaut des outils ou produits numériques assurant la meilleure protection.</p>
+          </div>
+        </div>
       </div>
-     </div>
-     <div class="st gold">
-      RGPD — droits des personnes
-     </div>
-     <div class="cg">
-      <div class="card">
-       <h3>
-        Droits
-       </h3>
-       <ul>
-        <li>
-         Droit d’accès
-        </li>
-        <li>
-         Droit de rectification
-        </li>
-        <li>
-         Droit d’opposition si légitime
-        </li>
-        <li>
-         Droit à l’oubli / effacement
-        </li>
-        <li>
-         Droit à la portabilité
-        </li>
-       </ul>
+
+      <div class="sc" id="num-risques">
+        <div class="st gold">1.4 — L’utilisation des données personnelles</div>
+        <div class="card gold">
+          <h3>Identité numérique</h3>
+          <p>L’identité numérique correspond à l’ensemble des traces numériques : numéro d’identification, adresse IP, adresse email, nom d’usager, mot de passe, nom, prénom, pseudonyme, données bancaires, photo, avatar, contributions sur des blogs, etc.</p>
+        </div>
+
+        <div class="cg">
+          <div class="card rd">
+            <h3>Usurpation d’identité / phishing</h3>
+            <p>Le cours cite l’usurpation afin de bénéficier d’avantages à la place d’un autre, notamment par phishing ou hameçonnage, création d’un faux site web ou d’un faux profil sur un site ou réseau social.</p>
+            <p><b>Peine notée dans le cours :</b> 1 an de prison et 15 000 € d’amende.</p>
+          </div>
+          <div class="card pk">
+            <h3>Doxing</h3>
+            <p>Divulgation de données personnelles afin de nuire en portant atteinte à l’honneur ou à la réputation d’une personne.</p>
+            <p><b>Peine notée dans le cours :</b> 5 ans de prison et 300 000 € d’amende.</p>
+          </div>
+          <div class="card am">
+            <h3>Cybercrime et crime organisé</h3>
+            <p>Le cours relève une convergence entre le cybercrime et le crime organisé.</p>
+            <p><b>Peine notée dans le cours :</b> 7 ans de prison et 750 000 € d’amende.</p>
+          </div>
+        </div>
+
+        <div class="alert aa"><strong>Violation de données :</strong> le cours indique qu’en juillet 2025, la France se classe en deuxième position des pays les plus touchés au monde par des fuites de données, derrière les États-Unis, en citant L’Usine Digitale.</div>
       </div>
-      <div class="card am">
-       <h3>
-        Obligations entreprise
-       </h3>
-       <ul>
-        <li>
-         Nommer un responsable / DPO
-        </li>
-        <li>
-         Créer un registre des traitements
-        </li>
-        <li>
-         Ne collecter que les données utiles
-        </li>
-        <li>
-         Obtenir le consentement lorsque nécessaire
-        </li>
-        <li>
-         Respecter les droits des personnes
-        </li>
-        <li>
-         Sécuriser les données
-        </li>
-       </ul>
+
+      <div class="sc" id="num-travail">
+        <div class="st gold">Numérique et contrôle dans l’entreprise</div>
+        <p>Le cours pose une série de questions sur les moyens de contrôle dont peut disposer un employeur. Elles doivent être traitées juridiquement en mobilisant les règles vues sur les données personnelles, la proportionnalité, l’information et la protection des salariés.</p>
+
+        <div class="course-question-list">
+          <div class="course-question">L’employeur peut-il enregistrer les communications téléphoniques entre ses salariés et ses clients ?</div>
+          <div class="course-question">L’employeur peut-il installer des caméras ?</div>
+          <div class="course-question">L’employeur peut-il géolocaliser ses salariés ?</div>
+          <div class="course-question">L’employeur peut-il contrôler l’usage d’Internet, par exemple avec un filtrage de sites, un pare-feu ou un antivirus ?</div>
+          <div class="course-question">L’employeur peut-il limiter le temps d’utilisation personnelle d’Internet ?</div>
+          <div class="course-question">L’employeur peut-il contrôler la messagerie, par exemple la fréquence des envois, la taille des messages ou l’utilisation de filtres antispam ?</div>
+          <div class="course-question">L’employeur peut-il limiter la taille de stockage des fichiers personnels ?</div>
+        </div>
+
+        <div class="alert aa"><strong>Important :</strong> le document fourni formule ici des questions, sans donner leur correction détaillée. La fiche les conserve donc comme points à savoir analyser sans inventer de réponse absente du cours.</div>
       </div>
-     </div>
-    </div>
-    <div class="sc" id="num-principes">
-     <div class="st gold">
-      Principes de protection
-     </div>
-     <div class="cg">
-      <div class="card gold">
-       <h3>
-        Accountability
-       </h3>
-       <p>
-        Mettre en œuvre des mécanismes et procédures internes permettant de
-        <b>
-         démontrer
-        </b>
-        le respect des règles de protection des données.
-       </p>
+
+      <div class="sc" id="num-cas">
+        <div class="st gold">Exercice — montre connectée</div>
+        <div class="cg">
+          <div class="card">
+            <h3>Données personnelles collectées</h3>
+            <p>Âge, sexe, sport pratiqué, géolocalisation, adresse mail, données de carte bancaire, agenda, contacts et numéro de téléphone.</p>
+          </div>
+          <div class="card rd">
+            <h3>Données sensibles</h3>
+            <p>Fréquence cardiaque, fréquence de l’activité sportive, distance parcourue, calories, données de sommeil, vitesse, intensité, jours d’activité et suivi statistique, car ces données sont liées à la santé.</p>
+          </div>
+          <div class="card bl">
+            <h3>Protection juridique</h3>
+            <p>La loi Informatique et Libertés de 1978 et le RGPD protègent l’utilisateur. La CNIL contrôle leur respect et peut sanctionner les entreprises. Le RGPD prévoit notamment les droits d’accès, de rectification, d’opposition, d’effacement et de portabilité.</p>
+          </div>
+          <div class="card am">
+            <h3>Publicité</h3>
+            <p>L’entreprise est autorisée à « pousser » de la publicité si la personne a donné son consentement préalable pour l’utilisation de ses données personnelles. Si cette condition n’est pas respectée, la personne peut exercer son droit d’opposition, demander l’effacement de ses données et saisir la CNIL.</p>
+          </div>
+        </div>
       </div>
-      <div class="card bl">
-       <h3>
-        Privacy by design
-       </h3>
-       <p>
-        Prendre en compte la protection des données personnelles
-        <b>
-         dès la conception
-        </b>
-        du service ou du produit.
-       </p>
-      </div>
-      <div class="card am">
-       <h3>
-        Privacy by default
-       </h3>
-       <p>
-        Paramétrer par défaut les outils ou produits numériques pour assurer la meilleure protection.
-       </p>
-      </div>
-     </div>
-    </div>
-    <div class="sc" id="num-risques">
-     <div class="st gold">
-      Identité numérique
-     </div>
-     <div class="bq gold">
-      <span class="qt">
-       "
-      </span>
-      <p>
-       Ensemble des traces numériques : identifiant, adresse IP, email, nom d’usager, mot de passe, nom/prénom, pseudonyme, données bancaires, photo/avatar, contributions, etc.
-      </p>
-     </div>
-     <div class="cg">
-      <div class="card rd">
-       <h3>
-        Usurpation / phishing
-       </h3>
-       <p>
-        L’usurpation d’identité peut servir à bénéficier d’avantages à la place d’un autre, notamment via hameçonnage, faux site ou faux profil.
-       </p>
-      </div>
-      <div class="card pk">
-       <h3>
-        Doxing
-       </h3>
-       <p>
-        Divulgation de données personnelles dans le but de nuire à l’honneur ou à la réputation d’une personne.
-       </p>
-      </div>
-      <div class="card am">
-       <h3>
-        Violation de données
-       </h3>
-       <p>
-        Les fuites de données rendent la sécurisation des traitements particulièrement importante.
-       </p>
-      </div>
-     </div>
-    </div>
-    <div class="sc" id="num-cas">
-     <div class="st gold">
-      Exercice — montre connectée
-     </div>
-     <div class="cg">
-      <div class="card">
-       <h3>
-        Données personnelles relevées
-       </h3>
-       <p>
-        Âge, sexe, sport pratiqué, géolocalisation, email, carte bancaire, agenda, contacts et numéro de téléphone.
-       </p>
-      </div>
-      <div class="card rd">
-       <h3>
-        Données sensibles relevées
-       </h3>
-       <p>
-        Fréquence cardiaque, activité sportive, distance, calories, sommeil, vitesse, intensité et suivi statistique : le corrigé les rattache aux données de santé.
-       </p>
-      </div>
-      <div class="card bl">
-       <h3>
-        Protection juridique
-       </h3>
-       <p>
-        Loi Informatique et Libertés de 1978 + RGPD ; la CNIL contrôle leur respect et peut sanctionner.
-       </p>
-      </div>
-      <div class="card am">
-       <h3>
-        Publicité
-       </h3>
-       <p>
-        Le corrigé retient le consentement préalable pour l’utilisation des données personnelles ; sinon l’utilisateur peut notamment exercer son droit d’opposition et saisir la CNIL.
-       </p>
-      </div>
-     </div>
-    </div>
-    <div class="source-note">
-     Source : document
-     <b>
-      CEJM Droit
-     </b>
-     du dossier Mme Vende-Bodin et document
-     <b>
-      Exercice sur Montre-Connectée corrigé
-     </b>. Les autres dossiers de 2e année étaient vides lors de cette mise à jour, ils ne sont donc pas remplis artificiellement.
-    </div>
-   </main>
-   <div class="footer">
-    <a href="../index.html">
-     ← Retour au tableau de bord
-    </a>
-   </div>
+
+      <div class="source-note">Sources : document <b>CEJM Droit</b> et document <b>Exercice sur Montre-Connectée corrigé</b> du dossier Mme Vende-Bodin. La fiche reprend uniquement les notions et réponses présentes dans ces supports ; les questions sur le contrôle des salariés restent présentées comme des questions lorsqu’aucune correction n’est fournie.</div>
+    </main>
+
+    <div class="footer"><a href="../index.html">← Retour au tableau de bord</a></div>
   </div>
-  <script src="../assets/js/common.js?v=20260916-1">
-  </script>
- </body>
+
+  <script src="../assets/js/common.js?v=20260918-1"></script>
+</body>
 </html>

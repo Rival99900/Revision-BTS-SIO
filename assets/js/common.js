@@ -269,9 +269,36 @@ function enhanceResponsiveTables() {
   });
 }
 
+/*
+ * Certaines anciennes fiches contiennent encore un libellé de section en texte
+ * brut juste avant le panneau correspondant (ex. "ENTREPRISE", "DHCP").
+ * Ces libellés provenaient de l'ancien HTML monolithique et s'affichaient hors
+ * du système d'onglets. On ne supprime que les nœuds texte qui correspondent à
+ * ce cas précis afin de ne toucher à aucun contenu pédagogique normal.
+ */
+function removeStraySectionLabels() {
+  document.querySelectorAll('main.panel, main.page-panel').forEach((main) => {
+    Array.from(main.childNodes).forEach((node) => {
+      if (node.nodeType !== Node.TEXT_NODE) return;
+
+      const label = String(node.textContent || '').replace(/\s+/g, ' ').trim();
+      if (!label) return;
+
+      const next = node.nextElementSibling;
+      if (!next?.classList.contains('sc')) return;
+
+      const looksLikeSectionLabel = label.length <= 80
+        && /^[A-ZÀ-ÖØ-Þ0-9][A-ZÀ-ÖØ-Þ0-9 &/'’+\-]*$/.test(label);
+
+      if (looksLikeSectionLabel) node.remove();
+    });
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const bodyId = document.body.dataset.reviewId || document.body.dataset.chapter;
   if (bodyId) refreshReview(bodyId);
+  removeStraySectionLabels();
   enhanceResponsiveTables();
   initSectionSteppers();
 });

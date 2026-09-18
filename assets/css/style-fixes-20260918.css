@@ -1,0 +1,309 @@
+/* =====================================================
+   Correctifs d'affichage globaux — 18/09/2026
+   CEJM, glossaires, navigation et responsive
+   ===================================================== */
+
+/* ----- Vocabulaire / définitions des chapitres CEJM ----- */
+.lesson-glossary {
+  width: 100%;
+  min-width: 0;
+  margin-top: 30px;
+  padding-top: 2px;
+}
+
+.lesson-glossary .st {
+  margin-top: 0;
+}
+
+.glossary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  width: 100%;
+  min-width: 0;
+}
+
+.glossary-item {
+  position: relative;
+  min-width: 0;
+  padding: 14px 16px 14px 18px;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--gold);
+  border-radius: 4px;
+  background: linear-gradient(135deg, rgba(255, 215, 0, .055), rgba(0, 0, 0, .18));
+  box-shadow: inset 0 0 18px rgba(255, 215, 0, .018);
+  overflow: hidden;
+}
+
+.glossary-item::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 2px;
+  background: var(--gold);
+  box-shadow: 0 0 10px var(--gold);
+  opacity: .65;
+}
+
+.glossary-item strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--gold);
+  font-family: "Orbitron", monospace;
+  font-size: .74rem;
+  line-height: 1.35;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+
+.glossary-item span {
+  display: block;
+  color: var(--text);
+  font-size: .82rem;
+  line-height: 1.6;
+  opacity: .9;
+  overflow-wrap: anywhere;
+}
+
+/* ----- Navigation Précédent / Suivant des leçons CEJM ----- */
+.footer.lesson-nav {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  width: 100%;
+  max-width: 760px;
+  margin: 20px auto 0;
+  text-align: initial;
+}
+
+.lesson-nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 42px;
+  padding: 9px 13px;
+  border: 1px solid var(--gold);
+  border-radius: 4px;
+  background: rgba(255, 215, 0, .045);
+  color: var(--gold) !important;
+  font-family: "Share Tech Mono", monospace;
+  font-size: .8rem;
+  line-height: 1.35;
+  text-align: center;
+  overflow-wrap: anywhere;
+  transition: background-color .18s ease, border-color .18s ease, box-shadow .18s ease;
+}
+
+.lesson-nav-btn:hover:not(.disabled) {
+  background: rgba(255, 215, 0, .105);
+  box-shadow: 0 0 16px var(--gold-glow);
+}
+
+.lesson-nav-btn.disabled {
+  cursor: default;
+  border-color: var(--border);
+  background: rgba(0, 0, 0, .16);
+  color: var(--text-dim) !important;
+  box-shadow: none;
+  opacity: .72;
+}
+
+/* ----- Sélecteur CEJM et barre de navigation ----- */
+.topnav > * {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.navselect {
+  flex: 1 1 340px;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.navselect option {
+  max-width: 100%;
+}
+
+/* ----- Stabilité générale des fiches ----- */
+.panel,
+.page-panel,
+.card,
+.cmpc,
+.alert,
+.bq,
+.code,
+.table-wrap,
+.table-scroll,
+.lesson-glossary,
+.glossary-grid,
+.glossary-item {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.table-wrap {
+  width: 100%;
+  overflow: hidden;
+}
+
+.table-scroll {
+  width: 100%;
+  max-width: 100%;
+}
+
+.table-scroll.is-wide .responsive-table {
+  min-width: var(--responsive-table-min, 680px);
+}
+
+.tbl th,
+.tbl td,
+.formula,
+.source-note,
+.card p,
+.card li,
+.cmpc p,
+.cmpc li,
+.alert,
+.bq p {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+.formula {
+  max-width: 100%;
+}
+
+.code,
+pre {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+/* Les panneaux à onglets ne doivent jamais imposer une largeur supérieure à l'écran. */
+.stabs,
+.cg,
+.cmp,
+.hero,
+.hero-actions {
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* ----- Fiche CEJM Droit 2e ----- */
+.sanctions-table td:first-child,
+.sanctions-table th:first-child,
+.sanctions-table td:nth-child(3),
+.sanctions-table th:nth-child(3) {
+  white-space: nowrap;
+}
+
+.course-question-list {
+  margin: 12px 0 20px;
+  display: grid;
+  gap: 9px;
+}
+
+.course-question {
+  min-width: 0;
+  padding: 11px 13px;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--gold);
+  border-radius: 4px;
+  background: rgba(255, 215, 0, .035);
+  color: var(--text);
+  font-size: .82rem;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+/* ----- Mobile / tablette ----- */
+@media (max-width: 760px) {
+  .glossary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .navselect {
+    flex-basis: 100%;
+    width: 100%;
+    white-space: normal;
+  }
+
+  .footer.lesson-nav {
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+  }
+
+  .lesson-nav-btn {
+    min-height: 44px;
+    padding: 9px 8px;
+    font-size: .75rem;
+  }
+
+  .sanctions-table td:first-child,
+  .sanctions-table th:first-child,
+  .sanctions-table td:nth-child(3),
+  .sanctions-table th:nth-child(3) {
+    white-space: normal;
+  }
+}
+
+@media (max-width: 480px) {
+  .glossary-item {
+    padding: 12px 13px 12px 15px;
+  }
+
+  .glossary-item strong {
+    font-size: .69rem;
+  }
+
+  .glossary-item span {
+    font-size: .79rem;
+  }
+
+  .footer.lesson-nav {
+    grid-template-columns: 1fr;
+  }
+
+  .lesson-nav-btn {
+    width: 100%;
+  }
+
+  .navselect {
+    font-size: .58rem;
+    padding: 8px 9px;
+  }
+}
+
+/* ----- Impression ----- */
+@media print {
+  .lesson-glossary {
+    break-inside: auto;
+  }
+
+  .glossary-grid {
+    display: block;
+  }
+
+  .glossary-item {
+    break-inside: avoid;
+    margin-bottom: 7px;
+    border-color: #aaa !important;
+    border-left-color: #555 !important;
+    background: #fff !important;
+    box-shadow: none !important;
+  }
+
+  .glossary-item strong,
+  .glossary-item span {
+    color: #111 !important;
+  }
+
+  .footer.lesson-nav {
+    display: none !important;
+  }
+}
