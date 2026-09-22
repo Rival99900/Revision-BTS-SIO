@@ -10,7 +10,7 @@ Fiches synthétiques, cours structurés, rappels essentiels et quiz interactifs 
 ![HTML](https://img.shields.io/badge/HTML5-Revision-00cfff?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS](https://img.shields.io/badge/CSS3-CRT%20Theme-b06aff?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-Quiz-ffb300?style=for-the-badge&logo=javascript&logoColor=111)
-![Questions](https://img.shields.io/badge/Quiz-342%20questions-ff6ec7?style=for-the-badge)
+![Questions](https://img.shields.io/badge/Quiz-350%20questions-ff6ec7?style=for-the-badge)
 
 **Projet évolutif : de nouveaux cours et quiz sont ajoutés au fur et à mesure de l'avancement en BTS SIO.**
 
@@ -116,7 +116,7 @@ La fiche 2e année couvre également les **matrices carrées de référence** : 
 
 Fichier : `deuxieme/maths-matrices.html`
 
-Cette fiche couvre les matrices, l’addition, la multiplication par un réel, le produit matriciel et les exercices vérifiés de 2e année.
+Cette fiche couvre les matrices, l’addition, la multiplication par un réel, le produit matriciel et les exercices vérifiés de 2e année. Les exercices 17 (circuit touristique, Nouvelle-Calédonie 2015) et 18 (production de calculatrices, Polynésie 2006) suivent une correction détaillée type BTS : dimensions, calculs, inverse et interprétation.
 
 ### 🗃️ Révision SQL SIO2
 
@@ -169,12 +169,12 @@ Il propose :
 
 # 🎯 Quiz interactif
 
-Le site possède actuellement **342 questions** :
+Le site possède actuellement **350 questions** :
 
 - **223** questions de 1re année ;
-- **119** questions de 2e année ;
-- **255** QCM ;
-- **87** réponses à saisir.
+- **127** questions de 2e année ;
+- **260** QCM ;
+- **90** réponses à saisir.
 
 Le quiz peut être filtré par année, matière et type de question.
 

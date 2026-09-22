@@ -82,6 +82,11 @@
   font-size: .68rem;
 }
 
+/* Author display:flex otherwise overrides the browser's [hidden] rule. */
+.filters [data-filter-module][hidden] {
+  display: none !important;
+}
+
 .filterbtn.active {
   font-weight: 700;
   box-shadow: 0 0 14px rgba(255, 110, 199, .12);

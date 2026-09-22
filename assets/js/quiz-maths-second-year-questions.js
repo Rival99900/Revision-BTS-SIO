@@ -350,7 +350,116 @@ window.MATHS_SECOND_YEAR_QUESTIONS = [
     opts: ['Oui, toujours', 'Oui, seulement pour une matrice 2 × 2', 'Non, il faut effectuer le produit matriciel A × A', 'Non, A² est toujours égal à Iₙ'],
     answer: 2,
     exp: 'Une puissance de matrice se calcule par multiplication matricielle. Elle ne correspond pas à une puissance coefficient par coefficient.'
-  }
-
-
+  },
+  {
+  "q": "Exercice 17 : P est de dimension 3 × 3 et M de dimension 3 × 1. Quelle est la dimension de PM ?",
+  "opts": [
+    "3 × 1",
+    "1 × 3",
+    "3 × 3",
+    "Le produit est impossible"
+  ],
+  "answer": 0,
+  "exp": "Les 3 colonnes de P correspondent aux 3 lignes de M. Le résultat possède 3 lignes et 1 colonne.",
+  "year": 2,
+  "module": "maths2",
+  "cat": "🧮 Maths 2e — applications type BTS",
+  "type": "mcq"
+},
+  {
+  "q": "Exercice 17 : les tarifs sont en centaines d’euros. Que représente 18,5 dans la ligne « haute saison » de PM ?",
+  "opts": [
+    "18,50 €",
+    "185 €",
+    "1 850 €",
+    "18 500 €"
+  ],
+  "answer": 2,
+  "exp": "Il faut multiplier par 100 : 18,5 × 100 = 1 850 € par personne.",
+  "year": 2,
+  "module": "maths2",
+  "cat": "🧮 Maths 2e — applications type BTS",
+  "type": "mcq"
+},
+  {
+  "q": "Si QP = I₃ et PX = Y, comment isoler X ?",
+  "opts": [
+    "X = YQ",
+    "X = QY",
+    "X = PY",
+    "X = Q + Y"
+  ],
+  "answer": 1,
+  "exp": "On multiplie à gauche par Q : Q(PX) = QY, puis (QP)X = I₃X = X. Donc X = QY.",
+  "year": 2,
+  "module": "maths2",
+  "cat": "🧮 Maths 2e — applications type BTS",
+  "type": "mcq"
+},
+  {
+  "q": "Exercice 17 : un circuit coûte 1 850 € en haute saison et 1 200 € en basse saison. Avec 1 500 €, le voyage est possible :",
+  "opts": [
+    "Dans les deux saisons",
+    "Uniquement en haute saison",
+    "Uniquement en basse saison",
+    "Dans aucune saison"
+  ],
+  "answer": 2,
+  "exp": "1 200 € ≤ 1 500 €, mais 1 850 € > 1 500 €. Le budget permet seulement la basse saison.",
+  "year": 2,
+  "module": "maths2",
+  "cat": "🧮 Maths 2e — applications type BTS",
+  "type": "mcq"
+},
+  {
+  "q": "Exercice 18 : C₁ nécessite 1 h et C₂ nécessite 1,5 h. Pour x calculatrices C₁ et y calculatrices C₂, le temps total est :",
+  "opts": [
+    "t = x + 2,5y",
+    "t = 6x + 8y",
+    "t = 1,5x + y",
+    "t = x + 1,5y"
+  ],
+  "answer": 3,
+  "exp": "Chaque calculatrice C₁ ajoute 1 heure et chaque C₂ ajoute 1,5 heure : t = x + 1,5y.",
+  "year": 2,
+  "module": "maths2",
+  "cat": "🧮 Maths 2e — applications type BTS",
+  "type": "mcq"
+},
+  {
+  "q": "Exercice 18 : quel est le coût, en euros, de 200 calculatrices C₁ à 6 € et de 800 calculatrices C₂ à 8 € ? Donnez seulement le nombre.",
+  "answers": [
+    "7600",
+    "7 600"
+  ],
+  "exp": "6 × 200 + 8 × 800 = 1 200 + 6 400 = 7 600 €.",
+  "year": 2,
+  "module": "maths2",
+  "cat": "🧮 Maths 2e — applications type BTS",
+  "type": "text"
+},
+  {
+  "q": "Exercice 18 : combien d’heures faut-il pour 200 calculatrices C₁ (1 h chacune) et 800 calculatrices C₂ (1,5 h chacune) ? Donnez seulement le nombre.",
+  "answers": [
+    "1400",
+    "1 400"
+  ],
+  "exp": "200 + 1,5 × 800 = 200 + 1 200 = 1 400 heures.",
+  "year": 2,
+  "module": "maths2",
+  "cat": "🧮 Maths 2e — applications type BTS",
+  "type": "text"
+},
+  {
+  "q": "Exercice 18 : avec 8 400 € et 1 450 heures, combien de calculatrices C₁ obtient-on grâce à x = 1,5c − 8t ? Donnez seulement le nombre.",
+  "answers": [
+    "1000",
+    "1 000"
+  ],
+  "exp": "x = 1,5 × 8 400 − 8 × 1 450 = 12 600 − 11 600 = 1 000. L’autre quantité vaut y = −8 400 + 6 × 1 450 = 300 calculatrices C₂.",
+  "year": 2,
+  "module": "maths2",
+  "cat": "🧮 Maths 2e — applications type BTS",
+  "type": "text"
+}
 ];
