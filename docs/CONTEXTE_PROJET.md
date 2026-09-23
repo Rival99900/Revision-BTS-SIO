@@ -1,6 +1,6 @@
 # Révision BTS SIO — consignes de reprise
 
-Dernière mise à jour : 22 septembre 2026.
+Dernière mise à jour : 23 septembre 2026.
 
 ## Projet et supports
 
@@ -28,6 +28,16 @@ Support du 22 septembre : `Exo Math 2e Année.pdf`, quatre pages photographiées
 - Données de l’exercice 18 : A = ((6, 8), (1, 1,5)), B = ((1,5, −8), (−1, 6)). Donc c = 6x + 8y et t = x + 1,5y. BA = I₂, puis Y = AX implique X = BY.
 - Résultats vérifiés : 200 C₁ et 800 C₂ donnent 7 600 € et 1 400 h. Pour 8 400 € et 1 450 h, on obtient 1 000 C₁ et 300 C₂.
 - Les tarifs de l’exercice 17 sont en centaines d’euros ; les coûts de l’exercice 18 sont directement en euros.
+
+## CGE et droit — supports du 23 septembre 2026
+
+- CGE 2e : dossier M. Zimmermann `19w7aXsGKGDHRtaJVVQtJAg5uiwakBEvr`, cours CGE actualisé et PDF fourni « II L'extrait de la première scène intitulée Le misanthrope ». Ajouter et maintenir l’analyse d’Alceste / Philinte, la confrontation des trois textes et l’extrait transcrit. Molière appartient au XVIIe siècle ; le personnage cité est Émilie.
+- Ne plus insérer de photos de textes en bas des fiches : présenter du vrai texte sélectionnable, lisible et adaptable au mobile. Les photographies de Dom Juan sont déjà absentes de la version reprise ; préserver ce choix. Conserver les originaux dans l’archive de sauvegarde.
+- CGE 1re : dossier `13az1tkarQL-5nNnxZLKl1wVO4nPUSbEJ`. Les trois pages du PDF « Rédaction d’une sous-partie » complètent le DOCX « Culture Général Expression » : quatre étapes, exemple Bruce Albert / Yanomami / Davi Kopenawa, alinéa, connecteurs, titres soulignés et exemple de conclusion. L’essai inclut le plan dialectique sur les préjugés, l’introduction, la conclusion et la sous-partie sur la censure et 1984. Conserver aussi les autres lectures du document, Rousseau et Hobbes compris.
+- CEJM droit 2e : dossier `1rkh2jIfPRwiSBM19Z31Z_9OaKBdXG61c` et « Décision de Justice » `1qniQsrfVQd-1B4-Mp0BBJdrqNOjvQZGn`. Les images des pages 4–5 du PDF contiennent Solocal, Cityscoot et les six étapes du syllogisme, invisibles à l’extraction texte du document.
+- Solocal : décision du 15 mai 2025, 900 000 €, injonction et astreinte de 10 000 €/jour après neuf mois. Cityscoot : 100 000 € pour le RGPD dans l’extrait, 25 000 € supplémentaires pour les traceurs, total 125 000 €. La CNIL est l’autorité de contrôle, pas simplement un demandeur dans un procès civil.
+- Arrêt Petit Bateau : chambre sociale, 30 septembre 2020, pourvoi 19-12.058, rejet. Distinguer moyens de la salariée, motifs de la Cour et dispositif ; preuve indispensable et atteinte proportionnée. Ne pas en déduire un accès libre aux comptes privés.
+- Les exemples de rédaction sont des reformulations pédagogiques des supports. Les propos médicaux rapportés dans les articles sont présentés comme arguments des auteurs, non comme conseils ou certitudes médicales.
 
 ## Sauvegarde et restauration
 

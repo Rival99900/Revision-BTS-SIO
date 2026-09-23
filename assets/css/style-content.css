@@ -198,6 +198,21 @@
   opacity: .88;
 }
 
+.card ol {
+  padding-inline-start: 1.6em;
+  margin: .65em 0;
+}
+
+details.card > summary {
+  cursor: pointer;
+  line-height: 1.6;
+}
+
+details.card > summary:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
 .card ul {
   list-style: none;
 }

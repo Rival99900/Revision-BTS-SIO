@@ -130,12 +130,12 @@ window.SECOND_YEAR_QUESTIONS = [
     "module": "cejm2",
     "cat": "⚖️ CEJM Droit 2e",
     "type": "text",
-    "q": "Comment s’appelle le responsable de la protection des données (sigle) ?",
+    "q": "Quel est le sigle anglais du délégué à la protection des données ?",
     "answers": [
       "dpo",
       "data protection officer"
     ],
-    "exp": "Le responsable de la protection des données est le Data Protection Officer (DPO)."
+    "exp": "Le délégué à la protection des données est le Data Protection Officer (DPO). Il conseille le responsable du traitement ; ces deux rôles sont distincts."
   },
   {
     "year": 2,
