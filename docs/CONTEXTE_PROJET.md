@@ -1,6 +1,6 @@
 # Révision BTS SIO — consignes de reprise
 
-Dernière mise à jour : 23 septembre 2026.
+Dernière mise à jour : 24 septembre 2026.
 
 ## Projet et supports
 
@@ -44,3 +44,11 @@ Support du 22 septembre : `Exo Math 2e Année.pdf`, quatre pages photographiées
 Une archive complète datée accompagne cette mise à jour : sources du site, historique Git sous forme de bundle, PDF fourni et instructions de restauration. Ne pas dépendre uniquement du dossier de travail temporaire.
 
 Pour une reprise ultérieure, lire ce fichier et l’état courant du dépôt avant de modifier le projet. Ce document est une note durable dans le projet, pas une garantie de mémoire automatique entre conversations.
+
+## Maths — ajout du 24 septembre 2026
+
+- Support : `Exercice 21.pdf`, trois pages (énoncé imprimé et deux pages de correction manuscrite), exercice 21 p.17, Polynésie juin 2015 BAC ES modifié.
+- Ajouter après l’exercice 18 dans les accès rapides et la navigation Précédent / Suivant. Conserver le style des matrices, les questions numérotées, les calculs détaillés, les unités et les conclusions.
+- H = ((8,10,14),(6,6,10),(12,10,18)), C = (25;20;15), M = ((2,-10,4),(3,-6,1),(-3,10,-3)). Résultats vérifiés : HC = (610;420;770), MH = 4I₃, H⁻¹ = ¼M.
+- Prix souhaités (500;350;650) : nouveaux coûts horaires (25;12,5;12,5) €/h. Employer X et P′ pour distinguer les nouvelles valeurs des colonnes initiales C et P. Vérifier la solution dans les trois équations.
+- Conserver le PDF original dans la nouvelle archive complète datée, avec les supports précédents et l’historique Git.

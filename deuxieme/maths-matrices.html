@@ -6,7 +6,7 @@
   <meta content="Révision de calcul matriciel — BTS SIO 2e année" name="description"/>
   <title>🧮 Calcul matriciel — 2e année</title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&amp;family=VT323&amp;family=Orbitron:wght@700;900&amp;display=swap" rel="stylesheet"/>
-  <link href="../assets/css/style.css?v=20260918-2" rel="stylesheet"/>
+  <link href="../assets/css/style.css?v=20260923-1" rel="stylesheet"/>
   <link href="../assets/img/site-logo.svg" rel="icon" type="image/svg+xml"/>
   <link href="../assets/img/site-logo.svg" rel="shortcut icon"/>
 </head>
@@ -47,7 +47,7 @@
     </div>
 
     <div class="alert agold">
-      <strong>Vérification effectuée :</strong> les exemples et corrections ont été recalculés à partir des photos et du PDF fourni. Les valeurs incohérentes de l’exemple <b>B = ((i − j)²)</b> ont été corrigées dans cette fiche. Les dernières notes manuscrites de l’exercice 9 p.12 ainsi que le cours 2.4 sur les matrices carrées de référence ont également été intégrés. La partie 2.4.3 et les exercices 13, 17 et 18 sont intégrés. L’exercice 17 présente une correction type BTS ; l’exercice 18 reprend la démarche des notes manuscrites, avec les coefficients et résultats vérifiés.
+      <strong>Vérification effectuée :</strong> les exemples et corrections ont été recalculés à partir des photos et du PDF fourni. Les valeurs incohérentes de l’exemple <b>B = ((i − j)²)</b> ont été corrigées dans cette fiche. Les dernières notes manuscrites de l’exercice 9 p.12 ainsi que le cours 2.4 sur les matrices carrées de référence ont également été intégrés. La partie 2.4.3 et les exercices 13, 17, 18 et 21 sont intégrés. L’exercice 17 présente une correction type BTS ; l’exercice 18 reprend la démarche des notes manuscrites, avec les coefficients et résultats vérifiés. L’exercice 21 reprend l’énoncé et toute la correction manuscrite sur les planches de surf.
     </div>
 
     <div class="stabs">
@@ -56,9 +56,9 @@
       <button class="sb" onclick="showSub('mat2','square',this)">Matrices carrées</button>
       <button class="sb" data-mat-exercises="1" onclick="showSub('mat2','exercises',this)">Exercices</button>
     </div>
-    <div class="section-stepper" data-prefix="mat2" data-sections="definition,operations,square,exercises,exo14,exo58,exo9,exo11,exo13,exo17,exo18" data-parent-section="exercises" data-end-target="exercises">
+    <div class="section-stepper" data-prefix="mat2" data-sections="definition,operations,square,exercises,exo14,exo58,exo9,exo11,exo13,exo17,exo18,exo21" data-parent-section="exercises" data-end-target="exercises">
       <button class="smallbtn step-prev" onclick="stepSection(this,-1)" type="button">← Précédent</button>
-      <span aria-live="polite" class="step-status">1 / 11</span>
+      <span aria-live="polite" class="step-status">1 / 12</span>
       <button class="smallbtn alt step-next" onclick="stepSection(this,1)" type="button">Suivant →</button>
     </div>
 
@@ -343,6 +343,12 @@ Donc D⁻¹ = 1/2 D</div>
           <span class="chapter-num">18</span>
           <h3>Production de calculatrices</h3>
           <p>Traduction matricielle, coût, heures de travail et quantités produites.</p>
+          <span class="module-link">Ouvrir l’exercice →</span>
+        </a>
+        <a class="chapter-card" href="#mat2-exo21" onclick="event.preventDefault(); showSub('mat2','exo21',document.querySelector('[data-mat-exercises]'));">
+          <span class="chapter-num">21</span>
+          <h3>Planches de surf — coûts horaires</h3>
+          <p>Produit HC, prix de revient, système, inverse et nouveaux tarifs horaires.</p>
           <span class="module-link">Ouvrir l’exercice →</span>
         </a>
       </div>
@@ -791,7 +797,148 @@ X =
       <div class="alert agold"><strong>Méthode :</strong> à partir des quantités, calculer Y = AX ; à partir du coût et du temps, retrouver les quantités avec X = BY. Toujours terminer avec les unités et une phrase de conclusion.</div>
     </div>
 
-    <div class="source-note">Calcul matriciel 2e année : définitions, opérations, matrices carrées de référence, matrices inversibles et exercices 1 à 9, 11, 13, 17 et 18. Les résultats numériques ont été vérifiés à partir des documents fournis et par recalcul.</div>
+    <div class="sc" id="mat2-exo21">
+      <div class="st gold">Exercice 21 p.17 — Polynésie, juin 2015, BAC ES modifié</div>
+      <div class="card gold">
+        <h3>Énoncé — fabrication de planches de surf</h3>
+        <p>Un constructeur fabrique trois modèles de planches de surf. Chaque modèle passe par trois postes de travail. Le premier tableau donne les heures nécessaires pour une planche ; le second donne les coûts horaires.</p>
+        <div class="table-scroll"><table class="tbl"><thead><tr><th>Heures par planche</th><th>Poste 1</th><th>Poste 2</th><th>Poste 3</th></tr></thead><tbody>
+          <tr><td>Modèle 1</td><td>8 h</td><td>10 h</td><td>14 h</td></tr>
+          <tr><td>Modèle 2</td><td>6 h</td><td>6 h</td><td>10 h</td></tr>
+          <tr><td>Modèle 3</td><td>12 h</td><td>10 h</td><td>18 h</td></tr>
+        </tbody></table></div>
+        <div class="table-scroll"><table class="tbl"><thead><tr><th>Poste</th><th>Coût horaire initial</th></tr></thead><tbody>
+          <tr><td>Poste 1</td><td>25 €/h</td></tr><tr><td>Poste 2</td><td>20 €/h</td></tr><tr><td>Poste 3</td><td>15 €/h</td></tr>
+        </tbody></table></div>
+        <div class="code gold matrix-code">H = (  8  10  14 )       C = ( 25 )
+    (  6   6  10 )           ( 20 )
+    ( 12  10  18 )           ( 15 )
+
+M = (  2  −10   4 )
+    (  3   −6   1 )
+    ( −3   10  −3 )</div>
+        <ol>
+          <li><b>a.</b> Calculer P = HC en détaillant les calculs. <b>b.</b> Interpréter les coefficients de P.</li>
+          <li>Le fabricant souhaite obtenir les prix de revient suivants : <b>500 €</b> pour le modèle 1, <b>350 €</b> pour le modèle 2 et <b>650 €</b> pour le modèle 3. Les nouveaux coûts horaires des postes 1, 2 et 3 sont notés a, b et c.
+            <p><b>a.</b> Montrer que H × (a ; b ; c) = (500 ; 350 ; 650), les deux triplets étant des matrices colonnes.</p>
+            <p><b>b. i.</b> Calculer MH, sans justification. <b>ii.</b> En déduire H⁻¹. <b>iii.</b> Démontrer que si P = HC, alors (¼M)P = C.</p>
+            <p><b>c.</b> Déterminer a, b et c.</p>
+          </li>
+        </ol>
+      </div>
+
+      <div class="st gold">1.a — Calculer P = HC</div>
+      <div class="card gold">
+        <p>H a pour dimension <b>3 × 3</b> et C <b>3 × 1</b>. Les trois colonnes de H correspondent aux trois lignes de C : le produit HC existe et a pour dimension <b>3 × 1</b>.</p>
+        <p>Pour chaque coefficient, on multiplie une ligne de H par la colonne C :</p>
+        <div class="code gold">p₁₁ = 8 × 25 + 10 × 20 + 14 × 15
+    = 200 + 200 + 210 = 610
+
+p₂₁ = 6 × 25 + 6 × 20 + 10 × 15
+    = 150 + 120 + 150 = 420
+
+p₃₁ = 12 × 25 + 10 × 20 + 18 × 15
+    = 300 + 200 + 270 = 770</div>
+        <div class="code gold matrix-code">P = HC = ( 610 )
+         ( 420 )
+         ( 770 )</div>
+      </div>
+      <div class="st gold">1.b — Interpréter les coefficients</div>
+      <div class="alert ag"><strong>Conclusion :</strong> les coefficients de P sont les coûts de fabrication d’une planche de chaque modèle, pour les postes considérés : <b>610 € pour le modèle 1, 420 € pour le modèle 2 et 770 € pour le modèle 3</b>. On multiplie des heures par des euros par heure : le résultat est en euros.</div>
+
+      <div class="st gold">2.a — Traduire les nouveaux prix par un système</div>
+      <div class="card gold">
+        <p>Pour le modèle 1, on compte 8 heures au tarif a, 10 heures au tarif b et 14 heures au tarif c : son coût doit être égal à 500 €. On raisonne de la même manière pour les deux autres modèles.</p>
+        <div class="code gold">8a + 10b + 14c = 500
+6a +  6b + 10c = 350
+12a + 10b + 18c = 650</div>
+        <p>On note <b>X</b> la colonne des nouveaux coûts horaires et <b>P′</b> celle des prix souhaités, pour les distinguer des valeurs initiales C et P.</p>
+        <div class="code gold matrix-code">X = ( a )       P′ = ( 500 )
+    ( b )            ( 350 )
+    ( c )            ( 650 )
+
+HX = (  8a + 10b + 14c )
+     (  6a +  6b + 10c )
+     ( 12a + 10b + 18c )
+   = P′</div>
+        <p>Le système demandé s’écrit donc <b>HX = P′</b>.</p>
+      </div>
+
+      <div class="st gold">2.b.i — Calculer MH</div>
+      <div class="card gold">
+        <p>L’énoncé demande le résultat sans justification :</p>
+        <div class="code gold matrix-code">MH = ( 4  0  0 )
+     ( 0  4  0 )
+     ( 0  0  4 )
+   = 4I₃</div>
+        <details><summary>Voir le détail des neuf coefficients pour s’entraîner</summary>
+          <div class="code gold">Ligne 1 :
+2 × 8 − 10 × 6 + 4 × 12 = 4
+2 × 10 − 10 × 6 + 4 × 10 = 0
+2 × 14 − 10 × 10 + 4 × 18 = 0
+
+Ligne 2 :
+3 × 8 − 6 × 6 + 1 × 12 = 0
+3 × 10 − 6 × 6 + 1 × 10 = 4
+3 × 14 − 6 × 10 + 1 × 18 = 0
+
+Ligne 3 :
+−3 × 8 + 10 × 6 − 3 × 12 = 0
+−3 × 10 + 10 × 6 − 3 × 10 = 0
+−3 × 14 + 10 × 10 − 3 × 18 = 4</div>
+        </details>
+      </div>
+      <div class="st gold">2.b.ii — En déduire H⁻¹</div>
+      <div class="card gold">
+        <p>Comme MH = 4I₃, on multiplie par ¼ : <b>(¼M)H = I₃</b>. Les matrices étant carrées d’ordre 3, H est inversible et <b>H⁻¹ = ¼M</b>.</p>
+        <div class="code gold matrix-code">H⁻¹ = ¼M = (  1/2  −5/2    1  )
+           (  3/4  −3/2   1/4 )
+           ( −3/4   5/2  −3/4 )</div>
+        <p>Le facteur ¼ s’applique à <b>tous les coefficients</b> de M.</p>
+      </div>
+      <div class="st gold">2.b.iii — Montrer que (¼M)P = C</div>
+      <div class="card gold">
+        <p>On part de P = HC et on multiplie <b>à gauche</b> par ¼M, sans changer l’ordre des facteurs :</p>
+        <div class="code gold">P = HC
+(¼M)P = (¼M)(HC)
+      = ((¼M)H)C
+      = I₃C
+      = C</div>
+        <p>On utilise l’associativité du produit matriciel, puis la relation (¼M)H = I₃. La même méthode s’applique à HX = P′ pour retrouver les nouveaux coûts.</p>
+      </div>
+
+      <div class="st gold">2.c — Déterminer les nouveaux coûts horaires</div>
+      <div class="card gold">
+        <p>À partir de HX = P′, on obtient <b>X = H⁻¹P′ = ¼MP′</b> :</p>
+        <div class="code gold">a = (2 × 500 − 10 × 350 + 4 × 650) / 4
+  = (1 000 − 3 500 + 2 600) / 4
+  = 100 / 4 = 25
+
+b = (3 × 500 − 6 × 350 + 1 × 650) / 4
+  = (1 500 − 2 100 + 650) / 4
+  = 50 / 4 = 12,5
+
+c = (−3 × 500 + 10 × 350 − 3 × 650) / 4
+  = (−1 500 + 3 500 − 1 950) / 4
+  = 50 / 4 = 12,5</div>
+        <div class="code gold matrix-code">X = ( 25   )
+    ( 12,5 )
+    ( 12,5 )</div>
+        <p><b>Vérification dans les trois équations :</b></p>
+        <div class="code gold">Modèle 1 : 8 × 25 + 10 × 12,5 + 14 × 12,5
+         = 200 + 125 + 175 = 500 €
+
+Modèle 2 : 6 × 25 + 6 × 12,5 + 10 × 12,5
+         = 150 + 75 + 125 = 350 €
+
+Modèle 3 : 12 × 25 + 10 × 12,5 + 18 × 12,5
+         = 300 + 125 + 225 = 650 €</div>
+      </div>
+      <div class="alert ag"><strong>Conclusion :</strong> les nouveaux tarifs doivent être de <b>25 €/h au poste 1, 12,50 €/h au poste 2 et 12,50 €/h au poste 3</b>.</div>
+      <div class="alert agold"><strong>Méthode à retenir :</strong> calculer les prix avec HC ; retrouver les coûts horaires en multipliant les prix souhaités par H⁻¹ à gauche. Si MH = 4I₃, l’inverse est <b>¼M</b>, et non M. Ne pas confondre les euros par planche et les euros par heure.</div>
+    </div>
+
+    <div class="source-note">Calcul matriciel 2e année : définitions, opérations, matrices carrées de référence, matrices inversibles et exercices 1 à 9, 11, 13, 17, 18 et 21. Les résultats numériques ont été vérifiés à partir des documents fournis et par recalcul.</div>
   </main>
   <div class="footer"><a href="../index.html">← Retour au tableau de bord</a></div>
 </div>
