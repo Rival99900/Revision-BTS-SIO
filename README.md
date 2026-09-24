@@ -189,21 +189,3 @@ Les banques de questions sont réparties dans plusieurs fichiers JavaScript afin
 Projet maintenu par [Rival99900](https://github.com/Rival99900)
 
 </div>
-
-## Vérification et lancement local
-
-Le site reste statique, sans étape de compilation. Pour le servir localement (notamment pour le Web Worker Python) :
-
-```sh
-python3 -m http.server 8000
-```
-
-Ouvrir ensuite `http://localhost:8000`. Les moteurs distants nécessitent une connexion Internet.
-
-Les tests de régression se lancent avec Node.js, sans dépendance supplémentaire :
-
-```sh
-node --test tests/regression.test.cjs
-```
-
-Ils couvrent les statistiques et filtres du quiz, les données des questions, le stockage indisponible, les saisies multiligne, les lancements concurrents, le renommage Java et les résultats attendus des palindromes.

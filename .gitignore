@@ -1,0 +1,42 @@
+# Notes internes et tests hors du depot publie
+/docs/
+/test/
+/tests/
+
+# Dependances et fichiers generes
+node_modules/
+/dist/
+/build/
+/coverage/
+/playwright-report/
+/test-results/
+
+# Sauvegardes et fichiers de travail locaux
+/output/
+/upload/
+/tmp/
+/temp/
+/backups/
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+*~
+
+# Configuration locale et secrets
+.env
+.env.*
+!.env.example
+!.env.sample
+.vscode/
+.idea/
+
+# Caches Python et fichiers du systeme
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.DS_Store
+Thumbs.db
+Desktop.ini
