@@ -1208,3 +1208,58 @@ body[data-review-id="2-maths-matrices"] .math-details > summary:focus-visible {
   outline: 2px solid currentColor;
   outline-offset: 3px;
 }
+
+/* Compléments des fiches CEJM : détails accessibles et texte lisible. */
+.cejm-lesson .cejm-details {
+  margin: 16px 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+.cejm-lesson .cejm-details > summary {
+  padding: 14px 16px;
+  cursor: pointer;
+  font-weight: bold;
+  line-height: 1.6;
+}
+.cejm-lesson .cejm-details > summary:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+.cejm-lesson .cejm-detail-content {
+  padding: 0 16px 16px;
+  overflow-wrap: anywhere;
+}
+.cejm-lesson .cejm-detail-content p,
+.cejm-lesson .cejm-detail-content li {
+  line-height: 1.8;
+  margin-bottom: 12px;
+}
+.cejm-lesson .cejm-detail-content h3 {
+  margin: 20px 0 12px;
+}
+.cejm-lesson .card ol,
+.cejm-lesson .cejm-detail-content ol {
+  padding-left: 24px;
+}
+.cejm-lesson .card ol li {
+  line-height: 1.8;
+  margin-bottom: 10px;
+}
+.cejm-lesson section[id^="complements-"] {
+  scroll-margin-top: 24px;
+}
+.cejm-lesson .tbl tr > :first-child {
+  min-width: 110px;
+}
+.cejm-lesson .tbl:has(th:nth-child(3)) {
+  min-width: 680px;
+}
+.cejm-lesson .tbl th,
+.cejm-lesson .tbl td {
+  word-break: normal;
+}
+@media print {
+  .cejm-lesson .cejm-details > .cejm-detail-content {
+    display: block !important;
+  }
+}
