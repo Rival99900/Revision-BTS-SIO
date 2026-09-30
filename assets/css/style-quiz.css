@@ -600,3 +600,10 @@ hr.div {
     grid-template-columns: 1fr;
   }
 }
+
+.qtxt .quiz-definition {
+  display: block;
+  margin-top: .65rem;
+  color: var(--blue);
+  line-height: 1.6;
+}

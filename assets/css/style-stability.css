@@ -1263,3 +1263,9 @@ body[data-review-id="2-maths-matrices"] .math-details > summary:focus-visible {
     display: block !important;
   }
 }
+
+/* Les comparaisons CEJM conservent un accent même sans classe de couleur. */
+.cejm-lesson .cmpc h4:not([class]),
+body[data-review-id="1-cejm"] .cmpc h4:not([class]) {
+  color: var(--gold);
+}

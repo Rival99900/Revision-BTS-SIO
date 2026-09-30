@@ -21,7 +21,8 @@ const SECOND_SAFE = Array.isArray(window.SECOND_YEAR_QUESTIONS) ? window.SECOND_
 const SQL2_SAFE = Array.isArray(window.SQL_SECOND_YEAR_QUESTIONS) ? window.SQL_SECOND_YEAR_QUESTIONS : [];
 const MATHS2_SAFE = Array.isArray(window.MATHS_SECOND_YEAR_QUESTIONS) ? window.MATHS_SECOND_YEAR_QUESTIONS : [];
 
-const ORIGINAL_NORMALIZED = FIRST_SAFE.map((q) => ({
+// CEJM dispose d’une banque unique par chapitre ; éviter les anciens doublons.
+const ORIGINAL_NORMALIZED = FIRST_SAFE.filter((q) => inferModule(q.cat) !== 'cejm').map((q) => ({
   year: 1,
   module: inferModule(q.cat),
   cat: q.cat,

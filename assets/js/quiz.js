@@ -6,6 +6,24 @@ let yearFilter = 'all';
 let moduleFilter = 'all';
 let typeFilter = 'all';
 let chapterFilter = 'all';
+const lastQuestionVariant = new Map();
+
+function makeSessionQuestion(question) {
+  if (!Array.isArray(question.qVariants) || !question.qVariants.length) return question;
+  const variants = [question.q, ...question.qVariants];
+  const key = question.id || question.q;
+  const choices = variants.map((_, index) => index)
+    .filter((index) => index !== lastQuestionVariant.get(key));
+  const index = choices[Math.floor(Math.random() * choices.length)];
+  lastQuestionVariant.set(key, index);
+  const session = { ...question, q: variants[index] };
+  if (question.type === 'mcq') {
+    const order = shuffle(question.opts.map((_, option) => option));
+    session.opts = order.map((option) => question.opts[option]);
+    session.answer = order.indexOf(question.answer);
+  }
+  return session;
+}
 
 function norm(s) {
   return String(s ?? '')
@@ -81,7 +99,7 @@ function buildActive() {
     && (chapterFilter === 'all' || String(q.chapter) === String(chapterFilter))
   ));
 
-  activeQ = shuffle(activeQ);
+  activeQ = shuffle(activeQ).map(makeSessionQuestion);
 }
 
 function updateStats() {
@@ -143,6 +161,7 @@ function render() {
       input.setAttribute('aria-label', 'Phrase d’exemple');
     } else {
       input.placeholder = 'Tapez votre réponse ici…';
+      input.setAttribute('aria-label', 'Votre réponse');
     }
 
     const button = document.createElement('button');
@@ -218,6 +237,13 @@ function answerMCQ(index, button) {
 function textCorrect(q, value) {
   const normalizedValue = norm(value);
   if (!normalizedValue) return false;
+
+  if (q.termAnswer) {
+    // Les articles, accents et traits d’union ne changent pas la notion demandée.
+    const termNorm = (term) => norm(term).replace(/-/g, ' ')
+      .replace(/^(?:le|la|les|un|une|des|l)\s+/, '').replace(/\s+/g, ' ').trim();
+    return Array.isArray(q.answers) && q.answers.some((answer) => termNorm(answer) === termNorm(value));
+  }
 
   if (q.validator?.type === 'exampleSentence') {
     const minWords = Number(q.validator.minWords || 10);

@@ -2,10 +2,10 @@
 
 @import url("style-content.css?v=20260923-1");
 
-@import url("style-quiz.css");
+@import url("style-quiz.css?v=20260930-quiz1");
 
 @import url("style-pages.css");
 
-@import url("style-stability.css?v=20260930-1");
+@import url("style-stability.css?v=20260930-quiz1");
 
 @import url("style-fixes-20260918.css");
