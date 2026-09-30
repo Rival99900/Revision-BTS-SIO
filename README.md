@@ -108,7 +108,7 @@ Notions : données à caractère personnel, données sensibles, CNIL, RGPD, droi
 
 Fichier : `deuxieme/cge-vrai-faux.html`
 
-Notions : synthèse de documents, vérité et mensonge, mythomanie, **Texte 2 — Dom Juan de Molière**, stratégie du séducteur, vocabulaire et exercices de rédaction.
+Notions : synthèse de documents, vérité et mensonge, mythomanie, **Texte 2 — Dom Juan**, **Texte 3 — Le Misanthrope** de Molière et **Texte 4 — Les Liaisons dangereuses** de Laclos (lettre 81, paragraphes 1 à 4). Analyse de la dissimulation de Merteuil, vocabulaire et confrontation des quatre textes. Le cinquième paragraphe reste à étudier.
 
 ### 🧮 Maths — Calcul matriciel
 
