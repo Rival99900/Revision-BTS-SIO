@@ -10,7 +10,7 @@ Fiches synthétiques, cours structurés, rappels essentiels et quiz interactifs 
 ![HTML](https://img.shields.io/badge/HTML5-Revision-00cfff?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS](https://img.shields.io/badge/CSS3-CRT%20Theme-b06aff?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-Quiz-ffb300?style=for-the-badge&logo=javascript&logoColor=111)
-![Questions](https://img.shields.io/badge/Quiz-350%20questions-ff6ec7?style=for-the-badge)
+![Questions](https://img.shields.io/badge/Quiz-514%20questions-ff6ec7?style=for-the-badge)
 
 **Projet évolutif : de nouveaux cours et quiz sont ajoutés au fur et à mesure de l'avancement en BTS SIO.**
 
