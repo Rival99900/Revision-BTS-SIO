@@ -3,10 +3,11 @@
 <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width,initial-scale=1.0" name="viewport"/>
-  <meta content="Révision de calcul matriciel — BTS SIO 2e année" name="description"/>
-  <title>🧮 Calcul matriciel — 2e année</title>
+  <meta content="Révision de calcul matriciel et de graphes orientés — BTS SIO 2e année" name="description"/>
+  <title>🧮 Maths — Matrices et graphes orientés — 2e année</title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&amp;family=VT323&amp;family=Orbitron:wght@700;900&amp;display=swap" rel="stylesheet"/>
-  <link href="../assets/css/style.css?v=20260929-1" rel="stylesheet"/>
+  <link href="../assets/css/style.css?v=20261001-graphes" rel="stylesheet"/>
+  <link href="../assets/css/style-graphes.css?v=20261001-1" rel="stylesheet"/>
   <link href="../assets/img/site-logo.svg" rel="icon" type="image/svg+xml"/>
   <link href="../assets/img/site-logo.svg" rel="shortcut icon"/>
 </head>
@@ -15,12 +16,13 @@
   <div class="site-header">
     <div class="bbar"></div>
     <h1>BTS SIO — RÉVISIONS</h1>
-    <div class="sub">2E ANNÉE — MATHS — CALCUL MATRICIEL</div>
+    <div class="sub">2E ANNÉE — MATHS — MATRICES ET GRAPHES ORIENTÉS</div>
     <div class="tags">
       <span class="tag tg">BTS SIO</span>
       <span class="tag tp">2e année</span>
       <span class="tag tli">Maths</span>
       <span class="tag tb">Matrices</span>
+      <span class="tag ta">Graphes orientés</span>
     </div>
     <div class="prompt">C:\BTS-SIO\REVISION&gt; <span>█</span></div>
   </div>
@@ -35,9 +37,9 @@
   <main class="page-panel gold">
     <div class="hero">
       <div>
-        <div class="hero-kicker">2E ANNÉE // MATHS // MATRICES</div>
-        <h2>Calcul matriciel</h2>
-        <p>Dimensions, coefficients, opérations, produit matriciel, matrices identité, puissances, matrices inversibles et exercices corrigés.</p>
+        <div class="hero-kicker">2E ANNÉE // MATHS</div>
+        <h2>Maths — Matrices et graphes orientés</h2>
+        <p>Calcul matriciel : dimensions, opérations, matrices carrées et exercices corrigés. Chapitre 3 : graphes orientés, représentations, chemins et dénombrement avec les puissances de la matrice d’adjacence.</p>
       </div>
       <div class="hero-actions">
         <button class="smallbtn" id="reviewBtn" onclick="setReviewed('2-maths-matrices')">○ Marquer révisé</button>
@@ -54,11 +56,12 @@
       <button class="sb a" onclick="showSub('mat2','definition',this)">Définitions</button>
       <button class="sb" onclick="showSub('mat2','operations',this)">Opérations</button>
       <button class="sb" onclick="showSub('mat2','square',this)">Matrices carrées</button>
+      <button class="sb" onclick="showSub('mat2','graphes',this)">Graphes orientés</button>
       <button class="sb" data-mat-exercises="1" onclick="showSub('mat2','exercises',this)">Exercices</button>
     </div>
-    <div class="section-stepper" data-prefix="mat2" data-sections="definition,operations,square,exercises,exo14,exo58,exo9,exo11,exo13,exo17,exo18,exo21,exo22" data-parent-section="exercises" data-end-target="exercises">
+    <div class="section-stepper" data-prefix="mat2" data-sections="definition,operations,square,graphes,exercises,exo14,exo58,exo9,exo11,exo13,exo17,exo18,exo21,exo22" data-parent-section="exercises" data-end-target="exercises">
       <button class="smallbtn step-prev" onclick="stepSection(this,-1)" type="button">← Précédent</button>
-      <span aria-live="polite" class="step-status">1 / 13</span>
+      <span aria-live="polite" class="step-status">1 / 14</span>
       <button class="smallbtn alt step-next" onclick="stepSection(this,1)" type="button">Suivant →</button>
     </div>
 
@@ -297,6 +300,118 @@ Donc D⁻¹ = 1/2 D</div>
         </div>
       </div>
       <div class="alert ag"><strong>À retenir :</strong> pour vérifier qu’une matrice B est l’inverse de A, il suffit ici de vérifier que leur produit donne la matrice identité de même ordre.</div>
+    </div>
+
+    <div class="sc" id="mat2-graphes">
+      <div class="st gold">Chapitre 3 — Les graphes orientés · Partie 1/2</div>
+      <div class="st gold">3.1 — Définition et représentation géométrique d’un graphe orienté</div>
+      <div class="card gold">
+        <h3>Définition — graphe simple et graphe orienté</h3>
+        <p>Un <b>graphe simple</b>, noté G, est la donnée d’un ensemble fini <b>S = {x₁, x₂, …, xₙ}</b>, dont les éléments sont appelés les <b>sommets</b>, et d’un ensemble fini <b>U ⊂ S × S</b> de couples (xᵢ, xⱼ) d’éléments de S, dont les éléments sont appelés des <b>arcs</b>.</p>
+        <p>Le graphe est dit <b>orienté</b> lorsque l’on fait la distinction entre les arcs <b>(xᵢ, xⱼ)</b> et <b>(xⱼ, xᵢ)</b>.</p>
+      </div>
+      <div class="cg">
+        <div class="card bl"><h3>Prédécesseur</h3><p>Le sommet <b>xᵢ</b> est un <b>prédécesseur</b> du sommet <b>xⱼ</b> lorsque l’arc <b>(xᵢ, xⱼ)</b> est un arc du graphe.</p><p>L’ensemble des prédécesseurs du sommet xⱼ se note <b>Γ<sup>−</sup>(xⱼ)</b>.</p></div>
+        <div class="card am"><h3>Successeur</h3><p>Le sommet <b>xⱼ</b> est un <b>successeur</b> du sommet <b>xᵢ</b> lorsque l’arc <b>(xᵢ, xⱼ)</b> est un arc du graphe.</p><p>L’ensemble des successeurs du sommet xᵢ se note <b>Γ<sup>+</sup>(xᵢ)</b>.</p></div>
+      </div>
+      <div class="st gold">Exemple du document — le graphe à quatre sommets</div>
+      <div class="cmp graphes-example">
+        <div class="cmpc">
+          <h4 class="gold">Représentation géométrique</h4>
+          <figure class="graphes-figure">
+            <svg class="graphes-svg" viewBox="0 0 460 360" role="img" aria-labelledby="graphes-title graphes-desc">
+              <title id="graphes-title">Graphe orienté du cours : A, B, C et D</title>
+              <desc id="graphes-desc">Six arcs : A vers B, B vers C, B vers D, C vers C, D vers C et D vers A. C porte une boucle.</desc>
+              <defs><marker id="graphes-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M 0 0 L 8 4 L 0 8 Z"/></marker></defs>
+              <g class="graphes-arcs" marker-end="url(#graphes-arrow)">
+                <path data-from="A" data-to="B" d="M 106 54 Q 210 10 314 54"/>
+                <path data-from="B" data-to="C" d="M 345 87 Q 378 170 345 253"/>
+                <path data-from="B" data-to="D" d="M 313 84 L 108 255"/>
+                <path data-from="C" data-to="C" d="M 348 257 C 419 219 432 319 348 283"/>
+                <path data-from="D" data-to="C" d="M 108 285 Q 210 327 313 285"/>
+                <path data-from="D" data-to="A" d="M 75 253 Q 43 170 75 87"/>
+              </g>
+              <g class="graphes-nodes">
+                <circle cx="90" cy="70" r="22"/><text x="90" y="70">A</text>
+                <circle cx="330" cy="70" r="22"/><text x="330" y="70">B</text>
+                <circle cx="330" cy="270" r="22"/><text x="330" y="270">C</text>
+                <circle cx="90" cy="270" r="22"/><text x="90" y="270">D</text>
+              </g>
+            </svg>
+            <figcaption>Mêmes sommets, mêmes arcs et même boucle que dans le PDF.</figcaption>
+          </figure>
+        </div>
+        <div class="cmpc">
+          <h4 class="gold">Ensembles de l’exemple</h4>
+          <p class="graphes-formula"><b>S = {A, B, C, D}</b></p>
+          <p class="graphes-formula"><b>U = {(A, B), (B, C), (B, D), (C, C), (D, C), (D, A)}</b></p>
+          <p class="graphes-formula"><b>Γ<sup>+</sup>(B) = {D, C}</b></p>
+          <p class="graphes-formula"><b>Γ<sup>−</sup>(B) = {A}</b></p>
+          <details class="math-details"><summary>Note de lecture de la liste manuscrite U</summary><p>La liste manuscrite donne {(A, B), (B, C), (C, C), (D, C), (D, A)}. Elle omet <b>(B, D)</b>, alors que cet arc apparaît sur le dessin, dans le tableau des successeurs, dans la matrice d’adjacence et dans les chemins de la correction. Il est inclus ici pour représenter le même graphe.</p></details>
+        </div>
+      </div>
+
+      <div class="st gold">3.2 — Autres modes de représentation d’un graphe</div>
+      <div class="st gold">3.2.1 — Le tableau de successeurs</div>
+      <div class="card gold"><h3>Compétence</h3><p>Il s’agit de lister, pour chaque sommet xᵢ, l’ensemble des sommets xⱼ vers lesquels il existe un arc partant de xᵢ.</p></div>
+      <p>Dans l’exemple précédent, le tableau des successeurs est le suivant :</p>
+      <div class="table-scroll"><table class="tbl gold graphes-neighbours"><thead><tr><th scope="col">Sommet xᵢ</th><th scope="col">A</th><th scope="col">B</th><th scope="col">C</th><th scope="col">D</th></tr></thead><tbody><tr><th scope="row">Successeurs Γ<sup>+</sup>(xᵢ)</th><td>B</td><td>C, D</td><td>C</td><td>A, C</td></tr></tbody></table></div>
+      <div class="st gold">3.2.2 — Tableau de prédécesseurs</div>
+      <div class="card bl"><h3>Compétence</h3><p>Il s’agit de lister, pour chaque sommet xⱼ, l’ensemble des sommets xᵢ depuis lesquels il existe un arc venant sur xⱼ.</p></div>
+      <p>Dans l’exemple précédent, le tableau des prédécesseurs est le suivant :</p>
+      <div class="table-scroll"><table class="tbl gold graphes-neighbours"><thead><tr><th scope="col">Sommet xⱼ</th><th scope="col">A</th><th scope="col">B</th><th scope="col">C</th><th scope="col">D</th></tr></thead><tbody><tr><th scope="row">Prédécesseurs Γ<sup>−</sup>(xⱼ)</th><td>D</td><td>A</td><td>B, C, D</td><td>B</td></tr></tbody></table></div>
+
+      <div class="st gold">3.2.3 — Matrice d’adjacence</div>
+      <div class="card gold"><h3>Définition</h3><p>On définit la <b>matrice d’adjacence</b> d’un graphe orienté G à n sommets {x₁, x₂, …, xₙ} par la matrice M carrée d’ordre n dont les coefficients aᵢⱼ vérifient :</p><div class="code gold">aᵢⱼ = 1 lorsque l’arc (xᵢ, xⱼ) est présent dans le graphe
+ aᵢⱼ = 0 sinon</div></div>
+      <div class="cmp">
+        <div class="cmpc"><h4 class="gold">Exemple — ordre A, B, C, D</h4><div class="code gold matrix-code" data-graphes-matrix="M">M = ( 0  1  0  0 )
+    ( 0  0  1  1 )
+    ( 0  0  1  0 )
+    ( 1  0  1  0 )</div></div>
+        <div class="cmpc"><h4 class="gold">Remarques du cours</h4><ul><li>Pour lire les <b>successeurs de xᵢ</b>, on regarde où sont les 1 dans la <b>i<sup>ème</sup> ligne</b> de M.</li><li>Pour lire les <b>prédécesseurs de xⱼ</b>, on regarde où sont les 1 dans la <b>j<sup>ème</sup> colonne</b> de M.</li></ul></div>
+      </div>
+      <div class="cg">
+        <div class="card am"><h3>Annotation — successeurs de B</h3><p>Deuxième ligne : <b>0 + 0 + 1 + 1 = 2</b>.</p><p>B possède donc <b>2 successeurs : C et D</b>.</p></div>
+        <div class="card bl"><h3>Annotation — prédécesseurs de C</h3><p>Troisième colonne : <b>0 + 1 + 1 + 1 = 3</b>.</p><p>C possède donc <b>3 prédécesseurs : B, C et D</b>.</p></div>
+      </div>
+
+      <div class="st gold">3.3 — Chemins de longueur p</div>
+      <div class="card gold"><h3>Définition — chemin</h3><p>Un <b>chemin</b> est une suite d’arcs telle que chaque fin d’arc soit le début de l’arc suivant, sauf pour le dernier. Un chemin constitué de <b>p arcs</b> est dit de <b>longueur p</b>.</p></div>
+      <div class="st gold">Exemple — deux chemins de longueur 4 de A à C</div>
+      <div class="cg">
+        <div class="card bl"><h3>Premier chemin</h3><p class="graphes-formula">(A, B)(B, D)(D, C)(C, C)</p><p class="graphes-route" data-graphes-path="A,B,D,C,C">A → B → D → C → C</p></div>
+        <div class="card am"><h3>Deuxième chemin</h3><p class="graphes-formula">(A, B)(B, C)(C, C)(C, C)</p><p class="graphes-route" data-graphes-path="A,B,C,C,C">A → B → C → C → C</p></div>
+      </div>
+      <div class="st gold">Circuits et boucles</div>
+      <div class="card gold"><h3>Définition — circuit et boucle</h3><p>Un <b>circuit</b> est un chemin dont le premier et le dernier sommet sont confondus. Un circuit constitué de p arcs est dit de longueur p. Une <b>boucle</b> est un circuit de <b>longueur 1</b>.</p></div>
+      <div class="cg">
+        <div class="card bl"><h3>Exemple — la boucle du graphe</h3><p>Le graphe contient une boucle, à savoir :</p><p class="graphes-route" data-graphes-path="C,C">C → C</p></div>
+        <div class="card am"><h3>Exemple — circuit de longueur 3 d’origine A</h3><p class="graphes-formula">(A, B)(B, D)(D, A)</p><p class="graphes-route" data-graphes-path="A,B,D,A">A → B → D → A</p></div>
+      </div>
+      <div class="st gold">Chemin hamiltonien</div>
+      <div class="card gold"><h3>Définition</h3><p>Un chemin est dit <b>hamiltonien</b> lorsqu’il passe une et une unique fois par chacun des sommets du graphe.</p><p><b>Remarque :</b> dans un graphe à n sommets, un chemin hamiltonien est nécessairement de <b>longueur n − 1</b>.</p></div>
+      <div class="card bl"><h3>Exemple du document</h3><p>Le graphe de l’exemple contient un chemin hamiltonien :</p><p class="graphes-route" data-graphes-path="A,B,D,C">A → B → D → C</p><p>Il est de <b>longueur 3</b> dans un graphe à <b>4 sommets</b>.</p></div>
+
+      <div class="st gold">Théorème — dénombrer les chemins avec M<sup>p</sup></div>
+      <div class="card gold"><h3>Théorème du cours</h3><p>Soit M la matrice d’adjacence d’un graphe G. Soit p un entier naturel non nul.</p><p>Le <b>nombre de chemins de longueur p</b> allant du sommet xᵢ au sommet xⱼ est égal au coefficient situé à la <b>i<sup>ème</sup> ligne et j<sup>ème</sup> colonne</b> de la matrice <b>M<sup>p</sup></b>.</p></div>
+      <div class="st gold">Exemple — les chemins de longueur 4</div>
+      <p>On s’intéresse aux chemins de longueur 4 du graphe précédent. À l’aide de la calculatrice, on trouve :</p>
+      <div class="code gold matrix-code" data-graphes-matrix="M4">M⁴ = ( 0  1  2  0 )
+     ( 0  0  3  1 )
+     ( 0  0  1  0 )
+     ( 1  0  3  0 )</div>
+      <details class="math-details"><summary>Note de lecture du coefficient imprimé « 03 »</summary><p>Sur le PDF, le dernier coefficient de la troisième ligne de M⁴ est imprimé « 03 ». La valeur cohérente avec le graphe et les résultats manuscrits est <b>0</b> : depuis C, on reste sur la boucle C → C et on ne peut pas rejoindre D. Le recalcul de M⁴ confirme cette valeur.</p></details>
+      <div class="st gold">Dénombrements et justifications de la correction</div>
+      <div class="card bl"><h3>1 — De B à D</h3><p>Le nombre de chemins de longueur 4 d’origine <b>B</b> et d’extrémité finale <b>D</b> est de <b>1</b>, puisque le coefficient de la <b>deuxième ligne et quatrième colonne</b> de M⁴ vaut 1.</p></div>
+      <div class="card am"><h3>2 — De D à C</h3><p>Le nombre de chemins de longueur 4 d’origine <b>D</b> et d’extrémité finale <b>C</b> est de <b>3</b>, puisque le coefficient de la <b>quatrième ligne et troisième colonne</b> de M⁴ vaut 3.</p><p>En parcourant le graphe, on retrouve :</p><ul class="graphes-route-list"><li data-graphes-path="D,A,B,C,C">D → A → B → C → C</li><li data-graphes-path="D,A,B,D,C">D → A → B → D → C</li><li data-graphes-path="D,C,C,C,C">D → C → C → C → C</li></ul></div>
+      <div class="card gold"><h3>3 — Tous les chemins d’origine A</h3><p>Le nombre de chemins de longueur 4 d’origine <b>A</b> est de <b>3</b>, puisque la somme des coefficients de la <b>première ligne</b> vaut :</p><div class="code gold">0 + 1 + 2 + 0 = 3</div><p>En parcourant le graphe, on retrouve :</p><ul class="graphes-route-list"><li data-graphes-path="A,B,C,C,C">A → B → C → C → C</li><li data-graphes-path="A,B,D,C,C">A → B → D → C → C</li><li data-graphes-path="A,B,D,A,B">A → B → D → A → B</li></ul></div>
+      <div class="card bl"><h3>4 — Tous les chemins d’extrémité finale C</h3><p>Le nombre de chemins de longueur 4 d’extrémité finale <b>C</b> est de <b>9</b>, puisque la somme des coefficients de la <b>troisième colonne</b> vaut 9.</p><div class="code gold">2 + 1 + 3 + 3 = 9</div><p>La somme est présentée dans l’ordre de la correction manuscrite ; l’ordre des termes ne change pas le résultat.</p></div>
+      <div class="card am"><h3>5 — Tous les chemins de longueur 4</h3><p>Le nombre de chemins de longueur 4 dans ce graphe est de <b>12</b>, puisque la somme de <b>tous les coefficients de M⁴</b> vaut 12.</p><div class="code gold">(0 + 1 + 2 + 0) + (0 + 0 + 3 + 1)
++ (0 + 0 + 1 + 0) + (1 + 0 + 3 + 0)
+= 3 + 4 + 1 + 4 = 12</div></div>
+      <div class="card gold"><h3>6 — Les circuits de longueur 4</h3><p>Le nombre de chemins de longueur 4 étant des <b>circuits</b> est de <b>1</b>, puisque la somme des coefficients de la <b>diagonale de M⁴</b> vaut 1.</p><div class="code gold">0 + 0 + 1 + 0 = 1</div></div>
+      <div class="source-note">Chapitre 3, « Les graphes orientés — partie 1/2 » : trois pages du PDF fourni. Définitions, exemples, tableaux, chemins et dénombrements manuscrits repris dans l’ordre du document. Les deux incohérences de lecture sont signalées dans les notes ci-dessus.</div>
     </div>
 
     <div class="sc" id="mat2-exercises">

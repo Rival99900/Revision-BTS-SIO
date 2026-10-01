@@ -110,11 +110,13 @@ Fichier : `deuxieme/cge-vrai-faux.html`
 
 Notions : synthèse de documents, vérité et mensonge, mythomanie, **Texte 2 — Dom Juan**, **Texte 3 — Le Misanthrope** de Molière et **Texte 4 — Les Liaisons dangereuses** de Laclos (lettre 81, paragraphes 1 à 4). Analyse de la dissimulation de Merteuil, vocabulaire et confrontation des quatre textes. Le cinquième paragraphe reste à étudier.
 
-### 🧮 Maths — Calcul matriciel
+### 🧮 Maths — Calcul matriciel et graphes orientés
 
 La fiche 2e année couvre également les **matrices carrées de référence** : matrices identité `Iₙ`, rôle d’élément neutre, puissances `Aᵖ`, convention `A⁰ = Iₙ` et exemples calculés.
 
 Fichier : `deuxieme/maths-matrices.html`
+
+Le chapitre 3, **Les graphes orientés — partie 1/2**, est intégré dans la même fiche : définitions, représentation géométrique, tableaux de successeurs et de prédécesseurs, matrice d’adjacence, chemins, circuits, boucles, chemin hamiltonien et dénombrements à partir de M⁴. Les trois pages du PDF et les réponses manuscrites sont reprises ; les deux incohérences du support sont signalées.
 
 Cette fiche couvre les matrices, l’addition, la multiplication par un réel, le produit matriciel et les exercices vérifiés de 2e année. Les exercices 17 (circuit touristique, Nouvelle-Calédonie 2015) et 18 (production de calculatrices, Polynésie 2006) suivent une correction détaillée type BTS : dimensions, calculs, inverse et interprétation.
 

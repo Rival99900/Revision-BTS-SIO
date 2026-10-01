@@ -1,0 +1,95 @@
+/* Chapitre 3 intégré à la fiche Maths 2e année. */
+#mat2-graphes > .card,
+#mat2-graphes > .math-details {
+  margin-bottom: 16px;
+}
+
+#mat2-graphes .graphes-figure {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 460px;
+}
+
+#mat2-graphes .graphes-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+#mat2-graphes .graphes-arcs {
+  fill: none;
+  stroke: var(--blue);
+  stroke-width: 2.5;
+}
+
+#mat2-graphes #graphes-arrow path {
+  fill: var(--blue);
+}
+
+#mat2-graphes .graphes-nodes circle {
+  fill: var(--bg);
+  stroke: var(--gold);
+  stroke-width: 2;
+}
+
+#mat2-graphes .graphes-nodes text {
+  fill: var(--gold);
+  font: bold 22px 'Share Tech Mono', monospace;
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+
+#mat2-graphes figcaption {
+  color: var(--text);
+  font-size: .78rem;
+  line-height: 1.5;
+}
+
+#mat2-graphes .graphes-formula {
+  margin: 12px 0;
+  overflow-wrap: anywhere;
+}
+
+#mat2-graphes .matrix-code {
+  font-size: clamp(.95rem, 1.4vw, 1.08rem);
+}
+
+#mat2-graphes .graphes-route,
+#mat2-graphes .graphes-route-list {
+  color: var(--blue);
+  line-height: 1.8;
+  font-weight: bold;
+  overflow-wrap: anywhere;
+}
+
+#mat2-graphes .graphes-neighbours th,
+#mat2-graphes .graphes-neighbours td {
+  text-align: center;
+}
+
+#mat2-graphes .graphes-neighbours th:first-child {
+  text-align: left;
+}
+
+@media (max-width: 560px) {
+  #mat2-graphes .graphes-example {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media print {
+  #mat2-graphes .graphes-arcs {
+    stroke: #222;
+  }
+  #mat2-graphes #graphes-arrow path,
+  #mat2-graphes .graphes-nodes text {
+    fill: #111;
+  }
+  #mat2-graphes .graphes-nodes circle {
+    fill: #fff;
+    stroke: #222;
+  }
+  #mat2-graphes .graphes-figure {
+    break-inside: avoid;
+  }
+}
