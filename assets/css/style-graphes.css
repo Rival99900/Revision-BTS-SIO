@@ -93,3 +93,88 @@
     break-inside: avoid;
   }
 }
+
+/* Chapitre 3 — partie 2/2 : fermeture transitive et exercices de graphes. */
+.graphes-scope > .card,
+.graphes-scope > .alert,
+.graphes-scope > .math-details,
+.graphes-scope > .cg,
+.graphes-scope > .cmp,
+.graphes-scope > .source-note {
+  margin-bottom: 16px;
+}
+
+.graphes-scope .graphes-figure {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 460px;
+}
+
+.graphes-scope .graphes-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.graphes-scope .graphes-arcs {
+  fill: none;
+  stroke: var(--blue);
+  stroke-width: 2.5;
+}
+
+.graphes-scope marker path {
+  fill: var(--blue);
+}
+
+.graphes-scope .graphes-nodes circle {
+  fill: var(--bg);
+  stroke: var(--gold);
+  stroke-width: 2;
+}
+
+.graphes-scope .graphes-nodes text {
+  fill: var(--gold);
+  font: bold 22px 'Share Tech Mono', monospace;
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+
+.graphes-scope figcaption {
+  color: var(--text);
+  font-size: .78rem;
+  line-height: 1.5;
+}
+
+.graphes-scope .graphes-formula {
+  margin: 12px 0;
+  overflow-wrap: anywhere;
+}
+
+.graphes-scope .matrix-code {
+  font-size: clamp(.95rem, 1.4vw, 1.08rem);
+}
+
+.graphes-scope .graphes-route,
+.graphes-scope .graphes-route-list {
+  color: var(--blue);
+  line-height: 1.8;
+  font-weight: bold;
+  overflow-wrap: anywhere;
+}
+
+@media print {
+  .graphes-scope .graphes-arcs {
+    stroke: #222;
+  }
+  .graphes-scope marker path,
+  .graphes-scope .graphes-nodes text {
+    fill: #111;
+  }
+  .graphes-scope .graphes-nodes circle {
+    fill: #fff;
+    stroke: #222;
+  }
+  .graphes-scope .graphes-figure {
+    break-inside: avoid;
+  }
+}

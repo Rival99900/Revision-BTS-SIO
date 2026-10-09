@@ -102,13 +102,13 @@ La 2e année est ajoutée progressivement selon les cours déjà étudiés.
 
 Fichier : `deuxieme/cejm-droit-numerique.html`
 
-Notions : données à caractère personnel, données sensibles, CNIL, RGPD, droits des personnes, obligations des organisations, accountability, Privacy by Design/Default, identité numérique, phishing, doxing et étude de cas de la montre connectée.
+Notions : données à caractère personnel, données sensibles, CNIL, RGPD, droits des personnes, obligations des organisations, accountability, Privacy by Design/Default, identité numérique, phishing, doxing, étude de cas de la montre connectée et actifs numériques (droit d’auteur, œuvre multimédia, noms de domaine, logiciels, bases de données).
 
 ### ✍️ CGE — Le vrai du faux
 
 Fichier : `deuxieme/cge-vrai-faux.html`
 
-Notions : synthèse de documents, vérité et mensonge, mythomanie, **Texte 2 — Dom Juan**, **Texte 3 — Le Misanthrope** de Molière et **Texte 4 — Les Liaisons dangereuses** de Laclos (lettre 81, paragraphes 1 à 4). Analyse de la dissimulation de Merteuil, vocabulaire et confrontation des quatre textes. Le cinquième paragraphe reste à étudier.
+Notions : synthèse de documents, vérité et mensonge, mythomanie, **Texte 2 — Dom Juan**, **Texte 3 — Le Misanthrope** de Molière et **Texte 4 — Les Liaisons dangereuses** de Laclos (lettre 81, paragraphes 1 à 4). Analyse de la dissimulation de Merteuil, vocabulaire et confrontation des quatre textes. Le cinquième paragraphe reste à étudier. **Texte 5 — Holbach**, *Essai sur l’art de ramper à l’usage des courtisans* : paragraphes 1 à 3 et vocabulaire 1 à 3 seulement.
 
 ### 🧮 Maths — Calcul matriciel et graphes orientés
 
@@ -116,7 +116,7 @@ La fiche 2e année couvre également les **matrices carrées de référence** : 
 
 Fichier : `deuxieme/maths-matrices.html`
 
-Le chapitre 3, **Les graphes orientés — partie 1/2**, est intégré dans la même fiche : définitions, représentation géométrique, tableaux de successeurs et de prédécesseurs, matrice d’adjacence, chemins, circuits, boucles, chemin hamiltonien et dénombrements à partir de M⁴. Les trois pages du PDF et les réponses manuscrites sont reprises ; les deux incohérences du support sont signalées.
+Le chapitre 3, **Les graphes orientés — partie 1/2**, est intégré dans la même fiche : définitions, représentation géométrique, tableaux de successeurs et de prédécesseurs, matrice d’adjacence, chemins, circuits, boucles, chemin hamiltonien et dénombrements à partir de M⁴. Les trois pages du PDF et les réponses manuscrites sont reprises ; les deux incohérences du support sont signalées. La **partie 2/2** (fermeture transitive, somme booléenne des puissances et exercices 1 p.23 et 5 p.25, ce dernier identique à l’exercice 5 du sujet de Polynésie, mai 2017) est également intégrée ; l’arc D → E de l’exercice 1 est à vérifier sur le papier.
 
 Cette fiche couvre les matrices, l’addition, la multiplication par un réel, le produit matriciel et les exercices vérifiés de 2e année. Les exercices 17 (circuit touristique, Nouvelle-Calédonie 2015) et 18 (production de calculatrices, Polynésie 2006) suivent une correction détaillée type BTS : dimensions, calculs, inverse et interprétation.
 
