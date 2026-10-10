@@ -7,7 +7,7 @@
   <title>🧮 Maths — Matrices et graphes orientés — 2e année</title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&amp;family=VT323&amp;family=Orbitron:wght@700;900&amp;display=swap" rel="stylesheet"/>
   <link href="../assets/css/style.css?v=20261001-graphes" rel="stylesheet"/>
-  <link href="../assets/css/style-graphes.css?v=20261009-1" rel="stylesheet"/>
+  <link href="../assets/css/style-graphes.css?v=20261010-1" rel="stylesheet"/>
   <link href="../assets/img/site-logo.svg" rel="icon" type="image/svg+xml"/>
   <link href="../assets/img/site-logo.svg" rel="shortcut icon"/>
 </head>
@@ -39,7 +39,7 @@
       <div>
         <div class="hero-kicker">2E ANNÉE // MATHS</div>
         <h2>Maths — Matrices et graphes orientés</h2>
-        <p>Calcul matriciel : dimensions, opérations, matrices carrées et exercices corrigés. Chapitre 3 : graphes orientés, représentations, chemins et dénombrement avec les puissances de la matrice d’adjacence. Partie 2/2 : fermeture transitive et exercices 1 (p.23) et 5 (p.25).</p>
+        <p>Calcul matriciel : dimensions, opérations, matrices carrées et exercices corrigés. Chapitre 3 : graphes orientés, représentations, chemins et dénombrement avec les puissances de la matrice d’adjacence. Fermeture transitive incluse. Exercices de graphes 1 (p.23) et 5 (p.25) dans l’onglet dédié.</p>
       </div>
       <div class="hero-actions">
         <button class="smallbtn" id="reviewBtn" onclick="setReviewed('2-maths-matrices')">○ Marquer révisé</button>
@@ -57,10 +57,10 @@
       <button class="sb" onclick="showSub('mat2','operations',this)">Opérations</button>
       <button class="sb" onclick="showSub('mat2','square',this)">Matrices carrées</button>
       <button class="sb" onclick="showSub('mat2','graphes',this)">Graphes orientés</button>
-      <button class="sb" onclick="showSub('mat2','fermeture',this)">Fermeture transitive</button>
-      <button class="sb" data-mat-exercises="1" onclick="showSub('mat2','exercises',this)">Exercices</button>
+      <button class="sb" data-mat-exercises="1" onclick="showSub('mat2','exercises',this)">Exercices matrices</button>
+      <button class="sb" data-graph-exercises="1" onclick="showSub('mat2','graph-exercises',this)">Exercices graphes</button>
     </div>
-    <div class="section-stepper" data-prefix="mat2" data-sections="definition,operations,square,graphes,fermeture,exercises,exo14,exo58,exo9,exo11,exo13,exo17,exo18,exo21,exo22,exo-g1,exo-g5" data-parent-section="exercises" data-end-target="exercises">
+    <div class="section-stepper" data-prefix="mat2" data-sections="definition,operations,square,graphes,exercises,exo14,exo58,exo9,exo11,exo13,exo17,exo18,exo21,exo22,graph-exercises,exo-g1,exo-g5" data-parent-section="exercises" data-end-target="graph-exercises">
       <button class="smallbtn step-prev" onclick="stepSection(this,-1)" type="button">← Précédent</button>
       <span aria-live="polite" class="step-status">1 / 17</span>
       <button class="smallbtn alt step-next" onclick="stepSection(this,1)" type="button">Suivant →</button>
@@ -303,7 +303,7 @@ Donc D⁻¹ = 1/2 D</div>
       <div class="alert ag"><strong>À retenir :</strong> pour vérifier qu’une matrice B est l’inverse de A, il suffit ici de vérifier que leur produit donne la matrice identité de même ordre.</div>
     </div>
 
-    <div class="sc" id="mat2-graphes">
+    <div class="sc graphes-scope" id="mat2-graphes">
       <div class="st gold">Chapitre 3 — Les graphes orientés · Partie 1/2</div>
       <div class="st gold">3.1 — Définition et représentation géométrique d’un graphe orienté</div>
       <div class="card gold">
@@ -412,87 +412,79 @@ Donc D⁻¹ = 1/2 D</div>
 + (0 + 0 + 1 + 0) + (1 + 0 + 3 + 0)
 = 3 + 4 + 1 + 4 = 12</div></div>
       <div class="card gold"><h3>6 — Les circuits de longueur 4</h3><p>Le nombre de chemins de longueur 4 étant des <b>circuits</b> est de <b>1</b>, puisque la somme des coefficients de la <b>diagonale de M⁴</b> vaut 1.</p><div class="code gold">0 + 0 + 1 + 0 = 1</div></div>
-      <div class="source-note">Chapitre 3, « Les graphes orientés — partie 1/2 » : trois pages du PDF fourni. Définitions, exemples, tableaux, chemins et dénombrements manuscrits repris dans l’ordre du document. Les deux incohérences de lecture sont signalées dans les notes ci-dessus.</div>
-    </div>
-
-    <div class="sc graphes-scope" id="mat2-fermeture">
-      <div class="st gold">Chapitre 3 — Les graphes orientés · Partie 2/2</div>
-      <div class="st gold">3.4 — Fermeture transitive d’un graphe</div>
+      <div class="st gold">3.4 — Fermeture transitive du graphe</div>
       <div class="card gold">
         <h3>Définition — sommet accessible</h3>
-        <p>Le sommet <b>xⱼ</b> est dit <b>accessible</b> depuis le sommet <b>xᵢ</b> lorsqu’il existe un chemin de xᵢ à xⱼ.</p>
+        <p>Le sommet <b>xⱼ</b> est <b>accessible</b> depuis le sommet <b>xᵢ</b> lorsqu’il existe un chemin de xᵢ vers xⱼ.</p>
       </div>
-      <div class="st gold">Exemples — avec le graphe à quatre sommets</div>
       <div class="cg">
-        <div class="card bl">
-          <h3>B est accessible depuis D</h3>
-          <p class="graphes-route">D → A → B</p>
-          <p>Il existe donc un chemin de D vers B : <b>D → A → B</b>.</p>
-        </div>
-        <div class="card am">
-          <h3>B n’est pas accessible depuis C</h3>
-          <p>C n’admet de successeur qu’à lui-même (la boucle C → C). Depuis C, on ne peut donc jamais atteindre B.</p>
-        </div>
+        <div class="card bl"><h3>Exemple positif</h3><p>B est accessible depuis D : il existe le chemin <b>D → A → B</b>.</p></div>
+        <div class="card am"><h3>Exemple négatif</h3><p>B n’est pas accessible depuis C : C n’a pour successeur que lui-même (la boucle C → C), donc on ne peut jamais atteindre B.</p></div>
       </div>
       <div class="card gold">
         <h3>Définition — fermeture transitive</h3>
-        <p>La <b>fermeture transitive</b> du graphe G est le graphe noté <b>Ĝ</b> qui contient tous les arcs de G, plus les arcs <b>(xᵢ, xⱼ)</b> tels que, dans G, le sommet xⱼ est accessible depuis le sommet xᵢ.</p>
+        <p>La <b>fermeture transitive</b> de G est le graphe <b>Ĝ</b> qui contient les mêmes sommets que G, les arcs de G, et un arc <b>(xᵢ, xⱼ)</b> chaque fois que xⱼ est accessible depuis xᵢ.</p>
+        <p>Sa matrice d’adjacence <b>M̂ = (α̂ᵢⱼ)</b> vérifie : <b>α̂ᵢⱼ = 1</b> lorsque xⱼ est accessible depuis xᵢ, et <b>α̂ᵢⱼ = 0</b> sinon.</p>
       </div>
-      <div class="st gold">Conséquence — matrice de la fermeture transitive</div>
       <div class="card gold">
-        <p>La matrice d’adjacence de Ĝ, notée <b>M̂ = (α̂ᵢⱼ)</b>, est définie par :</p>
-        <div class="code gold">α̂ᵢⱼ = 1 lorsque le sommet j est accessible dans le graphe depuis le sommet i
-α̂ᵢⱼ = 0 sinon</div>
-      </div>
-      <div class="st gold">Théorème — somme booléenne des puissances</div>
-      <div class="card gold">
-        <h3>Théorème du cours</h3>
-        <p>La matrice d’adjacence de la fermeture transitive d’un graphe G à n sommets se calcule par la <b>somme booléenne</b> des puissances booléennes de la matrice d’adjacence M :</p>
+        <h3>Théorème — somme booléenne des puissances</h3>
+        <p>Pour un graphe à n sommets, la matrice d’adjacence de la fermeture transitive se calcule par :</p>
         <div class="code gold">M̂ = M ⊕ M^[2] ⊕ … ⊕ M^[n]</div>
-      </div>
-      <div class="card bl">
-        <h3>Remarque — méthode à la calculatrice</h3>
-        <p>On calcule <b>M + M² + … + Mⁿ</b>, puis on remplace par <b>1</b> tout coefficient non nul de la matrice obtenue. On obtient ainsi M̂.</p>
+        <p>Pratiquement, à la calculatrice : on calcule <b>M + M² + … + Mⁿ</b>, puis on remplace par <b>1</b> tout coefficient non nul.</p>
       </div>
 
       <div class="st gold">Exemple — fermeture du graphe à quatre sommets</div>
-      <p>On reprend la matrice M du graphe précédent (ordre A, B, C, D), donc n = 4. Avec M + M² + M³ + M⁴ :</p>
-      <div class="cmp">
-        <div class="cmpc">
-          <h4 class="gold">M + M² + M³ + M⁴</h4>
-          <div class="code gold matrix-code">( 1  2  5  1 )
-( 1  1  8  2 )
-( 0  0  4  0 )
-( 2  1  7  1 )</div>
-        </div>
-        <div class="cmpc">
-          <h4 class="gold">Non-nuls remplacés par 1</h4>
-          <div class="code gold matrix-code">M̂ = ( 1  1  1  1 )
-    ( 1  1  1  1 )
-    ( 0  0  1  0 )
-    ( 1  1  1  1 )</div>
-        </div>
-      </div>
+      <p>On reprend la matrice M du graphe précédent (ordre A, B, C, D), donc n = 4.</p>
+      <div class="mxline"><span class="mxlabel">M + M² + M³ + M⁴ =</span><div class="mx" style="--cols:4"><span>1</span><span>2</span><span>5</span><span>1</span><span>1</span><span>1</span><span>8</span><span>2</span><span>0</span><span>0</span><span>4</span><span>0</span><span>2</span><span>1</span><span>7</span><span>1</span></div></div>
+      <p>En remplaçant tout coefficient non nul par 1 :</p>
+      <div class="mxline"><span class="mxlabel">M̂ =</span><div class="mx" style="--cols:4"><span>1</span><span>1</span><span>1</span><span>1</span><span>1</span><span>1</span><span>1</span><span>1</span><span>0</span><span>0</span><span>1</span><span>0</span><span>1</span><span>1</span><span>1</span><span>1</span></div></div>
       <details class="math-details"><summary>Voir le détail des calculs ligne par ligne</summary>
-<div class="code gold matrix-code">Ligne A : (0 1 0 0) + (0 0 1 1) + (1 0 2 0) + (0 1 2 0) = (1 2 5 1)
+<div class="code gold">Ligne A : (0 1 0 0) + (0 0 1 1) + (1 0 2 0) + (0 1 2 0) = (1 2 5 1)
 Ligne B : (0 0 1 1) + (1 0 2 0) + (0 1 2 0) + (0 0 3 1) = (1 1 8 2)
 Ligne C : (0 0 1 0) + (0 0 1 0) + (0 0 1 0) + (0 0 1 0) = (0 0 4 0)
 Ligne D : (1 0 1 0) + (0 1 1 0) + (0 0 2 1) + (1 0 3 0) = (2 1 7 1)</div>
-<p>Les lignes de M², M³ et M⁴ utilisées ici sont : M² = ((0 0 1 1), (1 0 2 0), (0 0 1 0), (0 1 1 0)), M³ = ((1 0 2 0), (0 1 2 0), (0 0 1 0), (0 0 2 1)) et M⁴ = ((0 1 2 0), (0 0 3 1), (0 0 1 0), (1 0 3 0)).</p></details>
-
+        <p>Lignes utilisées : M² = ((0 0 1 1), (1 0 2 0), (0 0 1 0), (0 1 1 0)), M³ = ((1 0 2 0), (0 1 2 0), (0 0 1 0), (0 0 2 1)), M⁴ = ((0 1 2 0), (0 0 3 1), (0 0 1 0), (1 0 3 0)).</p>
+      </details>
+      <figure class="graphes-figure">
+        <svg class="graphes-svg" viewBox="0 0 460 360" role="img" aria-labelledby="fer-title fer-desc">
+        <title id="fer-title">Graphe de la fermeture transitive, sommets A, B, C et D</title>
+        <desc id="fer-desc">Treize arcs : les six arcs de G en trait plein, et les sept arcs ajoutés en pointillés dorés.</desc>
+        <defs><marker id="fer-blue" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M 0 0 L 8 4 L 0 8 Z"/></marker>
+        <marker id="fer-gold" class="mk-gold" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M 0 0 L 8 4 L 0 8 Z"/></marker></defs>
+        <g class="graphes-arcs" marker-end="url(#fer-blue)">
+        <path data-from="A" data-to="B" d="M 111.5 74.7 Q 210.0 96.0 308.5 74.7"/>
+        <path data-from="B" data-to="C" d="M 330.0 92.0 L 330.0 248.0"/>
+        <path data-from="B" data-to="D" d="M 311.0 81.1 Q 193.4 150.0 104.4 253.3"/>
+        <path data-from="C" data-to="C" d="M 351.9 271.8 C 400.9 282.3 354.9 337.6 335.8 291.2"/>
+        <path data-from="D" data-to="A" d="M 95.5 248.7 Q 116.0 170.0 95.5 91.3"/>
+        <path data-from="D" data-to="C" d="M 112.0 270.0 L 308.0 270.0"/>
+        </g>
+        <g class="graphes-added" marker-end="url(#fer-gold)">
+        <path data-from="A" data-to="A" d="M 68.1 68.2 C 19.1 57.7 65.1 2.4 84.2 48.8"/>
+        <path data-from="A" data-to="C" d="M 106.9 84.1 L 313.1 255.9"/>
+        <path data-from="A" data-to="D" d="M 84.5 91.3 Q 64.0 170.0 84.5 248.7"/>
+        <path data-from="B" data-to="A" d="M 308.5 65.3 Q 210.0 44.0 111.5 65.3"/>
+        <path data-from="B" data-to="B" d="M 335.8 48.8 C 354.9 2.4 400.9 57.7 351.9 68.2"/>
+        <path data-from="D" data-to="B" d="M 109.0 258.9 Q 226.6 190.0 315.6 86.7"/>
+        <path data-from="D" data-to="D" d="M 84.2 291.2 C 65.1 337.6 19.1 282.3 68.1 271.8"/>
+        </g>
+        <g class="graphes-nodes"><circle cx="90" cy="70" r="22"/><text x="90" y="70">A</text><circle cx="330" cy="70" r="22"/><text x="330" y="70">B</text><circle cx="330" cy="270" r="22"/><text x="330" y="270">C</text><circle cx="90" cy="270" r="22"/><text x="90" y="270">D</text></g>
+        </svg>
+        <figcaption>Graphe Ĝ : les arcs de G sont en trait plein bleu, les 7 arcs ajoutés en pointillés dorés.</figcaption>
+      </figure>
       <div class="cg">
         <div class="card am">
           <h3>Arcs ajoutés dans Ĝ</h3>
-          <p>G possède <b>6 arcs</b>. La somme des coefficients de M̂ vaut 4 + 4 + 1 + 4 = 13 : Ĝ possède donc <b>7 arcs supplémentaires</b> :</p>
+          <p>La somme des coefficients de M̂ vaut 4 + 4 + 1 + 4 = 13, contre 6 arcs pour G : Ĝ possède donc <b>7 arcs supplémentaires</b> :</p>
           <p class="graphes-formula">(A, A) (A, C) (A, D) (B, A) (B, B) (D, B) (D, D)</p>
         </div>
         <div class="card bl">
           <h3>Pourquoi ces arcs existent-ils ?</h3>
-          <p>Chaque arc ajouté correspond à un chemin de G. Par exemple, <b>(A, C)</b> provient du chemin A → B → C, et <b>(B, B)</b> du chemin B → D → A → B.</p>
+          <p>Chaque arc ajouté correspond à un chemin de G : par exemple <b>(A, C)</b> provient de A → B → C, et <b>(B, B)</b> de B → D → A → B.</p>
         </div>
       </div>
-      <div class="alert agold"><strong>À retenir :</strong> Ĝ contient les mêmes sommets que G, plus un arc (xᵢ, xⱼ) chaque fois qu’on peut aller de xᵢ à xⱼ en plusieurs étapes. La matrice M̂ répond directement à la question « qui est accessible depuis qui ? ».</div>
-      <div class="source-note">Chapitre 3, « Les graphes orientés — partie 2/2 » : fermeture transitive (3.4) reprise du PDF et de la correction manuscrite. Le graphe à quatre sommets est celui de la partie 1/2 ; les calculs de M + M² + M³ + M⁴ ont été recalculés.</div>
+      <div class="alert agold"><strong>À retenir :</strong> Ĝ a les mêmes sommets que G, plus un arc (xᵢ, xⱼ) chaque fois qu’on peut aller de xᵢ à xⱼ en plusieurs étapes. M̂ répond à la question « qui est accessible depuis qui ? ».</div>
+      <div class="source-note">Chapitre 3, « Les graphes orientés — partie 1/2 » : trois pages du PDF fourni. Définitions, exemples, tableaux, chemins et dénombrements manuscrits repris dans l’ordre du document. Les deux incohérences de lecture sont signalées dans les notes ci-dessus.</div>
     </div>
 
     <div class="sc" id="mat2-exercises">
@@ -551,18 +543,6 @@ Ligne D : (1 0 1 0) + (0 1 1 0) + (0 0 2 1) + (1 0 3 0) = (2 1 7 1)</div>
           <span class="chapter-num">22</span>
           <h3>Production de fibres optiques</h3>
           <p>Système, produit matriciel, masse de silice, temps et quantités produites.</p>
-          <span class="module-link">Ouvrir l’exercice →</span>
-        </a>
-        <a class="chapter-card" href="#mat2-exo-g1" onclick="event.preventDefault(); showSub('mat2','exo-g1',document.querySelector('[data-mat-exercises]'));">
-          <span class="chapter-num">Ch. 3</span>
-          <h3>Graphe à cinq sommets — exercice 1 p.23</h3>
-          <p>Représentation, chemins de longueur 2 à 5, chemin hamiltonien et fermeture transitive.</p>
-          <span class="module-link">Ouvrir l’exercice →</span>
-        </a>
-        <a class="chapter-card" href="#mat2-exo-g5" onclick="event.preventDefault(); showSub('mat2','exo-g5',document.querySelector('[data-mat-exercises]'));">
-          <span class="chapter-num">Ch. 3</span>
-          <h3>Graphe des victoires — exercice 5 p.25</h3>
-          <p>Matrice d’adjacence, coefficient inconnu de M⁴, chemins vers E, fermeture transitive, circuit et chemin hamiltonien.</p>
           <span class="module-link">Ouvrir l’exercice →</span>
         </a>
       </div>
@@ -1184,30 +1164,40 @@ z = −21 + 94 − 67 = 6</div><p><b>Vérification :</b></p><div class="code gol
 2 × 8 + 3 × 7 + 5 × 6 = 67 heures</div></details></div>
     </div>
 
-    <div class="sc graphes-scope" id="mat2-exo-g1">
+    <div class="sc graphes-scope" id="mat2-graph-exercises">
+      <div class="st gold">Exercices graphes — accès rapide</div>
+      <p class="exercise-intro">Les exercices sur les graphes orientés sont regroupés dans cet onglet, séparés des exercices de matrices.</p>
+      <div class="chapter-grid math-exercise-grid">
+        <a class="chapter-card" href="#mat2-exo-g1" onclick="event.preventDefault(); showSub('mat2','exo-g1',document.querySelector('[data-graph-exercises]'));">
+          <span class="chapter-num">Ch. 3 · p.23</span>
+          <h3>Graphe à cinq sommets</h3>
+          <p>Représentation, chemins de longueur 2 à 5, chemin hamiltonien et fermeture transitive.</p>
+          <span class="module-link">Ouvrir l’exercice →</span>
+        </a>
+        <a class="chapter-card" href="#mat2-exo-g5" onclick="event.preventDefault(); showSub('mat2','exo-g5',document.querySelector('[data-graph-exercises]'));">
+          <span class="chapter-num">Ch. 3 · p.25</span>
+          <h3>Graphe des victoires — Polynésie 2017</h3>
+          <p>Matrice d’adjacence, coefficient inconnu de M⁴, chemins vers E, fermeture transitive, circuit et chemin hamiltonien.</p>
+          <span class="module-link">Ouvrir l’exercice →</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="sc graphes-scope" id="mat2-exo-g1" data-tab-section="graph-exercises">
       <div class="st gold">Exercice 1 p.23 — graphe à cinq sommets</div>
       <div class="card gold">
         <h3>Énoncé</h3>
         <p>On considère la matrice d’adjacence M d’un graphe G à cinq sommets (ordre A, B, C, D, E). On admet les puissances suivantes :</p>
         <div class="cmp">
-          <div class="cmpc"><h4 class="gold">M</h4><div class="code gold matrix-code">( 0  1  0  1  1 )
-( 0  0  1  0  1 )
-( 0  0  0  0  1 )
-( 0  1  0  0  1 )
-( 0  0  0  0  0 )</div></div>
-          <div class="cmpc"><h4 class="gold">M²</h4><div class="code gold matrix-code">( 0  1  1  0  2 )
-( 0  0  0  0  1 )
-( 0  0  0  0  0 )
-( 0  0  1  0  1 )
-( 0  0  0  0  0 )</div></div>
+          <div class="cmpc"><h4 class="gold">M</h4><div class="mx" style="--cols:5"><span>0</span><span>1</span><span>0</span><span>1</span><span>1</span><span>0</span><span>0</span><span>1</span><span>0</span><span>1</span><span>0</span><span>0</span><span>0</span><span>0</span><span>1</span><span>0</span><span>1</span><span>0</span><span>0</span><span>1</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span></div></div>
+          <div class="cmpc"><h4 class="gold">M²</h4><div class="mx" style="--cols:5"><span>0</span><span>1</span><span>1</span><span>0</span><span>2</span><span>0</span><span>0</span><span>0</span><span>0</span><span>1</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>1</span><span>0</span><span>1</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span></div></div>
         </div>
         <div class="cmp">
-          <div class="cmpc"><h4 class="gold">M³</h4><div class="code gold matrix-code">( 0  0  1  0  2 )
-( 0  0  0  0  0 )
-( 0  0  0  0  0 )
-( 0  0  0  0  1 )
-( 0  0  0  0  0 )</div></div>
-          <div class="cmpc"><h4 class="gold">M⁴ et M⁵</h4><p>M⁴ ne contient qu’un coefficient non nul : celui de la ligne A, colonne E, égal à 1.</p><p>M⁵ est la matrice nulle.</p></div>
+          <div class="cmpc"><h4 class="gold">M³</h4><div class="mx" style="--cols:5"><span>0</span><span>0</span><span>1</span><span>0</span><span>2</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>1</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span></div></div>
+          <div class="cmpc"><h4 class="gold">M⁴</h4><div class="mx" style="--cols:5"><span>0</span><span>0</span><span>0</span><span>0</span><span>1</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span></div></div>
+        </div>
+        <div class="cmp">
+          <div class="cmpc"><h4 class="gold">M⁵</h4><div class="mx" style="--cols:5"><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span></div><p>M⁵ est la matrice nulle, donc toutes les puissances suivantes sont nulles aussi.</p></div>
         </div>
         <ol>
           <li>Donner une représentation géométrique du graphe G.</li>
@@ -1224,31 +1214,31 @@ z = −21 + 94 − 67 = 6</div><p><b>Vérification :</b></p><div class="code gol
         <div class="card bl">
           <h3>1 — Représentation géométrique</h3>
           <figure class="graphes-figure">
-      <svg class="graphes-svg" viewBox="0 0 460 360" role="img" aria-labelledby="ex1-title ex1-desc">
-      <title id="ex1-title">Graphe de l’exercice 1 p.23 : sommets A, B, C, D et E</title>
-      <desc id="ex1-desc">Huit arcs : A vers B, D et E ; B vers C et E ; C vers E ; D vers B et E.</desc>
-      <defs><marker id="ex1-arrow" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M 0 0 L 8 4 L 0 8 Z"/></marker></defs>
-      <g class="graphes-arcs" marker-end="url(#ex1-arrow)">
-        <path data-from="A" data-to="B" d="M 102.0 60.0 L 308.0 60.0"/>
-        <path data-from="A" data-to="D" d="M 91.7 78.7 L 218.3 281.3"/>
-        <path data-from="A" data-to="E" d="M 79.0 82.0 L 71.0 268.0"/>
-        <path data-from="B" data-to="C" d="M 340.4 79.4 L 389.6 170.6"/>
-        <path data-from="B" data-to="E" d="M 313.5 74.6 L 86.5 275.4"/>
-        <path data-from="C" data-to="E" d="M 378.9 196.4 L 91.1 283.6"/>
-        <path data-from="D" data-to="B" d="M 238.5 279.7 L 321.5 80.3"/>
-        <path data-from="D" data-to="E" d="M 208.0 298.6 L 92.0 291.4"/>
-      </g>
-      <g class="graphes-nodes">
-        <circle cx="80" cy="60" r="22"/><text x="80" y="60">A</text>
-        <circle cx="330" cy="60" r="22"/><text x="330" y="60">B</text>
-        <circle cx="400" cy="190" r="22"/><text x="400" y="190">C</text>
-        <circle cx="230" cy="300" r="22"/><text x="230" y="300">D</text>
-        <circle cx="70" cy="290" r="22"/><text x="70" y="290">E</text>
-      </g></svg>
+            <svg class="graphes-svg" viewBox="0 0 460 360" role="img" aria-labelledby="ex1-title ex1-desc">
+            <title id="ex1-title">Graphe de l’exercice 1 p.23 : sommets A, B, C, D et E</title>
+            <desc id="ex1-desc">Huit arcs : A vers B, D et E ; B vers C et E ; C vers E ; D vers B et E.</desc>
+            <defs><marker id="ex1-arrow" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M 0 0 L 8 4 L 0 8 Z"/></marker></defs>
+            <g class="graphes-arcs" marker-end="url(#ex1-arrow)">
+              <path data-from="A" data-to="B" d="M 102.0 60.0 L 308.0 60.0"/>
+              <path data-from="A" data-to="D" d="M 91.7 78.7 L 218.3 281.3"/>
+              <path data-from="A" data-to="E" d="M 79.0 82.0 L 71.0 268.0"/>
+              <path data-from="B" data-to="C" d="M 340.4 79.4 L 389.6 170.6"/>
+              <path data-from="B" data-to="E" d="M 313.5 74.6 L 86.5 275.4"/>
+              <path data-from="C" data-to="E" d="M 378.9 196.4 L 91.1 283.6"/>
+              <path data-from="D" data-to="B" d="M 238.5 279.7 L 321.5 80.3"/>
+              <path data-from="D" data-to="E" d="M 208.0 298.6 L 92.0 291.4"/>
+            </g>
+            <g class="graphes-nodes">
+              <circle cx="80" cy="60" r="22"/><text x="80" y="60">A</text>
+              <circle cx="330" cy="60" r="22"/><text x="330" y="60">B</text>
+              <circle cx="400" cy="190" r="22"/><text x="400" y="190">C</text>
+              <circle cx="230" cy="300" r="22"/><text x="230" y="300">D</text>
+              <circle cx="70" cy="290" r="22"/><text x="70" y="290">E</text>
+            </g></svg>
             <figcaption>Graphe construit à partir de la matrice M : huit arcs.</figcaption>
           </figure>
           <p class="graphes-formula">Arcs : (A, B) (A, D) (A, E) (B, C) (B, E) (C, E) (D, B) (D, E)</p>
-          <div class="alert agold"><strong>Point à vérifier sur le support :</strong> la matrice de l’énoncé contient un 1 à la ligne D, colonne E, donc l’arc (D, E). Sur le dessin manuscrit du cours, je ne retrouve pas cet arc. La figure suit la matrice, qui sert de base à toutes les réponses : sans cet arc, la somme des coefficients de M vaudrait 7 au lieu de 8, et le nombre d’arcs ajoutés changerait.</div>
+          <div class="alert agold"><strong>Point à vérifier sur le support :</strong> la matrice de l’énoncé contient un 1 à la ligne D, colonne E, donc l’arc (D, E). Sur le dessin manuscrit du cours, je ne retrouve pas cet arc. La figure suit la matrice, qui sert de base à toutes les réponses.</div>
         </div>
         <div class="card am">
           <h3>2 — Chemins de longueur 2</h3>
@@ -1256,12 +1246,15 @@ z = −21 + 94 − 67 = 6</div><p><b>Vérification :</b></p><div class="code gol
         </div>
         <div class="card gold">
           <h3>3 — Chemins de longueur 3</h3>
-          <p><b>(a)</b> La somme des coefficients de la première ligne de M³ vaut 0 + 0 + 1 + 0 + 2 = <b>3</b> : il existe 3 chemins de longueur 3 d’origine A, à savoir <b>A → B → C → E</b>, <b>A → D → B → C</b> et <b>A → D → B → E</b>.</p>
-          <p><b>(b)</b> La somme des coefficients de la deuxième colonne de M³ vaut <b>0</b> : aucun chemin de longueur 3 n’a pour extrémité B.</p>
+          <p><b>(a)</b> Ligne A de M³ : 0 + 0 + 1 + 0 + 2 = <b>3</b> chemins d’origine A, à savoir <b>A → B → C → E</b>, <b>A → D → B → C</b> et <b>A → D → B → E</b>.</p>
+          <div class="mx" style="--cols:5"><span class="hl">0</span><span class="hl">0</span><span class="hl">1</span><span class="hl">0</span><span class="hl">2</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>1</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span></div>
+          <p><b>(b)</b> Colonne B de M³ (en surbrillance) : 0 + 0 + 0 + 0 + 0 = <b>0</b>. Aucun chemin de longueur 3 n’a pour extrémité B.</p>
+          <div class="mx" style="--cols:5"><span>0</span><span class="hl">0</span><span>1</span><span>0</span><span>2</span><span>0</span><span class="hl">0</span><span>0</span><span>0</span><span>0</span><span>0</span><span class="hl">0</span><span>0</span><span>0</span><span>0</span><span>0</span><span class="hl">0</span><span>0</span><span>0</span><span>1</span><span>0</span><span class="hl">0</span><span>0</span><span>0</span><span>0</span></div>
         </div>
         <div class="card bl">
           <h3>4 — Circuits et chemin hamiltonien</h3>
-          <p><b>(a)</b> La diagonale de M⁴ ne contient que des 0 : il n’existe <b>aucun circuit de longueur 4</b>.</p>
+          <p><b>(a)</b> La diagonale de M⁴ (en surbrillance) ne contient que des 0 : il n’existe <b>aucun circuit de longueur 4</b>.</p>
+          <div class="mx" style="--cols:5"><span class="hl">0</span><span>0</span><span>0</span><span>0</span><span>1</span><span>0</span><span class="hl">0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span class="hl">0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span class="hl">0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span class="hl">0</span></div>
           <p><b>(b)</b> Oui : <b>A → D → B → C → E</b> passe une fois et une seule par chacun des cinq sommets. Il est de longueur 4 = n − 1.</p>
         </div>
         <div class="card am">
@@ -1272,17 +1265,9 @@ z = −21 + 94 − 67 = 6</div><p><b>Vérification :</b></p><div class="code gol
         <div class="card gold">
           <h3>6 — Fermeture transitive</h3>
           <p><b>(a)</b> Somme des puissances :</p>
-          <div class="code gold matrix-code">M + M² + M³ + M⁴ + M⁵ = ( 0  2  2  1  6 )
-                             ( 0  0  1  0  2 )
-                             ( 0  0  0  0  1 )
-                             ( 0  1  1  0  3 )
-                             ( 0  0  0  0  0 )</div>
+          <div class="mxline"><span class="mxlabel">M + M² + M³ + M⁴ + M⁵ =</span><div class="mx" style="--cols:5"><span>0</span><span>2</span><span>2</span><span>1</span><span>6</span><span>0</span><span>0</span><span>1</span><span>0</span><span>2</span><span>0</span><span>0</span><span>0</span><span>0</span><span>1</span><span>0</span><span>1</span><span>1</span><span>0</span><span>3</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span></div></div>
           <p>En remplaçant tout coefficient non nul par 1 :</p>
-          <div class="code gold matrix-code">M̂ = ( 0  1  1  1  1 )
-    ( 0  0  1  0  1 )
-    ( 0  0  0  0  1 )
-    ( 0  1  1  0  1 )
-    ( 0  0  0  0  0 )</div>
+          <div class="mxline"><span class="mxlabel">M̂ =</span><div class="mx" style="--cols:5"><span>0</span><span>1</span><span>1</span><span>1</span><span>1</span><span>0</span><span>0</span><span>1</span><span>0</span><span>1</span><span>0</span><span>0</span><span>0</span><span>0</span><span>1</span><span>0</span><span>1</span><span>1</span><span>0</span><span>1</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span></div></div>
           <p><b>(b)</b> Dans Ĝ, il faut ajouter les arcs (A, C) et (D, C) : ils correspondent aux chemins A → B → C et D → B → C.</p>
           <p><b>(c)</b> La somme des coefficients de M vaut 8 et celle de M̂ vaut 10 : <b>Ĝ possède 2 arcs supplémentaires</b>.</p>
         </div>
@@ -1290,7 +1275,7 @@ z = −21 + 94 − 67 = 6</div><p><b>Vérification :</b></p><div class="code gol
       <div class="source-note">Exercice 1 p.23 du cours « Les graphes orientés ». Réponses manuscrites reprises et recalculées ; la seule incohérence relevée (arc D → E) est signalée ci-dessus.</div>
     </div>
 
-    <div class="sc graphes-scope" id="mat2-exo-g5">
+    <div class="sc graphes-scope" id="mat2-exo-g5" data-tab-section="graph-exercises">
       <div class="st gold">Exercice 5 p.25 — Polynésie, mai 2017</div>
       <div class="card gold">
         <h3>Énoncé — cinq joueurs</h3>
@@ -1309,16 +1294,8 @@ z = −21 + 94 − 67 = 6</div><p><b>Vérification :</b></p><div class="code gol
           <li>Le graphe G contient-il un circuit ? Contient-il un chemin hamiltonien ? Justifier.</li>
         </ol>
         <div class="cmp">
-          <div class="cmpc"><h4 class="gold">M²</h4><div class="code gold matrix-code">( 0  0  1  0  1 )
-( 0  1  0  1  0 )
-( 0  0  1  0  1 )
-( 0  0  0  1  0 )
-( 0  0  0  0  1 )</div></div>
-          <div class="cmpc"><h4 class="gold">M⁴</h4><div class="code gold matrix-code">( 0  0  1  0  2 )
-( 0  1  0  α  0 )
-( 0  0  1  0  2 )
-( 0  0  0  1  0 )
-( 0  0  0  0  1 )</div></div>
+          <div class="cmpc"><h4 class="gold">M²</h4><div class="mx" style="--cols:5"><span>0</span><span>0</span><span>1</span><span>0</span><span>1</span><span>0</span><span>1</span><span>0</span><span>1</span><span>0</span><span>0</span><span>0</span><span>1</span><span>0</span><span>1</span><span>0</span><span>0</span><span>0</span><span>1</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>1</span></div></div>
+          <div class="cmpc"><h4 class="gold">M⁴</h4><div class="mx" style="--cols:5"><span>0</span><span>0</span><span>1</span><span>0</span><span>2</span><span>0</span><span>1</span><span>0</span><span class="hl">α</span><span>0</span><span>0</span><span>0</span><span>1</span><span>0</span><span>2</span><span>0</span><span>0</span><span>0</span><span>1</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>1</span></div></div>
         </div>
       </div>
 
@@ -1327,46 +1304,49 @@ z = −21 + 94 − 67 = 6</div><p><b>Vérification :</b></p><div class="code gol
         <div class="card bl">
           <h3>1 — Représentation géométrique</h3>
           <figure class="graphes-figure">
-      <svg class="graphes-svg" viewBox="0 0 460 360" role="img" aria-labelledby="ex5-title ex5-desc">
-      <title id="ex5-title">Graphe de l’exercice 5 p.25 : sommets A, B, C, D et E</title>
-      <desc id="ex5-desc">Sept arcs : A vers B et D ; B vers C ; C vers B et D ; D vers E ; E vers D.</desc>
-      <defs><marker id="ex5-arrow" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M 0 0 L 8 4 L 0 8 Z"/></marker></defs>
-      <g class="graphes-arcs" marker-end="url(#ex5-arrow)">
-        <path data-from="A" data-to="B" d="M 102.0 60.0 L 308.0 60.0"/>
-        <path data-from="A" data-to="D" d="M 89.5 79.8 L 190.5 290.2"/>
-        <path data-from="B" data-to="C" d="M 341.9 78.5 Q 375.0 130.0 341.9 181.5"/>
-        <path data-from="C" data-to="B" d="M 318.1 181.5 Q 285.0 130.0 318.1 78.5"/>
-        <path data-from="C" data-to="D" d="M 313.2 214.2 L 216.8 295.8"/>
-        <path data-from="D" data-to="E" d="M 181.9 297.6 Q 130.0 262.0 78.1 297.6"/>
-        <path data-from="E" data-to="D" d="M 78.1 322.4 Q 130.0 358.0 181.9 322.4"/>
-      </g>
-      <g class="graphes-nodes">
-        <circle cx="80" cy="60" r="22"/><text x="80" y="60">A</text>
-        <circle cx="330" cy="60" r="22"/><text x="330" y="60">B</text>
-        <circle cx="330" cy="200" r="22"/><text x="330" y="200">C</text>
-        <circle cx="200" cy="310" r="22"/><text x="200" y="310">D</text>
-        <circle cx="60" cy="310" r="22"/><text x="60" y="310">E</text>
-      </g></svg>
+            <svg class="graphes-svg" viewBox="0 0 460 360" role="img" aria-labelledby="ex5-title ex5-desc">
+            <title id="ex5-title">Graphe de l’exercice 5 p.25 : sommets A, B, C, D et E</title>
+            <desc id="ex5-desc">Sept arcs : A vers B et D ; B vers C ; C vers B et D ; D vers E ; E vers D.</desc>
+            <defs><marker id="ex5-arrow" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M 0 0 L 8 4 L 0 8 Z"/></marker></defs>
+            <g class="graphes-arcs" marker-end="url(#ex5-arrow)">
+              <path data-from="A" data-to="B" d="M 102.0 60.0 L 308.0 60.0"/>
+              <path data-from="A" data-to="D" d="M 89.5 79.8 L 190.5 290.2"/>
+              <path data-from="B" data-to="C" d="M 341.9 78.5 Q 375.0 130.0 341.9 181.5"/>
+              <path data-from="C" data-to="B" d="M 318.1 181.5 Q 285.0 130.0 318.1 78.5"/>
+              <path data-from="C" data-to="D" d="M 313.2 214.2 L 216.8 295.8"/>
+              <path data-from="D" data-to="E" d="M 181.9 297.6 Q 130.0 262.0 78.1 297.6"/>
+              <path data-from="E" data-to="D" d="M 78.1 322.4 Q 130.0 358.0 181.9 322.4"/>
+            </g>
+            <g class="graphes-nodes">
+              <circle cx="80" cy="60" r="22"/><text x="80" y="60">A</text>
+              <circle cx="330" cy="60" r="22"/><text x="330" y="60">B</text>
+              <circle cx="330" cy="200" r="22"/><text x="330" y="200">C</text>
+              <circle cx="200" cy="310" r="22"/><text x="200" y="310">D</text>
+              <circle cx="60" cy="310" r="22"/><text x="60" y="310">E</text>
+            </g></svg>
             <figcaption>Graphe G du tableau des victoires : sept arcs.</figcaption>
           </figure>
           <p class="graphes-formula">Arcs : (A, B) (A, D) (B, C) (C, B) (C, D) (D, E) (E, D)</p>
         </div>
         <div class="card am">
           <h3>2 — Matrice d’adjacence</h3>
-          <div class="code gold matrix-code">M = ( 0  1  0  1  0 )
-    ( 0  0  1  0  0 )
-    ( 0  1  0  1  0 )
-    ( 0  0  0  0  1 )
-    ( 0  0  0  1  0 )</div>
+          <div class="mx" style="--cols:5"><span>0</span><span>1</span><span>0</span><span>1</span><span>0</span><span>0</span><span>0</span><span>1</span><span>0</span><span>0</span><span>0</span><span>1</span><span>0</span><span>1</span><span>0</span><span>0</span><span>0</span><span>0</span><span>0</span><span>1</span><span>0</span><span>0</span><span>0</span><span>1</span><span>0</span></div>
         </div>
         <div class="card gold">
           <h3>3 — Calcul de α</h3>
-          <p>α est le coefficient de la ligne B, colonne D de M⁴. Comme M⁴ = M² × M², on fait le produit de la ligne B de M² par la colonne D de M² :</p>
-          <div class="code gold">α = 0 × 0 + 1 × 1 + 0 × 0 + 1 × 1 + 0 × 0 = <b>2</b></div>
+          <p>α est le coefficient situé à la <b>ligne B</b> et à la <b>colonne D</b> de M⁴. Comme M⁴ = M² × M², on multiplie la <b>ligne B de M²</b> par la <b>colonne D de M²</b> :</p>
+          <div class="mxline"><span class="mxlabel">Ligne B de M² :</span><div class="mx" style="--cols:5"><span>0</span><span>1</span><span>0</span><span>1</span><span>0</span></div></div>
+          <div class="mxline"><span class="mxlabel">Colonne D de M² :</span><div class="mx" style="--cols:1"><span>0</span><span>1</span><span>0</span><span>1</span><span>0</span></div></div>
+          <div class="code gold">α = 0 × 0 + 1 × 1 + 0 × 0
+  + 1 × 1 + 0 × 0
+  = 0 + 1 + 0 + 1 + 0
+  = 2</div>
+          <p>Vérification : avec α = 2, la matrice obtenue est bien celle de M⁴ donnée dans l’énoncé.</p>
         </div>
         <div class="card bl">
           <h3>4 — Chemins de longueur 4 d’extrémité E</h3>
           <p>La somme des coefficients de la cinquième colonne de M⁴ vaut 2 + 0 + 2 + 0 + 1 = <b>5</b> : il existe 5 chemins.</p>
+          <div class="mx" style="--cols:5"><span>0</span><span>0</span><span>1</span><span>0</span><span class="hl">2</span><span>0</span><span>1</span><span>0</span><span>α</span><span class="hl">0</span><span>0</span><span>0</span><span>1</span><span>0</span><span class="hl">2</span><span>0</span><span>0</span><span>0</span><span>1</span><span class="hl">0</span><span>0</span><span>0</span><span>0</span><span>0</span><span class="hl">1</span></div>
           <ul class="graphes-route-list">
             <li>A → B → C → D → E</li>
             <li>A → D → E → D → E</li>
@@ -1378,17 +1358,9 @@ z = −21 + 94 − 67 = 6</div><p><b>Vérification :</b></p><div class="code gol
         <div class="card am">
           <h3>5 — Fermeture transitive</h3>
           <p>Somme des puissances M + M² + M³ + M⁴ + M⁵ :</p>
-          <div class="code gold matrix-code">( 0  3  2  6  3 )
-( 0  2  3  3  3 )
-( 0  3  2  6  3 )
-( 0  0  0  2  3 )
-( 0  0  0  3  2 )</div>
+          <div class="mxline"><span class="mxlabel">M + M² + M³ + M⁴ + M⁵ =</span><div class="mx" style="--cols:5"><span>0</span><span>3</span><span>2</span><span>6</span><span>3</span><span>0</span><span>2</span><span>3</span><span>3</span><span>3</span><span>0</span><span>3</span><span>2</span><span>6</span><span>3</span><span>0</span><span>0</span><span>0</span><span>2</span><span>3</span><span>0</span><span>0</span><span>0</span><span>3</span><span>2</span></div></div>
           <p>En remplaçant tout non-nul par 1 :</p>
-          <div class="code gold matrix-code">M̂ = ( 0  1  1  1  1 )
-    ( 0  1  1  1  1 )
-    ( 0  1  1  1  1 )
-    ( 0  0  0  1  1 )
-    ( 0  0  0  1  1 )</div>
+          <div class="mxline"><span class="mxlabel">M̂ =</span><div class="mx" style="--cols:5"><span>0</span><span>1</span><span>1</span><span>1</span><span>1</span><span>0</span><span>1</span><span>1</span><span>1</span><span>1</span><span>0</span><span>1</span><span>1</span><span>1</span><span>1</span><span>0</span><span>0</span><span>0</span><span>1</span><span>1</span><span>0</span><span>0</span><span>0</span><span>1</span><span>1</span></div></div>
           <div class="alert agold"><strong>Erreur de la correction manuscrite :</strong> elle indique 26 pour la somme des coefficients de M̂. Le bon total est 4 + 4 + 4 + 2 + 2 = <b>16</b>. C’est cette valeur qui mène au bon résultat de la question suivante.</div>
         </div>
         <div class="card gold">
@@ -1406,10 +1378,10 @@ z = −21 + 94 − 67 = 6</div><p><b>Vérification :</b></p><div class="code gol
       <div class="source-note">Exercice 5 p.25 du cours, identique à l’exercice 5 du sujet de Polynésie, mai 2017. Les réponses manuscrites ont été recalculées ; la seule erreur (somme 26 au lieu de 16) est signalée ci-dessus.</div>
     </div>
 
-    <div class="source-note">Calcul matriciel 2e année : définitions, opérations, matrices carrées de référence, matrices inversibles et exercices 1 à 9, 11, 13, 17, 18, 21 et 22. Les résultats numériques ont été vérifiés à partir des documents fournis et par recalcul.</div>
+    <div class="source-note">Calcul matriciel 2e année : définitions, opérations, matrices carrées de référence, matrices inversibles et exercices 1 à 9, 11, 13, 17, 18, 21 et 22. Les résultats numériques ont été vérifiés à partir des documents fournis et par recalcul. Graphes orientés : fermeture transitive dans l’onglet Graphes orientés, exercices 1 (p.23) et 5 (p.25) dans l’onglet Exercices graphes.</div>
   </main>
   <div class="footer"><a href="../index.html">← Retour au tableau de bord</a></div>
 </div>
-<script src="../assets/js/common.js?v=20260918-2"></script>
+<script src="../assets/js/common.js?v=20261010-1"></script>
 </body>
 </html>

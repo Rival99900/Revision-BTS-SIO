@@ -37,6 +37,16 @@ function tabButtonForSection(prefix, id, stepper = null) {
   });
   if (direct) return direct;
 
+  // Une section peut indiquer son propre onglet avec data-tab-section.
+  const ownTab = document.getElementById(`${prefix}-${id}`)?.dataset.tabSection || '';
+  if (ownTab) {
+    const owner = buttons.find((button) => {
+      const parsed = parseShowSubButton(button);
+      return parsed?.prefix === prefix && parsed.id === ownTab;
+    });
+    if (owner) return owner;
+  }
+
   const parentId = stepper?.dataset.parentSection || '';
   if (parentId) {
     return buttons.find((button) => {
