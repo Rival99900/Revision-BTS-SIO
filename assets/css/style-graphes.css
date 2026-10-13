@@ -236,3 +236,10 @@
     border-color: #222;
   }
 }
+
+/* En-têtes de lignes et colonnes des matrices (graphes et fermeture transitive). */
+.graphes-scope .mx > span.mh {
+  color: var(--text);
+  font-weight: bold;
+  opacity: .85;
+}

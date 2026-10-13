@@ -104,7 +104,7 @@ Page d’accueil du CEJM 2e année : `deuxieme/cejm.html`, qui permet de choisir
 
 - **Management et économie** : `deuxieme/cejm-management.html`, avec deux fiches détaillées dans `deuxieme/cejm/` :
   - `chapitre-01.html` — L’impact du numérique sur les relations d’échange : place de marché, relations B2B / B2C / C2C / B2G, externalités de réseau, dématérialisation, désintermédiation et réintermédiation, pure players, e-réputation, avec les 17 documents, les missions, les notions essentielles et l’étude de cas Carrefour avec sa correction.
-  - `chapitre-02.html` — L’impact du numérique sur les échanges de l’entreprise avec ses partenaires : titre, cas My Little Factory et plan du chapitre. Le contenu détaillé reste à compléter, le PDF source étant un scan.
+  - `chapitre-02.html` — L’impact du numérique sur les échanges de l’entreprise avec ses partenaires : cas My Little Factory, problématiques, activités 1 à 3 (documents 1 à 9 et questions 1 à 14), synthèse du chapitre et corrections de toutes les questions, à partir du cours du chapitre.
 
 ### ⚖️ CEJM Droit — Impact du numérique
 
@@ -124,7 +124,7 @@ La fiche 2e année couvre également les **matrices carrées de référence** : 
 
 Fichier : `deuxieme/maths-matrices.html`
 
-Le chapitre 3, **Les graphes orientés — partie 1/2**, est intégré dans la même fiche : définitions, représentation géométrique, tableaux de successeurs et de prédécesseurs, matrice d’adjacence, chemins, circuits, boucles, chemin hamiltonien et dénombrements à partir de M⁴. Les exemples et les exercices sont repris et recalculés. La **fermeture transitive** (somme booléenne des puissances, avec le graphe Ĝ) est intégrée à ce chapitre. Les exercices de graphes sont dans l’onglet **Exercices graphes** : exercice 1 p.23, et exercice 5 p.25, identique à l’exercice 5 du sujet de Polynésie, mai 2017.
+Le chapitre 3, **Les graphes orientés — partie 1/2**, est intégré dans la même fiche : définitions, représentation géométrique, tableaux de successeurs et de prédécesseurs, matrice d’adjacence, chemins, circuits, boucles, chemin hamiltonien et dénombrements à partir de M⁴. Les exemples et les exercices sont repris et recalculés. La **fermeture transitive** (somme booléenne des puissances, avec le graphe Ĝ) est intégrée à ce chapitre. Les exercices de graphes sont dans l’onglet **Exercices graphes** : exercice 1 p.23, exercices 2 à 4 (sujets de Nouvelle-Calédonie 2014, Polynésie 2016 et Polynésie 2014), et exercice 5 p.25, identique à l’exercice 5 du sujet de Polynésie, mai 2017. Les exercices de matrices 20 (forfaits mobiles) et 23 (codes clients) sont ajoutés. L’onglet **Correction Contrôle** contient le devoir n°2 de mathématiques (sujets A et B, mardi 29 septembre 2026) avec les énoncés et corrections détaillées ; la fiche 3.4 présente le calcul de la fermeture transitive ligne par ligne, avec des grilles de matrices.
 Cette fiche couvre les matrices, l’addition, la multiplication par un réel, le produit matriciel et les exercices vérifiés de 2e année. Les exercices 17 (circuit touristique, Nouvelle-Calédonie 2015) et 18 (production de calculatrices, Polynésie 2006) suivent une correction détaillée type BTS : dimensions, calculs, inverse et interprétation.
 
 ### 🗃️ Révision SQL SIO2

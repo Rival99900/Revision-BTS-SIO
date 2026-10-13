@@ -39,7 +39,7 @@
       <div>
         <div class="hero-kicker">2E ANNÉE // MATHS</div>
         <h2>Maths — Matrices et graphes orientés</h2>
-        <p>Calcul matriciel : dimensions, opérations, matrices carrées et exercices corrigés. Chapitre 3 : graphes orientés, représentations, chemins et dénombrement avec les puissances de la matrice d’adjacence. Fermeture transitive incluse. Exercices de graphes 1 (p.23) et 5 (p.25) dans l’onglet dédié.</p>
+        <p>Calcul matriciel : dimensions, opérations, matrices carrées et exercices corrigés. Chapitre 3 : graphes orientés, représentations, chemins et dénombrement avec les puissances de la matrice d’adjacence. Fermeture transitive incluse. Exercices de graphes 1 à 5 dans l’onglet dédié, et correction du devoir n°2 (sujets A et B) dans l’onglet Correction Contrôle.</p>
       </div>
       <div class="hero-actions">
         <button class="smallbtn" id="reviewBtn" onclick="setReviewed('2-maths-matrices')">○ Marquer révisé</button>
@@ -56,10 +56,11 @@
       <button class="sb" onclick="showSub('mat2','graphes',this)">Graphes orientés</button>
       <button class="sb" data-mat-exercises="1" onclick="showSub('mat2','exercises',this)">Exercices matrices</button>
       <button class="sb" data-graph-exercises="1" onclick="showSub('mat2','graph-exercises',this)">Exercices graphes</button>
+      <button class="sb" data-control-exercises="1" onclick="showSub('mat2','controle',this)">Correction Contrôle</button>
     </div>
-    <div class="section-stepper" data-prefix="mat2" data-sections="definition,operations,square,graphes,exercises,exo14,exo58,exo9,exo11,exo13,exo17,exo18,exo21,exo22,graph-exercises,exo-g1,exo-g5" data-parent-section="exercises" data-end-target="graph-exercises">
+    <div class="section-stepper" data-prefix="mat2" data-sections="definition,operations,square,graphes,exercises,exo14,exo58,exo9,exo11,exo13,exo17,exo18,exo20,exo21,exo22,exo23,graph-exercises,exo-g1,exo-g2,exo-g3,exo-g4,exo-g5,controle,ctrl-a,ctrl-b" data-parent-section="exercises">
       <button class="smallbtn step-prev" onclick="stepSection(this,-1)" type="button">← Précédent</button>
-      <span aria-live="polite" class="step-status">1 / 17</span>
+      <span aria-live="polite" class="step-status">1 / 25</span>
       <button class="smallbtn alt step-next" onclick="stepSection(this,1)" type="button">Suivant →</button>
     </div>
 
@@ -431,17 +432,54 @@ Donc D⁻¹ = 1/2 D</div>
       </div>
 
       <div class="st gold">Exemple — fermeture du graphe à quatre sommets</div>
-      <p>On reprend la matrice M du graphe précédent (ordre A, B, C, D), donc n = 4.</p>
-      <div class="mxline"><span class="mxlabel">M + M² + M³ + M⁴ =</span><div class="mx" style="--cols:4"><span>1</span><span>2</span><span>5</span><span>1</span><span>1</span><span>1</span><span>8</span><span>2</span><span>0</span><span>0</span><span>4</span><span>0</span><span>2</span><span>1</span><span>7</span><span>1</span></div></div>
-      <p>En remplaçant tout coefficient non nul par 1 :</p>
-      <div class="mxline"><span class="mxlabel">M̂ =</span><div class="mx" style="--cols:4"><span>1</span><span>1</span><span>1</span><span>1</span><span>1</span><span>1</span><span>1</span><span>1</span><span>0</span><span>0</span><span>1</span><span>0</span><span>1</span><span>1</span><span>1</span><span>1</span></div></div>
-      <details class="math-details"><summary>Voir le détail des calculs ligne par ligne</summary>
-<div class="code gold">Ligne A : (0 1 0 0) + (0 0 1 1) + (1 0 2 0) + (0 1 2 0) = (1 2 5 1)
+      <p>On reprend la matrice M du graphe précédent (ordre A, B, C, D), donc n = 4. Les lignes et les colonnes suivent toujours cet ordre.</p>
+      <div class="card gold">
+        <h3>Méthode « ligne et colonne »</h3>
+        <p><b>Un coefficient d’un produit :</b> pour trouver le coefficient situé à la ligne i et à la colonne j, on prend la <b>ligne i</b> de la première matrice et la <b>colonne j</b> de la seconde, on multiplie les termes deux à deux, puis on additionne.</p>
+        <div class="code gold">M²(B, C) = ligne B de M × colonne C de M
+        = (0 0 1 1) × (0 1 1 1)
+        = 0×0 + 0×1 + 1×1 + 1×1 = 2</div>
+        <p><b>Une ligne entière :</b> pour calculer Mᵏ⁺¹ = M × Mᵏ, la ligne d’un sommet X est la somme des lignes de Mᵏ correspondant aux successeurs de X, c’est-à-dire aux 1 de la ligne X de M.</p>
+      </div>
+      <div class="st gold">Les matrices M, M², M³ et M⁴</div>
+      <div class="cmp">
+        <div class="cmpc"><h4 class="gold">M</h4><div class="mx" style="--cols:5"><span class="mh"></span><span class="mh">A</span><span class="mh">B</span><span class="mh">C</span><span class="mh">D</span><span class="mh">A</span><span>0</span><span>1</span><span>0</span><span>0</span><span class="mh">B</span><span>0</span><span>0</span><span>1</span><span>1</span><span class="mh">C</span><span>0</span><span>0</span><span>1</span><span>0</span><span class="mh">D</span><span>1</span><span>0</span><span>1</span><span>0</span></div></div>
+        <div class="cmpc"><h4 class="gold">M²</h4><div class="mx" style="--cols:5"><span class="mh"></span><span class="mh">A</span><span class="mh">B</span><span class="mh">C</span><span class="mh">D</span><span class="mh">A</span><span>0</span><span>0</span><span>1</span><span>1</span><span class="mh">B</span><span>1</span><span>0</span><span>2</span><span>0</span><span class="mh">C</span><span>0</span><span>0</span><span>1</span><span>0</span><span class="mh">D</span><span>0</span><span>1</span><span>1</span><span>0</span></div></div>
+      </div>
+      <div class="cmp">
+        <div class="cmpc"><h4 class="gold">M³</h4><div class="mx" style="--cols:5"><span class="mh"></span><span class="mh">A</span><span class="mh">B</span><span class="mh">C</span><span class="mh">D</span><span class="mh">A</span><span>1</span><span>0</span><span>2</span><span>0</span><span class="mh">B</span><span>0</span><span>1</span><span>2</span><span>0</span><span class="mh">C</span><span>0</span><span>0</span><span>1</span><span>0</span><span class="mh">D</span><span>0</span><span>0</span><span>2</span><span>1</span></div></div>
+        <div class="cmpc"><h4 class="gold">M⁴</h4><div class="mx" style="--cols:5"><span class="mh"></span><span class="mh">A</span><span class="mh">B</span><span class="mh">C</span><span class="mh">D</span><span class="mh">A</span><span>0</span><span>1</span><span>2</span><span>0</span><span class="mh">B</span><span>0</span><span>0</span><span>3</span><span>1</span><span class="mh">C</span><span>0</span><span>0</span><span>1</span><span>0</span><span class="mh">D</span><span>1</span><span>0</span><span>3</span><span>0</span></div></div>
+      </div>
+      <div class="card gold">
+        <h3>Calcul ligne par ligne</h3>
+        <div class="code gold">M² :  ligne A = ligne B de M                          = (0 0 1 1)
+       ligne B = ligne C + ligne D de M             = (0 0 1 0) + (1 0 1 0) = (1 0 2 0)
+       ligne C = ligne C de M                       = (0 0 1 0)
+       ligne D = ligne A + ligne C de M             = (0 1 0 0) + (0 0 1 0) = (0 1 1 0)
+
+M³ :  ligne A = ligne B de M²                       = (1 0 2 0)
+       ligne B = ligne C + ligne D de M²            = (0 0 1 0) + (0 1 1 0) = (0 1 2 0)
+       ligne C = ligne C de M²                      = (0 0 1 0)
+       ligne D = ligne A + ligne C de M²            = (0 0 1 1) + (0 0 1 0) = (0 0 2 1)
+
+M⁴ :  ligne A = ligne B de M³                       = (0 1 2 0)
+       ligne B = ligne C + ligne D de M³            = (0 0 1 0) + (0 0 2 1) = (0 0 3 1)
+       ligne C = ligne C de M³                      = (0 0 1 0)
+       ligne D = ligne A + ligne C de M³            = (1 0 2 0) + (0 0 1 0) = (1 0 3 0)</div>
+      </div>
+      <div class="st gold">Somme M + M² + M³ + M⁴, puis M̂</div>
+      <div class="cmp">
+        <div class="cmpc"><h4 class="gold">M + M² + M³ + M⁴</h4><div class="mx" style="--cols:5"><span class="mh"></span><span class="mh">A</span><span class="mh">B</span><span class="mh">C</span><span class="mh">D</span><span class="mh">A</span><span>1</span><span>2</span><span>5</span><span>1</span><span class="mh">B</span><span>1</span><span>1</span><span>8</span><span>2</span><span class="mh">C</span><span>0</span><span>0</span><span>4</span><span>0</span><span class="mh">D</span><span>2</span><span>1</span><span>7</span><span>1</span></div></div>
+        <div class="cmpc"><h4 class="gold">M̂ (coefficients non nuls remplacés par 1)</h4><div class="mx" style="--cols:5"><span class="mh"></span><span class="mh">A</span><span class="mh">B</span><span class="mh">C</span><span class="mh">D</span><span class="mh">A</span><span>1</span><span>1</span><span>1</span><span>1</span><span class="mh">B</span><span>1</span><span>1</span><span>1</span><span>1</span><span class="mh">C</span><span>0</span><span>0</span><span>1</span><span>0</span><span class="mh">D</span><span>1</span><span>1</span><span>1</span><span>1</span></div></div>
+      </div>
+      <div class="card gold">
+        <h3>Somme ligne par ligne</h3>
+        <div class="code gold">Ligne A : (0 1 0 0) + (0 0 1 1) + (1 0 2 0) + (0 1 2 0) = (1 2 5 1)
 Ligne B : (0 0 1 1) + (1 0 2 0) + (0 1 2 0) + (0 0 3 1) = (1 1 8 2)
 Ligne C : (0 0 1 0) + (0 0 1 0) + (0 0 1 0) + (0 0 1 0) = (0 0 4 0)
 Ligne D : (1 0 1 0) + (0 1 1 0) + (0 0 2 1) + (1 0 3 0) = (2 1 7 1)</div>
-        <p>Lignes utilisées : M² = ((0 0 1 1), (1 0 2 0), (0 0 1 0), (0 1 1 0)), M³ = ((1 0 2 0), (0 1 2 0), (0 0 1 0), (0 0 2 1)), M⁴ = ((0 1 2 0), (0 0 3 1), (0 0 1 0), (1 0 3 0)).</p>
-      </details>
+        <p>Chaque coefficient non nul de la somme devient 1 : la ligne A de M̂ est donc (1 1 1 1), car les quatre coefficients (1, 2, 5, 1) sont non nuls.</p>
+      </div>
       <figure class="graphes-figure">
         <svg class="graphes-svg" viewBox="0 0 460 360" role="img" aria-labelledby="fer-title fer-desc">
         <title id="fer-title">Graphe de la fermeture transitive, sommets A, B, C et D</title>
@@ -530,6 +568,12 @@ Ligne D : (1 0 1 0) + (0 1 1 0) + (0 0 2 1) + (1 0 3 0) = (2 1 7 1)</div>
           <p>Traduction matricielle, coût, heures de travail et quantités produites.</p>
           <span class="module-link">Ouvrir l’exercice →</span>
         </a>
+        <a class="chapter-card" href="#mat2-exo20" onclick="event.preventDefault(); showSub('mat2','exo20',document.querySelector('[data-mat-exercises]'));">
+          <span class="chapter-num">20</span>
+          <h3>Forfaits mobiles — chiffre d’affaires</h3>
+          <p>Produits de matrices, égalité matricielle, matrice inverse arrondie et nombre de clients par offre.</p>
+          <span class="module-link">Ouvrir l’exercice →</span>
+        </a>
         <a class="chapter-card" href="#mat2-exo21" onclick="event.preventDefault(); showSub('mat2','exo21',document.querySelector('[data-mat-exercises]'));">
           <span class="chapter-num">21</span>
           <h3>Planches de surf — coûts horaires</h3>
@@ -540,6 +584,12 @@ Ligne D : (1 0 1 0) + (0 1 1 0) + (0 0 2 1) + (1 0 3 0) = (2 1 7 1)</div>
           <span class="chapter-num">22</span>
           <h3>Production de fibres optiques</h3>
           <p>Système, produit matriciel, masse de silice, temps et quantités produites.</p>
+          <span class="module-link">Ouvrir l’exercice →</span>
+        </a>
+        <a class="chapter-card" href="#mat2-exo23" onclick="event.preventDefault(); showSub('mat2','exo23',document.querySelector('[data-mat-exercises]'));">
+          <span class="chapter-num">23</span>
+          <h3>Codes des clients — système x + ny + n²z</h3>
+          <p>Mise en système, produit P × M = I₃, puis détermination de x, y et z.</p>
           <span class="module-link">Ouvrir l’exercice →</span>
         </a>
       </div>
@@ -988,6 +1038,84 @@ X =
       <div class="alert agold"><strong>Méthode :</strong> à partir des quantités, calculer Y = AX ; à partir du coût et du temps, retrouver les quantités avec X = BY. Toujours terminer avec les unités et une phrase de conclusion.</div>
     </div>
 
+    <div class="sc" id="mat2-exo20">
+      <div class="st gold">Exercice 20 — Nouvelle-Calédonie, novembre 2017</div>
+      <div class="card gold">
+        <h3>Énoncé — forfaits mensuels d’un opérateur mobile</h3>
+        <p>Un opérateur de téléphonie mobile propose trois offres de forfait mensuel sans engagement. Chaque offre donne une durée de communication mensuelle et un accès à l’Internet 4G avec un volume de données prédéfini.</p>
+        <div class="table-scroll"><table class="tbl"><thead><tr><th></th><th>Offre n°1</th><th>Offre n°2</th><th>Offre n°3</th></tr></thead><tbody><tr><td>Montant mensuel du forfait (€)</td><td>6</td><td>10</td><td>18</td></tr><tr><td>Durée de communication (h)</td><td>2</td><td>2</td><td>6</td></tr><tr><td>Données Internet (Go)</td><td>0,2</td><td>2</td><td>20</td></tr></tbody></table></div>
+        <p><b>1.</b> On considère les matrices :</p>
+        <div class="code gold matrix-code">M = (  6     10    18 )
+    (  2      2     6 )
+    (  0,2    2    20 )
+
+A = (  350 )        B = ( 350  120  70 )
+    (  120 )
+    (   70 )</div>
+        <p><b>a.</b> Lequel de ces deux produits est-il défini : M × A ou M × B ? Justifier.</p>
+        <p><b>b.</b> Effectuer le produit défini à la calculatrice et interpréter le résultat.</p>
+        <p><b>2.</b> On admet que la matrice inverse de M, arrondie à la quatrième décimale, est :</p>
+        <div class="code gold matrix-code">P = ( −0,1804    1,0567   −0,1546 )
+    (  0,25     −0,75      0      )
+    ( −0,0232    0,0644    0,0515 )</div>
+        <p>Pour un mois donné, l’opérateur a réalisé un chiffre d’affaires de 26 540 € pour les trois offres, correspondant à 7 780 h de communication et à 14 440 Go de données. On pose C = (26 540 ; 7 780 ; 14 440) en colonne, et X = (x ; y ; z) où x, y et z désignent le nombre de clients ayant choisi les offres 1, 2 et 3.</p>
+        <p><b>a.</b> Écrire une égalité matricielle reliant M, X et C.</p>
+        <p><b>b.</b> Montrer que X = P × C.</p>
+        <p><b>c.</b> En déduire le nombre (arrondi à la dizaine) de clients ayant choisi chacune des trois offres.</p>
+      </div>
+      <div class="st gold">Corrections</div>
+      <div class="card gold">
+        <h3>1.a — Produit défini ?</h3>
+        <p>M est de taille 3×3, A de taille 3×1 et B de taille 1×3. Le produit U × V existe si le nombre de colonnes de U est égal au nombre de lignes de V.</p>
+        <ul>
+          <li><b>M × A</b> existe : M a 3 colonnes et A a 3 lignes. Il est de taille 3×1.</li>
+          <li><b>M × B</b> n’existe pas : M a 3 colonnes, B n’a qu’une ligne.</li>
+        </ul>
+      </div>
+      <div class="card bl">
+        <h3>1.b — Calcul et interprétation de M × A</h3>
+        <div class="code gold matrix-code">M × A = ( 6×350 + 10×120 + 18×70 )   ( 4 560 )
+          ( 2×350 +  2×120 +  6×70 )  = ( 1 360 )
+          ( 0,2×350 + 2×120 + 20×70 ) ( 1 710 )</div>
+        <p>La matrice A signifie que 350 clients ont choisi l’offre n°1, 120 l’offre n°2 et 70 l’offre n°3. Le résultat donne alors :</p>
+        <ul>
+          <li><b>4 560 €</b> : le chiffre d’affaires mensuel de l’opérateur ;</li>
+          <li><b>1 360 h</b> : la durée totale de communication mise à disposition ;</li>
+          <li><b>1 710 Go</b> : le volume total de données Internet mis à disposition.</li>
+        </ul>
+      </div>
+      <div class="card am">
+        <h3>2.a — Égalité matricielle</h3>
+        <p>Le chiffre d’affaires vaut 6x + 10y + 18z, la durée de communication 2x + 2y + 6z et le volume de données 0,2x + 2y + 20z. On obtient donc :</p>
+        <div class="code gold">6x + 10y + 18z = 26 540
+2x +  2y +  6z =  7 780
+0,2x + 2y + 20z = 14 440      ⟺      M × X = C</div>
+      </div>
+      <div class="card am">
+        <h3>2.b — Montrer que X = P × C</h3>
+        <p>On multiplie les deux membres à gauche par P : P × M × X = P × C. Comme P est l’inverse de M, P × M = I₃, donc I₃ × X = P × C, soit <b>X = P × C</b>.</p>
+      </div>
+      <div class="card gold">
+        <h3>2.c — Nombre de clients par offre</h3>
+        <div class="code gold matrix-code">X = P × C ≈ ( 1 200,89 )
+            (   800,00 )
+            (   628,96 )</div>
+        <p>Arrondi à la dizaine : environ <b>1 200 clients</b> ont choisi l’offre n°1, <b>800</b> l’offre n°2 et <b>630</b> l’offre n°3.</p>
+        <details class="math-details"><summary>Voir le détail des calculs et la vérification</summary>
+          <div class="code gold">Ligne 1 : −0,1804 × 26 540 + 1,0567 × 7 780 − 0,1546 × 14 440 ≈ 1 200,89
+Ligne 2 : 0,25 × 26 540 − 0,75 × 7 780 + 0 × 14 440 = 800
+Ligne 3 : −0,0232 × 26 540 + 0,0644 × 7 780 + 0,0515 × 14 440 ≈ 628,96
+
+Contrôle avec x = 1 200, y = 800, z = 630 :
+6 × 1 200 + 10 × 800 + 18 × 630 = 26 540 ✓
+2 × 1 200 + 2 × 800 + 6 × 630 = 7 780 ✓
+0,2 × 1 200 + 2 × 800 + 20 × 630 = 14 440 ✓</div>
+          <p>Les petits écarts de la matrice P viennent de son arrondi à la quatrième décimale.</p>
+        </details>
+      </div>
+      <div class="source-note">Énoncé et corrigé repris du sujet de Nouvelle-Calédonie, novembre 2017 (calcul matriciel et application), avec recalcul des résultats.</div>
+    </div>
+
     <div class="sc" id="mat2-exo21">
       <div class="st gold">Exercice 21 p.17 — Polynésie, juin 2015, BAC ES modifié</div>
       <div class="card gold">
@@ -1161,6 +1289,58 @@ z = −21 + 94 − 67 = 6</div><p><b>Vérification :</b></p><div class="code gol
 2 × 8 + 3 × 7 + 5 × 6 = 67 heures</div></details></div>
     </div>
 
+    <div class="sc" id="mat2-exo23">
+      <div class="st gold">Exercice 23 — Nouvelle-Calédonie, 2014</div>
+      <div class="card gold">
+        <h3>Énoncé — codes des clients</h3>
+        <p>Pour permettre aux clients d’accéder à leurs factures, le service comptable attribue un code à chacun d’eux. Pour tout entier naturel n, le code du client numéro n se calcule par la formule <b>x + n·y + n²·z</b>, où x, y et z sont trois nombres à déterminer. Le client numéro 1 a pour code 12, le numéro 2 a pour code 27 et le numéro 3 a pour code 50.</p>
+        <p><b>1.</b> Écrire un système de trois équations vérifié par x, y et z.</p>
+        <p><b>2.</b> On donne les matrices X = (x ; y ; z), M = (1 1 1 ; 1 2 4 ; 1 3 9) et Y = (12 ; 27 ; 50). Le système s’écrit alors M × X = Y.</p>
+        <div class="code gold matrix-code">M = ( 1  1  1 )      Y = ( 12 )
+    ( 1  2  4 )          ( 27 )
+    ( 1  3  9 )          ( 50 )</div>
+        <p><b>a.</b> Soit P = (3 −3 1 ; −2,5 4 −1,5 ; 0,5 −1 0,5). Calculer le produit P × M.</p>
+        <p><b>b.</b> En déduire que si M × X = Y alors X = P × Y.</p>
+        <p><b>c.</b> Déterminer alors les nombres x, y et z.</p>
+      </div>
+      <div class="st gold">Corrections</div>
+      <div class="card bl">
+        <h3>1 — Mise en système</h3>
+        <p>On remplace n par 1, 2 puis 3 dans x + ny + n²z :</p>
+        <div class="code gold">Client 1 : x + y + z = 12
+Client 2 : x + 2y + 4z = 27
+Client 3 : x + 3y + 9z = 50</div>
+      </div>
+      <div class="card gold">
+        <h3>2.a — Produit P × M</h3>
+        <div class="code gold matrix-code">P × M = ( 1  0  0 )
+        ( 0  1  0 )  = I₃
+        ( 0  0  1 )</div>
+        <details class="math-details"><summary>Voir le détail des calculs</summary>
+          <div class="code gold">Ligne 1 de P (3 ; −3 ; 1) :
+  colonne 1 : 3 − 3 + 1 = 1       colonne 2 : 3 − 6 + 3 = 0       colonne 3 : 3 − 12 + 9 = 0
+Ligne 2 de P (−2,5 ; 4 ; −1,5) :
+  colonne 1 : −2,5 + 4 − 1,5 = 0  colonne 2 : −2,5 + 8 − 4,5 = 1   colonne 3 : −2,5 + 16 − 13,5 = 0
+Ligne 3 de P (0,5 ; −1 ; 0,5) :
+  colonne 1 : 0,5 − 1 + 0,5 = 0   colonne 2 : 0,5 − 2 + 1,5 = 0    colonne 3 : 0,5 − 4 + 4,5 = 1</div>
+        </details>
+        <p>Donc P × M = I₃ : <b>P est la matrice inverse de M</b>.</p>
+      </div>
+      <div class="card gold">
+        <h3>2.b — Montrer que X = P × Y</h3>
+        <p>On multiplie les deux membres à gauche par P : P × M × X = P × Y. Comme P × M = I₃, on obtient I₃ × X = P × Y, donc <b>X = P × Y</b>.</p>
+      </div>
+      <div class="card gold">
+        <h3>2.c — Valeurs de x, y et z</h3>
+        <div class="code gold matrix-code">X = P × Y = ( 3×12 − 3×27 + 1×50 )   ( 5 )
+                   ( −2,5×12 + 4×27 − 1,5×50 ) = ( 3 )
+                   ( 0,5×12 − 27 + 0,5×50 )    ( 4 )</div>
+        <p>On a donc <b>x = 5, y = 3 et z = 4</b>. Le code du client numéro n est 5 + 3n + 4n².</p>
+        <div class="code gold">Contrôle : n = 1 : 5 + 3 + 4 = 12 ✓   n = 2 : 5 + 6 + 16 = 27 ✓   n = 3 : 5 + 9 + 36 = 50 ✓</div>
+      </div>
+      <div class="source-note">Énoncé et corrigé repris du sujet de Nouvelle-Calédonie, 2014 (calcul matriciel et application), avec recalcul des résultats.</div>
+    </div>
+
     <div class="sc graphes-scope" id="mat2-graph-exercises">
       <div class="st gold">Exercices graphes — accès rapide</div>
       <p class="exercise-intro">Les exercices sur les graphes orientés sont regroupés dans cet onglet, séparés des exercices de matrices.</p>
@@ -1169,6 +1349,24 @@ z = −21 + 94 − 67 = 6</div><p><b>Vérification :</b></p><div class="code gol
           <span class="chapter-num">Ch. 3 · p.23</span>
           <h3>Graphe à cinq sommets</h3>
           <p>Représentation, chemins de longueur 2 à 5, chemin hamiltonien et fermeture transitive.</p>
+          <span class="module-link">Ouvrir l’exercice →</span>
+        </a>
+        <a class="chapter-card" href="#mat2-exo-g2" onclick="event.preventDefault(); showSub('mat2','exo-g2',document.querySelector('[data-graph-exercises]'));">
+          <span class="chapter-num">Sujet · Ex. 2</span>
+          <h3>Jeu pour téléphone — étapes A à D</h3>
+          <p>Matrice d’adjacence, chemins de longueur 2 à 4, chemin hamiltonien, fermeture transitive et interprétation.</p>
+          <span class="module-link">Ouvrir l’exercice →</span>
+        </a>
+        <a class="chapter-card" href="#mat2-exo-g3" onclick="event.preventDefault(); showSub('mat2','exo-g3',document.querySelector('[data-graph-exercises]'));">
+          <span class="chapter-num">Sujet · Ex. 3</span>
+          <h3>Maintenance réseau — étapes A à E</h3>
+          <p>Graphe des successeurs, puissances de M jusqu’à M⁵, circuits de longueur 4, chemin hamiltonien et fermeture transitive.</p>
+          <span class="module-link">Ouvrir l’exercice →</span>
+        </a>
+        <a class="chapter-card" href="#mat2-exo-g4" onclick="event.preventDefault(); showSub('mat2','exo-g4',document.querySelector('[data-graph-exercises]'));">
+          <span class="chapter-num">Sujet · Ex. 4</span>
+          <h3>Site internet — pages P1 à P5</h3>
+          <p>Matrice d’adjacence, chemins de longueur 2, fermeture transitive et pages accessibles depuis toutes les autres.</p>
           <span class="module-link">Ouvrir l’exercice →</span>
         </a>
         <a class="chapter-card" href="#mat2-exo-g5" onclick="event.preventDefault(); showSub('mat2','exo-g5',document.querySelector('[data-graph-exercises]'));">
@@ -1269,6 +1467,198 @@ z = −21 + 94 − 67 = 6</div><p><b>Vérification :</b></p><div class="code gol
         </div>
       </div>
       <div class="source-note">Exercice 1 p.23 du cours « Les graphes orientés ». Réponses recalculées.</div>
+    </div>
+
+    <div class="sc graphes-scope" id="mat2-exo-g2" data-tab-section="graph-exercises">
+      <div class="st gold">Exercice 2 — jeu pour téléphone portable (Nouvelle-Calédonie, novembre 2014)</div>
+      <div class="card gold">
+        <h3>Énoncé</h3>
+        <p>Un étudiant en BTS SIO a développé un jeu pour téléphone portable comprenant quatre étapes, notées A, B, C et D. Le joueur commence à l’étape A, puis passe à une autre étape selon l’indice découvert. Les passages possibles sont donnés par le graphe orienté G.</p>
+        <ol>
+          <li>Donner la matrice d’adjacence M de ce graphe, en considérant les sommets dans l’ordre A, B, C, D.</li>
+          <li><p>On donne M² :</p><div class="cmp"><div class="cmpc"><h4 class="gold">M²</h4><div class="mx" style="--cols:5"><span class="mh"></span><span class="mh">A</span><span class="mh">B</span><span class="mh">C</span><span class="mh">D</span><span class="mh">A</span><span>0</span><span>1</span><span>0</span><span>1</span><span class="mh">B</span><span>0</span><span>0</span><span>0</span><span>0</span><span class="mh">C</span><span>0</span><span>0</span><span>0</span><span>1</span><span class="mh">D</span><span>0</span><span>0</span><span>0</span><span>0</span></div></div></div><p>(a) Citer tous les chemins de longueur 2. (b) Déterminer M⁴ à la calculatrice et interpréter le résultat dans le contexte du jeu.</p></li>
+          <li>Existe-t-il un chemin hamiltonien ? Si oui, le donner.</li>
+          <li>On note M[n] la n-ième puissance booléenne de M, et ⊕ l’addition booléenne. (a) Déterminer M̂ = M ⊕ M[2] ⊕ M[3] ⊕ M[4]. (b) Représenter le graphe Ĝ dont la matrice d’adjacence est M̂. (c) Interpréter dans le contexte du jeu la dernière ligne de M̂.</li>
+        </ol>
+      </div>
+      <div class="st gold">Corrections</div>
+      <div class="cg">
+        <div class="card bl">
+          <h3>1 — Matrice d’adjacence</h3>
+          <p>On lit les successeurs de chaque sommet, ligne par ligne : Γ⁺(A) = {B ; C ; D}, Γ⁺(B) = {D}, Γ⁺(C) = {B}, Γ⁺(D) = ∅.</p>
+          <div class="mx" style="--cols:5"><span class="mh"></span><span class="mh">A</span><span class="mh">B</span><span class="mh">C</span><span class="mh">D</span><span class="mh">A</span><span>0</span><span>1</span><span>1</span><span>1</span><span class="mh">B</span><span>0</span><span>0</span><span>0</span><span>1</span><span class="mh">C</span><span>0</span><span>1</span><span>0</span><span>0</span><span class="mh">D</span><span>0</span><span>0</span><span>0</span><span>0</span></div>
+        </div>
+        <div class="card am">
+          <h3>2.a — Chemins de longueur 2</h3>
+          <p>La somme des coefficients de M² vaut 1 + 1 + 1 = 3 : il y a trois chemins de longueur 2.</p>
+          <ul class="graphes-route-list">
+            <li data-graphes-path="A,C,B">A → C → B (coefficient (A, B) de M²)</li>
+            <li data-graphes-path="A,B,D">A → B → D (coefficient (A, D) de M²)</li>
+            <li data-graphes-path="C,B,D">C → B → D (coefficient (C, D) de M²)</li>
+          </ul>
+        </div>
+        <div class="card gold">
+          <h3>2.b — Matrice M⁴ et interprétation</h3>
+          <p>M³ :</p><div class="mx" style="--cols:5"><span class="mh"></span><span class="mh">A</span><span class="mh">B</span><span class="mh">C</span><span class="mh">D</span><span class="mh">A</span><span>0</span><span>0</span><span>0</span><span>1</span><span class="mh">B</span><span>0</span><span>0</span><span>0</span><span>0</span><span class="mh">C</span><span>0</span><span>0</span><span>0</span><span>0</span><span class="mh">D</span><span>0</span><span>0</span><span>0</span><span>0</span></div><p>et M⁴ est la matrice nulle.</p>
+          <p>La somme des coefficients de M⁴ vaut 0 : <b>aucun chemin de longueur 4</b>. Dans le jeu, un joueur ne peut donc jamais enchaîner 4 passages : une partie comporte au plus 3 passages, le seul chemin de longueur 3 étant A → C → B → D.</p>
+        </div>
+        <div class="card bl">
+          <h3>3 — Chemin hamiltonien</h3>
+          <p>Un chemin hamiltonien passe une fois et une seule par chacun des sommets. <b>A → C → B → D</b> en est un ; c’est le seul chemin de longueur 3 du graphe.</p>
+        </div>
+        <div class="card am">
+          <h3>4.a — Matrice de la fermeture transitive</h3>
+          <p>On calcule M + M² + M³ + M⁴ puis on remplace par 1 tout coefficient non nul :</p>
+          <div class="code gold">M + M² + M³ + M⁴ = (0 2 1 3 ; 0 0 0 1 ; 0 1 0 1 ; 0 0 0 0)</div>
+          <div class="mx" style="--cols:5"><span class="mh"></span><span class="mh">A</span><span class="mh">B</span><span class="mh">C</span><span class="mh">D</span><span class="mh">A</span><span>0</span><span>1</span><span>1</span><span>1</span><span class="mh">B</span><span>0</span><span>0</span><span>0</span><span>1</span><span class="mh">C</span><span>0</span><span>1</span><span>0</span><span>1</span><span class="mh">D</span><span>0</span><span>0</span><span>0</span><span>0</span></div>
+        </div>
+        <div class="card gn">
+          <h3>4.b — Représentation de Ĝ</h3>
+          <p>Par rapport à M, la matrice M̂ ne contient qu’un 1 de plus, en position (C, D) : on ajoute l’arc C → D, car D est accessible depuis C par le chemin C → B → D.</p>
+          <figure class="graphes-figure"><svg class="graphes-svg" viewBox="0 0 460 360" role="img" aria-labelledby="g2-title g2-desc"><title id="g2-title">Graphe Ĝ de l’exercice 2</title><desc id="g2-desc">Cinq arcs de G en trait plein et un arc ajouté de C vers D.</desc><defs><marker id="g2-arrow" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M 0 0 L 8 4 L 0 8 Z"/></marker></defs><g class="graphes-arcs" marker-end="url(#g2-arrow)"><path data-from="A" data-to="B" d="M 102.0 70.0 L 305.0 70.0"/><path data-from="A" data-to="C" d="M 80.0 92.0 L 80.0 245.0"/><path data-from="A" data-to="D" d="M 97.2 83.7 L 310.5 254.4"/><path data-from="B" data-to="D" d="M 330.0 92.0 L 330.0 245.0"/><path data-from="C" data-to="B" d="M 97.2 256.3 L 310.5 85.6"/><path data-from="C" data-to="D" d="M 102.0 270.0 L 305.0 270.0"/></g><g class="graphes-nodes"><circle cx="80" cy="70" r="22"/><text x="80" y="70">A</text><circle cx="330" cy="70" r="22"/><text x="330" y="70">B</text><circle cx="80" cy="270" r="22"/><text x="80" y="270">C</text><circle cx="330" cy="270" r="22"/><text x="330" y="270">D</text></g></svg></figure>
+        </div>
+        <div class="card pk">
+          <h3>4.c — Dernière ligne de M̂</h3>
+          <p>La dernière ligne de M̂ ne contient que des 0 : aucune étape n’est accessible depuis D. <b>D est l’étape finale</b> : quand le joueur y arrive, la partie est terminée.</p>
+        </div>
+      </div>
+      <div class="source-note">Sujet de Nouvelle-Calédonie, novembre 2014 (graphes orientés, partie 1/2). Réponses recalculées.</div>
+    </div>
+
+    <div class="sc graphes-scope" id="mat2-exo-g3" data-tab-section="graph-exercises">
+      <div class="st gold">Exercice 3 — maintenance réseau (Polynésie, mai 2016)</div>
+      <div class="card gold">
+        <h3>Énoncé</h3>
+        <p>Un administrateur réseau met en place une stratégie de maintenance en cinq étapes : A, B, C, D et E. Le tableau indique les étapes qui peuvent suivre immédiatement chacune d’elles.</p>
+        <div class="table-scroll"><table class="tbl"><thead><tr><th>Étape</th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th></tr></thead><tbody><tr><td>Étapes qui peuvent suivre immédiatement</td><td>A, B</td><td>B, C</td><td>D</td><td>C</td><td>A, D, E</td></tr></tbody></table></div>
+        <ol>
+          <li>Dessiner le graphe orienté G de sommets A, B, C, D, E, dont les arcs sont donnés par le tableau.</li>
+          <li>Donner la matrice d’adjacence M associée à G.</li>
+          <li>On s’intéresse aux chemins de longueur 2. (a) Déterminer M² à la calculatrice. (b) Déterminer le nombre de chemins de longueur 2 d’origine E. (c) Déterminer le nombre de chemins de longueur 2 d’extrémité finale C.</li>
+          <li><p>On donne M³, M⁴ et M⁵ :</p><div class="cmp"><div class="cmpc"><h4 class="gold">M³</h4><div class="mx" style="--cols:6"><span class="mh"></span><span class="mh">A</span><span class="mh">B</span><span class="mh">C</span><span class="mh">D</span><span class="mh">E</span><span class="mh">A</span><span>1</span><span>3</span><span>2</span><span>1</span><span>0</span><span class="mh">B</span><span>0</span><span>1</span><span>2</span><span>1</span><span>0</span><span class="mh">C</span><span>0</span><span>0</span><span>0</span><span>1</span><span>0</span><span class="mh">D</span><span>0</span><span>0</span><span>1</span><span>0</span><span>0</span><span class="mh">E</span><span>3</span><span>3</span><span>2</span><span>2</span><span>1</span></div></div><div class="cmpc"><h4 class="gold">M⁴</h4><div class="mx" style="--cols:6"><span class="mh"></span><span class="mh">A</span><span class="mh">B</span><span class="mh">C</span><span class="mh">D</span><span class="mh">E</span><span class="mh">A</span><span>1</span><span>4</span><span>4</span><span>2</span><span>0</span><span class="mh">B</span><span>0</span><span>1</span><span>2</span><span>2</span><span>0</span><span class="mh">C</span><span>0</span><span>0</span><span>1</span><span>0</span><span>0</span><span class="mh">D</span><span>0</span><span>0</span><span>0</span><span>1</span><span>0</span><span class="mh">E</span><span>4</span><span>6</span><span>5</span><span>3</span><span>1</span></div></div></div><div class="cmp"><div class="cmpc"><h4 class="gold">M⁵</h4><div class="mx" style="--cols:6"><span class="mh"></span><span class="mh">A</span><span class="mh">B</span><span class="mh">C</span><span class="mh">D</span><span class="mh">E</span><span class="mh">A</span><span>1</span><span>5</span><span>6</span><span>4</span><span>0</span><span class="mh">B</span><span>0</span><span>1</span><span>3</span><span>2</span><span>0</span><span class="mh">C</span><span>0</span><span>0</span><span>0</span><span>1</span><span>0</span><span class="mh">D</span><span>0</span><span>0</span><span>1</span><span>0</span><span>0</span><span class="mh">E</span><span>5</span><span>10</span><span>9</span><span>6</span><span>1</span></div></div></div><p>Combien y a-t-il de circuits de longueur 4 dans le graphe ?</p></li>
+          <li>Citer un chemin hamiltonien.</li>
+          <li>On s’intéresse à la fermeture transitive de G. (a) Déterminer la matrice d’adjacence M̂ de cette fermeture. (b) Interpréter les coefficients de la ligne 1 et des colonnes 4 et 5. (c) Combien d’arcs supplémentaires Ĝ possède-t-il par rapport à G ?</li>
+        </ol>
+      </div>
+      <div class="st gold">Corrections</div>
+      <div class="cg">
+        <div class="card bl">
+          <h3>1 — Graphe G</h3>
+          <p>Chaque étape est reliée à celles qui peuvent la suivre. Les étapes A, B et E peuvent se suivre elles-mêmes : le graphe comporte donc trois boucles.</p>
+          <figure class="graphes-figure"><svg class="graphes-svg" viewBox="0 0 460 360" role="img" aria-labelledby="g3-title g3-desc"><title id="g3-title">Graphe G de l’exercice 3</title><desc id="g3-desc">Cinq sommets A à E, trois boucles en A, B et E, et les arcs du tableau des successeurs.</desc><defs><marker id="g3-arrow" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M 0 0 L 8 4 L 0 8 Z"/></marker></defs><g class="graphes-arcs" marker-end="url(#g3-arrow)"><path data-from="A" data-to="A" d="M 218.0 75.2 C 204.0 33.0 256.0 33.0 242.0 75.2"/><path data-from="A" data-to="B" d="M 250.1 104.1 L 362.2 154.7"/><path data-from="B" data-to="B" d="M 403.6 151.1 C 444.2 133.1 449.2 184.9 405.9 175.0"/><path data-from="B" data-to="C" d="M 377.0 185.5 L 339.1 281.7"/><path data-from="C" data-to="D" d="M 308.0 296.0 L 155.0 296.0"/><path data-from="D" data-to="C" d="M 152.0 314.0 L 305.0 314.0"/><path data-from="E" data-to="A" d="M 95.1 155.9 L 207.2 105.3"/><path data-from="E" data-to="D" d="M 83.0 185.5 L 120.9 281.7"/><path data-from="E" data-to="E" d="M 54.1 175.0 C 10.8 184.9 15.8 133.1 56.4 151.1"/></g><g class="graphes-nodes"><circle cx="230" cy="95" r="22"/><text x="230" y="95">A</text><circle cx="385" cy="165" r="22"/><text x="385" y="165">B</text><circle cx="330" cy="305" r="22"/><text x="330" y="305">C</text><circle cx="130" cy="305" r="22"/><text x="130" y="305">D</text><circle cx="75" cy="165" r="22"/><text x="75" y="165">E</text></g></svg></figure>
+        </div>
+        <div class="card gold">
+          <h3>2 — Matrice d’adjacence</h3>
+          <p>Sommets rangés dans l’ordre A, B, C, D, E :</p>
+          <div class="mx" style="--cols:6"><span class="mh"></span><span class="mh">A</span><span class="mh">B</span><span class="mh">C</span><span class="mh">D</span><span class="mh">E</span><span class="mh">A</span><span>1</span><span>1</span><span>0</span><span>0</span><span>0</span><span class="mh">B</span><span>0</span><span>1</span><span>1</span><span>0</span><span>0</span><span class="mh">C</span><span>0</span><span>0</span><span>0</span><span>1</span><span>0</span><span class="mh">D</span><span>0</span><span>0</span><span>1</span><span>0</span><span>0</span><span class="mh">E</span><span>1</span><span>0</span><span>0</span><span>1</span><span>1</span></div>
+        </div>
+        <div class="card am">
+          <h3>3.a — Matrice M²</h3>
+          <div class="mx" style="--cols:6"><span class="mh"></span><span class="mh">A</span><span class="mh">B</span><span class="mh">C</span><span class="mh">D</span><span class="mh">E</span><span class="mh">A</span><span>1</span><span>2</span><span>1</span><span>0</span><span>0</span><span class="mh">B</span><span>0</span><span>1</span><span>1</span><span>1</span><span>0</span><span class="mh">C</span><span>0</span><span>0</span><span>1</span><span>0</span><span>0</span><span class="mh">D</span><span>0</span><span>0</span><span>0</span><span>1</span><span>0</span><span class="mh">E</span><span>2</span><span>1</span><span>1</span><span>1</span><span>1</span></div>
+        </div>
+        <div class="card am">
+          <h3>3.b — Chemins de longueur 2 d’origine E</h3>
+          <p>La ligne E de M² contient 2 + 1 + 1 + 1 + 1 = <b>6</b> : il y a 6 chemins de longueur 2 d’origine E.</p>
+          <ul class="graphes-route-list">
+            <li>E → A → A ; E → E → A ; E → A → B</li>
+            <li>E → D → C ; E → E → D ; E → E → E</li>
+          </ul>
+        </div>
+        <div class="card am">
+          <h3>3.c — Chemins de longueur 2 d’extrémité C</h3>
+          <p>La colonne C de M² contient 1 + 1 + 1 + 0 + 1 = <b>4</b> : il y a 4 chemins de longueur 2 d’extrémité C.</p>
+          <ul class="graphes-route-list">
+            <li>A → B → C ; B → B → C ; C → D → C ; E → D → C</li>
+          </ul>
+        </div>
+        <div class="card gold">
+          <h3>4 — Circuits de longueur 4</h3>
+          <p>Ce sont les chemins de longueur 4 dont l’origine et l’extrémité coïncident : on lit la diagonale de M⁴, qui vaut 1 + 1 + 1 + 1 + 1 = <b>5</b>.</p>
+          <ul class="graphes-route-list">
+            <li>A → A → A → A → A</li>
+            <li>B → B → B → B → B</li>
+            <li>C → D → C → D → C</li>
+            <li>D → C → D → C → D</li>
+            <li>E → E → E → E → E</li>
+          </ul>
+        </div>
+        <div class="card bl">
+          <h3>5 — Chemin hamiltonien</h3>
+          <p><b>E → A → B → C → D</b> passe une fois et une seule par chacun des cinq sommets : c’est un chemin hamiltonien de longueur 4.</p>
+        </div>
+        <div class="card gn">
+          <h3>6.a — Matrice M̂ de la fermeture transitive</h3>
+          <p>On calcule M + M² + M³ + M⁴ + M⁵, puis on remplace par 1 tout coefficient non nul :</p>
+          <div class="mx" style="--cols:6"><span class="mh"></span><span class="mh">A</span><span class="mh">B</span><span class="mh">C</span><span class="mh">D</span><span class="mh">E</span><span class="mh">A</span><span>1</span><span>1</span><span>1</span><span>1</span><span>0</span><span class="mh">B</span><span>0</span><span>1</span><span>1</span><span>1</span><span>0</span><span class="mh">C</span><span>0</span><span>0</span><span>1</span><span>1</span><span>0</span><span class="mh">D</span><span>0</span><span>0</span><span>1</span><span>1</span><span>0</span><span class="mh">E</span><span>1</span><span>1</span><span>1</span><span>1</span><span>1</span></div>
+        </div>
+        <div class="card am">
+          <h3>6.b — Interprétation</h3>
+          <p>Le coefficient de la ligne 1, colonne 4 vaut 1 : l’étape D est accessible depuis l’étape A (par exemple A → B → C → D). Le coefficient de la ligne 1, colonne 5 vaut 0 : l’étape E n’est jamais accessible depuis A.</p>
+        </div>
+        <div class="card gold">
+          <h3>6.c — Arcs supplémentaires</h3>
+          <p>M contient 9 coefficients égaux à 1, M̂ en contient 16 : Ĝ possède <b>7 arcs supplémentaires</b> : (A, C), (A, D), (B, D), (C, C), (D, D), (E, B) et (E, C).</p>
+        </div>
+      </div>
+      <div class="source-note">Sujet de Polynésie, mai 2016 (graphes orientés, partie 1/2). Réponses recalculées.</div>
+    </div>
+
+    <div class="sc graphes-scope" id="mat2-exo-g4" data-tab-section="graph-exercises">
+      <div class="st gold">Exercice 4 — site internet à cinq pages (Polynésie, mai 2014)</div>
+      <div class="card gold">
+        <h3>Énoncé</h3>
+        <p>Un amateur a publié un site internet avec cinq pages P1, P2, P3, P4 et P5. La page d’accueil est P1. Un informaticien modélise le site par un graphe dont les sommets S1 à S5 représentent les pages, et où chaque lien d’une page vers une autre est un arc orienté. Le tableau des successeurs est le suivant :</p>
+        <div class="table-scroll"><table class="tbl"><thead><tr><th>Sommet</th><th>S1</th><th>S2</th><th>S3</th><th>S4</th><th>S5</th></tr></thead><tbody><tr><td>Successeurs</td><td>S2, S3, S5</td><td>S3</td><td>S2</td><td>S3</td><td>S1, S2, S4</td></tr></tbody></table></div>
+        <ol>
+          <li>(a) Déterminer la matrice d’adjacence M de ce graphe. (b) Donner une représentation géométrique de ce graphe.</li>
+          <li>Existe-t-il un chemin hamiltonien ? Si oui, en indiquer un.</li>
+          <li>Calculer la matrice M².</li>
+          <li>(a) Combien existe-t-il de chemins de longueur 2 dans le graphe ? (b) Combien de chemins de longueur 2 sont issus du sommet S1 ? Les citer.</li>
+          <li><p>On admet que la matrice de fermeture transitive est :</p><div class="cmp"><div class="cmpc"><h4 class="gold">M′</h4><div class="mx" style="--cols:6"><span class="mh"></span><span class="mh">S1</span><span class="mh">S2</span><span class="mh">S3</span><span class="mh">S4</span><span class="mh">S5</span><span class="mh">S1</span><span>1</span><span>1</span><span>1</span><span>1</span><span>1</span><span class="mh">S2</span><span>0</span><span>1</span><span>1</span><span>0</span><span>0</span><span class="mh">S3</span><span>0</span><span>1</span><span>1</span><span>0</span><span>0</span><span class="mh">S4</span><span>0</span><span>1</span><span>1</span><span>0</span><span>0</span><span class="mh">S5</span><span>1</span><span>1</span><span>1</span><span>1</span><span>1</span></div></div></div><p>(a) Quelles pages sont accessibles depuis toutes les autres pages en quelques clics ? (b) Interpréter les 0 de la première colonne de M′.</p></li>
+        </ol>
+      </div>
+      <div class="st gold">Corrections</div>
+      <div class="cg">
+        <div class="card bl">
+          <h3>1.a — Matrice d’adjacence</h3>
+          <p>On place un 1 à la ligne i et à la colonne j lorsque Sj est un successeur de Si.</p>
+          <div class="mx" style="--cols:6"><span class="mh"></span><span class="mh">S1</span><span class="mh">S2</span><span class="mh">S3</span><span class="mh">S4</span><span class="mh">S5</span><span class="mh">S1</span><span>0</span><span>1</span><span>1</span><span>0</span><span>1</span><span class="mh">S2</span><span>0</span><span>0</span><span>1</span><span>0</span><span>0</span><span class="mh">S3</span><span>0</span><span>1</span><span>0</span><span>0</span><span>0</span><span class="mh">S4</span><span>0</span><span>0</span><span>1</span><span>0</span><span>0</span><span class="mh">S5</span><span>1</span><span>1</span><span>0</span><span>1</span><span>0</span></div>
+        </div>
+        <div class="card bl">
+          <h3>1.b — Représentation géométrique</h3>
+          <p>Le graphe comporte 9 arcs. Les arcs (S1, S5) et (S5, S1) d’une part, (S2, S3) et (S3, S2) d’autre part, sont de sens contraires.</p>
+          <figure class="graphes-figure"><svg class="graphes-svg" viewBox="0 0 460 360" role="img" aria-labelledby="g4-title g4-desc"><title id="g4-title">Graphe du site de l’exercice 4</title><desc id="g4-desc">Cinq sommets S1 à S5 et neuf arcs orientés, dont deux paires d’arcs de sens contraires.</desc><defs><marker id="g4-arrow" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M 0 0 L 8 4 L 0 8 Z"/></marker></defs><g class="graphes-arcs" marker-end="url(#g4-arrow)"><path data-from="S1" data-to="S2" d="M 250.1 104.1 L 362.2 154.7"/><path data-from="S1" data-to="S3" d="M 239.5 114.9 L 319.3 282.4"/><path data-from="S1" data-to="S5" d="M 206.2 95.9 L 94.1 146.5"/><path data-from="S2" data-to="S3" d="M 368.6 182.2 L 330.8 278.4"/><path data-from="S3" data-to="S2" d="M 346.4 287.8 L 384.2 191.6"/><path data-from="S4" data-to="S3" d="M 152.0 305.0 L 305.0 305.0"/><path data-from="S5" data-to="S1" d="M 98.8 164.1 L 210.9 113.5"/><path data-from="S5" data-to="S2" d="M 97.0 165.0 L 360.0 165.0"/><path data-from="S5" data-to="S4" d="M 83.0 185.5 L 120.9 281.7"/></g><g class="graphes-nodes"><circle cx="230" cy="95" r="22"/><text x="230" y="95">S1</text><circle cx="385" cy="165" r="22"/><text x="385" y="165">S2</text><circle cx="330" cy="305" r="22"/><text x="330" y="305">S3</text><circle cx="130" cy="305" r="22"/><text x="130" y="305">S4</text><circle cx="75" cy="165" r="22"/><text x="75" y="165">S5</text></g></svg></figure>
+        </div>
+        <div class="card gold">
+          <h3>2 — Chemin hamiltonien</h3>
+          <p><b>S1 → S5 → S4 → S3 → S2</b> passe une fois et une seule par chacun des cinq sommets : c’est un chemin hamiltonien de longueur 4.</p>
+        </div>
+        <div class="card am">
+          <h3>3 — Matrice M²</h3>
+          <p>Le coefficient (1, 2) de M² vaut 2 : il existe deux chemins de S1 à S2 de longueur 2, S1 → S3 → S2 et S1 → S5 → S2.</p>
+          <div class="mx" style="--cols:6"><span class="mh"></span><span class="mh">S1</span><span class="mh">S2</span><span class="mh">S3</span><span class="mh">S4</span><span class="mh">S5</span><span class="mh">S1</span><span>1</span><span>2</span><span>1</span><span>1</span><span>0</span><span class="mh">S2</span><span>0</span><span>1</span><span>0</span><span>0</span><span>0</span><span class="mh">S3</span><span>0</span><span>0</span><span>1</span><span>0</span><span>0</span><span class="mh">S4</span><span>0</span><span>1</span><span>0</span><span>0</span><span>0</span><span class="mh">S5</span><span>0</span><span>1</span><span>3</span><span>0</span><span>1</span></div>
+        </div>
+        <div class="card am">
+          <h3>4.a — Nombre de chemins de longueur 2</h3>
+          <p>La somme des coefficients de M² vaut 5 + 1 + 1 + 1 + 5 = <b>13</b> : le graphe comporte 13 chemins de longueur 2.</p>
+        </div>
+        <div class="card gold">
+          <h3>4.b — Chemins de longueur 2 issus de S1</h3>
+          <p>La ligne S1 de M² vaut 1 + 2 + 1 + 1 + 0 = <b>5</b> chemins :</p>
+          <ul class="graphes-route-list">
+            <li>S1 → S5 → S1 ; S1 → S3 → S2 ; S1 → S5 → S2 ; S1 → S2 → S3 ; S1 → S5 → S4</li>
+          </ul>
+        </div>
+        <div class="card bl">
+          <h3>5.a — Pages accessibles depuis toutes les autres</h3>
+          <p>Une page Pj est accessible depuis une page Pi lorsque le coefficient (i, j) de M′ vaut 1. Seules les colonnes 2 et 3 de M′ ne contiennent que des 1 : <b>P2 et P3</b> sont accessibles depuis toutes les autres pages.</p>
+        </div>
+        <div class="card pk">
+          <h3>5.b — Interprétation des 0 de la première colonne</h3>
+          <p>Les coefficients (2, 1), (3, 1) et (4, 1) de M′ sont nuls : la page d’accueil P1 n’est pas accessible depuis P2, P3 ni P4. Un internaute sur l’une de ces pages ne peut pas revenir à l’accueil en suivant les liens du site. Pour améliorer la navigation, il faudrait ajouter sur ces pages un lien vers P1.</p>
+        </div>
+      </div>
+      <div class="source-note">Sujet de Polynésie, mai 2014 (graphes orientés, partie 1/2). Réponses recalculées.</div>
     </div>
 
     <div class="sc graphes-scope" id="mat2-exo-g5" data-tab-section="graph-exercises">
@@ -1374,7 +1764,195 @@ z = −21 + 94 − 67 = 6</div><p><b>Vérification :</b></p><div class="code gol
       <div class="source-note">Exercice 5 p.25 du cours, identique à l’exercice 5 du sujet de Polynésie, mai 2017. Réponses recalculées.</div>
     </div>
 
-    <div class="source-note">Calcul matriciel 2e année : définitions, opérations, matrices carrées de référence, matrices inversibles et exercices 1 à 9, 11, 13, 17, 18, 21 et 22. Les résultats numériques ont été vérifiés par recalcul. Graphes orientés : fermeture transitive dans l’onglet Graphes orientés, exercices 1 (p.23) et 5 (p.25) dans l’onglet Exercices graphes.</div>
+    <div class="sc" id="mat2-controle">
+      <div class="st gold">Correction Contrôle — devoir n°2 de mathématiques</div>
+      <p class="exercise-intro">Devoir du mardi 29 septembre 2026 (BTS SIO2, 40 minutes, calculatrice autorisée). Deux sujets, A et B, avec énoncés et corrections détaillées.</p>
+      <div class="chapter-grid math-exercise-grid">
+        <a class="chapter-card" href="#mat2-ctrl-a" onclick="event.preventDefault(); showSub('mat2','ctrl-a',document.querySelector('[data-control-exercises]'));">
+          <span class="chapter-num">Devoir n°2</span>
+          <h3>Sujet A</h3>
+          <p>Buffet à volonté : produit P × N et tarif t du midi. Ordinateurs : matrices A et B, produit B × A, puis calcul de X.</p>
+          <span class="module-link">Ouvrir le sujet →</span>
+        </a>
+        <a class="chapter-card" href="#mat2-ctrl-b" onclick="event.preventDefault(); showSub('mat2','ctrl-b',document.querySelector('[data-control-exercises]'));">
+          <span class="chapter-num">Devoir n°2</span>
+          <h3>Sujet B</h3>
+          <p>Buffet à volonté : produit P × N et tarif t à 22 €. Ordinateurs : B × A = 50 × I₃, puis nombre de machines vendues.</p>
+          <span class="module-link">Ouvrir le sujet →</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="sc" id="mat2-ctrl-a" data-tab-section="controle">
+      <div class="st gold">Devoir n°2 — Sujet A (mardi 29 septembre 2026, 40 min, calculatrice autorisée)</div>
+      <div class="card gold">
+        <h3>Exercice 1 (5 points sur 12,5) — restaurant buffet à volonté</h3>
+        <p>Le gérant d’un restaurant buffet à volonté propose la grille tarifaire suivante (en euros) :</p>
+        <div class="table-scroll"><table class="tbl"><thead><tr><th></th><th>Enfant de 6 ans ou moins</th><th>Enfant de 7 à 13 ans</th><th>Adulte</th></tr></thead><tbody><tr><td>Midi</td><td>6</td><td>11</td><td>18</td></tr><tr><td>Soir</td><td>6</td><td>14</td><td>28</td></tr></tbody></table></div>
+        <p>Le groupe est constitué de 3 enfants de 6 ans ou moins, de 2 enfants de 7 à 13 ans et de 5 adultes. On considère :</p>
+        <div class="code gold matrix-code">P = ( 6   11   18 )      N = ( 3 )
+    ( 6   14   28 )          ( 2 )
+                             ( 5 )</div>
+        <p><b>1.</b> Expliquer pourquoi le produit P × N existe, puis le calculer en détaillant les calculs. Interpréter les coefficients de P × N.</p>
+        <p><b>2.</b> Le gérant souhaite augmenter le tarif du menu adulte du midi uniquement. On note t ce tarif ; la matrice devient P′ = ( 6  11  t ; 6  14  28 ).</p>
+        <p><b>a.</b> Calculer, en fonction de t, le coefficient de la première ligne de P′ × N.</p>
+        <p><b>b.</b> Déterminer la valeur de t pour laquelle le montant facturé le midi au groupe serait de 145 €.</p>
+      </div>
+      <div class="st gold">Correction — Exercice 1</div>
+      <div class="card bl">
+        <h3>1 — Produit P × N</h3>
+        <p>P est de taille 2×3 et N de taille 3×1 : le nombre de colonnes de P (3) est égal au nombre de lignes de N (3), donc P × N existe et il est de taille 2×1.</p>
+        <div class="code gold matrix-code">P × N = ( 6×3 + 11×2 + 18×5 ) = ( 130 )
+        ( 6×3 + 14×2 + 28×5 )   ( 186 )</div>
+        <p><b>Interprétation :</b> le coefficient 130 est le montant total, en euros, payé par le groupe pour un repas le midi ; le coefficient 186 est le montant total payé par ce même groupe pour un repas le soir.</p>
+      </div>
+      <div class="card am">
+        <h3>2.a — Coefficient en fonction de t</h3>
+        <div class="code gold">Première ligne de P′ × N : 6×3 + 11×2 + t×5 = 18 + 22 + 5t = 40 + 5t</div>
+      </div>
+      <div class="card am">
+        <h3>2.b — Valeur de t</h3>
+        <div class="code gold">40 + 5t = 145  ⟺  5t = 105  ⟺  t = 21</div>
+        <p>Le tarif du menu adulte du midi doit être de <b>21 €</b>.</p>
+      </div>
+      <div class="card gold">
+        <h3>Exercice 2 (7,5 points sur 12,5) — ordinateurs professionnels</h3>
+        <p>Une petite entreprise de la zone euro, créée le 1er janvier 2018, vend des ordinateurs de trois types K, L et M. Le tableau donne les coûts unitaires, en euros, pour l’année 2018 :</p>
+        <div class="table-scroll"><table class="tbl"><thead><tr><th>Coût unitaire (€)</th><th>Type K</th><th>Type L</th><th>Type M</th></tr></thead><tbody><tr><td>Éléments matériels</td><td>120</td><td>180</td><td>300</td></tr><tr><td>Main-d’œuvre</td><td>120</td><td>180</td><td>240</td></tr><tr><td>Livraison</td><td>60</td><td>60</td><td>60</td></tr></tbody></table></div>
+        <p>On note A la matrice de ces coûts (lignes : matériels, main-d’œuvre, livraison ; colonnes : K, L, M), X = (x ; y ; z) le nombre d’ordinateurs K, L, M vendus pendant un mois, et Y = (e ; m ; l) les coûts totaux, en euros, des éléments matériels, de la main-d’œuvre et de la livraison pendant ce mois.</p>
+        <p><b>1.a</b> Écrire une égalité matricielle reliant A, X et Y.</p>
+        <p><b>1.b</b> En janvier 2018, l’entreprise a vendu 30 ordinateurs K, 20 L et 10 M. À l’aide du calcul matriciel, détailler et calculer les coûts totaux des éléments matériels, de la main-d’œuvre et de la livraison.</p>
+        <p><b>2.a</b> On considère B = ( 1  −2  3 ; −2  3  −2 ; 1  −1  0 ). Calculer B × A, en détaillant la première ligne.</p>
+        <p><b>2.b</b> Démontrer que si A × X = Y, alors X = (1/60) × B × Y.</p>
+        <p><b>2.c</b> En février 2018, les coûts totaux ont été de 12 300 € pour les éléments matériels, 11 400 € pour la main-d’œuvre et 3 900 € pour la livraison. Déterminer le nombre d’ordinateurs de chaque type vendus ce mois-là.</p>
+      </div>
+      <div class="st gold">Correction — Exercice 2</div>
+      <div class="card bl">
+        <h3>1.a — Égalité matricielle</h3>
+        <p>Chaque coût total est une ligne de A multipliée par la colonne X : on a <b>A × X = Y</b>. Le produit X × A n’existe pas (3×1 par 3×3).</p>
+      </div>
+      <div class="card bl">
+        <h3>1.b — Coûts de janvier 2018</h3>
+        <div class="code gold matrix-code">X = ( 30 ; 20 ; 10 )
+
+Y = A × X = ( 120×30 + 180×20 + 300×10 )   ( 10 200 )
+            ( 120×30 + 180×20 + 240×10 ) = (  9 600 )
+            (  60×30 +  60×20 +  60×10 )   (  3 600 )</div>
+        <p>En janvier 2018, le coût total des éléments matériels est de <b>10 200 €</b>, celui de la main-d’œuvre de <b>9 600 €</b> et celui de la livraison de <b>3 600 €</b>.</p>
+      </div>
+      <div class="card am">
+        <h3>2.a — Produit B × A</h3>
+        <p>Première ligne : 1×120 + (−2)×120 + 3×60 = 60 ; 1×180 + (−2)×180 + 3×60 = 0 ; 1×300 + (−2)×240 + 3×60 = 0.</p>
+        <p>Deuxième ligne : −2×120 + 3×120 − 2×60 = 0 ; −2×180 + 3×180 − 2×60 = 60 ; −2×300 + 3×240 − 2×60 = 0.</p>
+        <p>Troisième ligne : 120 − 120 = 0 ; 180 − 180 = 0 ; 300 − 240 = 60.</p>
+        <div class="code gold matrix-code">B × A = ( 60   0   0 )
+        (  0  60   0 )  = 60 × I₃
+        (  0   0  60 )</div>
+      </div>
+      <div class="card am">
+        <h3>2.b — Démonstration</h3>
+        <p>On multiplie les deux membres de A × X = Y à gauche par B (le produit matriciel n’est pas commutatif, l’ordre compte) : B × (A × X) = B × Y, soit (B × A) × X = B × Y, donc 60 × I₃ × X = B × Y, c’est-à-dire <b>60X = B × Y</b> et finalement <b>X = (1/60) × B × Y</b>.</p>
+      </div>
+      <div class="card gold">
+        <h3>2.c — Ordinateurs vendus en février 2018</h3>
+        <div class="code gold matrix-code">B × Y = ( 1×12 300 − 2×11 400 + 3×3 900 )   ( 1 200 )
+          ( −2×12 300 + 3×11 400 − 2×3 900 ) = ( 1 800 )
+          ( 12 300 − 11 400 + 0 )            (   900 )
+
+X = (1/60) × ( 1 200 ; 1 800 ; 900 ) = ( 20 ; 30 ; 15 )</div>
+        <p>En février 2018, l’entreprise a vendu <b>20 ordinateurs de type K, 30 de type L et 15 de type M</b>.</p>
+        <details class="math-details"><summary>Voir la vérification</summary>
+          <div class="code gold">A × X = ( 120×20 + 180×30 + 300×15 ; 120×20 + 180×30 + 240×15 ; 60×20 + 60×30 + 60×15 )
+      = ( 12 300 ; 11 400 ; 3 900 ) = Y ✓</div>
+        </details>
+      </div>
+    </div>
+
+    <div class="sc" id="mat2-ctrl-b" data-tab-section="controle">
+      <div class="st gold">Devoir n°2 — Sujet B (mardi 29 septembre 2026, 40 min, calculatrice autorisée)</div>
+      <div class="card gold">
+        <h3>Exercice 1 (5 points sur 12,5) — restaurant buffet à volonté</h3>
+        <p>Le gérant d’un restaurant buffet à volonté propose la grille tarifaire suivante (en euros) :</p>
+        <div class="table-scroll"><table class="tbl"><thead><tr><th></th><th>Enfant de 6 ans ou moins</th><th>Enfant de 7 à 13 ans</th><th>Adulte</th></tr></thead><tbody><tr><td>Midi</td><td>7</td><td>12</td><td>20</td></tr><tr><td>Soir</td><td>7</td><td>15</td><td>30</td></tr></tbody></table></div>
+        <p>Le groupe est constitué de 2 enfants de 6 ans ou moins, de 3 enfants de 7 à 13 ans et de 4 adultes. On considère :</p>
+        <div class="code gold matrix-code">P = ( 7   12   20 )      N = ( 2 )
+    ( 7   15   30 )          ( 3 )
+                             ( 4 )</div>
+        <p><b>1.</b> Expliquer pourquoi le produit P × N existe, le calculer en détaillant les calculs, puis interpréter ses coefficients.</p>
+        <p><b>2.</b> Le gérant souhaite augmenter le tarif du menu adulte du midi uniquement. On note t ce tarif ; la matrice devient P′ = ( 7  12  t ; 7  15  30 ).</p>
+        <p><b>a.</b> Calculer, en fonction de t, le coefficient de la première ligne de P′ × N.</p>
+        <p><b>b.</b> Déterminer la valeur de t pour laquelle le montant facturé le midi au groupe serait de 138 €.</p>
+      </div>
+      <div class="st gold">Correction — Exercice 1</div>
+      <div class="card bl">
+        <h3>1 — Produit P × N</h3>
+        <p>P est de taille 2×3 et N de taille 3×1 : 3 = 3, donc P × N existe et il est de taille 2×1.</p>
+        <div class="code gold matrix-code">P × N = ( 7×2 + 12×3 + 20×4 ) = ( 130 )
+        ( 7×2 + 15×3 + 30×4 )   ( 179 )</div>
+        <p><b>Interprétation :</b> le groupe paierait <b>130 €</b> pour un repas le midi et <b>179 €</b> pour un repas le soir.</p>
+      </div>
+      <div class="card am">
+        <h3>2.a — Coefficient en fonction de t</h3>
+        <div class="code gold">Première ligne de P′ × N : 7×2 + 12×3 + t×4 = 14 + 36 + 4t = 50 + 4t</div>
+      </div>
+      <div class="card am">
+        <h3>2.b — Valeur de t</h3>
+        <div class="code gold">50 + 4t = 138  ⟺  4t = 88  ⟺  t = 22</div>
+        <p>Le tarif du menu adulte du midi doit être de <b>22 €</b>.</p>
+      </div>
+      <div class="card gold">
+        <h3>Exercice 2 (7,5 points sur 12,5) — ordinateurs professionnels</h3>
+        <p>Les coûts unitaires, en euros, pour l’année 2018 sont :</p>
+        <div class="table-scroll"><table class="tbl"><thead><tr><th>Coût unitaire (€)</th><th>Type K</th><th>Type L</th><th>Type M</th></tr></thead><tbody><tr><td>Éléments matériels</td><td>100</td><td>150</td><td>250</td></tr><tr><td>Main-d’œuvre</td><td>100</td><td>150</td><td>200</td></tr><tr><td>Livraison</td><td>50</td><td>50</td><td>50</td></tr></tbody></table></div>
+        <p>On note A la matrice de ces coûts, X = (x ; y ; z) le nombre d’ordinateurs K, L, M vendus pendant un mois, et Y = (e ; m ; l) les coûts totaux, en euros, des éléments matériels, de la main-d’œuvre et de la livraison.</p>
+        <p><b>1.a</b> Écrire une égalité matricielle reliant A, X et Y.</p>
+        <p><b>1.b</b> En janvier 2018, l’entreprise a vendu 25 ordinateurs K, 40 L et 15 M. Calculer les coûts totaux du mois, en détaillant le calcul matriciel.</p>
+        <p><b>2.a</b> On considère B = ( 1  −2  3 ; −2  3  −2 ; 1  −1  0 ). Calculer B × A, en détaillant la première ligne.</p>
+        <p><b>2.b</b> Démontrer que si A × X = Y, alors X = (1/50) × B × Y.</p>
+        <p><b>2.c</b> En février 2018, les coûts totaux ont été de 13 500 € pour les éléments matériels, 12 350 € pour la main-d’œuvre et 4 150 € pour la livraison. Déterminer le nombre d’ordinateurs de chaque type vendus ce mois-là.</p>
+      </div>
+      <div class="st gold">Correction — Exercice 2</div>
+      <div class="card bl">
+        <h3>1.a — Égalité matricielle</h3>
+        <p>Chaque coût total est une ligne de A multipliée par la colonne X : <b>A × X = Y</b>.</p>
+      </div>
+      <div class="card bl">
+        <h3>1.b — Coûts de janvier 2018</h3>
+        <div class="code gold matrix-code">X = ( 25 ; 40 ; 15 )
+
+Y = A × X = ( 100×25 + 150×40 + 250×15 )   ( 12 250 )
+            ( 100×25 + 150×40 + 200×15 ) = ( 11 500 )
+            (  50×25 +  50×40 +  50×15 )   (  4 000 )</div>
+        <p>En janvier 2018, les éléments matériels coûtent <b>12 250 €</b>, la main-d’œuvre <b>11 500 €</b> et la livraison <b>4 000 €</b>.</p>
+      </div>
+      <div class="card am">
+        <h3>2.a — Produit B × A</h3>
+        <p>Première ligne : 1×100 + (−2)×100 + 3×50 = 50 ; 1×150 + (−2)×150 + 3×50 = 0 ; 1×250 + (−2)×200 + 3×50 = 0.</p>
+        <p>Deuxième ligne : 0 ; 50 ; 0. Troisième ligne : 0 ; 0 ; 50 (même calcul).</p>
+        <div class="code gold matrix-code">B × A = ( 50   0   0 )
+        (  0  50   0 )  = 50 × I₃
+        (  0   0  50 )</div>
+      </div>
+      <div class="card am">
+        <h3>2.b — Démonstration</h3>
+        <p>On multiplie à gauche par B les deux membres de A × X = Y : (B × A) × X = B × Y, soit 50 × I₃ × X = B × Y, donc <b>50X = B × Y</b> et <b>X = (1/50) × B × Y</b>.</p>
+      </div>
+      <div class="card gold">
+        <h3>2.c — Ordinateurs vendus en février 2018</h3>
+        <div class="code gold matrix-code">B × Y = ( 1×13 500 − 2×12 350 + 3×4 150 )   ( 1 250 )
+          ( −2×13 500 + 3×12 350 − 2×4 150 ) = ( 1 750 )
+          ( 13 500 − 12 350 + 0 )            ( 1 150 )
+
+X = (1/50) × ( 1 250 ; 1 750 ; 1 150 ) = ( 25 ; 35 ; 23 )</div>
+        <p>En février 2018, l’entreprise a vendu <b>25 ordinateurs de type K, 35 de type L et 23 de type M</b>.</p>
+        <details class="math-details"><summary>Voir la vérification</summary>
+          <div class="code gold">A × X = ( 100×25 + 150×35 + 250×23 ; 100×25 + 150×35 + 200×23 ; 50×25 + 50×35 + 50×23 )
+      = ( 13 500 ; 12 350 ; 4 150 ) = Y ✓</div>
+        </details>
+      </div>
+    </div>
+
+    <div class="source-note">Calcul matriciel 2e année : définitions, opérations, matrices carrées de référence, matrices inversibles et exercices 1 à 9, 11, 13, 17, 18, 20, 21, 22 et 23. Les résultats numériques ont été vérifiés par recalcul. Graphes orientés : fermeture transitive dans l’onglet Graphes orientés, exercices 1 à 5 dans l’onglet Exercices graphes. Correction Contrôle : devoir n°2, sujets A et B, avec calculs vérifiés.</div>
   </main>
   <div class="footer"><a href="../index.html">← Retour au tableau de bord</a></div>
 </div>
