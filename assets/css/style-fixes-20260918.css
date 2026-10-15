@@ -307,3 +307,24 @@ pre {
     display: none !important;
   }
 }
+
+/* Bandeau d'en-tête : les boutons (Marquer révisé, Imprimer, Quiz ciblé) gardent leur largeur
+   et passent à la ligne au lieu de dépasser, sur PC comme en mobile portrait et paysage. */
+.hero {
+  flex-wrap: wrap;
+}
+
+.hero > :first-child {
+  flex: 1 1 260px;
+  min-width: 0;
+}
+
+.hero-actions {
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.hero-actions .smallbtn {
+  max-width: 100%;
+}

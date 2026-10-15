@@ -20,6 +20,8 @@ const SQL1_SAFE = Array.isArray(window.SQL_FIRST_YEAR_QUESTIONS) ? window.SQL_FI
 const SECOND_SAFE = Array.isArray(window.SECOND_YEAR_QUESTIONS) ? window.SECOND_YEAR_QUESTIONS : [];
 const SQL2_SAFE = Array.isArray(window.SQL_SECOND_YEAR_QUESTIONS) ? window.SQL_SECOND_YEAR_QUESTIONS : [];
 const MATHS2_SAFE = Array.isArray(window.MATHS_SECOND_YEAR_QUESTIONS) ? window.MATHS_SECOND_YEAR_QUESTIONS : [];
+const BOOLE_SAFE = Array.isArray(window.MATHS_BOOLE_QUESTIONS) ? window.MATHS_BOOLE_QUESTIONS : [];
+const MGMT2_SAFE = Array.isArray(window.CEJM_MANAGEMENT_2E_QUESTIONS) ? window.CEJM_MANAGEMENT_2E_QUESTIONS : [];
 
 // CEJM dispose d’une banque unique par chapitre ; éviter les anciens doublons.
 const ORIGINAL_NORMALIZED = FIRST_SAFE.filter((q) => inferModule(q.cat) !== 'cejm').map((q) => ({
@@ -48,4 +50,6 @@ window.QUIZ_DATA = [
   ...SECOND_SAFE,
   ...SQL2_SAFE,
   ...MATHS2_SAFE,
+  ...BOOLE_SAFE,
+  ...MGMT2_SAFE,
 ];

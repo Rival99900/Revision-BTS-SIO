@@ -273,6 +273,433 @@ window.SECOND_YEAR_QUESTIONS = [
   },
   {
     "year": 2,
+    "module": "cejm2",
+    "cat": "⚖️ CEJM Droit 2e",
+    "type": "mcq",
+    "q": "Une adresse email générique d’entreprise (par exemple contact@entreprise.fr) est-elle en principe une donnée personnelle ?",
+    "opts": [
+      "Oui, toujours",
+      "Non, en principe pas",
+      "Seulement si elle est chiffrée",
+      "Uniquement pour les associations"
+    ],
+    "answer": 1,
+    "exp": "Les coordonnées génériques d’une entreprise ne sont en principe pas des données personnelles, car elles ne renvoient pas à une personne physique identifiée."
+  },
+  {
+    "year": 2,
+    "module": "cejm2",
+    "cat": "⚖️ CEJM Droit 2e",
+    "type": "text",
+    "q": "Comment appelle-t-on les données relatives aux opinions politiques, à la santé ou à l’orientation sexuelle ?",
+    "answers": [
+      "données sensibles",
+      "donnees sensibles",
+      "donnée sensible"
+    ],
+    "exp": "Ces données figurent parmi les données sensibles citées par la CNIL."
+  },
+  {
+    "year": 2,
+    "module": "cejm2",
+    "cat": "⚖️ CEJM Droit 2e",
+    "type": "mcq",
+    "q": "Dans les sanctions citées dans le cours, à quel motif correspond l’amende de 325 000 000 € infligée à Google ?",
+    "opts": [
+      "Absence de mesures de sécurité pour le logiciel PCRM",
+      "Transmission des données de membres d’un programme de fidélité à un réseau social",
+      "Publicités insérées entre les courriels Gmail sans consentement et dépôt de cookies sans consentement valide",
+      "Cookies déposés sans consentement, en non-respect des règles sur les traceurs"
+    ],
+    "answer": 2,
+    "exp": "Google a été sanctionnée pour des publicités insérées entre les courriels Gmail sans consentement et pour des cookies déposés lors de la création d’un compte sans consentement valide."
+  },
+  {
+    "year": 2,
+    "module": "cejm2",
+    "cat": "⚖️ CEJM Droit 2e",
+    "type": "text",
+    "q": "Quelle loi de 1978 a créé la CNIL ?",
+    "answers": [
+      "loi informatique et libertés",
+      "informatique et libertés"
+    ],
+    "exp": "La CNIL a été créée en 1978 par la loi Informatique et Libertés."
+  },
+  {
+    "year": 2,
+    "module": "cejm2",
+    "cat": "⚖️ CEJM Droit 2e",
+    "type": "mcq",
+    "q": "Le droit à la portabilité des données permet à une personne de :",
+    "opts": [
+      "Déplacer son domicile",
+      "Supprimer toute trace sur internet",
+      "Voter en ligne",
+      "Récupérer les données fournies dans un format structuré pour les transmettre à un autre responsable"
+    ],
+    "answer": 3,
+    "exp": "Le droit à la portabilité permet de récupérer les données fournies, dans un format structuré, afin de les transmettre à un autre responsable du traitement."
+  },
+  {
+    "year": 2,
+    "module": "cejm2",
+    "cat": "⚖️ CEJM Droit 2e",
+    "type": "text",
+    "q": "À quelle date le RGPD est-il applicable ? (jour, mois, année)",
+    "answers": [
+      "25 mai 2018",
+      "25/05/2018"
+    ],
+    "exp": "Adopté le 27 avril 2016, le RGPD est applicable depuis le 25 mai 2018."
+  },
+  {
+    "year": 2,
+    "module": "cejm2",
+    "cat": "⚖️ CEJM Droit 2e",
+    "type": "mcq",
+    "q": "Lequel fait partie de l’identité numérique, telle que la définit le cours ?",
+    "opts": [
+      "Le capital social de l’entreprise",
+      "Le plan comptable",
+      "L’avatar d’un compte en ligne",
+      "Le numéro de série du serveur"
+    ],
+    "answer": 2,
+    "exp": "L’identité numérique regroupe l’ensemble des traces numériques : adresse IP, adresse email, pseudonyme, photo, avatar, contributions sur des blogs, etc."
+  },
+  {
+    "year": 2,
+    "module": "cejm2",
+    "cat": "⚖️ CEJM Droit 2e",
+    "type": "text",
+    "q": "Quel droit permet de consulter les données collectées à son sujet ?",
+    "answers": [
+      "droit d’accès",
+      "droit d'accès"
+    ],
+    "exp": "Le droit d’accès permet de consulter les données personnelles collectées au sujet de la personne."
+  },
+  {
+    "year": 2,
+    "module": "cejm2",
+    "cat": "⚖️ CEJM Droit 2e",
+    "type": "mcq",
+    "q": "Selon le cours, laquelle est une forme d’usurpation d’identité ?",
+    "opts": [
+      "Mettre à jour son système d’exploitation",
+      "Créer un faux site web ou un faux profil sur un réseau social pour obtenir des avantages à la place d’un autre",
+      "Déposer une marque auprès de l’INPI",
+      "Demander la portabilité de ses données"
+    ],
+    "answer": 1,
+    "exp": "Le cours cite l’usurpation réalisée par phishing, par la création d’un faux site web ou d’un faux profil sur un site ou un réseau social."
+  },
+  {
+    "year": 2,
+    "module": "cejm2",
+    "cat": "⚖️ CEJM Droit 2e",
+    "type": "text",
+    "q": "Quel terme anglais désigne l’hameçonnage ?",
+    "answers": [
+      "phishing"
+    ],
+    "exp": "Le phishing (hameçonnage) consiste à tromper une personne pour obtenir ses informations ou un avantage."
+  },
+  {
+    "year": 2,
+    "module": "cejm2",
+    "cat": "⚖️ CEJM Droit 2e",
+    "type": "mcq",
+    "q": "Dans le cours, le doxing est associé à une peine de :",
+    "opts": [
+      "5 ans de prison et 300 000 € d’amende",
+      "1 an de prison et 15 000 € d’amende",
+      "3 ans de prison et 300 000 € d’amende",
+      "7 ans de prison et 750 000 € d’amende"
+    ],
+    "answer": 0,
+    "exp": "Le cours indique 5 ans de prison et 300 000 € d’amende. Ce chiffre correspond notamment à la divulgation non autorisée visée par l’article 226-22, selon ses conditions."
+  },
+  {
+    "year": 2,
+    "module": "cejm2",
+    "cat": "⚖️ CEJM Droit 2e",
+    "type": "mcq",
+    "q": "Pour analyser le contrôle des salariés (caméras, géolocalisation, messagerie), quelles notions faut-il mobiliser ?",
+    "opts": [
+      "Le droit des marques et le droit de vote",
+      "Le droit sui generis uniquement",
+      "Le droit de réponse et le droit de retrait",
+      "Les données personnelles, la proportionnalité, l’information et la protection des salariés"
+    ],
+    "answer": 3,
+    "exp": "Ces questions se traitent avec les règles sur les données personnelles, la proportionnalité, l’information et la protection des salariés."
+  },
+  {
+    "year": 2,
+    "module": "cejm2",
+    "cat": "⚖️ CEJM Droit 2e",
+    "type": "text",
+    "q": "Quel moyen de contrôle de l’employeur, cité dans le cours, permet de suivre la position d’un salarié ?",
+    "answers": [
+      "géolocalisation",
+      "géolocaliser"
+    ],
+    "exp": "Le cours pose la question de la géolocalisation des salariés. Elle doit être analysée au regard des données personnelles et de la proportionnalité."
+  },
+  {
+    "year": 2,
+    "module": "cejm2",
+    "cat": "⚖️ CEJM Droit 2e",
+    "type": "mcq",
+    "q": "Une donnée d’activité sportive (distance, vitesse, calories) est-elle automatiquement sensible ?",
+    "opts": [
+      "Oui, toujours",
+      "Oui, dès qu’elle est stockée sur une montre",
+      "Non, elle peut le devenir si elle révèle, seule ou par croisement, l’état de santé",
+      "Non, jamais, car elle est publique"
+    ],
+    "answer": 2,
+    "exp": "Toute donnée sportive n’est pas automatiquement sensible. Elle peut le devenir lorsqu’elle révèle, seule ou par croisement, l’état de santé."
+  },
+  {
+    "year": 2,
+    "module": "cejm2",
+    "cat": "⚖️ CEJM Droit 2e",
+    "type": "text",
+    "q": "Quel montant en euros la CNIL a-t-elle infligé à NEXPUBLICA FRANCE le 22 décembre 2025 ?",
+    "answers": [
+      "1 700 000",
+      "1700000",
+      "1 700 000 euros"
+    ],
+    "exp": "NEXPUBLICA FRANCE a été sanctionnée à 1 700 000 € pour l’absence de mesures de sécurité suffisantes pour son logiciel PCRM."
+  },
+  {
+    "year": 2,
+    "module": "cejm2",
+    "cat": "⚖️ CEJM Droit 2e",
+    "type": "mcq",
+    "q": "Quelle règle s’applique au dépôt d’un nom de domaine ?",
+    "opts": [
+      "Le plus ancien gagne toujours",
+      "Premier arrivé, premier servi",
+      "Tirage au sort",
+      "Choix de l’administration"
+    ],
+    "answer": 1,
+    "exp": "Pour les noms de domaine, la règle est premier arrivé, premier servi."
+  },
+  {
+    "year": 2,
+    "module": "cejm2",
+    "cat": "⚖️ CEJM Droit 2e",
+    "type": "text",
+    "q": "Quel organisme gère le dépôt des noms de domaine en France ?",
+    "answers": [
+      "afnic"
+    ],
+    "exp": "Le nom de domaine se dépose auprès de l’AFNIC (Association française pour le nommage internet en coopération), pour 10 ans maximum, renouvelable."
+  },
+  {
+    "year": 2,
+    "module": "cejm2",
+    "cat": "⚖️ CEJM Droit 2e",
+    "type": "mcq",
+    "q": "Pour être protégée par le droit d’auteur, une œuvre doit :",
+    "opts": [
+      "Être enregistrée à l’INPI",
+      "Être originale, c’est-à-dire refléter la personnalité de l’auteur, et matérialisée",
+      "Être déposée auprès de l’AFNIC",
+      "Être rentable commercialement"
+    ],
+    "answer": 1,
+    "exp": "Le droit d’auteur protège les œuvres de l’esprit sous deux conditions : l’originalité (refléter la personnalité de l’auteur) et la matérialisation (perceptible par les sens). Aucun dépôt n’est nécessaire."
+  },
+  {
+    "year": 2,
+    "module": "cejm2",
+    "cat": "⚖️ CEJM Droit 2e",
+    "type": "text",
+    "q": "Comment appelle-t-on, en latin, le droit du producteur d’une base de données ?",
+    "answers": [
+      "sui generis",
+      "droit sui generis"
+    ],
+    "exp": "Le droit sui generis, ou droit du producteur de base de données, peut interdire l’extraction ou la réutilisation répétée ou substantielle du contenu."
+  },
+  {
+    "year": 2,
+    "module": "cejm2",
+    "cat": "⚖️ CEJM Droit 2e",
+    "type": "mcq",
+    "q": "Avec une licence propriétaire, que conserve le propriétaire du logiciel ?",
+    "opts": [
+      "Les droits de propriété intellectuelle",
+      "Aucun droit",
+      "Le droit de modifier le code pour tous les utilisateurs",
+      "Le droit de distribuer le logiciel gratuitement à tous"
+    ],
+    "answer": 0,
+    "exp": "Le concédant, c’est-à-dire le propriétaire, conserve les droits de propriété intellectuelle. L’utilisateur obtient seulement un droit d’accès et d’utilisation moyennant l’achat d’une licence."
+  },
+  {
+    "year": 2,
+    "module": "cejm2",
+    "cat": "⚖️ CEJM Droit 2e",
+    "type": "text",
+    "q": "Quel type de licence donne un droit d’accès et d’utilisation sans contrepartie financière, avec accès au code source ?",
+    "answers": [
+      "licence libre",
+      "licence open source",
+      "open source",
+      "logiciel libre"
+    ],
+    "exp": "Avec une licence libre (open source), l’accès et l’utilisation sont donnés sans contrepartie financière. Le code source est accessible et peut être modifié, copié et partagé."
+  },
+  {
+    "year": 2,
+    "module": "cejm2",
+    "cat": "⚖️ CEJM Droit 2e",
+    "type": "mcq",
+    "q": "Le parasitisme consiste à :",
+    "opts": [
+      "Copier une œuvre protégée par un dépôt",
+      "Déposer un nom de domaine pour le revendre",
+      "Se placer dans le sillage d’un autre pour tirer indûment profit de ses acquis sans en payer le prix",
+      "Extraire automatiquement des données d’un site"
+    ],
+    "answer": 2,
+    "exp": "Le parasitisme consiste à se placer dans le sillage d’un autre afin de tirer indûment profit de ses acquis, sans en payer le prix."
+  },
+  {
+    "year": 2,
+    "module": "cejm2",
+    "cat": "⚖️ CEJM Droit 2e",
+    "type": "text",
+    "q": "Quel terme désigne le fait de déposer des noms de domaine sans les exploiter, pour les revendre ensuite ?",
+    "answers": [
+      "cybersquattage",
+      "cybersquatting"
+    ],
+    "exp": "Le cybersquattage consiste à déposer des noms de domaine sans les exploiter, dans le but de les revendre."
+  },
+  {
+    "year": 2,
+    "module": "cejm2",
+    "cat": "⚖️ CEJM Droit 2e",
+    "type": "mcq",
+    "q": "Enregistrer un nom de domaine orthographiquement ou phonétiquement très proche de celui d’un site connu s’appelle :",
+    "opts": [
+      "Le webscraping",
+      "Le phishing",
+      "Le typosquattage",
+      "Le doxing"
+    ],
+    "answer": 2,
+    "exp": "Le typosquattage consiste à enregistrer un nom de domaine très proche d’un site connu. Le cours cite l’exemple de « microsoft »."
+  },
+  {
+    "year": 2,
+    "module": "cejm2",
+    "cat": "⚖️ CEJM Droit 2e",
+    "type": "text",
+    "q": "Quelle pratique consiste à extraire des données d’un site internet pour les réutiliser sur son propre site ?",
+    "answers": [
+      "webscraping",
+      "web scraping",
+      "scraping"
+    ],
+    "exp": "Le webscraping consiste à extraire des données de sites internet pour les réutiliser sur son propre site."
+  },
+  {
+    "year": 2,
+    "module": "cejm2",
+    "cat": "⚖️ CEJM Droit 2e",
+    "type": "mcq",
+    "q": "Dans le cours, quelle sanction pénale est indiquée pour la contrefaçon d’une personne physique ?",
+    "opts": [
+      "1 an de prison et 15 000 € d’amende",
+      "5 ans de prison et 300 000 € d’amende",
+      "7 ans de prison et 750 000 € d’amende",
+      "3 ans de prison et 300 000 € d’amende"
+    ],
+    "answer": 3,
+    "exp": "Le cours indique 3 ans de prison et 300 000 € d’amende pour une personne physique, et jusqu’à 750 000 € d’amende pour une personne morale."
+  },
+  {
+    "year": 2,
+    "module": "cejm2",
+    "cat": "⚖️ CEJM Droit 2e",
+    "type": "mcq",
+    "q": "Les droits patrimoniaux :",
+    "opts": [
+      "Peuvent être évalués en monnaie et sont cessibles",
+      "Sont incessibles et inaliénables",
+      "N’ont aucune valeur marchande",
+      "Sont attachés à la personne et perpétuels"
+    ],
+    "answer": 0,
+    "exp": "Les droits patrimoniaux peuvent être évalués en monnaie ; ils sont cessibles aux héritiers ou à des tiers, et saisissables."
+  },
+  {
+    "year": 2,
+    "module": "cejm2",
+    "cat": "⚖️ CEJM Droit 2e",
+    "type": "mcq",
+    "q": "Les droits extra-patrimoniaux sont :",
+    "opts": [
+      "Cessibles à des tiers, comme un nom de domaine",
+      "Limités à 70 ans après la mort de l’auteur",
+      "Attachés à une personne, sans valeur marchande, incessibles et inaliénables",
+      "Réservés aux logiciels"
+    ],
+    "answer": 2,
+    "exp": "Les droits extra-patrimoniaux n’ont pas de valeur marchande, car ils sont attachés à une personne. Ils sont incessibles et inaliénables."
+  },
+  {
+    "year": 2,
+    "module": "cejm2",
+    "cat": "⚖️ CEJM Droit 2e",
+    "type": "text",
+    "q": "Comment appelle-t-on les droits d’auteur attachés à la personne de l’auteur : paternité, divulgation, respect de l’œuvre, retrait ?",
+    "answers": [
+      "droits moraux",
+      "droit moral",
+      "droits d’auteur moraux"
+    ],
+    "exp": "Les droits moraux de l’auteur sont extra-patrimoniaux : ils sont perpétuels, incessibles et inaliénables."
+  },
+  {
+    "year": 2,
+    "module": "cejm2",
+    "cat": "⚖️ CEJM Droit 2e",
+    "type": "mcq",
+    "q": "Le droit de paternité, parmi les droits moraux de l’auteur, consiste à :",
+    "opts": [
+      "Vendre l’œuvre à un tiers",
+      "Faire respecter le nom de l’auteur",
+      "Déposer une marque au nom de l’œuvre",
+      "Reproduire l’œuvre sans limite"
+    ],
+    "answer": 1,
+    "exp": "Le droit de paternité impose le respect du nom de l’auteur."
+  },
+  {
+    "year": 2,
+    "module": "cejm2",
+    "cat": "⚖️ CEJM Droit 2e",
+    "type": "text",
+    "q": "Quel organisme reçoit le dépôt de la marque d’une application, en complément du dépôt du nom de domaine à l’AFNIC ?",
+    "answers": [
+      "inpi",
+      "l’inpi"
+    ],
+    "exp": "Le dépôt auprès de l’AFNIC pour le nom de domaine est doublé d’un dépôt auprès de l’INPI au nom de la marque."
+  },
+  {
+    "year": 2,
     "module": "cge2",
     "cat": "✍️ CGE 2e — Le vrai du faux",
     "type": "mcq",

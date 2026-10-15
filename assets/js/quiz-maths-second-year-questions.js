@@ -461,5 +461,299 @@ window.MATHS_SECOND_YEAR_QUESTIONS = [
   "module": "maths2",
   "cat": "🧮 Maths 2e — applications type BTS",
   "type": "text"
-}
+  },
+  {
+    year: 2,
+    module: 'maths2',
+    cat: '🧮 Maths 2e — applications type BTS',
+    type: 'mcq',
+    q: 'Dans l’exercice 20, M a pour lignes (6 ; 10 ; 18), (2 ; 2 ; 6) et (0,2 ; 2 ; 20), et A = (350 ; 120 ; 70) est la colonne du nombre de clients par offre. Quel est le premier coefficient de M × A ?',
+    opts: ['2 100', '1 360', '4 560', '3 300'],
+    answer: 2,
+    exp: '6 × 350 + 10 × 120 + 18 × 70 = 2 100 + 1 200 + 1 260 = 4 560.'
+  },
+  {
+    year: 2,
+    module: 'maths2',
+    cat: '🧮 Maths 2e — applications type BTS',
+    type: 'mcq',
+    q: 'Dans l’exercice 20, pourquoi le produit M × B n’est-il pas défini, sachant que B = (350 ; 120 ; 70) est une matrice ligne ?',
+    opts: ['Le nombre de colonnes de M (3) diffère du nombre de lignes de B (1)', 'M a 3 lignes et B a 3 colonnes', 'M n’est pas une matrice carrée', 'B possède trop de coefficients'],
+    answer: 0,
+    exp: 'Le produit U × V existe si U a autant de colonnes que V a de lignes. Ici 3 ≠ 1, alors que M × A existe car M a 3 colonnes et A a 3 lignes.'
+  },
+  {
+    year: 2,
+    module: 'maths2',
+    cat: '🧮 Maths 2e — applications type BTS',
+    type: 'text',
+    q: 'Dans l’exercice 20, P est la matrice inverse arrondie de M et C = (26 540 ; 7 780 ; 14 440). Combien de clients ont choisi l’offre n°2 ? Donnez seulement le nombre.',
+    answers: ['800', '800 clients'],
+    exp: 'La deuxième ligne de P donne 0,25 × 26 540 − 0,75 × 7 780 = 6 635 − 5 835 = 800 clients.'
+  },
+  {
+    year: 2,
+    module: 'maths2',
+    cat: '🧮 Maths 2e — applications type BTS',
+    type: 'mcq',
+    q: 'Dans l’exercice 21, on sait que M × H = 4I₃, où H est la matrice des heures par planche. Quelle est la matrice inverse de H ?',
+    opts: ['4M', '(1/4) M', 'M', '−(1/4) M'],
+    answer: 1,
+    exp: 'M × H = 4I₃ donne (1/4)M × H = I₃ : (1/4)M est donc l’inverse de H.'
+  },
+  {
+    year: 2,
+    module: 'maths2',
+    cat: '🧮 Maths 2e — applications type BTS',
+    type: 'mcq',
+    q: 'Dans l’exercice 21, le prix de revient du modèle 1 doit valoir 500 €, où a, b et c sont les nouveaux coûts horaires des postes 1, 2 et 3. Quelle équation traduit cette condition ?',
+    opts: ['6a + 6b + 10c = 500', '25a + 20b + 15c = 500', '8a + 6b + 10c = 350', '8a + 10b + 14c = 500'],
+    answer: 3,
+    exp: 'La ligne du modèle 1 de H est (8 ; 10 ; 14), donc 8a + 10b + 14c = 500.'
+  },
+  {
+    year: 2,
+    module: 'maths2',
+    cat: '🧮 Maths 2e — applications type BTS',
+    type: 'mcq',
+    q: 'Dans l’exercice 22, on fabrique 20 pièces de type A, 10 de type B et 30 de type C. Quelle masse totale de silice est utilisée ?',
+    opts: ['310 kg', '60 kg', '220 kg', '590 kg'],
+    answer: 0,
+    exp: 'S = 3 × 20 + 4 × 10 + 7 × 30 = 60 + 40 + 210 = 310 kg.'
+  },
+  {
+    year: 2,
+    module: 'maths2',
+    cat: '🧮 Maths 2e — applications type BTS',
+    type: 'text',
+    q: 'Dans l’exercice 22, l’entreprise veut fabriquer 21 pièces au total, en utilisant 94 kg de silice et 67 heures de production. Combien de pièces de type A peut-elle fabriquer ? Donnez seulement le nombre.',
+    answers: ['8', 'huit'],
+    exp: 'Le calcul X = P × Y donne (8 ; 7 ; 6) : 8 pièces de type A, 7 de type B et 6 de type C.'
+  },
+  {
+    year: 2,
+    module: 'maths2',
+    cat: '🧮 Maths 2e — matrice identité',
+    type: 'mcq',
+    q: 'Dans l’exercice 22, M = ((1, 1, 1), (3, 4, 7), (2, 3, 5)) et P = ((1, 2, −3), (1, −3, 4), (−1, 1, −1)). Que vaut le produit P × M ?',
+    opts: ['M', '3I₃', 'O₃', 'I₃'],
+    answer: 3,
+    exp: 'Le calcul donne la matrice identité I₃ : P est donc la matrice inverse de M.'
+  },
+  {
+    year: 2,
+    module: 'maths2',
+    cat: '🧮 Maths 2e — applications type BTS',
+    type: 'mcq',
+    q: 'Dans l’exercice 23, le code du client n est 5 + 3n + 4n² (x = 5, y = 3, z = 4). Quel est le code du client numéro 4 ?',
+    opts: ['77', '81', '85', '89'],
+    answer: 1,
+    exp: '5 + 3 × 4 + 4 × 4² = 5 + 12 + 64 = 81.'
+  },
+  {
+    year: 2,
+    module: 'maths2',
+    cat: '🧮 Maths 2e — puissances',
+    type: 'mcq',
+    q: 'Dans l’exercice 13, A = ((0, 1, 1), (0, 1, 0), (1, 1, 1)). Quelle est la première ligne de A² ?',
+    opts: ['0 ; 1 ; 1', '2 ; 2 ; 2', '1 ; 2 ; 1', '1 ; 1 ; 2'],
+    answer: 2,
+    exp: 'La première ligne de A² vaut (0 1 1) × A = (1 2 1).'
+  },
+  {
+    year: 2,
+    module: 'maths2',
+    cat: '🧮 Maths 2e — puissances',
+    type: 'mcq',
+    q: 'Dans l’exercice 13, avec la même matrice A, quelle relation est vérifiée ?',
+    opts: ['A³ = 2A² − I₃', 'A³ = A² + I₃', 'A³ = 2A + I₃', 'A³ = A²'],
+    answer: 0,
+    exp: 'A³ = ((1, 4, 2), (0, 1, 0), (2, 6, 3)) et 2A² − I₃ = ((1, 4, 2), (0, 1, 0), (2, 6, 3)) : les deux matrices sont égales.'
+  },
+  {
+    year: 2,
+    module: 'maths2',
+    cat: '🧮 Maths 2e — puissances',
+    type: 'text',
+    q: 'Dans l’exercice 13, en multipliant A³ = 2A² − I₃ par A⁻¹, exprimez A² + A⁻¹ en fonction de A.',
+    answers: ['2a', '2 a', '2 × a'],
+    exp: 'On obtient A² = 2A − A⁻¹, donc A² + A⁻¹ = 2A.'
+  },
+  {
+    year: 2,
+    module: 'maths2',
+    cat: '🧮 Maths 2e — puissances',
+    type: 'mcq',
+    q: 'Pour D = ((−1, 1), (1, 1)), on a D × D = 2I₂. Quelle est la matrice inverse de D ?',
+    opts: ['D⁻¹ = 2D', 'D⁻¹ = −D', 'D⁻¹ = (1/2) D', 'D⁻¹ = D²'],
+    answer: 2,
+    exp: 'D × ((1/2) D) = (1/2) D² = (1/2) × 2I₂ = I₂, donc D⁻¹ = (1/2) D.'
+  },
+  {
+    year: 2,
+    module: 'maths2',
+    cat: '🧮 Maths 2e — produit matriciel',
+    type: 'mcq',
+    q: 'On considère B ∈ M₂₃ et A ∈ M₃₂. Quelle est la dimension de B × A ?',
+    opts: ['M₃₃', 'M₂₃', 'Le produit n’existe pas', 'M₂₂'],
+    answer: 3,
+    exp: 'B a 3 colonnes et A a 3 lignes : le produit existe. Il conserve les 2 lignes de B et les 2 colonnes de A, donc il est de dimension 2 × 2.'
+  },
+  {
+    year: 2,
+    module: 'maths2',
+    cat: '🧮 Maths 2e — exemples vérifiés',
+    type: 'mcq',
+    q: 'Dans l’exemple du cours, A = ((1, 1/2), (2, 1), (3, 3/2)) et C = ((1, 2), (2, 3)). Quel est le coefficient de la deuxième ligne et de la deuxième colonne de A × C ?',
+    opts: ['4', '7', '6', '21/2'],
+    answer: 1,
+    exp: 'Ligne 2 de A : (2 ; 1). Colonne 2 de C : (2 ; 3). Donc 2 × 2 + 1 × 3 = 7.'
+  },
+  {
+    year: 2,
+    module: 'maths2',
+    cat: '🧮 Maths 2e — multiplication par un réel',
+    type: 'mcq',
+    q: 'Dans l’exercice 4, A = ((0, 1, −1), (1, −1, 0), (1, 0, −1)) et B = ((0, 1, 2), (2, 0, 1), (1, 2, 0)). Quel est le coefficient de la première ligne et de la troisième colonne de 4A − 2B ?',
+    opts: ['8', '−8', '2', '−4'],
+    answer: 1,
+    exp: '4 × (−1) − 2 × 2 = −4 − 4 = −8.'
+  },
+  {
+    year: 2,
+    module: 'maths2',
+    cat: '🧮 Maths 2e — graphes orientés',
+    type: 'mcq',
+    q: 'Dans le graphe du cours (sommets A, B, C et D), quels sont les successeurs du sommet D ?',
+    opts: ['A et B', 'C seulement', 'A et C', 'B et C'],
+    answer: 2,
+    exp: 'Les arcs partant de D sont (D, A) et (D, C) : Γ⁺(D) = {A, C}.'
+  },
+  {
+    year: 2,
+    module: 'maths2',
+    cat: '🧮 Maths 2e — graphes orientés',
+    type: 'text',
+    q: 'Dans le graphe du cours, combien de chemins de longueur 4 ont pour origine A ? Donnez seulement le nombre.',
+    answers: ['3', 'trois'],
+    exp: 'La première ligne de M⁴ vaut (0 1 2 0) : 0 + 1 + 2 + 0 = 3 chemins.'
+  },
+  {
+    year: 2,
+    module: 'maths2',
+    cat: '🧮 Maths 2e — graphes orientés',
+    type: 'mcq',
+    q: 'Dans le graphe du cours, quel est le coefficient situé à la deuxième ligne et à la troisième colonne de M² ?',
+    opts: ['0', '1', '3', '2'],
+    answer: 3,
+    exp: 'Ligne B de M × colonne C de M : 0×0 + 0×1 + 1×1 + 1×1 = 2. Il existe deux chemins de longueur 2 de B à C : B → D → C et B → C → C.'
+  },
+  {
+    year: 2,
+    module: 'maths2',
+    cat: '🧮 Maths 2e — graphes orientés',
+    type: 'mcq',
+    q: 'Dans un graphe à 4 sommets, quelle est la longueur d’un chemin hamiltonien ?',
+    opts: ['3', '4', '2', '5'],
+    answer: 0,
+    exp: 'Un chemin hamiltonien passe une fois par chacun des n sommets : sa longueur vaut n − 1 = 3.'
+  },
+  {
+    year: 2,
+    module: 'maths2',
+    cat: '🧮 Maths 2e — graphes orientés',
+    type: 'text',
+    q: 'Dans le graphe du cours, combien d’arcs faut-il ajouter pour obtenir la fermeture transitive Ĝ ? Donnez seulement le nombre.',
+    answers: ['7', 'sept'],
+    exp: 'M̂ contient 13 coefficients égaux à 1 et G en contient 6 : 13 − 6 = 7 arcs ajoutés.'
+  },
+  {
+    year: 2,
+    module: 'maths2',
+    cat: '🧮 Maths 2e — graphes orientés',
+    type: 'mcq',
+    q: 'Dans le graphe du cours, pourquoi B est-il accessible depuis D ?',
+    opts: ['Il existe l’arc D → B', 'Il existe le chemin D → A → B', 'D est un successeur de B', 'B possède une boucle'],
+    answer: 1,
+    exp: 'Le chemin D → A → B relie D à B. Il n’existe pas d’arc direct D → B.'
+  },
+  {
+    year: 2,
+    module: 'maths2',
+    cat: '🧮 Maths 2e — graphes orientés',
+    type: 'mcq',
+    q: 'Dans l’exercice 2 (jeu), combien de chemins de longueur 4 existe-t-il ?',
+    opts: ['0', '1', '3', '4'],
+    answer: 0,
+    exp: 'La matrice M⁴ est nulle : aucun chemin ne comporte 4 arcs. Le chemin le plus long est A → C → B → D, de longueur 3.'
+  },
+  {
+    year: 2,
+    module: 'maths2',
+    cat: '🧮 Maths 2e — graphes orientés',
+    type: 'mcq',
+    q: 'Dans l’exercice 2, quel est l’unique chemin hamiltonien du graphe ?',
+    opts: ['A → B → D → C', 'A → C → B → D', 'A → D → B → C', 'C → B → D → A'],
+    answer: 1,
+    exp: 'A → C → B → D passe une fois et une seule par chacun des quatre sommets : A → C, C → B et B → D sont bien des arcs.'
+  },
+  {
+    year: 2,
+    module: 'maths2',
+    cat: '🧮 Maths 2e — graphes orientés',
+    type: 'mcq',
+    q: 'Dans l’exercice 3 (maintenance réseau), combien de circuits de longueur 4 existe-t-il ?',
+    opts: ['3', '4', '9', '5'],
+    answer: 3,
+    exp: 'Ce sont les coefficients de la diagonale de M⁴ : 1 + 1 + 1 + 1 + 1 = 5.'
+  },
+  {
+    year: 2,
+    module: 'maths2',
+    cat: '🧮 Maths 2e — graphes orientés',
+    type: 'mcq',
+    q: 'Dans l’exercice 4 (site internet), quelles pages sont accessibles depuis toutes les autres pages ?',
+    opts: ['P2 et P3', 'P1 et P5', 'P4 seulement', 'Aucune page'],
+    answer: 0,
+    exp: 'Les colonnes 2 et 3 de la matrice de fermeture ne contiennent que des 1 : P2 et P3 sont accessibles depuis toutes les pages.'
+  },
+  {
+    year: 2,
+    module: 'maths2',
+    cat: '🧮 Maths 2e — graphes orientés',
+    type: 'mcq',
+    q: 'Dans l’exercice 4, combien de chemins de longueur 2 comporte le graphe au total ?',
+    opts: ['7', '9', '11', '13'],
+    answer: 3,
+    exp: 'La somme des coefficients de M² vaut 5 + 1 + 1 + 1 + 5 = 13.'
+  },
+  {
+    year: 2,
+    module: 'maths2',
+    cat: '🧮 Maths 2e — graphes orientés',
+    type: 'mcq',
+    q: 'Dans l’exercice 5 (cinq joueurs), le coefficient inconnu α, situé à la ligne B et à la colonne D de M⁴, vaut :',
+    opts: ['0', '1', '2', '3'],
+    answer: 2,
+    exp: 'Ligne B de M² × colonne D de M² : 0×0 + 1×1 + 0×0 + 1×1 + 0×0 = 2.'
+  },
+  {
+    year: 2,
+    module: 'maths2',
+    cat: '🧮 Maths 2e — graphes orientés',
+    type: 'text',
+    q: 'Dans l’exercice 5, combien d’arcs supplémentaires la fermeture transitive Ĝ possède-t-elle par rapport à G ? Donnez seulement le nombre.',
+    answers: ['9', 'neuf'],
+    exp: 'M̂ contient 16 coefficients égaux à 1 et G en contient 7 : 16 − 7 = 9 arcs ajoutés.'
+  },
+  {
+    year: 2,
+    module: 'maths2',
+    cat: '🧮 Maths 2e — graphes orientés',
+    type: 'mcq',
+    q: 'Dans l’exercice 1 (graphe à cinq sommets A, B, C, D, E), quel est l’unique chemin hamiltonien ?',
+    opts: ['A → B → C → E → D', 'A → B → D → C → E', 'A → D → B → C → E', 'D → A → E → B → C'],
+    answer: 2,
+    exp: 'A → D → B → C → E : les arcs (A, D), (D, B), (B, C) et (C, E) existent, et chaque sommet n’est visité qu’une fois.'
+  }
 ];
