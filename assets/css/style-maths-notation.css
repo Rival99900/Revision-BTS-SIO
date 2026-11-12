@@ -1,0 +1,16 @@
+/* Notation mathématique : barre de complément (ā, b̅, c̅, Ē)
+   La barre est tracée au-dessus de la lettre avec un espace, pour ne pas la toucher. */
+.ov {
+  position: relative;
+  display: inline;
+  padding-top: 0.22em;
+}
+.ov::after {
+  content: "";
+  position: absolute;
+  left: 0.04em;
+  right: 0.04em;
+  top: 0.02em;
+  height: 0;
+  border-top: 1.5px solid currentColor;
+}
