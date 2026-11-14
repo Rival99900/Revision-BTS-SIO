@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="fr">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+  <meta content="Révision Java — BTS SIO 2e année : introduction, variables, opérateurs, objets, encapsulation, exceptions" name="description"/>
+  <title>
+   ☕ Java — 2e année
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&amp;family=VT323&amp;family=Orbitron:wght@700;900&amp;display=swap" rel="stylesheet"/>
+  <link href="../assets/css/style.css?v=20260916-1" rel="stylesheet"/>
+  <link rel="icon" type="image/svg+xml" href="../assets/img/site-logo.svg" />
+  <link rel="shortcut icon" href="../assets/img/site-logo.svg" />
+ </head>
+ <body data-review-id="2-java">
+  <div class="container">
+   <div class="site-header">
+    <div class="bbar"></div>
+    <h1>
+     BTS SIO — RÉVISIONS
+    </h1>
+    <div class="sub">
+     2E ANNÉE — JAVA
+    </div>
+    <div class="tags">
+     <span class="tag tg">
+      BTS SIO
+     </span>
+     <span class="tag tp">
+      2e année
+     </span>
+     <span class="tag tte">
+      JAVA
+     </span>
+     <span class="tag tb">
+      POO
+     </span>
+    </div>
+    <div class="prompt">
+     C:\\BTS-SIO\REVISION&gt;
+     <span>
+      █
+     </span>
+    </div>
+   </div>
+   <div class="topnav">
+    <a class="navbtn" href="../index.html">
+     ⌂ Accueil
+    </a>
+    <a class="navbtn" href="../premiere/java.html">
+     ☕ Java POO 1re année
+    </a>
+    <a class="navbtn" href="https://enseignement.alexandre-mesle.com/java/java001.html" target="_blank" rel="noopener">
+     📘 Notes du cours
+    </a>
+    <a class="navbtn" href="https://moodle.alexandre-mesle.com/course/view.php?id=3" target="_blank" rel="noopener">
+     🎓 Cours Moodle Java
+    </a>
+   </div>
+   <main class="page-panel gold">
+    <div class="hero">
+     <div>
+      <div class="hero-kicker">
+       2E ANNÉE // JAVA // RÉVISION
+      </div>
+      <h2>
+       ☕ Java — de la compilation aux exceptions
+      </h2>
+      <p>
+       Introduction, variables, opérateurs, objets, encapsulation et exceptions, avec les exercices et évaluations du cours Moodle.
+      </p>
+     </div>
+     <div class="hero-actions">
+      <button class="smallbtn" id="reviewBtn" onclick="setReviewed('2-java')">
+       ○ Marquer révisé
+      </button>
+      <button class="smallbtn" onclick="printPage()">
+       🖨 Imprimer
+      </button>
+      <a class="smallbtn alt" href="https://enseignement.alexandre-mesle.com/java/java.pdf" target="_blank" rel="noopener">
+       📄 PDF complet
+      </a>
+     </div>
+    </div>
+    <div class="alert agold">
+     <strong>
+      Comment lire cette fiche :
+     </strong>
+     chaque partie résume une section du cours Java (Moodle, « Cours : Java »). Les règles et les exemples sont reformulés ; les notes complètes du cours sont accessibles par les liens « Notes complètes » de chaque partie. Les exercices et quiz ne sont accessibles qu'une fois connecté au Moodle.
+    </div>
+
+    <div class="st gold">
+     1. Introduction — premier programme
+    </div>
+    <div class="code gold">public class HelloWorld
+{
+    public static void main(String[] args)
+    {
+        System.out.println("Hello World");
+    }
+}
+
+javac HelloWorld.java   // compile : produit HelloWorld.class
+java HelloWorld         // exécute sur la machine virtuelle</div>
+    <div class="cg">
+     <div class="card gold">
+      <h3>
+       Fichiers
+      </h3>
+      <p>
+       Le source porte l'extension <code>.java</code>. Le compilateur <code>javac</code> produit un fichier <code>.class</code>. Pour l'instant : une classe par fichier, et le fichier porte le nom de sa classe.
+      </p>
+     </div>
+     <div class="card bl">
+      <h3>
+       Machine virtuelle (JVM)
+      </h3>
+      <p>
+       Le fichier <code>.class</code> contient du pseudo-code (bytecode), pas un exécutable natif. La JVM de chaque système l'interprète : le même programme tourne sur tous les OS disposant d'une JVM.
+      </p>
+     </div>
+     <div class="card am">
+      <h3>
+       Édition de liens à l'exécution
+      </h3>
+      <p>
+       Le lien entre les classes se fait pendant l'exécution. Si on modifie une seule classe, on recompile seulement ce fichier.
+      </p>
+     </div>
+    </div>
+    <p><a href="https://enseignement.alexandre-mesle.com/java/java001.html" target="_blank" rel="noopener">Notes complètes : Introduction</a> · Moodle : tutoriel Eclipse en vidéo, fichiers du cours sur GitHub, compte Codingame, diapos d'introduction.</p>
+
+    <div class="st gold">
+     2. Variables
+    </div>
+    <div class="alert aa">
+     <strong>Règle clé :</strong> une variable se déclare avant d'être utilisée, à l'intérieur du bloc <code>main</code> (ou d'une méthode).
+    </div>
+    <div class="code gold">int a, b;          // déclaration
+a = 5;             // affectation
+int v = 5;         // déclaration + initialisation
+b = a + 1;         // addition
+int q = 7 / 2;     // quotient entier : 3
+int r = 7 % 2;     // reste : 1</div>
+    <div class="st gold">
+     Saisie et affichage
+    </div>
+    <div class="code gold">import java.util.Scanner;
+
+Scanner sc = new Scanner(System.in);
+int i = sc.nextInt();        // attend une saisie puis valide par Entrée
+float f = sc.nextFloat();    // le même Scanner sert pour plusieurs saisies
+String s = sc.next();        // chaîne sans préciser de type
+sc.close();
+
+System.out.println("la valeur de i est " + i + ".");</div>
+    <div class="st gold">
+     Types numériques et caractères
+    </div>
+    <div class="table-scroll"><table class="tbl gold">
+     <tr>
+      <th>Type</th>
+      <th>Taille</th>
+      <th>Valeurs</th>
+     </tr>
+     <tr>
+      <td><code>byte</code></td>
+      <td>1 octet</td>
+      <td>−128 à 127</td>
+     </tr>
+     <tr>
+      <td><code>short</code></td>
+      <td>2 octets</td>
+      <td>−32 768 à 32 767</td>
+     </tr>
+     <tr>
+      <td><code>int</code></td>
+      <td>4 octets</td>
+      <td>−2³¹ à 2³¹ − 1</td>
+     </tr>
+     <tr>
+      <td><code>long</code></td>
+      <td>8 octets</td>
+      <td>−2⁶³ à 2⁶³ − 1</td>
+     </tr>
+     <tr>
+      <td><code>float</code></td>
+      <td>4 octets</td>
+      <td>réels (suffixe <code>f</code> : <code>3.14f</code>)</td>
+     </tr>
+     <tr>
+      <td><code>double</code></td>
+      <td>8 octets</td>
+      <td>réels, plus précis que float</td>
+     </tr>
+     <tr>
+      <td><code>char</code></td>
+      <td>2 octets</td>
+      <td>un caractère Unicode : <code>'B'</code></td>
+     </tr>
+    </table></div>
+    <div class="alert ar">
+     <strong>Piège :</strong> un entier qui dépasse sa capacité « déborde ». Avec un <code>byte</code>, <code>127 + 1</code> vaut <code>-128</code>. Les flottants ne donnent qu'une valeur approchée.
+    </div>
+    <p><a href="https://enseignement.alexandre-mesle.com/java/java002.html" target="_blank" rel="noopener">Notes complètes : Variables</a></p>
+
+    <div class="st gold">
+     3. Opérateurs
+    </div>
+    <div class="cg">
+     <div class="card gold">
+      <h3>Arité</h3>
+      <p>Unaire (<code>-x</code>, <code>~x</code>, <code>++i</code>), binaire (<code>a + b</code>), et un seul ternaire en Java (<code>? :</code>).</p>
+     </div>
+     <div class="card bl">
+      <h3>Associativité</h3>
+      <p>Les binaires sont associatifs à gauche : <code>a - b - c</code> = <code>(a - b) - c</code>. Le <code>=</code> est associatif à droite : <code>a = b = c</code> donne d'abord <code>b = c</code>, puis <code>a = b</code>.</p>
+     </div>
+    </div>
+    <div class="st gold">
+     Priorités (de la plus forte à la plus faible)
+    </div>
+    <div class="table-scroll"><table class="tbl gold">
+     <tr>
+      <th>Niveau</th>
+      <th>Opérateurs</th>
+     </tr>
+     <tr><td>1</td><td>unaires : <code>- ~ ++ --</code></td></tr>
+     <tr><td>2</td><td>produit : <code>* / %</code></td></tr>
+     <tr><td>3</td><td>somme : <code>+ -</code></td></tr>
+     <tr><td>4</td><td>décalage : <code>&lt;&lt; &gt;&gt;</code></td></tr>
+     <tr><td>5</td><td>ET binaire : <code>&amp;</code></td></tr>
+     <tr><td>6</td><td>OU exclusif : <code>^</code></td></tr>
+     <tr><td>7</td><td>OU binaire : <code>|</code></td></tr>
+     <tr><td>8</td><td>affectation : <code>=</code></td></tr>
+    </table></div>
+    <div class="st gold">
+     Opérations sur les bits
+    </div>
+    <div class="code gold">60 &amp; 15  = 12    // 0011 1100 ET 0000 1111 = 0000 1100
+60 | 15  = 63    // OU  : 0011 1111
+60 ^ 15  = 51    // OU exclusif : 0011 0011
+32 &lt;&lt; 2  = 128   // décalage à gauche : 0010 0000 -&gt; 1000 0000
+32 &gt;&gt; 3  = 4     // décalage à droite : 0010 0000 -&gt; 0000 0100</div>
+    <div class="st gold">
+     Formes contractées et ordre d'évaluation
+    </div>
+    <div class="code gold">a += b;     // équivalent à a = a + b   (idem -=, *=, /=, %=, &amp;=, |=, ^=, &lt;&lt;=, &gt;&gt;=)
+
+a = 1;
+b = (a++) + a;   // a++ vaut 1 puis a = 2 : b = 1 + 2 = 3
+a = 1;
+b = (++a) + a;   // ++a incrémente d'abord : b = 2 + 2 = 4</div>
+    <div class="alert agold">
+     <strong>Réflexe :</strong> les formes contractées (<code>++</code>, <code>--</code>) ne sont sûres que si l'ordre d'évaluation ne change pas le résultat. Dans le doute, ne les mélangez pas dans une même expression.
+    </div>
+    <div class="st gold">
+     Conversions de types
+    </div>
+    <p>Dans un calcul mixte, le type le plus « large » l'emporte : <code>double &gt; float &gt; long &gt; int &gt; short &gt; byte</code>. La conversion vers un type plus petit doit être explicite (cast) et peut faire perdre de l'information : <code>(byte) 200</code> vaut <code>-56</code>.</p>
+    <p><a href="https://enseignement.alexandre-mesle.com/java/java003.html" target="_blank" rel="noopener">Notes complètes : Opérateurs</a></p>
+
+    <div class="st gold">
+     4. Objets et classes
+    </div>
+    <div class="code gold">public class Point
+{
+    float abscisse;
+    float ordonnee;
+
+    void presenteToi()
+    {
+        System.out.println("Je suis un point (" + abscisse + ", " + ordonnee + ")");
+    }
+
+    public static void main(String[] args)
+    {
+        Point p;              // p ne contient pas encore d'objet (null)
+        p = new Point();      // instanciation : allocation d'un objet
+        p.abscisse = 1;
+        p.ordonnee = 2;
+        p.presenteToi();      // appel de méthode sur l'objet p
+    }
+}</div>
+    <div class="cg">
+     <div class="card gold">
+      <h3>Classe = type construit</h3>
+      <p>Une classe regroupe des <b>champs</b> (attributs) et des <b>méthodes</b>. Une variable de type classe est une référence vers un objet.</p>
+     </div>
+     <div class="card bl">
+      <h3>new</h3>
+      <p>Crée un objet et renvoie sa référence. Une référence non initialisée vaut <code>null</code> : le compilateur signale « might not have been initialized ».</p>
+     </div>
+     <div class="card am">
+      <h3>this et ramasse-miettes</h3>
+      <p><code>this</code> désigne l'objet courant dans une méthode. Pas de <code>free()</code> : le Garbage Collector supprime les objets qui ne sont plus référencés.</p>
+     </div>
+    </div>
+    <div class="alert aa">
+     <strong>Packages :</strong> une classe d'une bibliothèque s'utilise après un <code>import</code> en début de fichier (<code>import java.util.ArrayList;</code>).
+    </div>
+    <p><a href="https://enseignement.alexandre-mesle.com/java/java009.html" target="_blank" rel="noopener">Notes complètes : Objets</a> · Moodle : section <em>Classes</em> (cours, exemples, quiz « Modélisation d'un rationnel »)</p>
+
+    <div class="st gold">
+     5. Encapsulation
+    </div>
+    <div class="alert ar">
+     <strong>Idée centrale :</strong> on cache les détails de l'implémentation. Les champs sont <code>private</code>, et seules les méthodes <code>public</code> forment l'interface de la classe.
+    </div>
+    <div class="table-scroll"><table class="tbl gold">
+     <tr>
+      <th>Visibilité</th>
+      <th>Qui peut utiliser l'élément ?</th>
+     </tr>
+     <tr><td><code>public</code></td><td>Tout le monde.</td></tr>
+     <tr><td><code>private</code></td><td>Seulement la classe elle-même (seule l'instance propriétaire).</td></tr>
+     <tr><td><code>protected</code></td><td>La classe et ses classes dérivées.</td></tr>
+     <tr><td>(aucun mot-clé)</td><td>Visibilité par défaut : limitée au package.</td></tr>
+    </table></div>
+    <div class="st gold">
+     Accesseurs, constructeurs, surcharge
+    </div>
+    <div class="code gold">public class Compteur
+{
+    private int valeur;
+
+    // constructeur : même nom que la classe, pas de type de retour,
+    // appelé automatiquement à chaque new
+    public Compteur(int depart)
+    {
+        valeur = depart;
+    }
+
+    // constructeur surchargé (même nom, paramètres différents)
+    public Compteur()
+    {
+        this(0);
+    }
+
+    // accesseurs : getX et setX pour un attribut privé X
+    public int getValeur()        { return valeur; }
+    public void setValeur(int v)  { valeur = v; }
+}</div>
+    <div class="cg">
+     <div class="card gold">
+      <h3>Accesseurs</h3>
+      <p>Pour un attribut privé <code>X</code> : <code>getX()</code> lit, <code>setX()</code> écrit. L'utilisateur passe par les méthodes, jamais par le champ.</p>
+     </div>
+     <div class="card bl">
+      <h3>Constructeur</h3>
+      <p>Initialise l'objet dès sa création, ce qui évite d'oublier une méthode d'initialisation. Il peut recevoir des paramètres.</p>
+     </div>
+     <div class="card am">
+      <h3>Surcharge</h3>
+      <p>Plusieurs méthodes (ou constructeurs) de même nom, avec des paramètres différents. Le compilateur choisit selon les arguments.</p>
+     </div>
+    </div>
+    <div class="st gold">
+     Exemple : une file circulaire
+    </div>
+    <p>Le cours construit une file de nombres entiers dans un tableau <code>int[] entiers</code>, avec deux indices <code>first</code> (tête) et <code>firstFree</code> (première place libre), et des méthodes <code>enfile</code>, <code>defile</code>, <code>premier</code>, <code>estVide</code>, <code>estPlein</code>. Le principe à retenir : tout l'état est <code>private</code>, et la file ne s'utilise que par ses méthodes.</p>
+    <div class="st gold">
+     Collections et types paramétrés
+    </div>
+    <div class="code gold">import java.util.ArrayList;
+
+ArrayList&lt;Integer&gt; notes = new ArrayList&lt;Integer&gt;();
+notes.add(12);                 // ajoute à la fin
+int premiere = notes.get(0);   // lit l'élément d'indice 0 (pas de cast)
+System.out.println(notes.size());
+
+for (int valeur : notes)       // parcours : for (T x : collection)
+    System.out.println(valeur);</div>
+    <div class="alert agold">
+     <strong>Intérêt :</strong> <code>ArrayList&lt;Integer&gt;</code> s'agrandit seul et le type paramétré évite les casts laids (<code>(int) a.get(i)</code> sur une liste non typée).
+    </div>
+    <p><a href="https://enseignement.alexandre-mesle.com/java/java010.html" target="_blank" rel="noopener">Notes complètes : Encapsulation</a> · Moodle : section <em>Encapsulation</em> (cours, exemples, quiz « Amélioration du Rationnel » et « Clients et factures »)</p>
+
+    <div class="st gold">
+     6. Exceptions
+    </div>
+    <div class="alert ar">
+     <strong>Pourquoi :</strong> séparer le traitement des erreurs du reste du code, forcer à gérer les erreurs prévisibles, et rattraper une erreur pendant l'exécution au lieu de planter.
+    </div>
+    <div class="code gold">try
+{
+    int[] t = new int[3];
+    t[5] = 1;                       // lève ArrayIndexOutOfBoundsException
+}
+catch (ArrayIndexOutOfBoundsException e)
+{
+    System.out.println("Indice invalide");
+}
+finally
+{
+    System.out.println("Toujours exécuté");   // ex. fermer un fichier
+}</div>
+    <div class="cg">
+     <div class="card gold">
+      <h3>try / catch</h3>
+      <p>Le code à risque va dans le <code>try</code>. Si une exception est levée, le reste du <code>try</code> est interrompu et le <code>catch</code> correspondant s'exécute.</p>
+     </div>
+     <div class="card bl">
+      <h3>throws et propagation</h3>
+      <p>Une méthode qui peut lever une exception le déclare dans son en-tête (<code>throws</code>). L'appelant la traite, ou la propage à son tour. Une exception non rattrapée remonte jusqu'à la JVM.</p>
+     </div>
+     <div class="card am">
+      <h3>Définir et lever</h3>
+      <p>Une exception est une classe qui hérite de <code>Exception</code>. On la lève avec <code>throw new MonException(...)</code>.</p>
+     </div>
+    </div>
+    <div class="st gold">
+     Plusieurs catch et RuntimeException
+    </div>
+    <div class="table-scroll"><table class="tbl gold">
+     <tr>
+      <th>Cas</th>
+      <th>Obligation</th>
+     </tr>
+     <tr><td><code>RuntimeException</code> et ses sous-classes (ex. <code>ArrayIndexOutOfBoundsException</code>)</td><td>Non contrôlée : le code compile sans la traiter.</td></tr>
+     <tr><td>Exception « classique » (hérite de <code>Exception</code> sans passer par <code>RuntimeException</code>)</td><td>Contrôlée : elle doit être rattrapée ou déclarée avec <code>throws</code>.</td></tr>
+    </table></div>
+    <div class="alert agold">
+     <strong>Ordre des catch :</strong> placez les exceptions les plus précises d'abord. <code>catch (Exception e)</code> en dernier attrape tout le reste.
+    </div>
+    <p><a href="https://enseignement.alexandre-mesle.com/java/java012.html" target="_blank" rel="noopener">Notes complètes : Exceptions</a> · Moodle : section <em>Exceptions</em> (cours, exemple <code>XEstFauxException</code>, quiz « Division par zéro », « Calcul âge », « Vidéo », « Manga », « Articles »)</p>
+
+    <div class="st gold">
+     7. Exercices et quiz du Moodle
+    </div>
+    <div class="table-scroll"><table class="tbl gold">
+     <tr>
+      <th>Section Moodle</th>
+      <th>Activités (à faire dans le Moodle)</th>
+     </tr>
+     <tr><td>Introduction</td><td>Tutoriel Eclipse en vidéo, diapos, fichiers du cours sur GitHub, compte Codingame.</td></tr>
+     <tr><td>Variables</td><td>Exercice VPL « saisie du nom » ; quiz « Entraînement saisie et affichage ».</td></tr>
+     <tr><td>Opérateurs</td><td>Exercices VPL : successeur d'un nombre (1a), successeur d'un caractère (1b), valeurs Unicode (2), cartons et camions (4), encodage d'adresses IP (5a) et décodage (5b).</td></tr>
+     <tr><td>Classes</td><td>Fichiers d'exemple : classes <code>Player</code>, <code>Contact</code>, <code>Point</code> ; quiz « Modélisation d'un rationnel » ; vidéo « Toute la programmation objet en 2 heures ».</td></tr>
+     <tr><td>Encapsulation</td><td>Fichier d'exemple <code>Player</code> ; quiz « Amélioration du Rationnel » et « Clients et factures ».</td></tr>
+     <tr><td>Exceptions</td><td>Fichier d'exemple <code>XEstFauxException</code> ; quiz « Division par zéro », « Calcul âge », « Vidéo », « Manga », « Articles ».</td></tr>
+    </table></div>
+    <div class="alert aa">
+     <strong>Méthode de révision :</strong> refaites chaque exemple de cette fiche dans Eclipse sans regarder, puis comparez. Pour l'encapsulation et les exceptions, écrivez d'abord la signature des méthodes (visibilité, <code>throws</code>), avant le corps.
+    </div>
+
+    <div class="source-note">
+     <strong>Source :</strong> cours Java d'Alexandre Meslé — cours Moodle « Java » (sections Introduction, Variables, Opérateurs, Classes, Encapsulation, Exceptions) et notes complètes sur enseignement.alexandre-mesle.com/java. Fiche rédigée en résumé et en exemples originaux ; les notes complètes et les fichiers restent sur le site du cours.
+    </div>
+   </main>
+   <div class="footer">
+    <a href="../index.html">
+     ← Retour au tableau de bord
+    </a>
+   </div>
+  </div>
+  <script src="../assets/js/common.js?v=20260918-2">
+  </script>
+ </body>
+</html>

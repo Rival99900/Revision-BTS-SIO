@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="fr">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+  <meta content="Révision Cryptographie — BTS SIO 2e année : chiffrements classiques, RSA, signature, SSH, hachage, OpenSSL" name="description"/>
+  <title>
+   🔐 Cryptographie — 2e année
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&amp;family=VT323&amp;family=Orbitron:wght@700;900&amp;display=swap" rel="stylesheet"/>
+  <link href="../assets/css/style.css?v=20260916-1" rel="stylesheet"/>
+  <link rel="icon" type="image/svg+xml" href="../assets/img/site-logo.svg" />
+  <link rel="shortcut icon" href="../assets/img/site-logo.svg" />
+ </head>
+ <body data-review-id="2-crypto">
+  <div class="container">
+   <div class="site-header">
+    <div class="bbar"></div>
+    <h1>
+     BTS SIO — RÉVISIONS
+    </h1>
+    <div class="sub">
+     2E ANNÉE — CRYPTOGRAPHIE
+    </div>
+    <div class="tags">
+     <span class="tag tg">
+      BTS SIO
+     </span>
+     <span class="tag tp">
+      2e année
+     </span>
+     <span class="tag tte">
+      CRYPTO
+     </span>
+     <span class="tag tb">
+      RSA
+     </span>
+    </div>
+    <div class="prompt">
+     C:\\BTS-SIO\REVISION&gt;
+     <span>
+      █
+     </span>
+    </div>
+   </div>
+   <div class="topnav">
+    <a class="navbtn" href="../index.html">
+     ⌂ Accueil
+    </a>
+    <a class="navbtn" href="java.html">
+     ☕ Java 2e année
+    </a>
+    <a class="navbtn" href="https://moodle.alexandre-mesle.com/course/section.php?id=308" target="_blank" rel="noopener">
+     🎓 Section Moodle
+    </a>
+   </div>
+   <main class="page-panel gold">
+    <div class="hero">
+     <div>
+      <div class="hero-kicker">
+       2E ANNÉE // CRYPTOGRAPHIE // RÉVISION
+      </div>
+      <h2>
+       🔐 Cryptographie — chiffrer, signer, authentifier
+      </h2>
+      <p>
+       Vocabulaire, chiffrements classiques, RSA avec un exemple chiffré à la main, signature et SSH, hachage des mots de passe, et commandes OpenSSL.
+      </p>
+     </div>
+     <div class="hero-actions">
+      <button class="smallbtn" id="reviewBtn" onclick="setReviewed('2-crypto')">
+       ○ Marquer révisé
+      </button>
+      <button class="smallbtn" onclick="printPage()">
+       🖨 Imprimer
+      </button>
+     </div>
+    </div>
+    <div class="alert agold">
+     <strong>Comment lire cette fiche :</strong>
+     les notions viennent de la section « Cryptographie » du Moodle (cours, RSA en Python, OpenSSL, quiz et vidéo interactive). Les explications et les exemples sont reformulés et, quand c'est indiqué, ajoutés par mes soins. Les diapositives du cours restent la référence pour les formulations exactes.
+    </div>
+
+    <div class="st gold">
+     1. Objectifs et vocabulaire
+     </div>
+    <div class="cg">
+     <div class="card gold">
+      <h3>Confidentialité</h3>
+      <p>Seul le destinataire peut lire le message.</p>
+     </div>
+     <div class="card bl">
+      <h3>Authenticité</h3>
+      <p>On identifie l'expéditeur avec certitude.</p>
+     </div>
+     <div class="card am">
+      <h3>Intégrité</h3>
+      <p>Le message n'a pas été modifié en route.</p>
+     </div>
+     <div class="card gold">
+      <h3>Preuve / traçabilité</h3>
+      <p>L'expéditeur ne peut pas nier avoir envoyé le message (non-répudiation).</p>
+     </div>
+    </div>
+    <div class="table-scroll"><table class="tbl gold">
+     <tr>
+      <th>Terme</th>
+      <th>Sens</th>
+     </tr>
+     <tr><td>Chiffrement / déchiffrement</td><td>Transformer le message pour qu'il ne soit lisible que par le destinataire, puis le relire.</td></tr>
+     <tr><td>Cryptanalyse</td><td>Attaquer un protocole de chiffrement pour retrouver le message ou la clé.</td></tr>
+     <tr><td>Cryptographie</td><td>L'art de concevoir des protocoles de chiffrement.</td></tr>
+     <tr><td>Cryptologie</td><td>Cryptographie + cryptanalyse.</td></tr>
+     <tr><td>Stéganographie</td><td>Cacher l'existence même du message (bits de poids faible, etc.). Peu fiable : la sécurité ne doit pas reposer sur le secret de la cachette.</td></tr>
+    </table></div>
+    <div class="alert ar">
+     <strong>Vocabulaire :</strong> « cryptage » n'existe pas dans le vocabulaire du cours. On dit <em>chiffrement</em>.
+    </div>
+    <div class="alert agold">
+     <strong>Principe de Kerckhoffs :</strong> le message peut tomber entre les mains de l'ennemi. La sécurité ne doit donc <em>jamais</em> reposer sur le secret de l'algorithme : seule la clé doit rester secrète.
+    </div>
+
+    <div class="st gold">
+     2. Chiffrements classiques
+    </div>
+    <div class="table-scroll"><table class="tbl gold">
+     <tr>
+      <th>Méthode</th>
+      <th>Principe</th>
+      <th>Clé</th>
+      <th>Faiblesse</th>
+     </tr>
+     <tr>
+      <td><strong>Atbash</strong></td>
+      <td>Remplace chaque lettre par sa symétrique dans l'alphabet (A↔Z, B↔Y…), soit la lettre de rang 27 − n.</td>
+      <td>Aucune</td>
+      <td>L'algorithme est connu : déchiffrer se fait sans secret.</td>
+     </tr>
+     <tr>
+      <td><strong>César</strong></td>
+      <td>Décale chaque lettre de k rangs dans l'alphabet.</td>
+      <td>k (26 valeurs)</td>
+      <td>Quelques essais suffisent.</td>
+     </tr>
+     <tr>
+      <td><strong>Substitution monoalphabétique</strong></td>
+      <td>Chaque lettre est remplacée par une autre lettre, selon une permutation fixe.</td>
+      <td>Une permutation de 26 lettres</td>
+      <td>26! ≈ 4,03 × 10²⁶ clés : pas de force brute, mais l'analyse de fréquences casse le texte s'il est assez long.</td>
+     </tr>
+     <tr>
+      <td><strong>Vigenère</strong></td>
+      <td>Polyalphabétique : chaque lettre est décalée selon une lettre d'un mot-clé répété.</td>
+      <td>Un mot (26<sup>longueur</sup> clés)</td>
+      <td>Répéter la clé donne des régularités ; l'analyse statistique (adaptée par Babbage) casse le chiffre.</td>
+     </tr>
+     <tr>
+      <td><strong>Enigma</strong></td>
+      <td>Machine à rotors : la substitution change à chaque lettre. Un tour complet dure 26³ = 17 576 caractères.</td>
+      <td>Réglage des rotors, changé régulièrement</td>
+      <td>Messages standard prévisibles (« Heil Hitler ») et erreurs des opérateurs. Cassée à Bletchley Park, notamment par Alan Turing.</td>
+     </tr>
+     <tr>
+      <td><strong>Vernam (masque jetable)</strong></td>
+      <td>Clé aléatoire aussi longue que le message, utilisée une seule fois.</td>
+      <td>Aléatoire, à usage unique</td>
+      <td>Théoriquement incassable, mais pratiquement lourd : générer la clé et la transmettre en sécurité.</td>
+     </tr>
+    </table></div>
+    <div class="st gold">
+     Exemple : Vigenère (exemple original)
+    </div>
+    <div class="code gold">Message : ATTAQUE
+Clé :     CLE CLE C   (la clé est répétée)
+
+A + C = C     T + L = E     T + E = X     A + C = C
+Q + L = B     U + E = Y     E + C = G
+
+Chiffré : CEXCBYG</div>
+    <div class="st gold">
+     César en Python
+    </div>
+    <div class="code gold">def cesar(texte, decalage):
+    res = ""
+    for c in texte.upper():
+        if 'A' &lt;= c &lt;= 'Z':
+            res += chr((ord(c) - ord('A') + decalage) % 26 + ord('A'))
+        else:
+            res += c
+    return res
+
+cesar("JE CHIFFRE PAR DECALAGE", 3)   # 'MH FKLIIUH SDU GHFDODJH'</div>
+    <div class="alert ar">
+     <strong>Piège fréquent :</strong> plus la clé est courte et répétée, plus le chiffre est fragile. Pour résister à la statistique, il faut une clé longue, et idéalement jamais réutilisée (Vernam).
+    </div>
+
+    <div class="st gold">
+     3. RSA : chiffrement asymétrique
+    </div>
+    <div class="alert aa">
+     <strong>Idée :</strong> deux clés liées mathématiquement. La clé <em>publique</em> circule librement ; la clé <em>privée</em> reste chez son propriétaire. Tout le monde chiffre avec la publique, seul le propriétaire déchiffre avec la privée.
+    </div>
+    <div class="table-scroll"><table class="tbl gold">
+     <tr>
+      <th>Élément</th>
+      <th>Valeur (exemple du cours)</th>
+      <th>Rôle</th>
+     </tr>
+     <tr><td>Clé publique</td><td>(e, n) = (3, 55)</td><td>Chiffrer : c = m<sup>e</sup> mod n</td></tr>
+     <tr><td>Clé privée</td><td>(d, n) = (27, 55)</td><td>Déchiffrer : m = c<sup>d</sup> mod n</td></tr>
+    </table></div>
+    <div class="st gold">
+     Calculs de l'exemple
+    </div>
+    <div class="table-scroll"><table class="tbl gold">
+     <tr>
+      <th>Message m</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+     </tr>
+     <tr><td>Chiffré f(m) = m³ mod 55</td><td>8</td><td>27</td><td>9</td><td>15</td></tr>
+    </table></div>
+    <div class="alert agold">
+     <strong>Déchiffrer le chiffré 2 :</strong> f<sup>−1</sup>(2) = 2<sup>27</sup> mod 55 = <strong>18</strong>.
+     Vérification : 18³ = 5 832, et 5 832 mod 55 = 2.
+    </div>
+    <div class="st gold">
+     Génération des clés (étapes)
+    </div>
+    <div class="table-scroll"><table class="tbl gold">
+     <tr>
+      <th>Étape</th>
+      <th>Calcul</th>
+     </tr>
+     <tr><td>1. Deux nombres premiers secrets</td><td>p = 5, q = 11</td></tr>
+     <tr><td>2. Module</td><td>n = p × q = 5 × 11 = 55 (publié)</td></tr>
+     <tr><td>3. Indicatrice d'Euler</td><td>φ(n) = (p − 1) × (q − 1) = 4 × 10 = 40 (secret)</td></tr>
+     <tr><td>4. Exposant public</td><td>e = 3 (publié), avec pgcd(e, φ) = 1</td></tr>
+     <tr><td>5. Exposant privé</td><td>d tel que e × d mod φ = 1 : 3 × 27 = 81 = 2 × 40 + 1, donc d = 27</td></tr>
+    </table></div>
+    <div class="code gold"># Démonstration en Python (la recherche de d est une force brute)
+p, q = 5, 11
+n = p * q                  # 55
+phi = (p - 1) * (q - 1)    # 40
+e = 3                      # clé publique
+d = next(x for x in range(1, phi) if (e * x) % phi == 1)   # 27
+
+chiffre   = lambda m: pow(m, e, n)
+dechiffre = lambda c: pow(c, d, n)
+
+print(d, chiffre(2), dechiffre(chiffre(2)))   # 27 8 2</div>
+    <div class="alert ar">
+     <strong>Sécurité :</strong> si on connaît φ = 40, on retrouve d en quelques calculs. Si on factorise n = 55 en 5 × 11, on retrouve φ, donc d. C'est pour cela que p, q et φ restent secrets.
+    </div>
+    <div class="st gold">
+     Factorisation (exercices du cours)
+    </div>
+    <div class="table-scroll"><table class="tbl gold">
+     <tr>
+      <th>Nombre</th>
+      <th>Factorisation</th>
+     </tr>
+     <tr><td>15</td><td>3 × 5</td></tr>
+     <tr><td>77</td><td>7 × 11</td></tr>
+     <tr><td>91</td><td>7 × 13</td></tr>
+     <tr><td>221</td><td>13 × 17</td></tr>
+    </table></div>
+    <div class="alert agold">
+     <strong>Nuance :</strong> le diaporama dit que la factorisation est « presque NP-complète ». C'est imprécis : aucun algorithme efficace n'est connu sur un ordinateur classique, mais on ne sait pas si le problème est NP-complet. Le diaporama évoque aussi l'ordinateur quantique : l'algorithme de Shor factoriserait efficacement, d'où la menace quantique pour RSA.
+    </div>
+    <div class="alert aa">
+     <strong>RSA en pratique :</strong> il est gourmand en calculs (clés de 2048 à 4096 bits). Pour cette raison, on combine souvent les deux : le chiffrement symétrique pour le contenu, et l'asymétrique pour échanger la clé. C'est le principe de SSH et de HTTPS.
+    </div>
+
+    <div class="st gold">
+     4. Signature, authentification et SSH
+    </div>
+    <div class="table-scroll"><table class="tbl gold">
+     <tr>
+      <th>Usage</th>
+      <th>Clé utilisée</th>
+      <th>Ce que ça prouve</th>
+     </tr>
+     <tr><td>Signature</td><td>Clé privée (on signe)</td><td>Le message vient bien de son auteur et n'a pas été modifié.</td></tr>
+     <tr><td>Authentification (vérification)</td><td>Clé publique (on vérifie)</td><td>Celui qui a signé possède la clé privée correspondante.</td></tr>
+    </table></div>
+    <div class="st gold">
+     Commandes OpenSSL (page du Moodle)
+    </div>
+    <div class="code gold"># Création de la paire de clés
+openssl genrsa -out key.priv 4096
+openssl rsa -in key.priv -pubout &gt; key.pub
+
+# Chiffrement / déchiffrement
+openssl pkeyutl -encrypt -pubin -inkey key.pub -in fichierclair -out fichierchiffre
+openssl pkeyutl -decrypt -inkey key.priv -in fichierchiffre -out fichierdechiffre
+
+# Signature / vérification
+openssl dgst -sign key.priv -keyform PEM -sha256 -out signature -binary fichier
+openssl dgst -verify key.pub -keyform PEM -sha256 -signature signature -binary fichier</div>
+    <div class="alert ar">
+     <strong>Première connexion SSH :</strong> l'attaquant peut remplacer la clé publique du serveur par la sienne (man-in-the-middle). Il faut comparer l'empreinte (fingerprint) de la clé avec celle attendue. Le diaporama fait le même rapprochement avec WhatsApp.
+    </div>
+
+    <div class="st gold">
+     5. Hachage et mots de passe
+    </div>
+    <div class="alert aa">
+     <strong>Principe :</strong> une fonction de hachage f transforme une donnée en empreinte y = f(x). On ne peut pas la « déchiffrer » : elle sert à comparer.
+    </div>
+    <div class="cg">
+     <div class="card gold">
+      <h3>Stockage</h3>
+      <p>Le système (<code>/etc/shadow</code> sous Linux) ne garde que l'empreinte y, jamais le mot de passe en clair.</p>
+     </div>
+     <div class="card bl">
+      <h3>Connexion</h3>
+      <p>L'utilisateur saisit x. Le système calcule f(x). Si f(x) = y, connexion acceptée ; sinon, rejetée.</p>
+     </div>
+     <div class="card am">
+      <h3>Limite</h3>
+      <p>Un mot de passe courant se retrouve par attaque de dictionnaire (ex. liste rockyou), en hachant chaque candidat. Le hachage ne protège pas à 100 %.</p>
+     </div>
+    </div>
+    <div class="alert agold">
+     <strong>Ajout hors diaporama :</strong> pour ralentir ces attaques, on ajoute un <em>sel</em> aléatoire à chaque mot de passe avant de le hacher.
+    </div>
+
+    <div class="st gold">
+     6. Ressources du Moodle (section Cryptographie)
+    </div>
+    <div class="table-scroll"><table class="tbl gold">
+     <tr>
+      <th>Sous-section</th>
+      <th>Activité</th>
+     </tr>
+     <tr><td>Cours</td><td>« La Cryptographie » (diaporama) ; page « RSA en Python ».</td></tr>
+     <tr><td>Quizz</td><td>Quiz « Quizz Cryptographie ».</td></tr>
+     <tr><td>Exercices</td><td>Vidéo interactive H5P « Asymétrique ».</td></tr>
+     <tr><td>OpenSSL</td><td>Page « Openssl mode d'emploi » (les commandes ci-dessus) ; forum « Asymétrique - OpenSSL ».</td></tr>
+    </table></div>
+    <div class="alert ar">
+     <strong>Erreur à signaler dans le diaporama :</strong> il écrit 26<sup>10</sup> = 95 428 956 661 682 176. C'est en fait 26<sup>12</sup>. La bonne valeur est <strong>26<sup>10</sup> = 141 167 095 653 376</strong>.
+    </div>
+    <p><strong>Pour aller plus loin :</strong> <a href="https://www-sop.inria.fr/members/Frederic.Havet/FeteScience/crypto.pdf" target="_blank" rel="noopener">document de l'INRIA sur la cryptographie</a> · <a href="https://pagefault.blog/2019/04/22/how-to-sign-and-verify-using-openssl/" target="_blank" rel="noopener">article sur la signature avec OpenSSL</a></p>
+
+    <div class="source-note">
+     <strong>Source :</strong> cours « Cryptographie » du Moodle d'Alexandre Meslé (diaporama, RSA en Python, OpenSSL, quiz et vidéo interactive). Fiche rédigée en résumé ; l'exemple de Vigenère et le code César sont originaux. Le diaporama reste la référence du cours.
+    </div>
+   </main>
+   <div class="footer">
+    <a href="../index.html">
+     ← Retour au tableau de bord
+    </a>
+   </div>
+  </div>
+  <script src="../assets/js/common.js?v=20260918-2">
+  </script>
+ </body>
+</html>
