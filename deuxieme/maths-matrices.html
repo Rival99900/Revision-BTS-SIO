@@ -9,6 +9,7 @@
   <link href="../assets/css/style.css?v=20261001-graphes" rel="stylesheet"/>
   <link href="../assets/css/style-graphes.css?v=20261010-1" rel="stylesheet"/>
   <link href="../assets/css/style-maths-notation.css?v=20261112-1" rel="stylesheet"/>
+  <link href="../assets/css/style-maths-nav.css?v=20261117-1" rel="stylesheet"/>
   <link href="../assets/img/site-logo.svg" rel="icon" type="image/svg+xml"/>
   <link href="../assets/img/site-logo.svg" rel="shortcut icon"/>
 </head>
@@ -50,7 +51,7 @@
     </div>
 
 
-    <div class="stabs">
+    <div class="stabs stabs-scroll">
       <button class="sb a" onclick="showSub('mat2','definition',this)">Définitions</button>
       <button class="sb" onclick="showSub('mat2','operations',this)">Opérations</button>
       <button class="sb" onclick="showSub('mat2','square',this)">Matrices carrées</button>
@@ -58,11 +59,13 @@
       <button class="sb" data-mat-exercises="1" onclick="showSub('mat2','exercises',this)">Exercices matrices</button>
       <button class="sb" data-graph-exercises="1" onclick="showSub('mat2','graph-exercises',this)">Exercices graphes</button>
       <button class="sb" data-control-exercises="1" onclick="showSub('mat2','controle',this)">Correction Contrôle</button>
+      <button class="sb" onclick="showSub('mat2','dst',this)">Correction DST</button>
       <button class="sb" onclick="showSub('mat2','boole',this)">Algèbre de Boole</button>
       <button class="sb" onclick="showSub('mat2','karnaugh',this)">Karnaugh</button>
       <button class="sb" onclick="showSub('mat2','kexo',this)">Exercices Karnaugh</button>
+      <button class="sb" onclick="showSub('mat2','arith',this)">Arithmétique</button>
     </div>
-    <div class="section-stepper" data-prefix="mat2" data-sections="definition,operations,square,graphes,exercises,exo14,exo58,exo9,exo11,exo13,exo17,exo18,exo20,exo21,exo22,exo23,graph-exercises,exo-g1,exo-g2,exo-g3,exo-g4,exo-g5,controle,ctrl-a,ctrl-b,boole,karnaugh,kexo" data-parent-section="exercises">
+    <div class="section-stepper" data-prefix="mat2" data-sections="definition,operations,square,graphes,exercises,exo14,exo58,exo9,exo11,exo13,exo17,exo18,exo20,exo21,exo22,exo23,graph-exercises,exo-g1,exo-g2,exo-g3,exo-g4,exo-g5,controle,ctrl-a,ctrl-b,dst,boole,karnaugh,kexo,arith" data-parent-section="exercises">
       <button class="smallbtn step-prev" onclick="stepSection(this,-1)" type="button">← Précédent</button>
       <span aria-live="polite" class="step-status">1 / 28</span>
       <button class="smallbtn alt step-next" onclick="stepSection(this,1)" type="button">Suivant →</button>
@@ -1956,6 +1959,196 @@ X = (1/50) × ( 1 250 ; 1 750 ; 1 150 ) = ( 25 ; 35 ; 23 )</div>
       </div>
     </div>
 
+    <div class="sc" id="mat2-dst">
+      <div class="st gold">DST n°1 — Matrices et graphes (jeudi 15 octobre 2026, 1 h, calculatrice autorisée)</div>
+      <div class="alert agold"><b>Barème :</b> exercice 1 sur 9 points, exercice 2 sur 6 points, exercice 3 sur 5 points. Les points se gagnent sur les résultats, mais surtout sur les justifications : écrivez chaque calcul.</div>
+
+      <div class="st gold">Exercice 1 — graphe des liens d’un site (9 points)</div>
+      <div class="card gold">
+        <h3>Énoncé (résumé)</h3>
+        <p>Un site comporte 5 pages P1 (page d’accueil), P2, P3, P4 et P5. Le graphe orienté H modélise les liens hypertextes : il existe un arc Pi → Pj lorsque la page Pi contient un lien vers Pj. Sa matrice d’adjacence N, les sommets rangés P1 à P5, est donnée, ainsi que N² et N³. À la calculatrice, la somme N + N² + N³ + N⁴ + N⁵ a pour coefficient (1 ; 4) égal à 6.</p>
+        <p>Questions : 1. représentation géométrique de H. 2. a. nombre de chemins de longueur 2 ; b. chemins de longueur 3 de P1 à P4. 3. a. interpréter le 6 ; b. matrice Nb de la fermeture transitive ; c. nombre d’arcs supplémentaires ; d. commenter l’affirmation du développeur. 4. circuit et chemin hamiltonien.</p>
+      </div>
+      <div class="card bl">
+        <h3>1 — Représentation géométrique</h3>
+        <p>Méthode : on lit la matrice ligne par ligne ; un 1 en ligne i, colonne j, donne un arc Pi → Pj.</p>
+        <p><b>Les 7 arcs :</b> P1 → P2, P1 → P3, P2 → P4, P3 → P2, P3 → P5, P4 → P5, P5 → P4.</p>
+        <svg viewBox="0 0 400 240" role="img" aria-label="Graphe H : cinq sommets P1 à P5 et sept arcs" style="display:block;width:100%;max-width:420px;height:auto;margin:12px auto">
+          <defs>
+            <marker id="fleche-dst" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+              <path d="M0,0 L10,5 L0,10 z" style="fill:var(--gold)"/>
+            </marker>
+          </defs>
+          <g style="stroke:var(--gold);stroke-width:1.6;fill:none">
+            <line x1="55.6" y1="111.1" x2="164.4" y2="48.9" marker-end="url(#fleche-dst)"/>
+            <line x1="55.6" y1="128.9" x2="164.4" y2="191.1" marker-end="url(#fleche-dst)"/>
+            <line x1="198" y1="40" x2="302" y2="40" marker-end="url(#fleche-dst)"/>
+            <line x1="180" y1="182" x2="180" y2="58" marker-end="url(#fleche-dst)"/>
+            <line x1="198" y1="200" x2="302" y2="200" marker-end="url(#fleche-dst)"/>
+            <line x1="305" y1="50" x2="305" y2="190" marker-end="url(#fleche-dst)"/>
+            <line x1="335" y1="190" x2="335" y2="50" marker-end="url(#fleche-dst)"/>
+          </g>
+          <g style="stroke:var(--gold);stroke-width:1.6;fill:rgba(255,215,0,.08)">
+            <circle cx="40" cy="120" r="18"/>
+            <circle cx="180" cy="40" r="18"/>
+            <circle cx="180" cy="200" r="18"/>
+            <circle cx="320" cy="40" r="18"/>
+            <circle cx="320" cy="200" r="18"/>
+          </g>
+          <g style="fill:var(--gold);font:600 13px monospace" text-anchor="middle" dominant-baseline="central">
+            <text x="40" y="120">P1</text>
+            <text x="180" y="40">P2</text>
+            <text x="180" y="200">P3</text>
+            <text x="320" y="40">P4</text>
+            <text x="320" y="200">P5</text>
+          </g>
+        </svg>
+        <p>Les deux arcs entre P4 et P5 forment un aller-retour : c’est un circuit.</p>
+      </div>
+      <div class="card bl">
+        <h3>2.a — Chemins de longueur 2</h3>
+        <p>Le coefficient (i ; j) de N² est le nombre de chemins de longueur 2 de Pi à Pj. Le total est la somme des coefficients de N² : 3 + 1 + 2 + 1 + 1 = <b>8</b>.</p>
+        <p>Les 8 chemins : P1 → P3 → P2 ; P1 → P2 → P4 ; P1 → P3 → P5 ; P2 → P4 → P5 ; P3 → P2 → P4 ; P3 → P5 → P4 ; P4 → P5 → P4 ; P5 → P4 → P5.</p>
+      </div>
+      <div class="card bl">
+        <h3>2.b — Chemins de longueur 3 de P1 à P4</h3>
+        <p>Le coefficient (1 ; 4) de N³ vaut <b>2</b> : P1 → P3 → P2 → P4 et P1 → P3 → P5 → P4.</p>
+      </div>
+      <div class="card bl">
+        <h3>3.a — Interprétation du 6</h3>
+        <p>Le 6 est en ligne 1, colonne 4 : il existe <b>6 chemins de longueur comprise entre 1 et 5</b> de P1 à P4.</p>
+        <p>Détail : 0 de longueur 1 ; 1 de longueur 2 (P1 → P2 → P4) ; 2 de longueur 3 ; 1 de longueur 4 (P1 → P2 → P4 → P5 → P4) ; 2 de longueur 5.</p>
+      </div>
+      <div class="card bl">
+        <h3>3.b — Matrice Nb de la fermeture transitive</h3>
+        <p>Méthode : on remplace chaque coefficient non nul de N + N² + N³ + N⁴ + N⁵ par 1.</p>
+        <div class="code gold matrix-code">Nb = ( 0 1 1 1 1 )
+     ( 0 0 0 1 1 )
+     ( 0 1 0 1 1 )
+     ( 0 0 0 1 1 )
+     ( 0 0 0 1 1 )</div>
+      </div>
+      <div class="card bl">
+        <h3>3.c — Arcs supplémentaires</h3>
+        <p>Nb contient 4 + 2 + 3 + 2 + 2 = 13 coefficients égaux à 1 : la fermeture possède 13 arcs, contre 7 pour H. Il y a donc <b>13 − 7 = 6 arcs supplémentaires</b> : P1 → P4, P1 → P5, P2 → P5, P3 → P4, P4 → P4 et P5 → P5.</p>
+      </div>
+      <div class="card bl">
+        <h3>3.d — L’affirmation du développeur</h3>
+        <p>La première ligne de Nb vaut (0 1 1 1 1) : il existe un chemin de P1 vers P2, P3, P4 et P5. <b>L’affirmation est vraie</b> : depuis l’accueil, on atteint toutes les autres pages.</p>
+      </div>
+      <div class="card bl">
+        <h3>4 — Circuit et chemin hamiltonien</h3>
+        <p><b>Circuit :</b> P4 → P5 → P4 est un circuit de longueur 2. Il apparaît dans Nb par les 1 en positions (4 ; 4) et (5 ; 5).</p>
+        <p><b>Chemin hamiltonien :</b> P1 → P3 → P2 → P4 → P5 passe une fois et une seule par chacun des 5 sommets : il existe un chemin hamiltonien.</p>
+      </div>
+      <div class="card am">
+        <h3>Pièges de l’exercice 1</h3>
+        <ul>
+          <li>Le coefficient (i ; j) de Nᵏ compte des <b>chemins de longueur k</b>, pas des arcs.</li>
+          <li>Pour la fermeture transitive, un coefficient non nul devient 1 : on ne recopie pas les nombres de chemins.</li>
+          <li>Un circuit se repère sur la diagonale de Nb (boucle sur un sommet, comme P4 → P4).</li>
+        </ul>
+      </div>
+
+      <div class="st gold">Exercice 2 — commande de matériel (6 points)</div>
+      <div class="card gold">
+        <h3>Énoncé (résumé)</h3>
+        <p>Une souris coûte 20 €, un clavier 30 € et une webcam 40 €. Le fournisseur donne 1 point de fidélité par souris, 2 par clavier et 4 par webcam. Une commande de x souris, y claviers et z webcams compte 20 articles, coûte 540 € et rapporte 38 points. En divisant les prix par 10, on obtient le système :</p>
+        <div class="code gold">x + y + z = 20
+2x + 3y + 4z = 54
+x + 2y + 4z = 38</div>
+        <p>Questions : 1. écrire le système sous la forme M × X = C. 2. a. dimension de P × M ; b. calculer P × M et en déduire M⁻¹ ; c. démontrer que X = P × C. 3. composition de la commande. 4. une seconde commande : 64 points, 860 € et 30 articles. Déterminer sa composition. On donne P = ( 4 −2 1 ; −4 3 −2 ; 1 −1 1 ).</p>
+      </div>
+      <div class="card bl">
+        <h3>1 — Écriture matricielle</h3>
+        <div class="code gold matrix-code">M = | 1 1 1 |     X = | x |     C = | 20 |
+    | 2 3 4 |         | y |         | 54 |
+    | 1 2 4 |         | z |         | 38 |</div>
+        <p>Le système s’écrit <b>M × X = C</b>.</p>
+      </div>
+      <div class="card bl">
+        <h3>2.a — Dimension de P × M</h3>
+        <p>P a 3 colonnes et M a 3 lignes : le produit P × M existe. P est de dimension 3 × 3 et M aussi, donc <b>P × M est de dimension 3 × 3</b>.</p>
+      </div>
+      <div class="card am">
+        <h3>2.b — Calcul de P × M</h3>
+        <p>Première ligne de P × M (les colonnes de M sont (1 ; 2 ; 1), (1 ; 3 ; 2) et (1 ; 4 ; 4)) :</p>
+        <div class="code gold">4×1 + (−2)×2 + 1×1 = 4 − 4 + 1 = 1
+4×1 + (−2)×3 + 1×2 = 4 − 6 + 2 = 0
+4×1 + (−2)×4 + 1×4 = 4 − 8 + 4 = 0</div>
+        <p>Les lignes 2 et 3 se calculent de la même façon : on obtient</p>
+        <div class="code gold matrix-code">P × M = ( 1 0 0 )
+      ( 0 1 0 )  = I₃
+      ( 0 0 1 )</div>
+        <p>Donc M est inversible et <b>M⁻¹ = P</b>.</p>
+      </div>
+      <div class="card am">
+        <h3>2.c — Démonstration de X = P × C</h3>
+        <p>Si M × X = C, on multiplie à gauche par P : P × (M × X) = P × C, soit (P × M) × X = P × C, soit I₃ × X = P × C, donc <b>X = P × C</b>.</p>
+        <p><b>Piège :</b> le produit matriciel n’est pas commutatif. On multiplie à gauche des deux côtés, jamais à droite.</p>
+      </div>
+      <div class="card bl">
+        <h3>3 — Composition de la commande</h3>
+        <div class="code gold">ligne 1 : 4×20 − 2×54 + 1×38 = 80 − 108 + 38 = 10
+ligne 2 : −4×20 + 3×54 − 2×38 = −80 + 162 − 76 = 6
+ligne 3 : 1×20 − 1×54 + 1×38 = 20 − 54 + 38 = 4</div>
+        <p>La commande comporte <b>10 souris, 6 claviers et 4 webcams</b>.</p>
+        <details class="math-details"><summary>Voir la vérification</summary>
+          <div class="code gold">10 + 6 + 4 = 20 articles
+20×10 + 30×6 + 40×4 = 200 + 180 + 160 = 540 €
+10 + 2×6 + 4×4 = 10 + 12 + 16 = 38 points ✓</div>
+        </details>
+      </div>
+      <div class="card bl">
+        <h3>4 — Seconde commande</h3>
+        <p>Seul le second membre change. Ordre des équations : articles, prix (÷ 10), points. Donc C′ = (30 ; 86 ; 64).</p>
+        <div class="code gold">ligne 1 : 4×30 − 2×86 + 1×64 = 120 − 172 + 64 = 12
+ligne 2 : −4×30 + 3×86 − 2×64 = −120 + 258 − 128 = 10
+ligne 3 : 1×30 − 1×86 + 1×64 = 30 − 86 + 64 = 8</div>
+        <p>La seconde commande comporte <b>12 souris, 10 claviers et 8 webcams</b>.</p>
+        <details class="math-details"><summary>Voir la vérification</summary>
+          <div class="code gold">12 + 10 + 8 = 30 articles
+240 + 300 + 320 = 860 €
+12 + 2×10 + 4×8 = 12 + 20 + 32 = 64 points ✓</div>
+        </details>
+      </div>
+
+      <div class="st gold">Exercice 3 — inverse d’une matrice (5 points)</div>
+      <div class="card gold">
+        <h3>Énoncé (résumé)</h3>
+        <p>On note I₃ la matrice identité d’ordre 3 et A = ( 0 1 1 ; 1 0 1 ; 1 1 0 ).</p>
+        <p>a. Montrer que A × (A − I₃) = 2I₃, en détaillant les calculs de la première ligne. b. En déduire que A est inversible et expliciter A⁻¹.</p>
+      </div>
+      <div class="card bl">
+        <h3>a — Produit A × (A − I₃)</h3>
+        <div class="code gold matrix-code">A − I₃ = ( −1  1  1 )
+         (  1 −1  1 )
+         (  1  1 −1 )</div>
+        <p>Première ligne de A × (A − I₃) :</p>
+        <div class="code gold">0×(−1) + 1×1 + 1×1 = 2
+0×1 + 1×(−1) + 1×1 = 0
+0×1 + 1×1 + 1×(−1) = 0</div>
+        <p>Les lignes 2 et 3 donnent de même (0 2 0) et (0 0 2) : <b>A × (A − I₃) = 2I₃</b>.</p>
+      </div>
+      <div class="card bl">
+        <h3>b — Inversibilité et A⁻¹</h3>
+        <p>On pose B = ½ (A − I₃). D’après la question a, A × B = I₃ : la matrice A est donc inversible et <b>A⁻¹ = ½ (A − I₃)</b>.</p>
+        <div class="code gold matrix-code">A⁻¹ = ( −1/2  1/2  1/2 )
+     (  1/2 −1/2  1/2 )
+     (  1/2  1/2 −1/2 )</div>
+        <p>Vérification possible à la calculatrice : A × A⁻¹ = I₃.</p>
+      </div>
+      <div class="card am">
+        <h3>Erreurs fréquentes au DST</h3>
+        <ul>
+          <li>Oublier que les coefficients de Nᵏ comptent des chemins de longueur k.</li>
+          <li>Inverser l’ordre d’un produit matriciel, ou multiplier à droite au lieu de multiplier à gauche.</li>
+          <li>Ne pas mettre les prix dans la même unité avant de résoudre le système (ici ÷ 10).</li>
+          <li>Donner une matrice sans indiquer sa dimension, ou sans justifier qu’un produit existe.</li>
+        </ul>
+      </div>
+    </div>
+
     <div class="sc" id="mat2-boole">
       <div class="st gold">Algèbre de Boole — définition et propriétés</div>
       <div class="card gold">
@@ -2426,9 +2619,201 @@ On retrouve E = a · <span class="ov">c</span> + b.</div>
   = ā · <span class="ov">b</span> + <span class="ov">b</span> · c                    (distributivité)</div>
     </details>
   </div>
+
+  <div class="st gold">Exercice 6 — Nouvelle-Calédonie décembre 2019</div>
+  <div class="card gold">
+    <h3>Énoncé — modération des commentaires</h3>
+    <p>Afin de limiter l’espace de stockage, un commentaire n’est conservé que s’il répond à au moins un des critères suivants :</p>
+    <ul>
+      <li>il a strictement moins de 100 vues et il est daté de strictement moins de 6 mois ;</li>
+      <li>ou il a été écrit par un anonyme et il a 100 vues ou plus ;</li>
+      <li>ou il est daté de 6 mois ou plus et il a 100 vues ou plus ;</li>
+      <li>ou il est daté de strictement moins de 6 mois et il n’a pas été écrit par un anonyme.</li>
+    </ul>
+    <p>On définit les variables booléennes suivantes :</p>
+    <ul>
+      <li>a = 1 si le commentaire est daté de strictement moins de 6 mois, a = 0 sinon ;</li>
+      <li>b = 1 si le commentaire a 100 vues ou plus, b = 0 sinon ;</li>
+      <li>c = 1 si l’auteur du commentaire est anonyme, c = 0 sinon.</li>
+    </ul>
+    <p>On admet que l’expression booléenne traduisant la conservation d’un commentaire est E = a · <span class="ov">b</span> + b · c + <span class="ov">a</span> · b + a · <span class="ov">c</span>.</p>
+    <p><b>1.</b> À quel critère correspond l’expression b · c ?</p>
+    <p><b>2.</b> Donner le tableau de Karnaugh associé à E, en plaçant chacun des termes.</p>
+    <p><b>3.</b> À l’aide d’un second tableau de Karnaugh, simplifier E sous la forme d’une somme de deux termes, puis interpréter.</p>
+    <p><b>4.</b> Retrouver cette simplification par un calcul booléen.</p>
+    <p><b>5.</b> Un commentaire est daté de 6 mois ou plus et son auteur est anonyme. Est-il toujours conservé ?</p>
+    <p><b>6.</b> Donner une expression simple de Ē. À quelle condition un commentaire est-il supprimé ?</p>
+  </div>
+  <div class="alert agold"><b>Attention :</b> dans l’énoncé source, la définition de b est écrite « strictement moins de 100 vues ». Elle ne colle pas avec le critère 2 (b · c = « anonyme et 100 vues ou plus », réponse à la question 1) : la convention b = 1 pour 100 vues ou plus est donc retenue ici.</div>
+
+  <div class="card gold">
+    <h3>Correction</h3>
+    <details class="math-details"><summary>Question 1 — critère associé à b · c</summary>
+      <p>b · c correspond au deuxième critère : « écrit par un anonyme (c = 1) et 100 vues ou plus (b = 1) ».</p>
+    </details>
+    <details class="math-details"><summary>Question 2 — tableau de Karnaugh de E</summary>
+      <p>Chaque terme se place là où il vaut 1 : a · <span class="ov">b</span> en a = 1, b = 0 (cases 00 et 01) ; <span class="ov">a</span> · b en a = 0, b = 1 (cases 11 et 10) ; b · c en b = 1, c = 1 (case 11, sur les deux lignes) ; a · <span class="ov">c</span> en a = 1, c = 0 (cases 00 et 10).</p>
+      <div class="table-scroll"><table class="tbl"><thead><tr><th scope="col">a \ bc</th><th scope="col">00</th><th scope="col">01</th><th scope="col">11</th><th scope="col">10</th></tr></thead><tbody><tr><th scope="row">0</th><td></td><td></td><td><span class="hl">1</span></td><td><span class="hl">1</span></td></tr><tr><th scope="row">1</th><td><span class="hl">1</span></td><td><span class="hl">1</span></td><td><span class="hl">1</span></td><td><span class="hl">1</span></td></tr></tbody></table></div>
+    </details>
+    <details class="math-details"><summary>Question 3 — simplification et interprétation</summary>
+      <div class="table-scroll"><table class="tbl"><thead><tr><th scope="col">a \ bc</th><th scope="col">00</th><th scope="col">01</th><th scope="col">11</th><th scope="col">10</th></tr></thead><tbody><tr><th scope="row">0</th><td></td><td></td><td><span class="hl">1</span></td><td><span class="hl">1</span></td></tr><tr><th scope="row">1</th><td><span class="hl">1</span></td><td><span class="hl">1</span></td><td><span class="hl">1</span></td><td><span class="hl">1</span></td></tr></tbody></table></div>
+      <p>Regroupements : a (ligne a = 1) et b (colonnes 11 et 10, sur les deux lignes).</p>
+      <div class="code gold">E = a + b</div>
+      <p><b>Interprétation :</b> un commentaire est conservé s’il est daté de strictement moins de 6 mois, ou s’il a 100 vues ou plus.</p>
+    </details>
+    <details class="math-details"><summary>Question 4 — calcul booléen</summary>
+      <div class="code gold">E = a · <span class="ov">b</span> + <span class="ov">a</span> · b + b · c + a · <span class="ov">c</span>
+  = a · <span class="ov">b</span> + <span class="ov">a</span> · b + a · b + a · <span class="ov">c</span> + b · c    (consensus : a · <span class="ov">c</span> + b · c = a · <span class="ov">c</span> + b · c + a · b)
+  = a (<span class="ov">b</span> + b) + <span class="ov">a</span> · b + a · <span class="ov">c</span> + b · c            (mise en facteur de a)
+  = a + <span class="ov">a</span> · b + a · <span class="ov">c</span> + b · c                          (b̄ + b = 1)
+  = a + <span class="ov">a</span> · b + b · c                                  (absorption : a + a · c̄ = a)
+  = a + b + b · c                                      (a + ā · b = a + b)
+  = a + b                                              (absorption : b + b · c = b)</div>
+    </details>
+    <details class="math-details"><summary>Question 5 — commentaire daté de 6 mois ou plus, auteur anonyme</summary>
+      <p>Avec a = 0 et c = 1, on obtient E = b. Le commentaire n’est conservé que s’il a 100 vues ou plus : <b>il n’est pas toujours conservé</b> (il est supprimé s’il a moins de 100 vues).</p>
+    </details>
+    <details class="math-details"><summary>Question 6 — expression de Ē et condition de suppression</summary>
+      <div class="code gold">Ē = (a + b)‾ = <span class="ov">a</span> · <span class="ov">b</span>          (loi de De Morgan)</div>
+      <p>Un commentaire est <b>supprimé</b> s’il est daté de 6 mois ou plus <b>et</b> qu’il a moins de 100 vues. L’anonymat n’intervient pas.</p>
+    </details>
+  </div>
+
+  <div class="st gold">Exercice 7 — Polynésie mai 2019</div>
+  <div class="card gold">
+    <h3>Énoncé — coffre-fort d’un jeu vidéo</h3>
+    <p>Le coffre-fort d’un jeu vidéo s’ouvre si l’une au moins des conditions suivantes est réalisée :</p>
+    <ul>
+      <li>le joueur a trouvé la clé et le chronomètre marque 30 minutes ou plus ;</li>
+      <li>l’énigme est résolue et le chronomètre marque strictement moins de 30 minutes ;</li>
+      <li>le joueur a trouvé la clé et l’énigme n’est pas résolue.</li>
+    </ul>
+    <p>On définit les variables : a = 1 si le joueur a trouvé la clé, a = 0 sinon ; b = 1 si l’énigme est résolue, b = 0 sinon ; c = 1 si le chronomètre marque strictement moins de 30 minutes, c = 0 sinon.</p>
+    <p><b>1.</b> Écrire une expression booléenne E qui traduit les critères d’ouverture du coffre-fort.</p>
+    <p><b>2.</b> Représenter E dans un tableau de Karnaugh.</p>
+    <p><b>3.</b> À l’aide d’un second tableau de Karnaugh, simplifier E sous la forme d’une somme de deux termes, puis interpréter.</p>
+    <p><b>4.</b> Retrouver cette simplification par un calcul booléen.</p>
+  </div>
+
+  <div class="card gold">
+    <h3>Correction</h3>
+    <details class="math-details"><summary>Question 1 — expression de E</summary>
+      <p>Chaque critère donne un terme produit : « clé trouvée et chronomètre ≥ 30 min » donne a · <span class="ov">c</span> ; « énigme résolue et chronomètre &lt; 30 min » donne b · c ; « clé trouvée et énigme non résolue » donne a · <span class="ov">b</span>. Les critères sont reliés par « ou », donc par une somme.</p>
+      <div class="code gold">E = a · <span class="ov">c</span> + b · c + a · <span class="ov">b</span></div>
+    </details>
+    <details class="math-details"><summary>Question 2 — tableau de Karnaugh de E</summary>
+      <p>a · <span class="ov">c</span> couvre les cases 00 et 10 (a = 1) ; b · c couvre la case 11 (sur les deux lignes) ; a · <span class="ov">b</span> couvre les cases 00 et 01 (a = 1).</p>
+      <div class="table-scroll"><table class="tbl"><thead><tr><th scope="col">a \ bc</th><th scope="col">00</th><th scope="col">01</th><th scope="col">11</th><th scope="col">10</th></tr></thead><tbody><tr><th scope="row">0</th><td></td><td></td><td><span class="hl">1</span></td><td></td></tr><tr><th scope="row">1</th><td><span class="hl">1</span></td><td><span class="hl">1</span></td><td><span class="hl">1</span></td><td><span class="hl">1</span></td></tr></tbody></table></div>
+    </details>
+    <details class="math-details"><summary>Question 3 — simplification et interprétation</summary>
+      <p>Regroupements : a (ligne a = 1, quatre cases) et b · c (colonne 11, sur les deux lignes).</p>
+      <div class="code gold">E = a + b · c</div>
+      <p><b>Interprétation :</b> le coffre s’ouvre si le joueur a trouvé la clé, ou si l’énigme est résolue en strictement moins de 30 minutes.</p>
+    </details>
+    <details class="math-details"><summary>Question 4 — calcul booléen</summary>
+      <div class="code gold">E = a · <span class="ov">c</span> + b · c + a · <span class="ov">b</span>
+  = a (<span class="ov">b</span> + <span class="ov">c</span>) + b · c                (mise en facteur de a)
+  = a · <span class="ov">b · c</span> + b · c                              (loi de De Morgan)
+  = a + b · c                                            (x · ȳ + y = x + y)</div>
+    </details>
+  </div>
 </div>
 
-    <div class="source-note">Calcul matriciel 2e année : définitions, opérations, matrices carrées de référence, matrices inversibles et exercices 1 à 9, 11, 13, 17, 18, 20, 21, 22 et 23. Les résultats numériques ont été vérifiés par recalcul. Graphes orientés : fermeture transitive dans l’onglet Graphes orientés, exercices 1 à 5 dans l’onglet Exercices graphes. Correction Contrôle : devoir n°2, sujets A et B, avec calculs vérifiés. Algèbre de Boole : définition, propriétés, théorèmes d’associativité, d’idempotence, de l’élément absorbant et d’absorption, avec leurs preuves. Tableaux de Karnaugh : définition et tableaux à trois variables, puis exercices 1 à 5 avec les tableaux complétés et les corrections détaillées.</div>
+    <div class="sc" id="mat2-arith">
+      <div class="st gold">Arithmétique — chapitre 5, partie 1/2 : divisibilité et nombres premiers</div>
+      <div class="card gold">
+        <h3>Définition — divisibilité</h3>
+        <p>Soient a et b deux entiers relatifs, avec a non nul. On dit que <b>a divise b</b>, ou que a est un diviseur de b, s’il existe un entier relatif c tel que a × c = b. On note a | b, et d(b) désigne l’ensemble des diviseurs de b.</p>
+        <p>En langage mathématique : ∀(a, b) ∈ ℤ* × ℤ, a | b ⟺ ∃c ∈ ℤ, a × c = b.</p>
+        <p><b>Exemples.</b> −3 divise 6, car (−3) × (−2) = 6. d(5) = {1 ; −1 ; 5 ; −5}. d(6) = {1 ; −1 ; 2 ; −2 ; 3 ; −3 ; 6 ; −6}.</p>
+      </div>
+      <div class="cg">
+        <div class="card bl">
+          <h3>Remarques</h3>
+          <ul>
+            <li>Tout entier a différent de 1 et −1 possède au moins 4 diviseurs distincts : 1, −1, a et −a.</li>
+            <li>La division par 0 n’existe pas. Tout entier non nul divise 0 : 0 possède une infinité de diviseurs.</li>
+            <li>Les diviseurs se trouvent deux par deux : si d divise n, alors n ÷ d divise aussi n.</li>
+          </ul>
+        </div>
+        <div class="card bl">
+          <h3>Exemple — diviseurs naturels de 48</h3>
+          <p>1 ; 2 ; 3 ; 4 ; 6 ; 8 ; 12 ; 16 ; 24 ; 48, soit dix diviseurs. Deux par deux : 1 × 48, 2 × 24, 3 × 16, 4 × 12, 6 × 8.</p>
+        </div>
+      </div>
+      <div class="card gold">
+        <h3>Premiers entre eux</h3>
+        <p><b>Définition.</b> Deux entiers naturels sont dits <b>premiers entre eux</b> si et seulement si leur plus grand commun diviseur est 1. Pour un entier naturel n, d⁺(n) désigne l’ensemble de ses diviseurs positifs.</p>
+        <p><b>Exemple.</b> d⁺(6) = {1 ; 2 ; 3 ; 6} et d⁺(5) = {1 ; 5}. Leur seul diviseur commun est 1 : 5 et 6 sont premiers entre eux.</p>
+      </div>
+      <div class="card gold">
+        <h3>Multiples</h3>
+        <p><b>Définition.</b> Soient a et b deux entiers relatifs, avec a non nul. b est un <b>multiple</b> de a si et seulement si a divise b.</p>
+        <p>Multiples positifs ou nuls de 5 : 0 ; 5 ; 10 ; 15 ; 20 ; … Multiples positifs ou nuls de 6 : 0 ; 6 ; 12 ; 18 ; …</p>
+      </div>
+
+      <div class="st gold">Nombres premiers</div>
+      <div class="card gold">
+        <h3>Définition</h3>
+        <p>Un entier naturel est <b>premier</b> si et seulement si il possède exactement deux diviseurs distincts.</p>
+      </div>
+      <div class="card bl">
+        <h3>Les nombres premiers jusqu’à 60</h3>
+        <p>2 ; 3 ; 5 ; 7 ; 11 ; 13 ; 17 ; 19 ; 23 ; 29 ; 31 ; 37 ; 41 ; 43 ; 47 ; 53 ; 59, soit 17 nombres.</p>
+        <ul>
+          <li>0 n’est pas premier : il possède une infinité de diviseurs.</li>
+          <li>1 n’est pas premier : il ne possède qu’un seul diviseur.</li>
+          <li>2 est le seul entier naturel pair premier : les autres entiers pairs possèdent au moins 3 diviseurs (1, 2 et eux-mêmes).</li>
+        </ul>
+      </div>
+      <div class="card am">
+        <h3>Critère pour savoir si un nombre est premier</h3>
+        <p><b>Théorème.</b> Soit n un entier naturel supérieur ou égal à 2. Si aucun nombre premier dont le carré est <b>inférieur ou égal à</b> n ne divise n, alors n est premier.</p>
+        <div class="alert ar"><b>Coquille du manuel :</b> le manuel écrit « inférieur à n ». Avec cette version, 4 serait premier : aucun premier p ne vérifie p² &lt; 4, donc rien ne divise 4, alors que 4 = 2 × 2. La bonne version est « inférieur ou égal à n », le cas p² = n devant compter.</div>
+      </div>
+      <div class="cg">
+        <div class="card gold">
+          <h3>Exemple 1 — 397</h3>
+          <p>√397 ≈ 19,9 : on teste les premiers dont le carré est inférieur ou égal à 397, soit 2 ; 3 ; 5 ; 7 ; 11 ; 13 ; 17 ; 19 (23² = 529 est trop grand).</p>
+          <p>Aucun ne divise 397 : <b>397 est premier</b>.</p>
+        </div>
+        <div class="card gold">
+          <h3>Exemple 2 — 533</h3>
+          <p>√533 ≈ 23,1 : on teste 2 ; 3 ; 5 ; 7 ; 11 ; 13 ; 17 ; 19 ; 23.</p>
+          <p>13 divise 533, car 533 = 13 × 41 : <b>533 n’est pas premier</b>. Il possède au moins 4 diviseurs : 1, 13, 41 et 533.</p>
+          <p>Le manuel s’arrête à 19 dans sa liste, mais 23² = 529 ≤ 533 : 23 doit y figurer. Cela ne change pas la conclusion.</p>
+        </div>
+      </div>
+
+      <div class="st gold">Exercices (section 5.3)</div>
+      <div class="card gold">
+        <h3>Exercice 1 — compléter les phrases (15 et 16)</h3>
+        <p>1. Les diviseurs naturels de 15 sont ……</p>
+        <p>2. Les diviseurs naturels de 16 sont ……</p>
+        <p>3. Le plus grand commun diviseur de 15 et 16 est …… On en déduit que 15 et 16 sont premiers entre eux.</p>
+      </div>
+      <div class="card bl">
+        <h3>Correction — exercice 1</h3>
+        <p>1. d⁺(15) = {1 ; 3 ; 5 ; 15}.</p>
+        <p>2. d⁺(16) = {1 ; 2 ; 4 ; 8 ; 16}.</p>
+        <p>3. Le seul diviseur commun est 1 : PGCD(15 ; 16) = 1. <b>15 et 16 sont premiers entre eux.</b></p>
+      </div>
+      <div class="card gold">
+        <h3>Exercice 2 — compléter les phrases (18 et 42)</h3>
+        <p>1. Les diviseurs naturels de 18 sont ……</p>
+        <p>2. Les diviseurs naturels de 42 sont ……</p>
+        <p>3. Le plus grand commun diviseur de 18 et 42 est …… On en déduit que 18 et 42 ne sont pas premiers entre eux.</p>
+      </div>
+      <div class="card bl">
+        <h3>Correction — exercice 2</h3>
+        <p>1. d⁺(18) = {1 ; 2 ; 3 ; 6 ; 9 ; 18}.</p>
+        <p>2. d⁺(42) = {1 ; 2 ; 3 ; 6 ; 7 ; 14 ; 21 ; 42}.</p>
+        <p>3. Diviseurs communs : 1, 2, 3 et 6. Le plus grand est 6 : PGCD(18 ; 42) = 6. <b>18 et 42 ne sont pas premiers entre eux.</b></p>
+      </div>
+      <div class="alert agold"><b>Partie 2/2 du chapitre :</b> non ajoutée pour l’instant. Elle sera ajoutée à cette section quand elle sera disponible.</div>
+    </div>
+
+    <div class="source-note">Calcul matriciel 2e année : définitions, opérations, matrices carrées de référence, matrices inversibles et exercices 1 à 9, 11, 13, 17, 18, 20, 21, 22 et 23. Les résultats numériques ont été vérifiés par recalcul. Graphes orientés : fermeture transitive dans l’onglet Graphes orientés, exercices 1 à 5 dans l’onglet Exercices graphes. Correction Contrôle : devoir n°2, sujets A et B, avec calculs vérifiés. Algèbre de Boole : définition, propriétés, théorèmes d’associativité, d’idempotence, de l’élément absorbant et d’absorption, avec leurs preuves. Tableaux de Karnaugh : définition et tableaux à trois variables, puis exercices 1 à 7 avec les tableaux complétés et les corrections détaillées. Correction DST n°1 (jeudi 15 octobre 2026) : exercices 1 à 3 avec les calculs détaillés et les vérifications. Arithmétique : chapitre 5, partie 1/2 (divisibilité, nombres premiers, exercices de la section 5.3).</div>
   </main>
   <div class="footer"><a href="../index.html">← Retour au tableau de bord</a></div>
 </div>

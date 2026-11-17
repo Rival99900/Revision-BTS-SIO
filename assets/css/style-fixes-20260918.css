@@ -314,8 +314,9 @@ pre {
   flex-wrap: wrap;
 }
 
+/* Le bloc titre ne doit pas réserver une hauteur minimale : en colonne (mobile), une base de 260px créait un grand vide sous le titre. */
 .hero > :first-child {
-  flex: 1 1 260px;
+  flex: 1 1 auto;
   min-width: 0;
 }
 

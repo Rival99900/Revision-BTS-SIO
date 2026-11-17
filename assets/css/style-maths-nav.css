@@ -1,0 +1,29 @@
+/* Barre d'onglets défilante pour les pages à nombreuses parties (maths 2e année).
+   Une seule ligne qui défile horizontalement, sur PC comme sur mobile. */
+.stabs.stabs-scroll {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  gap: 6px;
+  padding: 2px 2px 8px;
+  margin-bottom: 14px;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  max-width: 100%;
+}
+
+.stabs.stabs-scroll .sb {
+  flex: 0 0 auto;
+  width: auto;
+  min-height: 0;
+  white-space: nowrap;
+  text-align: center;
+  scroll-snap-align: start;
+  padding: 7px 12px;
+}
+
+.stabs.stabs-scroll .sb.a {
+  box-shadow: 0 0 0 1px currentColor inset;
+}
