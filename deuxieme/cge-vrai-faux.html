@@ -38,7 +38,7 @@
         <div>
           <div class="hero-kicker">2E ANNÉE // CGE</div>
           <h2>Le vrai du faux</h2>
-          <p>Repères de révision sur la synthèse de documents, le vrai, le faux, la mythomanie, <i>Dom Juan</i>, <i>Le Misanthrope</i> et <i>Les Liaisons dangereuses</i>, et le début de l’<i>Essai sur l’art de ramper</i> de Holbach, la fable <i>Les animaux malades de la peste</i> de La Fontaine, et l’extrait de Fontenelle, <i>Histoire des oracles</i>.</p>
+          <p>Repères de révision sur la synthèse de documents, le vrai, le faux, la mythomanie, <i>Dom Juan</i>, <i>Le Misanthrope</i> et <i>Les Liaisons dangereuses</i>, et le début de l’<i>Essai sur l’art de ramper</i> de Holbach, la fable <i>Les animaux malades de la peste</i> de La Fontaine, l’extrait de Fontenelle, <i>Histoire des oracles</i>, et l’ouvrage de Bourdin et Le Bras sur les fausses nouvelles.</p>
         </div>
         <div class="hero-actions">
           <button class="smallbtn" id="reviewBtn" onclick="setReviewed('2-cge-vrai-faux')">○ Marquer révisé</button>
@@ -50,16 +50,15 @@
       <div class="stabs stabs-scroll">
         <button class="sb a" onclick="showSub('cge2','synthese',this)">Synthèse</button>
         <button class="sb" onclick="showSub('cge2','theme',this)">Le vrai du faux</button>
-        <button class="sb" onclick="showSub('cge2','texte1',this)">Texte 1</button>
-        <button class="sb" onclick="showSub('cge2','texte2',this)">Texte 2 — Dom Juan</button>
-      <button class="sb" onclick="showSub('cge2','texte3',this)">Texte 3 — Le Misanthrope</button>
-<button class="sb" onclick="showSub('cge2','texte4',this)">Texte 4 — Les Liaisons dangereuses</button>
-<button class="sb" onclick="showSub('cge2','texte5',this)">Texte 5 — Holbach</button>
-<button class="sb" onclick="showSub('cge2','texte6',this)">Texte 6 — La Fontaine</button>
-<button class="sb" onclick="showSub('cge2','texte7',this)">Texte 7 — Fontenelle</button>
-<button class="sb" onclick="showSub('cge2','confrontation',this)">Confronter les textes</button>
-<button class="sb" onclick="showSub('cge2','methode',this)">Méthode</button>
-</div>
+        <button class="sb" data-cge-texts="1" onclick="showSub('cge2','textes',this)">Textes</button>
+        <button class="sb" onclick="showSub('cge2','confrontation',this)">Confronter les textes</button>
+        <button class="sb" onclick="showSub('cge2','methode',this)">Méthode</button>
+      </div>
+      <div class="section-stepper" data-prefix="cge2" data-sections="synthese,theme,textes,texte1,texte2,texte3,texte4,texte5,texte6,texte7,texte8,confrontation,methode" data-parent-section="textes">
+        <button class="smallbtn step-prev" onclick="stepSection(this,-1)" type="button">← Précédent</button>
+        <span aria-live="polite" class="step-status">1 / 13</span>
+        <button class="smallbtn alt step-next" onclick="stepSection(this,1)" type="button">Suivant →</button>
+      </div>
 
       <div class="sc a" id="cge2-synthese">
         <div class="st gold">Synthèse de documents</div>
@@ -91,6 +90,61 @@
             <h3>Une thématique actuelle</h3>
             <p>Les exemples étudiés concernent l’intelligence artificielle, les infox / fake news, le statut de l’information et la propagande, les réseaux sociaux, les communiqués commerciaux et l’industrie pharmaceutique.</p>
           </div>
+        </div>
+      </div>
+
+      <div class="sc" id="cge2-textes">
+        <div class="st gold">Textes — accès rapide</div>
+        <p class="exercise-intro">Sélectionnez un texte pour afficher son analyse et son vocabulaire. Les boutons Précédent et Suivant passent d’un texte à l’autre.</p>
+        <div class="chapter-grid">
+          <a class="chapter-card" href="#cge2-texte1" onclick="event.preventDefault(); showSub('cge2','texte1',document.querySelector('[data-cge-texts]'));">
+            <span class="chapter-num">01</span>
+            <h3>Texte 1 — La mythomanie</h3>
+            <p>Un rapport altéré au réel, et des mensonges aux fonctions différentes.</p>
+            <span class="module-link">Ouvrir le texte →</span>
+          </a>
+          <a class="chapter-card" href="#cge2-texte2" onclick="event.preventDefault(); showSub('cge2','texte2',document.querySelector('[data-cge-texts]'));">
+            <span class="chapter-num">02</span>
+            <h3>Texte 2 — Dom Juan</h3>
+            <p>Un mensonge volontaire, au service de la conquête et de l’intérêt personnel.</p>
+            <span class="module-link">Ouvrir le texte →</span>
+          </a>
+          <a class="chapter-card" href="#cge2-texte3" onclick="event.preventDefault(); showSub('cge2','texte3',document.querySelector('[data-cge-texts]'));">
+            <span class="chapter-num">03</span>
+            <h3>Texte 3 — Le Misanthrope</h3>
+            <p>Sincérité absolue d’Alceste face au tact et à la modération de Philinte.</p>
+            <span class="module-link">Ouvrir le texte →</span>
+          </a>
+          <a class="chapter-card" href="#cge2-texte4" onclick="event.preventDefault(); showSub('cge2','texte4',document.querySelector('[data-cge-texts]'));">
+            <span class="chapter-num">04</span>
+            <h3>Texte 4 — Les Liaisons dangereuses</h3>
+            <p>La dissimulation comme instrument de pouvoir (paragraphes 1 à 4).</p>
+            <span class="module-link">Ouvrir le texte →</span>
+          </a>
+          <a class="chapter-card" href="#cge2-texte5" onclick="event.preventDefault(); showSub('cge2','texte5',document.querySelector('[data-cge-texts]'));">
+            <span class="chapter-num">05</span>
+            <h3>Texte 5 — Holbach</h3>
+            <p>La soumission présentée comme un art : une satire du courtisan.</p>
+            <span class="module-link">Ouvrir le texte →</span>
+          </a>
+          <a class="chapter-card" href="#cge2-texte6" onclick="event.preventDefault(); showSub('cge2','texte6',document.querySelector('[data-cge-texts]'));">
+            <span class="chapter-num">06</span>
+            <h3>Texte 6 — La Fontaine</h3>
+            <p>Une Cour qui décide de la vérité selon le rang des accusés.</p>
+            <span class="module-link">Ouvrir le texte →</span>
+          </a>
+          <a class="chapter-card" href="#cge2-texte7" onclick="event.preventDefault(); showSub('cge2','texte7',document.querySelector('[data-cge-texts]'));">
+            <span class="chapter-num">07</span>
+            <h3>Texte 7 — Fontenelle</h3>
+            <p>Vérifier le fait avant d’en chercher la cause.</p>
+            <span class="module-link">Ouvrir le texte →</span>
+          </a>
+          <a class="chapter-card" href="#cge2-texte8" onclick="event.preventDefault(); showSub('cge2','texte8',document.querySelector('[data-cge-texts]'));">
+            <span class="chapter-num">08</span>
+            <h3>Texte 8 — Bourdin et Le Bras</h3>
+            <p>Bruit, rumeur, fausse nouvelle : relativiser la nouveauté des fausses nouvelles.</p>
+            <span class="module-link">Ouvrir le texte →</span>
+          </a>
         </div>
       </div>
 
@@ -676,8 +730,86 @@
 </div>
 </div>
 
+<div class="sc" id="cge2-texte8">
+<div class="st gold">Texte 8 — Bourdin et Le Bras, <i>Les fausses nouvelles</i> : bruit, rumeur et fausse nouvelle</div>
+<div class="alert agold"><strong>Partie étudiée :</strong> texte complet, trois paragraphes et vocabulaire du PDF du Drive. Le texte n’est pas reproduit ici : l’analyse en reprend les idées.</div>
+<div class="cg">
+<div class="card gold">
+<h3>Situation de l’extrait</h3>
+<p><b>Ouvrage collectif supervisé par Philippe Bourdin et Stéphane Le Bras, <i>Les fausses nouvelles : un millénaire de bruits et de rumeurs dans l’espace public français</i>.</b> Le livre étudie la désinformation sur la longue durée et défend le rôle des historiens dans les débats sur les infox.</p>
+</div>
+<div class="card bl">
+<h3>Le triptyque de la désinformation</h3>
+<p>Les auteurs distinguent trois étapes, selon leur degré de propagation dans la société :</p>
+<ul>
+<li><b>Le bruit :</b> lapidaire, il se propage à demi-mot.</li>
+<li><b>La rumeur :</b> plus construite et cohérente, elle porte une intention et une constitution plus nettes.</li>
+<li><b>La fausse nouvelle</b> (« nouvelle faussée ») : volontairement élaborée, elle vise l’adhésion envers celui qui la porte ou la répulsion envers sa cible.</li>
+</ul>
+<p>Ces trois formes passent par un mode informel, interpersonnel, et tirent leur crédibilité de la réputation de l’informateur ou de la cible. <b>À retenir :</b> en s’amplifiant, une information erronée gagne un statut presque officiel, ce qui la rend difficile à déconstruire.</p>
+</div>
+<div class="card am">
+<h3>Relativiser la nouveauté (paragraphe 2)</h3>
+<p>La page de titre place les fausses nouvelles en premier, et bruits et rumeurs y apparaissent comme leurs sous-catégories. Les auteurs critiquent ce rassemblement : un terme générique réunit des phénomènes démultipliés par le temps, par leurs objets et par les techniques d’information.</p>
+<p>Ils préfèrent parier sur des <b>continuités</b> dans l’humanité que sur des ruptures « construites de toutes pièces ». La comparaison entre la bibliothèque bleue des siècles passés et les écrans de smartphones illustre cette idée.</p>
+</div>
+<div class="card pk">
+<h3>Un plaidoyer pour les historiens (paragraphe 3)</h3>
+<p>Les historiens sont, selon les auteurs, habilités à mesurer <b>la teneur, l’impact et la véracité</b> des nouvelles. Leur travail met en perspective un phénomène qu’on croit nouveau et qui a, avec des nuances, toujours existé.</p>
+<p>L’exemple donné est un texte de 2018, rédigé pendant la discussion d’un projet de loi contre la manipulation de l’information : il affirme que l’État manipule régulièrement les informations. Les auteurs y voient la preuve du danger de croire à la nouveauté des fausses nouvelles, au point que certains jugent le phénomène assez inédit pour emprunter le terme anglais « fake news ».</p>
+</div>
+</div>
+
+<div class="st gold">Question de lecture — réponse à retenir</div>
+<div class="bq gold"><span class="qt">?</span><p><strong>Pourquoi les auteurs invitent-ils à relativiser la nouveauté des fausses nouvelles ?</strong></p></div>
+<div class="card gold">
+<ul>
+<li>Le phénomène est ancien : bruits, rumeurs et fausses nouvelles existent depuis longtemps.</li>
+<li>Les techniques changent (bibliothèque bleue, smartphones), mais les mécanismes restent comparables.</li>
+<li>Le terme générique « fausses nouvelles » masque des formes différentes : d’où l’intérêt de distinguer bruit, rumeur et fausse nouvelle.</li>
+<li>Les historiens peuvent mesurer teneur, impact et véracité, et replacer le phénomène dans la durée.</li>
+</ul>
+</div>
+<div class="alert agold"><strong>Conclusion :</strong> la nouveauté apparente des infox tient surtout aux supports et aux techniques ; les mécanismes de la désinformation, eux, sont anciens.</div>
+
+<div class="st gold">Vocabulaire du Texte 8</div>
+<div class="table-scroll">
+<table class="tbl gold">
+<thead><tr><th scope="col">Mot</th><th scope="col">Définition</th><th scope="col">Repère dans le texte</th></tr></thead>
+<tbody>
+<tr><td class="cn">Désinformation</td><td>Fausse information, diffusée pour tromper.</td><td>« triptyque de la désinformation »</td></tr>
+<tr><td class="cn">Crédibilité</td><td>Susceptible d’être vrai, digne d’être cru.</td><td>Les trois formes tirent leur crédibilité de la réputation.</td></tr>
+<tr><td class="cn">Infox</td><td>Fausse information ; mot-valise formé d’« information » et d’« intoxication ».</td><td>Les fausses nouvelles, « autrement désignées infox ».</td></tr>
+<tr><td class="cn">Véracité</td><td>Caractère de ce qui est vrai, conforme aux faits.</td><td>Mesurer « la teneur, l’impact, la véracité ».</td></tr>
+<tr><td class="cn">Manipuler</td><td>Modifier ou orienter une information pour servir un intérêt.</td><td>L’État s’aventure à « manipuler » les informations.</td></tr>
+<tr><td class="cn">Leurrer</td><td>Tromper, induire en erreur.</td><td>« Leurrer les esprits crédules ».</td></tr>
+<tr><td class="cn">Crédule</td><td>Qui croit trop facilement.</td><td>Les esprits « crédules ».</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="st gold">Procédés et idées à retenir</div>
+<div class="table-scroll">
+<table class="tbl gold">
+<thead><tr><th scope="col">Repère</th><th scope="col">Procédé</th><th scope="col">Interprétation</th></tr></thead>
+<tbody>
+<tr><td class="cn">Paragraphe 1</td><td>Gradation : bruit, rumeur, fausse nouvelle.</td><td>Plus l’information se construit et gagne en intention, plus elle est difficile à déconstruire.</td></tr>
+<tr><td class="cn">Paragraphe 2</td><td>Terme générique et comparaison historique (bibliothèque bleue, smartphones).</td><td>Il faut parier sur des continuités plutôt que sur des ruptures.</td></tr>
+<tr><td class="cn">Paragraphe 3</td><td>Appel aux historiens et exemple de 2018.</td><td>La mise en perspective permet de nuancer l’idée d’une nouveauté absolue.</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="st gold">Question de révision — réponse à retenir</div>
+<div class="bq gold"><span class="qt">?</span><p><strong>Pourquoi une information erronée devient-elle plus difficile à contrer en s’amplifiant ?</strong></p></div>
+<div class="card gold">
+<h3>Réponse rédigée à partir du texte et du cours</h3>
+<p>Une information erronée part souvent d’un bruit, lancé à demi-mot. Elle devient rumeur lorsqu’elle se construit et prend une intention, puis fausse nouvelle si elle est élaborée volontairement. En s’amplifiant, elle acquiert un statut presque officiel et s’appuie sur la réputation de celui qui la porte ou de sa cible. Selon le cours, elle circule aussi souvent par groupes, ce qui la rend encore plus ardue à dénoncer.</p>
+</div>
+</div>
+
 <div class="sc" id="cge2-confrontation">
-<div class="st gold">Confronter les quatre textes</div>
+<div class="st gold">Confronter les textes (1 à 8)</div>
 <div class="table-scroll">
 <table class="tbl gold">
 <thead>
@@ -708,6 +840,26 @@
 <td>Dissimulation consciente et maîtrise des apparences chez Merteuil.</td>
 <td>Observer, cacher ses sentiments et affirmer sa supériorité.</td>
 </tr>
+<tr>
+<td>Texte 5 — Holbach</td>
+<td>Le courtisan renonce à son jugement : il ne doit jamais avoir raison, et la vérité appartient à son maître.</td>
+<td>Dénoncer la soumission et l’abandon de la raison.</td>
+</tr>
+<tr>
+<td>Texte 6 — La Fontaine</td>
+<td>La Cour établit la vérité selon le rang : le puissant est absous, l’âne sans pouvoir est condamné.</td>
+<td>Montrer que le pouvoir peut manipuler la vérité des faits.</td>
+</tr>
+<tr>
+<td>Texte 7 — Fontenelle</td>
+<td>Le faux se propage quand on explique un fait non vérifié ; le vrai s’impose par l’examen de l’orfèvre.</td>
+<td>Vérifier le fait avant de chercher sa cause.</td>
+</tr>
+<tr>
+<td>Texte 8 — Bourdin et Le Bras</td>
+<td>Une information erronée passe du bruit à la fausse nouvelle et gagne un statut presque officiel en s’amplifiant.</td>
+<td>Mesurer teneur, impact et véracité ; relativiser la nouveauté.</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -720,6 +872,7 @@
 <li>Conclure en répondant à la question, sans juxtaposer quatre résumés.</li>
 </ol>
 <p><b>Entraînement :</b> tous les écarts à la vérité ont-ils la même valeur morale ? Comparer l’intérêt égoïste de Dom Juan, la situation décrite dans le texte sur la mythomanie, le tact défendu par Philinte et la dissimulation stratégique de Merteuil dans les paragraphes étudiés.</p>
+<p><b>Entraînement 2 :</b> le pouvoir peut-il fixer la vérité ? Comparer la Cour de La Fontaine, le courtisan d’Holbach, la méthode de Fontenelle et le triptyque des auteurs de l’ouvrage collectif.</p>
 </div>
 </div>
 <div class="sc" id="cge2-methode">
@@ -764,7 +917,7 @@
 </div>
 </div>
 </div>
-<div class="source-note">Supports : document CGE et PDF du Drive mis à jour le 30 septembre 2026, extrait fourni du <i>Misanthrope</i> et <i>Texte 4</i>, lettre 81 des <i>Liaisons dangereuses</i>. Pour le texte 4, seuls les paragraphes 1 à 4 sont étudiés ici ; l’extrait intégral n’est pas reproduit. Texte 5 (Holbach) : paragraphes 1 à 3 et vocabulaire 1 à 3 seulement ; la suite reste à étudier. Texte 6 (La Fontaine) : vers cités ponctuellement dans l’analyse, vocabulaire du PDF du Drive ; le poème n’est pas reproduit. Texte 7 (Fontenelle, <i>Histoire des oracles</i>, 1687) : extrait du PDF du Drive, analysé sans reproduction intégrale.</div>
+<div class="source-note">Supports : document CGE et PDF du Drive mis à jour le 30 septembre 2026, extrait fourni du <i>Misanthrope</i> et <i>Texte 4</i>, lettre 81 des <i>Liaisons dangereuses</i>. Pour le texte 4, seuls les paragraphes 1 à 4 sont étudiés ici ; l’extrait intégral n’est pas reproduit. Texte 5 (Holbach) : paragraphes 1 à 3 et vocabulaire 1 à 3 seulement ; la suite reste à étudier. Texte 6 (La Fontaine) : vers cités ponctuellement dans l’analyse, vocabulaire du PDF du Drive ; le poème n’est pas reproduit. Texte 7 (Fontenelle, <i>Histoire des oracles</i>, 1687) : extrait du PDF du Drive, analysé sans reproduction intégrale. Texte 8 (Bourdin et Le Bras) : PDF « Texte 8 » du dossier Textes du Drive, lu sur scan (2 pages), analysé sans reproduction intégrale.</div>
     </main>
 
     <div class="footer"><a href="../index.html">← Retour au tableau de bord</a>
