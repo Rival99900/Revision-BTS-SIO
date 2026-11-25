@@ -48,19 +48,15 @@
       </div>
 
       <div class="stabs stabs-scroll">
-        <button class="sb gold a" onclick="showSub('num','dcp',this)">DCP &amp; sensibles</button>
-        <button class="sb gold" onclick="showSub('num','cnil',this)">CNIL &amp; sanctions</button>
-        <button class="sb gold" onclick="showSub('num','rgpd',this)">RGPD &amp; principes</button>
-        <button class="sb gold" onclick="showSub('num','risques',this)">Identité &amp; risques</button>
-        <button class="sb gold" onclick="showSub('num','travail',this)">Employeur &amp; numérique</button>
-        <button class="sb gold" onclick="showSub('num','cas',this)">Cas montre connectée</button>
-      <button class="sb gold" onclick="showSub('num','methode',this)">Méthode juridique</button>
-<button class="sb gold" onclick="showSub('num','decisions',this)">Solocal &amp; Cityscoot</button>
-<button class="sb gold" onclick="showSub('num','justice',this)">Arrêt Petit Bateau</button>
-<button class="sb gold" onclick="showSub('num','actifs',this)">Actifs numériques</button>
-</div>
+        <button class="sb gold a" onclick="showSub('num','p1',this)">I — Protection de la personne</button>
+        <button class="sb gold" onclick="showSub('num','p2',this)">II — Actifs numériques</button>
+        <button class="sb gold" onclick="showSub('num','p3',this)">III — Contrats numériques</button>
+      </div>
 
-      <div class="sc a" id="num-dcp">
+      <div class="sc a" id="num-p1">
+        <div class="alert agold"><strong>I. La protection de la personne</strong> — données personnelles, CNIL, RGPD, usages des données, cas et méthode de décision.</div>
+
+      <div class="cejm-sub" id="num-dcp">
         <div class="st gold">1.1 — Les données à caractère personnel</div>
         <div class="bq gold">
           <span class="qt">"</span>
@@ -97,7 +93,7 @@
         <div class="alert aa"><strong>À distinguer :</strong> les coordonnées génériques d’une entreprise, comme l’adresse de l’entreprise, le téléphone du standard ou un email de contact générique, ne sont en principe pas des données personnelles.</div>
       </div>
 
-      <div class="sc" id="num-cnil">
+      <div class="cejm-sub" id="num-cnil">
         <div class="st gold">1.2 — Le rôle de la CNIL</div>
         <div class="cg">
           <div class="card gold">
@@ -156,7 +152,7 @@
         </div>
       </div>
 
-      <div class="sc" id="num-rgpd">
+      <div class="cejm-sub" id="num-rgpd">
         <div class="st gold">1.3 — Le RGPD</div>
         <div class="alert agold"><strong>Repère :</strong> le RGPD, adopté le 27 avril 2016 et applicable depuis le 25 mai 2018, constitue le texte de référence européen en matière de protection des données à caractère personnel et modifie le cadre de la loi Informatique et Libertés de 1978.</div>
 
@@ -212,7 +208,7 @@
         </div>
       </div>
 
-      <div class="sc" id="num-risques">
+      <div class="cejm-sub" id="num-risques">
         <div class="st gold">1.4 — L’utilisation des données personnelles</div>
         <div class="card gold">
           <h3>Identité numérique</h3>
@@ -240,7 +236,7 @@
         <div class="alert aa"><strong>Violation de données :</strong> le cours indique qu’en juillet 2025, la France se classe en deuxième position des pays les plus touchés au monde par des fuites de données, derrière les États-Unis, en citant L’Usine Digitale.</div>
       </div>
 
-      <div class="sc" id="num-travail">
+      <div class="cejm-sub" id="num-travail">
         <div class="st gold">Numérique et contrôle dans l’entreprise</div>
         <p>Le cours pose une série de questions sur les moyens de contrôle dont peut disposer un employeur. Elles doivent être traitées juridiquement en mobilisant les règles vues sur les données personnelles, la proportionnalité, l’information et la protection des salariés.</p>
 
@@ -257,7 +253,7 @@
         <div class="alert aa"><strong>Important :</strong> le document fourni formule ici des questions, sans donner leur correction détaillée. La fiche les conserve donc comme points à savoir analyser sans inventer de réponse absente du cours.</div>
       </div>
 
-      <div class="sc" id="num-cas">
+      <div class="cejm-sub" id="num-cas">
         <div class="st gold">Exercice — montre connectée</div>
         <div class="cg">
           <div class="card">
@@ -279,7 +275,7 @@
         </div>
       </div>
 
-      <div class="sc" id="num-methode">
+      <div class="cejm-sub" id="num-methode">
 <div class="st gold">Méthode — argumentation juridique et syllogisme</div>
 <div class="card gold">
 <h3>Analyser les motivations d’une sanction de la CNIL</h3>
@@ -343,7 +339,7 @@
 <p><b>Selon</b> le principe de minimisation, la collecte doit être limitée à ce qui est nécessaire à la finalité du traitement. <b>Or</b>, le suivi quasi permanent des trajets décrit dans le document permet de relier les positions aux clients et excède les besoins justifiés du service. <b>Donc</b>, le manquement à la minimisation justifie une intervention de la CNIL.</p>
 </div>
 </div>
-<div class="sc" id="num-decisions">
+<div class="cejm-sub" id="num-decisions">
 <div class="st gold">Analyser les motivations d’une sanction</div>
 <div class="card gold">
 <h3>Solocal Marketing Services — 15 mai 2025</h3>
@@ -395,7 +391,7 @@
 </table>
 </div>
 </div>
-<div class="sc" id="num-justice">
+<div class="cejm-sub" id="num-justice">
 <div class="st gold">Analyser une décision de justice</div>
 <div class="card gold">
 <h3>Lire et analyser une décision</h3>
@@ -472,8 +468,12 @@
 </ul>
 </div>
 </div>
-<div class="sc" id="num-actifs">
-<div class="st gold">2 — La protection des actifs numériques</div>
+</div>
+
+      <div class="sc" id="num-p2">
+        <div class="alert agold"><strong>II. La protection des actifs numériques</strong> — sites, noms de domaine, logiciels, bases de données, droit d’auteur et licences.</div>
+
+      <div class="cejm-sub" id="num-actifs">
 <div class="cg">
 <figure class="card gold">
 <img src="../assets/img/droits-de-propriete.png" width="1129" height="597" loading="lazy" alt="Schéma des droits de propriété. À gauche, les droits patrimoniaux, évaluables en argent et cessibles : ils concernent les biens corporels et les créations intellectuelles. Les droits de propriété intellectuelle (brevets, marques, dessins et modèles, droit sui generis du producteur de base de données) se déposent pour lutter contre la contrefaçon ; le droit d’auteur protège les œuvres de l’esprit sans dépôt. À droite, les droits extra-patrimoniaux, sans valeur marchande, attachés à la personne, incessibles et inaliénables : droits à la personnalité (vie privée, droit à l’image, protection des données), droits politiques, familiaux et collectifs, droits moraux de l’auteur (paternité, divulgation, respect de l’œuvre, retrait). Des flèches relient le site internet, le nom de domaine, le logiciel et la base de données aux droits qui les protègent." />
@@ -589,7 +589,110 @@
 </div>
 </div>
 
-<div class="source-note">Supports : cours « CEJM Droit » du 23 septembre 2026, exercice de la montre connectée et fiche « Analyser une décision de justice ». Partie « Actifs numériques » : section 2 de la séquence 4.2 du même document. Compléments : <a href="https://www.cnil.fr/fr/sanction-de-900-000-euros-societe-solocal-marketing-services">CNIL — Solocal</a> ; <a href="https://www.legifrance.gouv.fr/cnil/id/CNILTEXT000047346903">décision Cityscoot</a> ; <a href="https://www.legifrance.gouv.fr/juri/id/JURITEXT000042579783">arrêt Petit Bateau</a> ; <a href="https://www.cnil.fr/fr/rgpd-comment-bien-identifier-son-role">responsable du traitement</a> et <a href="https://www.cnil.fr/fr/le-delegue-la-protection-des-donnees-dpo/devenir-delegue-la-protection-des-donnees">DPO</a> ; articles <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049312762">223-1-1</a> et <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006417984">226-22</a> du Code pénal.</div>
+</div>
+
+      <div class="sc" id="num-p3">
+        <div class="alert agold"><strong>III. Les contrats à l’ère du numérique</strong> — vente à distance, preuve électronique et contrats informatiques.</div>
+
+      <div class="cejm-sub">
+        <div class="st gold">3.1 — Les contrats de vente à distance</div>
+        <p>Les mêmes règles contractuelles s’appliquent que pour un contrat conclu hors ligne. Le contrat à distance doit notamment permettre de sécuriser et d’exécuter la relation contractuelle.</p>
+        <div class="cg">
+          <div class="card gold">
+            <h3>Objectifs du contrat</h3>
+            <ul>
+              <li>sécuriser la phase précontractuelle de négociation ;</li>
+              <li>sécuriser la phase contractuelle ;</li>
+              <li>remplir les obligations du contrat ;</li>
+              <li>appliquer les règles en cas d’inexécution ;</li>
+              <li>respecter le RGPD.</li>
+            </ul>
+          </div>
+          <div class="card bl">
+            <h3>Idée directrice</h3>
+            <p>Éviter que le consommateur prenne une décision qu’il n’aurait pas prise s’il n’était pas à distance. La pratique ne doit donc être ni déloyale, ni trompeuse, ni agressive.</p>
+          </div>
+        </div>
+
+        <div class="st gold">Clauses propres à la vente à distance</div>
+        <div class="cg">
+          <div class="card am">
+            <h3>a) Droit de rétractation de 14 jours</h3>
+            <p>Article L221-18 du Code de la consommation. L’acheteur peut revenir sur sa décision d’achat dans un délai de 14 jours, sans avoir à se justifier. Il dispose ensuite de nouveau de 14 jours pour retourner le produit, après avoir signifié sa décision de se rétracter.</p>
+            <p><b>Exclusion :</b> les voyages et les billets de spectacles (concerts, matchs…).</p>
+            <p><b>Vigilance :</b> le cours fait partir ce délai de la signature du contrat ou de la réception du bien. Pour un bien, le point de départ est en principe la réception ; à confirmer avec le professeur.</p>
+          </div>
+        </div>
+
+        <div class="st gold">b) Obligations des entreprises du e-commerce</div>
+        <p>Marche à suivre imposée à l’entreprise qui vend en ligne :</p>
+        <div class="table-scroll">
+          <table class="tbl gold">
+            <thead>
+              <tr>
+                <th>Étape</th>
+                <th>Obligation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1. CGV</td>
+                <td>Mettre à disposition les conditions générales de vente (CGV).</td>
+              </tr>
+              <tr>
+                <td>2. Vérification</td>
+                <td>Permettre de vérifier, de modifier et de supprimer sa commande avant de confirmer le paiement.</td>
+              </tr>
+              <tr>
+                <td>3. Confirmation</td>
+                <td>Proposer un bouton de confirmation qui indique une obligation de paiement en termes non équivoques : double clic (1er clic « je valide », 2e clic « je confirme »). Article 1127 du Code civil : le contrat n’est valablement conclu que si le destinataire a pu vérifier le détail de sa commande et son prix total, et corriger d’éventuelles erreurs avant de confirmer.</td>
+              </tr>
+              <tr>
+                <td>4. Accusé de réception</td>
+                <td>Envoyer, sans délai injustifié, un accusé de réception de la commande. Cette procédure garantit que la commande a bien été passée (article 1127 du Code civil).</td>
+              </tr>
+              <tr>
+                <td>5. Livraison</td>
+                <td>Livrer le bien à la date indiquée lors de la commande ou, à défaut, dans un délai de 30 jours.</td>
+              </tr>
+              <tr>
+                <td>6. Archivage</td>
+                <td>Archiver le contrat d’un montant supérieur à 120 € pendant 10 ans (article L213-1 du Code de la consommation).</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="st gold">3.2 — La recherche de validité par la preuve électronique</div>
+        <div class="cg">
+          <div class="card gold">
+            <h3>E-mail comme preuve</h3>
+            <p>Un e-mail est une preuve juridique en cas de litige, à condition que la personne dont il émane puisse être identifiée et qu’il soit établi et conservé de manière à garantir son intégrité (article 1366 du Code civil).</p>
+          </div>
+          <div class="card bl">
+            <h3>Lettre recommandée électronique</h3>
+            <p>Peut se substituer à une lettre recommandée au format papier, sous certaines conditions. Exemple : envoyer ses recommandés 100 % en ligne (La Poste).</p>
+          </div>
+          <div class="card am">
+            <h3>Archivage numérique</h3>
+            <p>Recommandé pour conserver les preuves dans de bonnes conditions.</p>
+          </div>
+          <div class="card pk">
+            <h3>Identité numérique</h3>
+            <p>Authentifier l’identité des parties grâce à un certificat d’identité numérique délivré par une autorité de certification, par exemple Docaposte, filiale de La Poste.</p>
+          </div>
+          <div class="card rd">
+            <h3>Signature électronique</h3>
+            <p>Garantit l’intégrité d’un document électronique et authentifie son auteur.</p>
+          </div>
+        </div>
+
+        <div class="st gold">3.3 — Types de contrats informatiques pour une entreprise</div>
+        <div class="alert agold"><strong>Pas encore commencé.</strong> Cette partie n’a pas encore été travaillée ; la fiche sera complétée après le cours.</div>
+      </div>
+      </div>
+
+      <div class="source-note">Supports : cours « CEJM Droit » du 23 septembre 2026 (séquence 4.2, parties I à III ; partie 3.3 non commencée), exercice de la montre connectée et fiche « Analyser une décision de justice ». Partie « Actifs numériques » : section 2 de la séquence 4.2 du même document. Compléments : <a href="https://www.cnil.fr/fr/sanction-de-900-000-euros-societe-solocal-marketing-services">CNIL — Solocal</a> ; <a href="https://www.legifrance.gouv.fr/cnil/id/CNILTEXT000047346903">décision Cityscoot</a> ; <a href="https://www.legifrance.gouv.fr/juri/id/JURITEXT000042579783">arrêt Petit Bateau</a> ; <a href="https://www.cnil.fr/fr/rgpd-comment-bien-identifier-son-role">responsable du traitement</a> et <a href="https://www.cnil.fr/fr/le-delegue-la-protection-des-donnees-dpo/devenir-delegue-la-protection-des-donnees">DPO</a> ; articles <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000049312762">223-1-1</a> et <a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006417984">226-22</a> du Code pénal ; <a href="https://www.laposte.fr/professionnel/expedier/envoyer-lettre-recommandee-en-ligne">envoi de lettre recommandée en ligne (La Poste)</a> ; <a href="https://www.laposte.fr/identite-numerique">identité numérique (La Poste)</a>.</div>
     </main>
 
     <div class="footer"><a href="../index.html">← Retour au tableau de bord</a>
